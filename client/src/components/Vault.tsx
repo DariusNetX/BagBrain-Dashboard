@@ -1,0 +1,119 @@
+import { useState } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { Vault as VaultType } from '@shared/schema';
+import { apiRequest, queryClient } from '@/lib/queryClient';
+
+const Vault = () => {
+  const [stakeAmount, setStakeAmount] = useState('');
+
+  // Fetch vault data
+  const { data: vault, isLoading } = useQuery<VaultType>({
+    queryKey: ['/api/vault'],
+    queryFn: () => apiRequest('/api/vault'),
+  });
+
+  // Stake mutation
+  const stakeMutation = useMutation({
+    mutationFn: (amount: number) =>
+      apiRequest('/api/transactions', {
+        method: 'POST',
+        body: JSON.stringify({
+          amount,
+          type: 'stake',
+        }),
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/vault'] });
+      setStakeAmount('');
+    },
+  });
+
+  // Withdraw mutation
+  const withdrawMutation = useMutation({
+    mutationFn: (amount: number) =>
+      apiRequest('/api/transactions', {
+        method: 'POST',
+        body: JSON.stringify({
+          amount,
+          type: 'withdraw',
+        }),
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/vault'] });
+      setStakeAmount('');
+    },
+  });
+
+  const handleStake = () => {
+    const amount = parseFloat(stakeAmount);
+    if (amount > 0) {
+      stakeMutation.mutate(amount);
+    }
+  };
+
+  const handleWithdraw = () => {
+    const amount = parseFloat(stakeAmount);
+    if (amount > 0 && vault && amount <= vault.userStake) {
+      withdrawMutation.mutate(amount);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="border border-purple-500 p-6 rounded-lg shadow-md">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-700 rounded mb-4"></div>
+          <div className="h-4 bg-gray-700 rounded mb-2"></div>
+          <div className="h-4 bg-gray-700 rounded mb-4"></div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="border border-purple-500 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4">🧠 BrainBag Vault</h2>
+      <p className="mb-2">Total Staked: {vault?.totalStaked?.toLocaleString() || '0'} $BAG</p>
+      <p className="mb-4">Your Stake: {vault?.userStake?.toLocaleString() || '0'} $BAG</p>
+
+      <div className="mt-4">
+        <input
+          className="w-full p-2 mb-2 text-black rounded"
+          type="number"
+          placeholder="Amount of $BAG"
+          value={stakeAmount}
+          onChange={(e) => setStakeAmount(e.target.value)}
+          min="0"
+          step="0.01"
+        />
+        <button
+          className="bg-purple-700 hover:bg-purple-600 w-full py-2 rounded mb-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={handleStake}
+          disabled={stakeMutation.isPending || !stakeAmount || parseFloat(stakeAmount) <= 0}
+        >
+          {stakeMutation.isPending ? 'Staking...' : 'Stake'}
+        </button>
+        <button
+          className="bg-gray-700 hover:bg-gray-600 w-full py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={handleWithdraw}
+          disabled={
+            withdrawMutation.isPending ||
+            !stakeAmount ||
+            parseFloat(stakeAmount) <= 0 ||
+            (vault && parseFloat(stakeAmount) > vault.userStake)
+          }
+        >
+          {withdrawMutation.isPending ? 'Withdrawing...' : 'Withdraw'}
+        </button>
+      </div>
+      
+      {vault && parseFloat(stakeAmount) > vault.userStake && stakeAmount && (
+        <p className="text-red-400 text-sm mt-2">
+          Insufficient staked balance for withdrawal
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default Vault;
