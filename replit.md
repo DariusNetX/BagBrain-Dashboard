@@ -1,46 +1,86 @@
-# Replit Project Guide
+# BagBrain Dashboard - Replit Project Guide
 
 ## Overview
 
-This is a newly initialized Replit project with minimal setup. The repository currently contains only a basic `.replit` configuration file, indicating this is a fresh project ready for development.
+A React.js dashboard for the BagBrain DeFi ecosystem featuring interactive UI, data visualization, and modular architecture. The dashboard allows users to track $BAG tokens, stake in the BrainBag Vault, and monitor liquidity pool statistics.
 
 ## System Architecture
 
-The project architecture is not yet defined, as this appears to be an empty project template. The system will need to be designed and implemented based on the intended use case.
+Full-stack JavaScript application with React frontend and Express backend using in-memory storage.
 
-**Current State:**
-- Empty project structure
-- Basic Replit configuration present
-- No defined technology stack yet
+**Technology Stack:**
+- Frontend: React.js, TypeScript, Tailwind CSS, TanStack Query
+- Backend: Express.js, Node.js, TypeScript
+- Storage: In-memory storage (MemStorage)
+- Build Tools: Vite, TSX
+- UI: Tailwind CSS with custom BagBrain theming
 
 ## Key Components
 
-**Current Components:**
-- `.replit` - Basic Replit environment configuration
+**Frontend Components:**
+- `client/src/App.tsx` - Main application component with BagBrain theming
+- `client/src/components/Vault.tsx` - BrainBag Vault staking interface
+- `client/src/components/LPStats.tsx` - Liquidity Pool statistics display
+- `client/src/lib/queryClient.ts` - TanStack Query configuration
+- `client/src/index.css` - Tailwind CSS with custom BagBrain dark theme
 
-**Components to be defined:**
-- Frontend framework/technology
-- Backend architecture
-- Database layer
-- API structure
-- Authentication system
-- Business logic modules
+**Backend Components:**
+- `server/index.ts` - Express server configuration
+- `server/routes.ts` - API endpoints for vault, LP stats, and transactions
+- `server/storage.ts` - In-memory storage interface and implementation
+
+**Shared Components:**
+- `shared/schema.ts` - Zod schemas and TypeScript types for data validation
 
 ## Data Flow
 
-No data flow is currently established. This will need to be designed based on the application requirements.
+**Frontend → Backend:**
+1. Vault operations: User stakes/withdraws $BAG tokens via Vault component
+2. API calls to `/api/transactions` create transaction records
+3. Vault state automatically updates based on transaction type
+4. TanStack Query manages caching and invalidation
+
+**Backend Data Management:**
+1. In-memory storage maintains vault state and LP statistics
+2. Transaction API updates vault totals automatically
+3. Mock LP data provides realistic $BAG/$BLAZE pool information
+4. CORS enabled for cross-origin requests
+
+**Real-time Updates:**
+- React Query refetches data on user interactions
+- Loading states during API operations
+- Error handling for failed requests
 
 ## External Dependencies
 
-No external dependencies are currently configured. Dependencies will be added as the project develops based on chosen technologies and frameworks.
+**Frontend Dependencies:**
+- React 18 with TypeScript for component architecture
+- TanStack Query v5 for server state management
+- Tailwind CSS for styling with custom BagBrain theme
+- Vite for development server and build tooling
+
+**Backend Dependencies:**
+- Express.js for REST API server
+- CORS for cross-origin resource sharing
+- Zod for runtime type validation
+- TSX for TypeScript execution
+
+**Development Tools:**
+- Concurrently for running frontend/backend simultaneously
+- Nodemon for backend hot reloading
+- PostCSS and Autoprefixer for CSS processing
 
 ## Deployment Strategy
 
-The project is configured to run on Replit's platform. Specific deployment strategies will be determined once the technology stack is chosen.
+**Development Environment:**
+- Frontend: Vite dev server on port 5173
+- Backend: Express server on port 3000
+- Concurrent execution using concurrently package
 
-**Current Setup:**
-- Replit-hosted environment
-- Configuration managed through `.replit` file
+**Production Deployment:**
+- Build: `npm run build` creates optimized production bundle
+- Preview: `npm run preview` serves production build locally
+- Replit Deployments handles automatic scaling and TLS
 
 ## Changelog
 
