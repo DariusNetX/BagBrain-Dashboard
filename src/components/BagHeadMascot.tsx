@@ -3,6 +3,8 @@ import React from 'react';
 const BagHeadMascot: React.FC = () => {
   return (
     <div
+      data-tooltip-id="bagheadTip"
+      data-tooltip-content="👑 The Vault Guardian. Don't tap the bag unless you're ready."
       style={{
         position: 'absolute',
         top: '1rem',
@@ -13,7 +15,6 @@ const BagHeadMascot: React.FC = () => {
         cursor: 'pointer',
         transition: 'transform 0.3s ease',
       }}
-      title="🧠 I have bags for brains"
       onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
       onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1.0)')}
     >

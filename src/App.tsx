@@ -1,5 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
+import { Tooltip } from 'react-tooltip';
 import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
@@ -17,6 +18,11 @@ function App() {
             <LPStats />
           </div>
         </div>
+        <Tooltip 
+          id="bagheadTip" 
+          className="bag-tooltip" 
+          place="right" 
+        />
       </QueryClientProvider>
     </div>
   );

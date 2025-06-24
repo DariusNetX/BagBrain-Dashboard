@@ -34,3 +34,25 @@ body {
   border-color: hsl(var(--border));
 }
 
+.bag-tooltip {
+  background: #1f1f1f;
+  color: #facc15;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  border: 1px solid #facc15;
+  box-shadow: 0 0 12px #facc15aa;
+  animation: bagFloat 0.3s ease-in-out;
+}
+
+@keyframes bagFloat {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
