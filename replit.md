@@ -19,8 +19,10 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 **Frontend Components:**
 - `client/src/App.tsx` - Main application component with BagBrain theming
-- `client/src/components/Vault.tsx` - BrainBag Vault staking interface
+- `client/src/components/Vault.tsx` - BrainBag Vault staking interface with wallet integration
 - `client/src/components/LPStats.tsx` - Liquidity Pool statistics display
+- `client/src/components/WalletConnect.tsx` - Web3 wallet connection component
+- `client/src/hooks/useWallet.ts` - Custom hook for MetaMask wallet management
 - `client/src/lib/queryClient.ts` - TanStack Query configuration
 - `client/src/index.css` - Tailwind CSS with custom BagBrain dark theme
 
@@ -87,6 +89,9 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 - June 24, 2025. Added Web3 blockchain support
   - Installed ethers.js for blockchain interactions
+  - Created useWallet hook for MetaMask connectivity
+  - Added WalletConnect component with connection status
+  - Integrated wallet display in Vault component showing connected address
   - Enhanced infrastructure for smart contract integration
   
 - June 23, 2025. Initial BagBrain Dashboard setup complete
@@ -109,3 +114,5 @@ Preferred communication style: Simple, everyday language.
 ✓ Transaction history tracking
 ✓ Responsive design with purple/green accent colors
 ✓ Error handling and form validation
+✓ Web3 wallet connectivity with MetaMask integration
+✓ Connected wallet address display in Vault interface
