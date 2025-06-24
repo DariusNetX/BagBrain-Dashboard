@@ -94,13 +94,14 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 ## Changelog
 
-- June 24, 2025. Transaction status messaging and UI enhancements
-  - Added BagBrain-themed transaction status messages with animations
-  - Enhanced Vault component with pending/success/error state feedback
+- June 24, 2025. Animated stats and transaction status enhancements
+  - Added real-time animated stats to Hero section (total staked, LP reserves)
+  - Integrated live blockchain data with cyan pulse animation for staking display
+  - Added pink-accented LP reserves display with responsive typography
+  - Enhanced transaction status messaging with BagBrain-themed feedback
   - Integrated "Summoning brains", "Brains deployed", "Your bags escaped" messaging
-  - Added auto-clearing status messages with 5-second timeout
-  - Applied smooth transition animations for professional UX
-  - Successfully built with enhanced transaction feedback system
+  - Applied smooth transition animations and auto-clearing status messages
+  - Successfully built with complete animated dashboard experience
 
 - June 24, 2025. Hero component integration and layout optimization
   - Added Hero component with BagBrain branding ("I Have Bags for Brains")
@@ -163,3 +164,4 @@ Preferred communication style: Simple, everyday language.
 ✓ Live transaction status updates with success/error feedback
 ✓ Hero section with BagBrain branding and tagline
 ✓ Enhanced button styling with BagBrain color palette and animations
+✓ Animated stats display in Hero section with real-time blockchain data

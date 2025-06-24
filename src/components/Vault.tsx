@@ -119,6 +119,7 @@ const Vault = () => {
             className="bg-bagbrain-cta hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-bagbrain-glow/50 font-display tracking-wide flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handleStake}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
+            title="YOLO into the vault. The BagHead commands it."
           >
             {!isConnected ? 'Connect Wallet' : '🔒 Stake $BAG'}
           </button>
