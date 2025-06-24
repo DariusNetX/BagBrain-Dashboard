@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #0f0f0f;
-  color: white;
-  font-family: 'Inter', sans-serif;
+  @apply bg-[#0f0f0f] text-gray-200;
 }
 
 :root {
@@ -34,8 +32,3 @@ body {
   border-color: hsl(var(--border));
 }
 
-body {
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
-  font-feature-settings: "rlig" 1, "calt" 1;
-}
