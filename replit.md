@@ -94,12 +94,12 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 ## Changelog
 
-- June 24, 2025. Added complete Vite scripts to package.json
-  - Fixed JSON syntax error in package.json
-  - Added standard Vite scripts: dev, build, preview, start
-  - Successfully ran npm install and application startup
-  - Application running with both backend (port 3000) and frontend (port 5173) servers
-  - Dashboard accessible and fully functional with Web3 capabilities
+- June 24, 2025. Restructured project for deployment
+  - Moved all client files to root directory for simpler deployment
+  - Removed /client folder that was causing deployment issues
+  - Updated Vite scripts to work from root with proper host binding
+  - Updated .replit.toml deployment configuration
+  - Cleaned up temporary scripts and log files
 
 - June 24, 2025. Complete Web3 blockchain integration
   - Installed ethers.js v6 for blockchain interactions
