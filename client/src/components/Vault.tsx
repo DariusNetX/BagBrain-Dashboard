@@ -1,19 +1,14 @@
 import { useState } from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { Vault as VaultType } from '@shared/schema';
+import { useMutation } from '@tanstack/react-query';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useWallet } from '../hooks/useWallet';
+import { useVaultData } from '../hooks/useVaultData';
 import { WalletConnect } from './WalletConnect';
 
 const Vault = () => {
   const [stakeAmount, setStakeAmount] = useState('');
   const { isConnected, address } = useWallet();
-
-  // Fetch vault data
-  const { data: vault, isLoading } = useQuery<VaultType>({
-    queryKey: ['/api/vault'],
-    queryFn: () => apiRequest('/api/vault'),
-  });
+  const { totalStaked, userStake, isLoading, error } = useVaultData();
 
   // Stake mutation
   const stakeMutation = useMutation({
@@ -56,7 +51,7 @@ const Vault = () => {
 
   const handleWithdraw = () => {
     const amount = parseFloat(stakeAmount);
-    if (amount > 0 && vault && amount <= vault.userStake) {
+    if (amount > 0 && userStake && amount <= parseFloat(userStake)) {
       withdrawMutation.mutate(amount);
     }
   };
@@ -87,8 +82,8 @@ const Vault = () => {
         <p className="text-xs text-gray-400 mb-4">Connected Wallet: {address}</p>
       )}
       
-      <p className="mb-2">Total Staked: {vault?.totalStaked?.toLocaleString() || '0'} $BAG</p>
-      <p className="mb-4">Your Stake: {vault?.userStake?.toLocaleString() || '0'} $BAG</p>
+      <p className="mb-2">Total Staked: {totalStaked || '--'} $BAG</p>
+      <p className="mb-4">Your Stake: {userStake || '--'} $BAG</p>
 
       <div className="mt-4">
         <input
@@ -115,16 +110,22 @@ const Vault = () => {
             withdrawMutation.isPending ||
             !stakeAmount ||
             parseFloat(stakeAmount) <= 0 ||
-            (vault && parseFloat(stakeAmount) > vault.userStake)
+            (userStake && parseFloat(stakeAmount) > parseFloat(userStake))
           }
         >
           {!isConnected ? 'Connect Wallet' : withdrawMutation.isPending ? 'Withdrawing...' : 'Withdraw'}
         </button>
       </div>
       
-      {vault && parseFloat(stakeAmount) > vault.userStake && stakeAmount && (
+      {userStake && parseFloat(stakeAmount) > parseFloat(userStake) && stakeAmount && (
         <p className="text-red-400 text-sm mt-2">
           Insufficient staked balance for withdrawal
+        </p>
+      )}
+      
+      {error && (
+        <p className="text-red-400 text-sm mt-2">
+          {error}
         </p>
       )}
     </div>

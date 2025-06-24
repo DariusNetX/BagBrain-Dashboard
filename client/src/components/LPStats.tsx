@@ -1,13 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { LPStats as LPStatsType } from '@shared/schema';
-import { apiRequest } from '@/lib/queryClient';
+import { useLPStats } from '../hooks/useLPStats';
 
 const LPStats = () => {
-  // Fetch LP stats data
-  const { data: lpStats, isLoading } = useQuery<LPStatsType>({
-    queryKey: ['/api/lpstats'],
-    queryFn: () => apiRequest('/api/lpstats'),
-  });
+  const { reserves, isLoading, error } = useLPStats();
+  const { bag, blaze, price } = reserves;
 
   if (isLoading) {
     return (
@@ -25,14 +20,22 @@ const LPStats = () => {
   return (
     <div className="border border-green-500 p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">💱 Liquidity Pool Stats</h2>
-      <p className="mb-2">$BAG Reserve: {lpStats?.bagReserve?.toLocaleString() || '0'}</p>
-      <p className="mb-2">$BLAZE Reserve: {lpStats?.blazeReserve?.toLocaleString() || '0'}</p>
-      <p className="mb-2">Price: ${lpStats?.price?.toFixed(4) || '0.0000'}</p>
+      <p className="mb-2">$BAG Reserve: {bag}</p>
+      <p className="mb-2">$BLAZE Reserve: {blaze}</p>
+      <p className="mb-2">Exchange Rate: 1 BLAZE = {price} $BAG</p>
       
-      {lpStats && (
+      {error && (
+        <div className="mt-4 pt-4 border-t border-red-500/30">
+          <p className="text-sm text-red-400">
+            Error: {error}
+          </p>
+        </div>
+      )}
+      
+      {!error && bag !== '--' && (
         <div className="mt-4 pt-4 border-t border-green-500/30">
           <p className="text-sm text-gray-400">
-            Last updated: {new Date(lpStats.timestamp).toLocaleTimeString()}
+            Live data from blockchain
           </p>
         </div>
       )}
