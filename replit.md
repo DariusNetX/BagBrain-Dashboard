@@ -36,22 +36,28 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 ## Data Flow
 
+**Web3 Blockchain Integration:**
+1. Real-time vault data from smart contract at 0xe54cde34f920f135B5a6B015e3841758E446b0D0
+2. Live LP reserves from pair contract at 0x20ac738513f765036387b889595855a20634Ba51
+3. MetaMask wallet integration for user authentication
+4. Direct blockchain reads using ethers.js v6
+
 **Frontend → Backend:**
 1. Vault operations: User stakes/withdraws $BAG tokens via Vault component
 2. API calls to `/api/transactions` create transaction records
-3. Vault state automatically updates based on transaction type
+3. Vault state reads from blockchain contract automatically
 4. TanStack Query manages caching and invalidation
 
 **Backend Data Management:**
-1. In-memory storage maintains vault state and LP statistics
+1. In-memory storage maintains transaction history
 2. Transaction API updates vault totals automatically
-3. Mock LP data provides realistic $BAG/$BLAZE pool information
+3. Authentic LP data from blockchain pair contract
 4. CORS enabled for cross-origin requests
 
 **Real-time Updates:**
-- React Query refetches data on user interactions
-- Loading states during API operations
-- Error handling for failed requests
+- Live blockchain data via custom hooks
+- Loading states during blockchain operations
+- Error handling for failed blockchain requests
 
 ## External Dependencies
 
@@ -88,10 +94,13 @@ Full-stack JavaScript application with React frontend and Express backend using 
 ## Changelog
 
 - June 24, 2025. Added Web3 blockchain support
-  - Installed ethers.js for blockchain interactions
-  - Created useWallet hook for MetaMask connectivity
+  - Installed ethers.js v6 for blockchain interactions
+  - Created useWallet hook for MetaMask connectivity with ethers v6 compatibility
   - Added WalletConnect component with connection status
   - Integrated wallet display in Vault component showing connected address
+  - Created useVaultData hook reading from contract 0xe54cde34f920f135B5a6B015e3841758E446b0D0
+  - Created useLPStats hook reading from pair contract 0x20ac738513f765036387b889595855a20634Ba51
+  - Replaced mock API data with authentic blockchain data
   - Enhanced infrastructure for smart contract integration
   
 - June 23, 2025. Initial BagBrain Dashboard setup complete

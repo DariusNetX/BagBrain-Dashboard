@@ -110,14 +110,14 @@ const Vault = () => {
             withdrawMutation.isPending ||
             !stakeAmount ||
             parseFloat(stakeAmount) <= 0 ||
-            (userStake && parseFloat(stakeAmount) > parseFloat(userStake))
+            (userStake && userStake !== '--' && userStake !== null && parseFloat(stakeAmount) > parseFloat(userStake))
           }
         >
           {!isConnected ? 'Connect Wallet' : withdrawMutation.isPending ? 'Withdrawing...' : 'Withdraw'}
         </button>
       </div>
       
-      {userStake && parseFloat(stakeAmount) > parseFloat(userStake) && stakeAmount && (
+      {userStake && userStake !== '--' && parseFloat(stakeAmount) > parseFloat(userStake) && stakeAmount && (
         <p className="text-red-400 text-sm mt-2">
           Insufficient staked balance for withdrawal
         </p>
