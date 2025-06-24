@@ -135,10 +135,11 @@ const Vault = () => {
         />
         <div className="flex gap-2">
           <button 
+            data-tooltip-id="stakeTip"
+            data-tooltip-content="🧠 Deploy your bags to the vault. Bigger brain, bigger gains."
             className="bg-vaultpurple hover:bg-baggold text-black font-bold py-2 px-4 rounded transition-all flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handleStake}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
-            title="YOLO into the vault. The BagHead commands it."
           >
             {!isConnected ? 'Connect Wallet' : 'Stake $BAG'}
           </button>

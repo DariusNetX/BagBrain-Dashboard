@@ -23,6 +23,11 @@ function App() {
           className="bag-tooltip" 
           place="right" 
         />
+        <Tooltip 
+          id="stakeTip" 
+          className="bag-tooltip" 
+          place="top" 
+        />
       </QueryClientProvider>
     </div>
   );
