@@ -87,16 +87,17 @@ Full-stack JavaScript application with React frontend and Express backend using 
 - Concurrent execution using concurrently package
 
 **Production Deployment:**
-- Build: `./vite-scripts.sh build` creates optimized production bundle
-- Preview: `./vite-scripts.sh preview` serves production build locally
-- Development: `./vite-scripts.sh dev` starts development server
+- Build: `npm run build` creates optimized production bundle
+- Preview: `npm run preview` serves production build locally
+- Development: `npm run dev` starts development server
 - Replit Deployments handles automatic scaling and TLS
 
 ## Changelog
 
-- June 24, 2025. Added npm start script and fixed package.json syntax
-  - Fixed JSON syntax error in package.json for start script
-  - Successfully ran npm install and npm start commands
+- June 24, 2025. Added complete Vite scripts to package.json
+  - Fixed JSON syntax error in package.json
+  - Added standard Vite scripts: dev, build, preview, start
+  - Successfully ran npm install and application startup
   - Application running with both backend (port 3000) and frontend (port 5173) servers
   - Dashboard accessible and fully functional with Web3 capabilities
 
