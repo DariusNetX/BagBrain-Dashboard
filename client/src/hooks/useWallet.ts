@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
 export const useWallet = () => {
-  const [provider, setProvider] = useState<ethers.providers.Web3Provider | null>(null);
-  const [signer, setSigner] = useState<ethers.Signer | null>(null);
+  const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null);
+  const [signer, setSigner] = useState<ethers.JsonRpcSigner | null>(null);
   const [address, setAddress] = useState<string | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -18,9 +18,9 @@ export const useWallet = () => {
       setIsConnecting(true);
       setError(null);
       
-      const newProvider = new ethers.providers.Web3Provider(window.ethereum);
+      const newProvider = new ethers.BrowserProvider(window.ethereum);
       await window.ethereum.request({ method: 'eth_requestAccounts' });
-      const newSigner = newProvider.getSigner();
+      const newSigner = await newProvider.getSigner();
       const userAddress = await newSigner.getAddress();
       
       setProvider(newProvider);

@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Vault as VaultType } from '@shared/schema';
 import { apiRequest, queryClient } from '@/lib/queryClient';
+import { useWallet } from '../hooks/useWallet';
+import { WalletConnect } from './WalletConnect';
 
 const Vault = () => {
   const [stakeAmount, setStakeAmount] = useState('');
+  const { isConnected, address } = useWallet();
 
   // Fetch vault data
   const { data: vault, isLoading } = useQuery<VaultType>({
@@ -73,6 +76,17 @@ const Vault = () => {
   return (
     <div className="border border-purple-500 p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">🧠 BrainBag Vault</h2>
+      
+      {!isConnected && (
+        <div className="mb-6">
+          <WalletConnect />
+        </div>
+      )}
+      
+      {isConnected && address && (
+        <p className="text-xs text-gray-400 mb-4">Connected Wallet: {address}</p>
+      )}
+      
       <p className="mb-2">Total Staked: {vault?.totalStaked?.toLocaleString() || '0'} $BAG</p>
       <p className="mb-4">Your Stake: {vault?.userStake?.toLocaleString() || '0'} $BAG</p>
 
@@ -89,21 +103,22 @@ const Vault = () => {
         <button
           className="bg-purple-700 hover:bg-purple-600 w-full py-2 rounded mb-2 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={handleStake}
-          disabled={stakeMutation.isPending || !stakeAmount || parseFloat(stakeAmount) <= 0}
+          disabled={!isConnected || stakeMutation.isPending || !stakeAmount || parseFloat(stakeAmount) <= 0}
         >
-          {stakeMutation.isPending ? 'Staking...' : 'Stake'}
+          {!isConnected ? 'Connect Wallet' : stakeMutation.isPending ? 'Staking...' : 'Stake'}
         </button>
         <button
           className="bg-gray-700 hover:bg-gray-600 w-full py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={handleWithdraw}
           disabled={
+            !isConnected ||
             withdrawMutation.isPending ||
             !stakeAmount ||
             parseFloat(stakeAmount) <= 0 ||
             (vault && parseFloat(stakeAmount) > vault.userStake)
           }
         >
-          {withdrawMutation.isPending ? 'Withdrawing...' : 'Withdraw'}
+          {!isConnected ? 'Connect Wallet' : withdrawMutation.isPending ? 'Withdrawing...' : 'Withdraw'}
         </button>
       </div>
       
