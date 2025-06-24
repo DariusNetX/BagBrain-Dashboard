@@ -1,9 +1,13 @@
+import baghead from '../assets/baghead.png';
+
 export default function Hero() {
   return (
     <div className="bg-gradient-to-b from-black via-zinc-900 to-neutral-950 text-center py-12 px-6 text-white">
-      <div className="mx-auto w-28 md:w-36 mb-4 bg-bagbrain-accent rounded-full h-28 md:h-36 flex items-center justify-center drop-shadow-xl">
-        <span className="text-4xl md:text-5xl">🧠</span>
-      </div>
+      <img
+        src={baghead}
+        alt="BagHead Mascot"
+        className="mx-auto w-28 md:w-36 mb-4 drop-shadow-xl"
+      />
       <h1 className="text-4xl md:text-6xl font-display text-bagbrain-accent drop-shadow-lg">
         I Have Bags for Brains 🧠💰
       </h1>

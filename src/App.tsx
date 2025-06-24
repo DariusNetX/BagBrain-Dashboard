@@ -7,16 +7,15 @@ import LPStats from './components/LPStats';
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-black text-white">
+      <>
         <Hero />
-        
-        <div className="p-8">
+        <div className="min-h-screen bg-black text-white p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Vault />
             <LPStats />
           </div>
         </div>
-      </div>
+      </>
     </QueryClientProvider>
   );
 }
