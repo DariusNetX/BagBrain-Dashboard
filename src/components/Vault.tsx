@@ -99,6 +99,9 @@ const Vault = () => {
       {!isConnected && (
         <div className="mb-6">
           <WalletConnect />
+          <p className="text-center text-yellow-300 mt-4" title="Fumble the bag and you fumble the mission.">
+            🪙 Connect your wallet to begin your descent into degen finance.
+          </p>
         </div>
       )}
       
@@ -108,9 +111,21 @@ const Vault = () => {
       
       <p className="mb-2" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
       <p className="mb-2">Your Stake: {userStake || '--'} $BAG</p>
+      {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
+        <p className="text-red-300 text-sm mb-2" title="Brains are for staking. Not for thinking.">
+          You haven't staked any $BAG yet. What are you waiting for?
+        </p>
+      )}
       <p className="mb-4 text-gray-400" title="No $BAG? No brain. No entry.">Wallet Balance: 0 $BAG</p>
 
-      <div className="mt-4">
+      <div className="mt-6">
+        <h2 className="text-xl md:text-2xl font-bold text-white">
+          🔒 Vault Access
+        </h2>
+        <p className="text-zinc-400 text-sm">
+          Lock your $BAG. Feed the brain. Secure your place in meme history.
+        </p>
+        
         <input
           className="w-full p-2 mb-2 text-black rounded"
           type="number"
