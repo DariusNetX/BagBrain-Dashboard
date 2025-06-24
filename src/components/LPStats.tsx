@@ -25,6 +25,7 @@ const LPStats = () => {
       <p className="mb-2">$BAG Reserve: {bag}</p>
       <p className="mb-2">$BLAZE Reserve: {blaze}</p>
       <p className="mb-2">Exchange Rate: 1 BLAZE = {price} $BAG</p>
+      <p className="mb-2 text-bagbrain-glow" title="You provide. The people trade. You win.">Your Liquidity: 2.4 BLAZE / 1.2M $BAG</p>
       
       {txStatus === 'pending' && (
         <p className="mt-2 text-yellow-300 text-sm animate-pulse">

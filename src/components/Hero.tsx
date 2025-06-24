@@ -22,12 +22,12 @@ export default function Hero() {
       </p>
       
       <div className="mt-8 space-y-3">
-        <p className="text-cyan-400 font-mono text-xl md:text-2xl animate-pulse tracking-wide">
+        <p className="text-cyan-400 font-mono text-xl md:text-2xl animate-pulse tracking-wide" title="Brains in. Liquidity out.">
           🧠 {totalStaked || '0'} $BAG staked
         </p>
         
-        <p className="text-pink-400 font-mono text-sm md:text-base">
-          💧 LP Reserves: {blaze || '0'} BLAZE / {bag || '0'} $BAG
+        <p className="text-pink-400 font-mono text-sm md:text-base" title="Backed by vibes and bag strength.">
+          💧 Total Pool: {blaze || '0'} BLAZE / {bag || '0'} $BAG
         </p>
       </div>
     </div>

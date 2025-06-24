@@ -101,7 +101,7 @@ const Vault = () => {
         <p className="text-xs text-gray-400 mb-4">Connected Wallet: {address}</p>
       )}
       
-      <p className="mb-2">Total Staked: {totalStaked || '--'} $BAG</p>
+      <p className="mb-2" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
       <p className="mb-4">Your Stake: {userStake || '--'} $BAG</p>
 
       <div className="mt-4">
@@ -129,6 +129,7 @@ const Vault = () => {
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
+            title="You're not giving up… just claiming what's yours."
           >
             {!isConnected ? 'Connect Wallet' : '💸 Withdraw $BAG'}
           </button>
