@@ -155,25 +155,30 @@ const Vault = () => {
             {!isConnected ? 'Connect Wallet' : '💸 Withdraw $BAG'}
           </button>
         </div>
-        <p className="text-sm text-gray-300 mt-2">{status}</p>
         
         {txStatus === 'pending' && (
           <p className="mt-2 text-yellow-300 text-sm animate-pulse">
-            ⏳ Summoning brains... Waiting for confirmation.
+            ⏳ Summoning liquidity gods...
           </p>
         )}
 
         {txStatus === 'success' && (
-          <p className="mt-2 text-green-400 text-sm transition-opacity duration-300">
-            ✅ Brains deployed. Transaction confirmed!
+          <p className="mt-2 text-green-400 text-sm">
+            ✅ Brains deployed. You're in.
           </p>
         )}
 
         {txStatus === 'error' && (
-          <p className="mt-2 text-red-400 text-sm transition-opacity duration-300">
-            ❌ Oops. Your bags escaped. Try again.
+          <p className="mt-2 text-red-400 text-sm">
+            ❌ Something broke. But you're still a legend.
           </p>
         )}
+        
+        <p className="text-sm text-gray-300 mt-2">{status}</p>
+        
+        <p className="text-center text-xs text-zinc-500 mt-10">
+          BagBrain is not responsible for emotional damage caused by market fluctuations. DYOR, but make it meme.
+        </p>
       </div>
       
       {userStake && userStake !== '--' && parseFloat(amount || '0') > parseFloat(userStake) && amount && (
