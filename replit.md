@@ -94,6 +94,14 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 ## Changelog
 
+- June 24, 2025. Transaction status messaging and UI enhancements
+  - Added BagBrain-themed transaction status messages with animations
+  - Enhanced Vault component with pending/success/error state feedback
+  - Integrated "Summoning brains", "Brains deployed", "Your bags escaped" messaging
+  - Added auto-clearing status messages with 5-second timeout
+  - Applied smooth transition animations for professional UX
+  - Successfully built with enhanced transaction feedback system
+
 - June 24, 2025. Hero component integration and layout optimization
   - Added Hero component with BagBrain branding ("I Have Bags for Brains")
   - Created custom baghead.png mascot image at src/assets/baghead.png

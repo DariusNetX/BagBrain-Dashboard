@@ -133,6 +133,24 @@ const Vault = () => {
           </button>
         </div>
         <p className="text-sm text-gray-300 mt-2">{status}</p>
+        
+        {txStatus === 'pending' && (
+          <p className="mt-2 text-yellow-300 text-sm animate-pulse">
+            ⏳ Summoning brains... Waiting for confirmation.
+          </p>
+        )}
+
+        {txStatus === 'success' && (
+          <p className="mt-2 text-green-400 text-sm transition-opacity duration-300">
+            ✅ Brains deployed. Transaction confirmed!
+          </p>
+        )}
+
+        {txStatus === 'error' && (
+          <p className="mt-2 text-red-400 text-sm transition-opacity duration-300">
+            ❌ Oops. Your bags escaped. Try again.
+          </p>
+        )}
       </div>
       
       {userStake && userStake !== '--' && parseFloat(amount || '0') > parseFloat(userStake) && amount && (

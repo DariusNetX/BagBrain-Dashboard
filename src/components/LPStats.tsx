@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useLPStats } from '../hooks/useLPStats';
 
 const LPStats = () => {
   const { reserves, isLoading, error } = useLPStats();
   const { bag, blaze, price } = reserves;
+  const [txStatus, setTxStatus] = useState('');
 
   if (isLoading) {
     return (
@@ -23,6 +25,24 @@ const LPStats = () => {
       <p className="mb-2">$BAG Reserve: {bag}</p>
       <p className="mb-2">$BLAZE Reserve: {blaze}</p>
       <p className="mb-2">Exchange Rate: 1 BLAZE = {price} $BAG</p>
+      
+      {txStatus === 'pending' && (
+        <p className="mt-2 text-yellow-300 text-sm animate-pulse">
+          ⏳ Summoning brains... Waiting for confirmation.
+        </p>
+      )}
+
+      {txStatus === 'success' && (
+        <p className="mt-2 text-green-400 text-sm transition-opacity duration-300">
+          ✅ Brains deployed. Transaction confirmed!
+        </p>
+      )}
+
+      {txStatus === 'error' && (
+        <p className="mt-2 text-red-400 text-sm transition-opacity duration-300">
+          ❌ Oops. Your bags escaped. Try again.
+        </p>
+      )}
       
       {error && (
         <div className="mt-4 pt-4 border-t border-red-500/30">
