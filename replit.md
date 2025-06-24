@@ -87,8 +87,9 @@ Full-stack JavaScript application with React frontend and Express backend using 
 - Concurrent execution using concurrently package
 
 **Production Deployment:**
-- Build: `npm run build` creates optimized production bundle
-- Preview: `npm run preview` serves production build locally
+- Build: `./vite-scripts.sh build` creates optimized production bundle
+- Preview: `./vite-scripts.sh preview` serves production build locally
+- Development: `./vite-scripts.sh dev` starts development server
 - Replit Deployments handles automatic scaling and TLS
 
 ## Changelog
