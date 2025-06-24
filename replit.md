@@ -93,6 +93,12 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 ## Changelog
 
+- June 24, 2025. Added npm start script and fixed package.json syntax
+  - Fixed JSON syntax error in package.json for start script
+  - Successfully ran npm install and npm start commands
+  - Application running with both backend (port 3000) and frontend (port 5173) servers
+  - Dashboard accessible and fully functional with Web3 capabilities
+
 - June 24, 2025. Complete Web3 blockchain integration
   - Installed ethers.js v6 for blockchain interactions
   - Created useWallet hook for MetaMask connectivity with ethers v6 compatibility
