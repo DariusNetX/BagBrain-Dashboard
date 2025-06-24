@@ -1,28 +1,20 @@
-import React from 'react';
+import { useMemeTooltip } from '../hooks/useMemeTooltip';
+import React, { useState } from 'react';
+import './BagHead.css';
 
-const BagHeadMascot: React.FC = () => {
+const BagHeadMascot = () => {
+  const [quote, setQuote] = useState('');
+  const meme = useMemeTooltip();
+
+  const handleClick = () => {
+    setQuote(meme);
+    setTimeout(() => setQuote(''), 3000); // clear after 3 seconds
+  };
+
   return (
-    <div
-      data-tooltip-id="bagheadTip"
-      data-tooltip-content="👑 The Vault Guardian. Don't tap the bag unless you're ready."
-      style={{
-        position: 'absolute',
-        top: '1rem',
-        left: '1rem',
-        zIndex: 50,
-        width: '80px',
-        height: '80px',
-        cursor: 'pointer',
-        transition: 'transform 0.3s ease',
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1.0)')}
-    >
-      <img
-        src="/baghead-mascot.png"
-        alt="BagHead Mascot"
-        style={{ width: '100%', height: '100%' }}
-      />
+    <div className="baghead-wrapper" onClick={handleClick}>
+      <img src="/baghead-mascot.png" alt="BagHead" className="baghead-img" />
+      {quote && <div className="baghead-bubble">{quote}</div>}
     </div>
   );
 };

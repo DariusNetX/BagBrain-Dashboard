@@ -15,18 +15,21 @@ function App() {
         <div className="min-h-screen bg-black text-white p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Vault />
-            <LPStats />
+            <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity.">
+              <LPStats />
+            </div>
           </div>
         </div>
-        <Tooltip 
-          id="bagheadTip" 
-          className="bag-tooltip" 
-          place="right" 
-        />
+
         <Tooltip 
           id="stakeTip" 
           className="bag-tooltip" 
           place="top" 
+        />
+        <Tooltip 
+          id="lpTip" 
+          className="bag-tooltip" 
+          place="bottom" 
         />
       </QueryClientProvider>
     </div>
