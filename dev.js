@@ -9,7 +9,6 @@ const backend = spawn('npx', ['tsx', 'watch', 'server/index.ts'], {
 
 // Start frontend server
 const frontend = spawn('npx', ['vite', '--host', '0.0.0.0', '--port', '5173'], {
-  cwd: path.join(__dirname, 'client'),
   stdio: 'inherit',
   shell: true
 });
