@@ -89,7 +89,12 @@ const Vault = () => {
 
   return (
     <div className="border border-purple-500 p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">🧠 BrainBag Vault</h2>
+      <h1 className="text-3xl md:text-5xl font-display text-white tracking-tight">
+        🧠 BagBrain Vault
+      </h1>
+      <p className="mt-2 text-zinc-400 text-sm md:text-base max-w-lg">
+        Stake your $BAG. Embrace the chaos. Become the meme.
+      </p>
       
       {!isConnected && (
         <div className="mb-6">
@@ -102,7 +107,8 @@ const Vault = () => {
       )}
       
       <p className="mb-2" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
-      <p className="mb-4">Your Stake: {userStake || '--'} $BAG</p>
+      <p className="mb-2">Your Stake: {userStake || '--'} $BAG</p>
+      <p className="mb-4 text-gray-400" title="No $BAG? No brain. No entry.">Wallet Balance: 0 $BAG</p>
 
       <div className="mt-4">
         <input
