@@ -177,3 +177,5 @@ Preferred communication style: Simple, everyday language.
 ✓ Enhanced transaction status messages with liquidity gods and legend messaging
 ✓ New BagBrain color palette integration with baggold, brainblue, vaultpurple, chaosred
 ✓ Updated Vault styling with golden headline and dark container background
+✓ Global body styling with deep black background and light gray text
+✓ Baghead mascot image moved to public folder as baghead-mascot.png
