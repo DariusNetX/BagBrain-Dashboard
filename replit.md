@@ -58,6 +58,7 @@ Full-stack JavaScript application with React frontend and Express backend using 
 - TanStack Query v5 for server state management
 - Tailwind CSS for styling with custom BagBrain theme
 - Vite for development server and build tooling
+- Ethers.js for Web3 blockchain interactions
 
 **Backend Dependencies:**
 - Express.js for REST API server
@@ -84,6 +85,10 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 ## Changelog
 
+- June 24, 2025. Added Web3 blockchain support
+  - Installed ethers.js for blockchain interactions
+  - Enhanced infrastructure for smart contract integration
+  
 - June 23, 2025. Initial BagBrain Dashboard setup complete
   - Created full-stack React + Express architecture
   - Implemented Vault staking component with $BAG token operations
