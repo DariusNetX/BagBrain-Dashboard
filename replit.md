@@ -93,15 +93,17 @@ Full-stack JavaScript application with React frontend and Express backend using 
 
 ## Changelog
 
-- June 24, 2025. Added Web3 blockchain support
+- June 24, 2025. Complete Web3 blockchain integration
   - Installed ethers.js v6 for blockchain interactions
   - Created useWallet hook for MetaMask connectivity with ethers v6 compatibility
   - Added WalletConnect component with connection status
   - Integrated wallet display in Vault component showing connected address
   - Created useVaultData hook reading from contract 0xe54cde34f920f135B5a6B015e3841758E446b0D0
   - Created useLPStats hook reading from pair contract 0x20ac738513f765036387b889595855a20634Ba51
-  - Replaced mock API data with authentic blockchain data
-  - Enhanced infrastructure for smart contract integration
+  - Implemented real blockchain transactions for staking and withdrawal
+  - Added automatic token approval handling for $BAG token at 0x5ffdfc954b057581500772ea8b7a26182dc4f8b4
+  - Replaced all mock API data with authentic blockchain reads and writes
+  - Enhanced transaction status feedback and error handling
   
 - June 23, 2025. Initial BagBrain Dashboard setup complete
   - Created full-stack React + Express architecture
@@ -125,3 +127,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Error handling and form validation
 ✓ Web3 wallet connectivity with MetaMask integration
 ✓ Connected wallet address display in Vault interface
+✓ Real blockchain staking and withdrawal transactions
+✓ Automatic $BAG token approval handling
+✓ Live transaction status updates with success/error feedback

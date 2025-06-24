@@ -1,58 +1,66 @@
 import { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { apiRequest, queryClient } from '@/lib/queryClient';
+import { ethers } from 'ethers';
 import { useWallet } from '../hooks/useWallet';
 import { useVaultData } from '../hooks/useVaultData';
 import { WalletConnect } from './WalletConnect';
 
+const VAULT_ADDRESS = '0xe54cde34f920f135B5a6B015e3841758E446b0D0';
+const BAG_ADDRESS = '0x5ffdfc954b057581500772ea8b7a26182dc4f8b4';
+
+const vaultABI = [
+  'function stake(uint256 amount) public',
+  'function withdraw(uint256 amount) public'
+];
+
+const erc20ABI = [
+  'function approve(address spender, uint256 amount) public returns (bool)',
+  'function allowance(address owner, address spender) public view returns (uint256)'
+];
+
 const Vault = () => {
-  const [stakeAmount, setStakeAmount] = useState('');
-  const { isConnected, address } = useWallet();
+  const { signer, address, isConnected } = useWallet();
+  const [amount, setAmount] = useState('');
+  const [status, setStatus] = useState('');
   const { totalStaked, userStake, isLoading, error } = useVaultData();
 
-  // Stake mutation
-  const stakeMutation = useMutation({
-    mutationFn: (amount: number) =>
-      apiRequest('/api/transactions', {
-        method: 'POST',
-        body: JSON.stringify({
-          amount,
-          type: 'stake',
-        }),
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/vault'] });
-      setStakeAmount('');
-    },
-  });
+  const handleStake = async () => {
+    try {
+      setStatus('Approving...');
+      const bag = new ethers.Contract(BAG_ADDRESS, erc20ABI, signer);
+      const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
 
-  // Withdraw mutation
-  const withdrawMutation = useMutation({
-    mutationFn: (amount: number) =>
-      apiRequest('/api/transactions', {
-        method: 'POST',
-        body: JSON.stringify({
-          amount,
-          type: 'withdraw',
-        }),
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/vault'] });
-      setStakeAmount('');
-    },
-  });
+      const amountInWei = ethers.parseUnits(amount, 18);
 
-  const handleStake = () => {
-    const amount = parseFloat(stakeAmount);
-    if (amount > 0) {
-      stakeMutation.mutate(amount);
+      // Approve if needed
+      const allowance = await bag.allowance(address, VAULT_ADDRESS);
+      if (allowance < amountInWei) {
+        const approveTx = await bag.approve(VAULT_ADDRESS, amountInWei);
+        await approveTx.wait();
+      }
+
+      setStatus('Staking...');
+      const stakeTx = await vault.stake(amountInWei);
+      await stakeTx.wait();
+      setStatus('✅ Staked successfully!');
+      setAmount('');
+    } catch (err) {
+      console.error(err);
+      setStatus('❌ Error during stake.');
     }
   };
 
-  const handleWithdraw = () => {
-    const amount = parseFloat(stakeAmount);
-    if (amount > 0 && userStake && amount <= parseFloat(userStake)) {
-      withdrawMutation.mutate(amount);
+  const handleWithdraw = async () => {
+    try {
+      setStatus('Withdrawing...');
+      const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
+      const amountInWei = ethers.parseUnits(amount, 18);
+      const withdrawTx = await vault.withdraw(amountInWei);
+      await withdrawTx.wait();
+      setStatus('✅ Withdrawn successfully!');
+      setAmount('');
+    } catch (err) {
+      console.error(err);
+      setStatus('❌ Error during withdrawal.');
     }
   };
 
@@ -90,34 +98,30 @@ const Vault = () => {
           className="w-full p-2 mb-2 text-black rounded"
           type="number"
           placeholder="Amount of $BAG"
-          value={stakeAmount}
-          onChange={(e) => setStakeAmount(e.target.value)}
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
           min="0"
           step="0.01"
         />
-        <button
-          className="bg-purple-700 hover:bg-purple-600 w-full py-2 rounded mb-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        <button 
+          className="bg-purple-700 hover:bg-purple-600 w-full py-2 rounded mb-2 disabled:opacity-50 disabled:cursor-not-allowed" 
           onClick={handleStake}
-          disabled={!isConnected || stakeMutation.isPending || !stakeAmount || parseFloat(stakeAmount) <= 0}
+          disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
         >
-          {!isConnected ? 'Connect Wallet' : stakeMutation.isPending ? 'Staking...' : 'Stake'}
+          {!isConnected ? 'Connect Wallet' : 'Stake'}
         </button>
-        <button
-          className="bg-gray-700 hover:bg-gray-600 w-full py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        <button 
+          className="bg-gray-700 hover:bg-gray-600 w-full py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed" 
           onClick={handleWithdraw}
-          disabled={
-            !isConnected ||
-            withdrawMutation.isPending ||
-            !stakeAmount ||
-            parseFloat(stakeAmount) <= 0 ||
-            (userStake && userStake !== '--' && userStake !== null && parseFloat(stakeAmount) > parseFloat(userStake))
-          }
+          disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
+                   (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
         >
-          {!isConnected ? 'Connect Wallet' : withdrawMutation.isPending ? 'Withdrawing...' : 'Withdraw'}
+          {!isConnected ? 'Connect Wallet' : 'Withdraw'}
         </button>
+        <p className="text-sm text-gray-300 mt-2">{status}</p>
       </div>
       
-      {userStake && userStake !== '--' && parseFloat(stakeAmount) > parseFloat(userStake) && stakeAmount && (
+      {userStake && userStake !== '--' && parseFloat(amount || '0') > parseFloat(userStake) && amount && (
         <p className="text-red-400 text-sm mt-2">
           Insufficient staked balance for withdrawal
         </p>
