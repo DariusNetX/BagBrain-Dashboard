@@ -1,10 +1,9 @@
 .baghead-wrapper {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: auto;
   cursor: pointer;
   animation: float 3s ease-in-out infinite;
-  margin-bottom: 2rem;
 }
 
 .baghead-img {

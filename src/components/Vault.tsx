@@ -88,7 +88,7 @@ const Vault = () => {
   }
 
   return (
-    <div className="bg-[#1a1a1a] border border-vaultpurple p-6 rounded-lg shadow-md">
+    <div className="bg-white rounded-xl shadow-md p-4 w-full">
       <h1 className="text-3xl font-bold text-baggold">BagBrain Vault</h1>
       <p className="mt-2 text-zinc-400 text-sm md:text-base max-w-lg">
         Stake your $BAG. Embrace the chaos. Become the meme.

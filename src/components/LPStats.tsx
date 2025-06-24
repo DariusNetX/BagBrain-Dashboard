@@ -8,7 +8,7 @@ const LPStats = () => {
 
   if (isLoading) {
     return (
-      <div className="border border-green-500 p-6 rounded-lg shadow-md">
+      <div className="bg-white rounded-xl shadow-md p-4 w-full">
         <div className="animate-pulse">
           <div className="h-8 bg-gray-700 rounded mb-4"></div>
           <div className="h-4 bg-gray-700 rounded mb-2"></div>
@@ -20,7 +20,7 @@ const LPStats = () => {
   }
 
   return (
-    <div className="border border-green-500 p-6 rounded-lg shadow-md">
+    <div className="bg-white rounded-xl shadow-md p-4 w-full">
       <h2 className="text-2xl font-bold mb-4">💱 Liquidity Pool Stats</h2>
       <p className="mb-2">$BAG Reserve: {bag}</p>
       <p className="mb-2">$BLAZE Reserve: {blaze}</p>

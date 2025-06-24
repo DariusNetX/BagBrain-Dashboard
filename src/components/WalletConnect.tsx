@@ -10,7 +10,7 @@ export function WalletConnect() {
 
   if (isConnected && address) {
     return (
-      <div className="flex items-center gap-3 p-3 bg-gray-900 border border-purple-500/30 rounded-lg">
+      <div className="bg-white rounded-xl shadow-md p-4 w-full flex items-center gap-3">
         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
         <span className="text-green-400 font-mono text-sm">{formatAddress(address)}</span>
         <button
@@ -25,7 +25,7 @@ export function WalletConnect() {
   }
 
   return (
-    <div className="p-4 bg-gray-900 border border-purple-500/30 rounded-lg">
+    <div className="bg-white rounded-xl shadow-md p-4 w-full">
       <div className="text-center">
         <Wallet className="w-8 h-8 text-purple-400 mx-auto mb-3" />
         <p className="text-gray-300 mb-4 font-mono text-sm">
