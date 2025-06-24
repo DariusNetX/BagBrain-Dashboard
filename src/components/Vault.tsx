@@ -21,10 +21,12 @@ const Vault = () => {
   const { signer, address, isConnected } = useWallet();
   const [amount, setAmount] = useState('');
   const [status, setStatus] = useState('');
+  const [txStatus, setTxStatus] = useState('');
   const { totalStaked, userStake, isLoading, error } = useVaultData();
 
   const handleStake = async () => {
     try {
+      setTxStatus('pending');
       setStatus('Approving...');
       const bag = new ethers.Contract(BAG_ADDRESS, erc20ABI, signer);
       const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
@@ -41,26 +43,35 @@ const Vault = () => {
       setStatus('Staking...');
       const stakeTx = await vault.stake(amountInWei);
       await stakeTx.wait();
+      setTxStatus('success');
       setStatus('✅ Staked successfully!');
       setAmount('');
+      setTimeout(() => setTxStatus(''), 5000);
     } catch (err) {
       console.error(err);
+      setTxStatus('error');
       setStatus('❌ Error during stake.');
+      setTimeout(() => setTxStatus(''), 5000);
     }
   };
 
   const handleWithdraw = async () => {
     try {
+      setTxStatus('pending');
       setStatus('Withdrawing...');
       const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
       const amountInWei = ethers.parseUnits(amount, 18);
       const withdrawTx = await vault.withdraw(amountInWei);
       await withdrawTx.wait();
+      setTxStatus('success');
       setStatus('✅ Withdrawn successfully!');
       setAmount('');
+      setTimeout(() => setTxStatus(''), 5000);
     } catch (err) {
       console.error(err);
+      setTxStatus('error');
       setStatus('❌ Error during withdrawal.');
+      setTimeout(() => setTxStatus(''), 5000);
     }
   };
 
@@ -103,21 +114,24 @@ const Vault = () => {
           min="0"
           step="0.01"
         />
-        <button 
-          className="bg-purple-700 hover:bg-purple-600 w-full py-2 rounded mb-2 disabled:opacity-50 disabled:cursor-not-allowed" 
-          onClick={handleStake}
-          disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
-        >
-          {!isConnected ? 'Connect Wallet' : 'Stake'}
-        </button>
-        <button 
-          className="bg-gray-700 hover:bg-gray-600 w-full py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed" 
-          onClick={handleWithdraw}
-          disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
-                   (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
-        >
-          {!isConnected ? 'Connect Wallet' : 'Withdraw'}
-        </button>
+        <div className="flex gap-2">
+          <button 
+            className="bg-bagbrain-cta hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-bagbrain-glow/50 font-display tracking-wide flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={handleStake}
+            disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
+          >
+            {!isConnected ? 'Connect Wallet' : '🔒 Stake $BAG'}
+          </button>
+          
+          <button 
+            className="bg-yellow-400 hover:bg-yellow-300 text-black px-6 py-3 rounded-lg shadow-md transition-transform duration-200 hover:scale-105 font-display flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={handleWithdraw}
+            disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
+                     (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
+          >
+            {!isConnected ? 'Connect Wallet' : '💸 Withdraw $BAG'}
+          </button>
+        </div>
         <p className="text-sm text-gray-300 mt-2">{status}</p>
       </div>
       

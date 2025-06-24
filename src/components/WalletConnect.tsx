@@ -41,10 +41,9 @@ export function WalletConnect() {
         <button
           onClick={connectWallet}
           disabled={isConnecting}
-          className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-800 
-                   text-white font-mono text-sm rounded-lg transition-colors"
+          className="bg-zinc-800 hover:bg-zinc-700 text-white px-5 py-2 rounded-md border border-bagbrain-glow transition-all hover:shadow-lg font-mono"
         >
-          {isConnecting ? 'Connecting...' : 'Connect Wallet'}
+          {isConnecting ? 'Connecting...' : '🔗 Connect MetaMask'}
         </button>
       </div>
     </div>
