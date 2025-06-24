@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 body {
-  background-image: url('/bagbrain-bg-pattern.svg');
+  background-image: url('/bagbrain-bg-pattern.png');
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-color: #fefce8;
   color: #1f1f1f;
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
 :root {
