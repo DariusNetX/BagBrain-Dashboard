@@ -1,22 +1,11 @@
-import { useMemeTooltip } from '../hooks/useMemeTooltip';
-import React, { useState } from 'react';
-import './BagHead.css';
-
-const BagHeadMascot = () => {
-  const [quote, setQuote] = useState('');
-  const meme = useMemeTooltip();
-
-  const handleClick = () => {
-    setQuote(meme);
-    setTimeout(() => setQuote(''), 3000); // clear after 3 seconds
-  };
-
+export default function BagHeadMascot() {
   return (
-    <div className="baghead-wrapper" onClick={handleClick}>
-      <img src="/baghead-mascot.png" alt="BagHead" className="baghead-img" />
-      {quote && <div className="baghead-bubble">{quote}</div>}
+    <div className="flex justify-center items-center mt-6">
+      <img
+        src="/baghead-mascot.png"
+        alt="BagHead Mascot"
+        className="w-32 md:w-44 lg:w-56 animate-bounce-slow"
+      />
     </div>
   );
-};
-
-export default BagHeadMascot;
+}
