@@ -3,11 +3,13 @@ import { queryClient } from '@/lib/queryClient';
 import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
+import BagHeadMascot from './components/BagHeadMascot';
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <>
+    <div className="App relative min-h-screen">
+      <QueryClientProvider client={queryClient}>
+        <BagHeadMascot />
         <Hero />
         <div className="min-h-screen bg-black text-white p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -15,8 +17,8 @@ function App() {
             <LPStats />
           </div>
         </div>
-      </>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </div>
   );
 }
 
