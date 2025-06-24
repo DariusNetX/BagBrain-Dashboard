@@ -12,6 +12,10 @@ const config: Config = {
           brain: "#FF4ECD",
           cta: "#7C3AED",
         },
+        baggold: '#facc15',
+        brainblue: '#7dd3fc',
+        vaultpurple: '#a855f7',
+        chaosred: '#ef4444',
       },
       fontFamily: {
         display: ["'Bungee'", "sans-serif"],
