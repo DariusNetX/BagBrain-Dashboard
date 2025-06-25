@@ -320,7 +320,7 @@ export default function BagBrainIQTest() {
             <div className="text-2xl sm:text-4xl glow-gold mb-4 sm:mb-6 px-4 break-words">
               {rating}
             </div>
-            <p className="glow-gold text-lg sm:text-xl opacity-75 leading-relaxed px-4">
+            <p className="glow-gold text-lg sm:text-xl opacity-75 leading-relaxed px-4 mb-6 sm:mb-8">
               <MobilePopover 
                 id="iq-explanation" 
                 content="Your BagBrain intelligence quotient, scientifically calculated by meme algorithms on a scale of 0-10,000" 
@@ -330,6 +330,22 @@ export default function BagBrainIQTest() {
                 Calculated using advanced BagBrain quantum mechanics (0-10,000 scale)
               </MobilePopover>
             </p>
+            
+            {/* BagBrain Character Image */}
+            <div className="flex justify-center mb-8">
+              <img 
+                src="/bagbrain-results.png" 
+                alt="BagBrain Character celebrating your results" 
+                className="w-48 h-48 sm:w-64 sm:h-64 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                style={{
+                  filter: 'drop-shadow(0 0 20px rgba(255, 247, 0, 0.3))'
+                }}
+                onError={(e) => {
+                  console.log('BagBrain results character failed to load');
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
           </div>
 
           <div className="bg-black/40 border border-amber-500/30 rounded-lg p-6 sm:p-8 mb-8">
