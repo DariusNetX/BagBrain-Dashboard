@@ -202,7 +202,7 @@ const Vault = () => {
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
-            className="btn-primary flex-1"
+            className="btn-primary flex-1 ml-3"
           >
             Withdraw $BAG
           </button>
