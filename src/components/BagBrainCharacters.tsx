@@ -1,18 +1,15 @@
-// Simplified component - no longer needs state management
+import bagbrainImage from '@assets/EC386CCE-F6F8-430A-88B7-A0F5D8AFC13D_1750882510411.png';
 
 export default function BagBrainCharacters() {
-  // No longer need character switching since we're using a single new mascot image
-
   return (
     <div className="fixed bottom-4 right-4 z-10">
       <div className="relative w-24 md:w-32">
         <img
-          src="/new-bagbrain.png"
+          src={bagbrainImage}
           alt="BagBrain Mascot"
           className="w-full h-auto drop-shadow-xl animate-bounce-slow hover:scale-110 transition-all duration-500"
           onError={(e) => {
-            console.log('New BagBrain mascot failed to load, using fallback');
-            // Try the original baghead mascot first, then fall back to gold circle
+            console.log('BagBrain mascot failed to load, using baghead fallback');
             const img = e.currentTarget as HTMLImageElement;
             img.src = '/baghead-mascot.png';
             img.onerror = () => {
