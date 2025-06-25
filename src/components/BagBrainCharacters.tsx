@@ -9,7 +9,7 @@ export default function BagBrainCharacters() {
         
         {/* Image overlay that replaces fallback when loaded */}
         <img
-          src="/new-bagbrain.png"
+          src="/bagbrain-results.png"
           alt="BagBrain Mascot"
           className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl animate-bounce hover:scale-110 transition-all duration-500 cursor-pointer opacity-0"
           onLoad={(e) => {
@@ -20,9 +20,9 @@ export default function BagBrainCharacters() {
             if (fallback) fallback.style.display = 'none';
           }}
           onError={(e) => {
-            console.log('BagBrain mascot failed to load, trying baghead fallback');
+            console.log('BagBrain mascot failed to load, trying new-bagbrain fallback');
             const img = e.currentTarget as HTMLImageElement;
-            img.src = '/baghead-mascot.png';
+            img.src = '/new-bagbrain.png';
             img.onerror = () => {
               console.log('All images failed, keeping emoji fallback visible');
               img.style.display = 'none';
