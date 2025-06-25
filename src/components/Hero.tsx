@@ -7,7 +7,7 @@ export default function Hero() {
   const { bag, blaze } = reserves;
 
   return (
-    <div className="bg-gradient-to-b from-black via-zinc-900 to-neutral-950 text-center py-12 px-6 text-white">
+    <div className="text-center py-12 px-6">
       <img
         src="/baghead-mascot.png"
         alt="BagHead Mascot"
