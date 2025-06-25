@@ -6,6 +6,7 @@ import Vault from './components/Vault';
 import LPStats from './components/LPStats';
 import BagHeadMascot from './components/BagHeadMascot';
 import BagBrainCharacters from './components/BagBrainCharacters';
+import BottomCTA from './components/BottomCTA';
 import { WalletConnect } from './components/WalletConnect';
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
             </div>
             <div className="w-full max-w-4xl">
               <WalletConnect />
+            </div>
+            <div className="w-full max-w-4xl">
+              <BottomCTA />
             </div>
           </div>
 

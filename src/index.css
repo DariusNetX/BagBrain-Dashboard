@@ -240,6 +240,13 @@ body::before {
   }
 }
 
+/* Bottom CTA Enhancement */
+.btn-primary.bg-gradient-to-r.from-purple-600.to-pink-600:hover {
+  background: linear-gradient(45deg, #ec4899, #9333ea);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+}
+
 @keyframes glow-pulse {
   0% {
     text-shadow: 
