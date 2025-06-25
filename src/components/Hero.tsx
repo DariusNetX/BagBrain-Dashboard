@@ -19,9 +19,10 @@ export default function Hero() {
         src="/baghead-mascot.png"
         alt="BagHead Mascot"
         className="mx-auto w-28 md:w-36 mb-4 drop-shadow-xl"
+        loading="eager"
         onError={(e) => {
           console.error('Image failed to load:', e.currentTarget.src);
-          e.currentTarget.style.border = '2px solid red';
+          e.currentTarget.src = "data:image/svg+xml,%3Csvg width='128' height='128' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='64' cy='64' r='60' fill='%23FFD700'/%3E%3Ctext x='64' y='70' text-anchor='middle' font-size='16'%3E💰%3C/text%3E%3C/svg%3E";
         }}
         onLoad={() => console.log('Baghead image loaded successfully')}
       />
@@ -38,16 +39,16 @@ export default function Hero() {
       >
         I Have Bags For Brains 💰🧠
       </h1>
-      <p className="mt-4 text-lg text-gray-700 font-body">
+      <p className="mt-4 text-lg glow-gold font-body">
         Stake. Withdraw. Meme. Repeat. <br /> The cult of BagBrain has begun.
       </p>
       
       <div className="mt-8 space-y-3">
-        <p className="text-blue-600 font-mono text-xl md:text-2xl animate-pulse tracking-wide" title="Brains in. Liquidity out.">
+        <p className="glow-cyan font-mono text-xl md:text-2xl animate-pulse tracking-wide" title="Brains in. Liquidity out.">
           🧠 {totalStaked || '0'} $BAG staked
         </p>
         
-        <p className="text-purple-600 font-mono text-sm md:text-base" title="Backed by vibes and bag strength.">
+        <p className="glow-purple font-mono text-sm md:text-base" title="Backed by vibes and bag strength.">
           💧 Total Pool: {blaze || '0'} BLAZE / {bag || '0'} $BAG
         </p>
       </div>

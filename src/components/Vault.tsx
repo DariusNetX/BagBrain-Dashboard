@@ -117,7 +117,7 @@ const Vault = () => {
       <p className="mb-4 text-gray-400" title="No $BAG? No brain. No entry.">Wallet Balance: 0 $BAG</p>
 
       <div className="mt-6">
-        <h2 className="text-xl md:text-2xl font-bold text-white">
+        <h2 className="text-xl md:text-2xl font-bold glow-purple">
           🔒 Vault Access
         </h2>
         <p className="text-zinc-400 text-sm">

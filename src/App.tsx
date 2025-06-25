@@ -12,7 +12,9 @@ function App() {
     <div className="App relative min-h-screen">
       <QueryClientProvider client={queryClient}>
         <div className="flex flex-col min-h-screen w-full items-center justify-start p-4 gap-6">
-          <Hero />
+          <div className="w-full max-w-6xl">
+            <Hero />
+          </div>
           <div className="w-full max-w-4xl space-y-6">
             <Vault />
             <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity.">

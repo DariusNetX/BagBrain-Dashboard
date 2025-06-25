@@ -20,12 +20,12 @@ const LPStats = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 w-full">
-      <h2 className="text-2xl font-bold mb-4">💱 Liquidity Pool Stats</h2>
-      <p className="mb-2">$BAG Reserve: {bag}</p>
-      <p className="mb-2">$BLAZE Reserve: {blaze}</p>
-      <p className="mb-2">Exchange Rate: 1 BLAZE = {price} $BAG</p>
-      <p className="mb-2 text-bagbrain-glow" title="You provide. The people trade. You win.">Your Liquidity: 2.4 BLAZE / 1.2M $BAG</p>
+    <div className="bg-white rounded-xl shadow-md p-4 w-full max-w-4xl mx-auto">
+      <h2 className="text-2xl font-bold mb-4 glow-cyan">💱 Liquidity Pool Stats</h2>
+      <p className="mb-2 glow-gold">$BAG Reserve: {bag}</p>
+      <p className="mb-2 glow-gold">$BLAZE Reserve: {blaze}</p>
+      <p className="mb-2 glow-gold">Exchange Rate: 1 BLAZE = {price} $BAG</p>
+      <p className="mb-2 glow-purple" title="You provide. The people trade. You win.">Your Liquidity: 2.4 BLAZE / 1.2M $BAG</p>
       
       {txStatus === 'pending' && (
         <p className="mt-2 text-yellow-300 text-sm animate-pulse">
