@@ -20,7 +20,7 @@ const LPStats = () => {
   }
 
   return (
-    <div className="bg-black/80 backdrop-blur-sm border border-cyan-500/30 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
+    <div className="bg-black/60 backdrop-blur-md border border-cyan-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 glow-cyan">💱 Liquidity Pool Stats</h2>
       <p className="mb-2 glow-gold">$BAG Reserve: {bag}</p>
       <p className="mb-2 glow-gold">$BLAZE Reserve: {blaze}</p>

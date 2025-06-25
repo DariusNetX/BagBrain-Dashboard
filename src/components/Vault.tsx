@@ -88,7 +88,7 @@ const Vault = () => {
   }
 
   return (
-    <div className="bg-black/80 backdrop-blur-sm border border-yellow-500/30 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto relative overflow-hidden">
+    <div className="bg-black/60 backdrop-blur-md border border-yellow-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto relative overflow-hidden">
       <div className="absolute top-4 right-4 w-16 h-16 opacity-20">
         <img
           src="/bagbrain-character-1.png"

@@ -28,7 +28,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="text-center py-12 px-6 relative">
+    <div className="text-center py-12 px-6 relative bg-black/30 backdrop-blur-sm rounded-lg mx-4 mb-8 border border-yellow-500/20">
       <div className="mx-auto w-32 md:w-40 mb-4">
         <img
           src={processedImage || "/bagbrain-character-2.png"}
