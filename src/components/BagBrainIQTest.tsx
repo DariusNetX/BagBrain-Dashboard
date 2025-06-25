@@ -175,34 +175,34 @@ export default function BagBrainIQTest() {
 
   if (showLeaderboard) {
     return (
-      <div className="min-h-screen p-4 flex items-center justify-center">
-        <div className="max-w-2xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-8 text-center">
-          <h1 className="text-4xl font-bold mb-6 glow-gold">
+      <div className="min-h-screen p-6 flex items-center justify-center">
+        <div className="max-w-3xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-10 text-center">
+          <h1 className="text-5xl font-bold mb-10 glow-gold">
             🏆 BagBrain IQ Leaderboard
           </h1>
           
-          <div className="mb-8">
+          <div className="mb-12">
             {topScores.length > 0 ? (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {topScores.map((score, index) => (
                   <div 
                     key={score.id} 
-                    className={`p-4 rounded-lg border ${
+                    className={`p-6 rounded-lg border ${
                       index === 0 ? 'border-yellow-500/50 bg-yellow-900/20' :
                       index === 1 ? 'border-gray-400/50 bg-gray-800/20' :
                       'border-amber-600/50 bg-amber-900/20'
                     }`}
                   >
                     <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">
+                      <div className="flex items-center gap-4">
+                        <span className="text-3xl">
                           {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
                         </span>
-                        <span className="text-xl glow-gold font-bold">
+                        <span className="text-2xl glow-gold font-bold">
                           {score.username}
                         </span>
                       </div>
-                      <span className="text-xl glow-gold font-bold">
+                      <span className="text-2xl glow-gold font-bold">
                         {score.score.toLocaleString()}
                       </span>
                     </div>
@@ -210,20 +210,20 @@ export default function BagBrainIQTest() {
                 ))}
               </div>
             ) : (
-              <p className="glow-gold text-lg">No scores recorded yet. Be the first!</p>
+              <p className="glow-gold text-xl">No scores recorded yet. Be the first!</p>
             )}
           </div>
 
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-6 justify-center">
             <button 
               onClick={restartTest}
-              className="btn-primary px-6 py-3"
+              className="btn-primary px-8 py-4 text-lg"
             >
               🔄 Test Again
             </button>
             
             <Link href="/">
-              <button className="btn-primary px-6 py-3">
+              <button className="btn-primary px-8 py-4 text-lg">
                 🏠 Back to Dashboard
               </button>
             </Link>
@@ -238,20 +238,20 @@ export default function BagBrainIQTest() {
     const rating = getIQRating(iq);
 
     return (
-      <div className="min-h-screen p-4 flex items-center justify-center">
-        <div className="max-w-2xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-8 text-center">
-          <h1 className="text-4xl font-bold mb-6 glow-gold">
-            🧠 BagBrain IQ Results
+      <div className="min-h-screen p-6 flex items-center justify-center">
+        <div className="max-w-3xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-10 text-center">
+          <h1 className="text-5xl font-bold mb-10 glow-gold">
+            🧠 Your BagBrain IQ Results
           </h1>
           
-          <div className="mb-8">
-            <div className="text-5xl font-bold glow-gold mb-4">
+          <div className="mb-12">
+            <div className="text-7xl font-bold glow-gold mb-6">
               {iq.toLocaleString()}
             </div>
-            <div className="text-2xl glow-gold mb-4">
+            <div className="text-4xl glow-gold mb-6">
               {rating}
             </div>
-            <p className="glow-gold text-base opacity-75">
+            <p className="glow-gold text-xl opacity-75 leading-relaxed">
               <MobilePopover 
                 id="iq-explanation" 
                 content="Your BagBrain intelligence quotient, scientifically calculated by meme algorithms on a scale of 0-10,000" 
@@ -263,7 +263,23 @@ export default function BagBrainIQTest() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="bg-black/40 border border-amber-500/30 rounded-lg p-8 mb-8">
+            <h3 className="text-2xl glow-gold mb-4">🎭 Share Your BagBrain Achievement</h3>
+            <p className="glow-gold mb-6 text-lg leading-relaxed">
+              <MobilePopover 
+                id="share-achievement" 
+                content="Spread the BagBrain consciousness across the digital realm" 
+                isActive={activePopover === 'share-achievement'} 
+                onToggle={togglePopover}
+              >
+                <span className="cursor-pointer underline decoration-dotted">
+                  Let the world know you've ascended to {rating} status! 
+                </span>
+              </MobilePopover>
+            </p>
+          </div>
+
+          <div className="space-y-8">
             {!claimed ? (
               <MobilePopover 
                 id="claim-badge" 
@@ -273,24 +289,24 @@ export default function BagBrainIQTest() {
               >
                 <button 
                   onClick={handleClaimBadge}
-                  className="btn-primary px-8 py-4 text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600"
+                  className="btn-primary px-10 py-5 text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600"
                 >
                   🏆 Claim Your Badge
                 </button>
               </MobilePopover>
             ) : (
-              <div className="text-green-400 text-xl glow-gold">
+              <div className="text-green-400 text-2xl glow-gold py-4">
                 ✅ Badge Claimed! You are now officially certified BagBrain.
               </div>
             )}
 
             {(isHighScore || calculateIQ() >= 5000) && !showUsernameInput && !showLeaderboard && (
-              <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-lg p-6">
-                <h3 className="text-xl glow-gold mb-4">🎉 HIGH SCORE ACHIEVED!</h3>
-                <p className="glow-gold mb-4">Your score of {calculateIQ().toLocaleString()} qualifies for the leaderboard!</p>
+              <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-lg p-8">
+                <h3 className="text-2xl glow-gold mb-6">🎉 HIGH SCORE ACHIEVED!</h3>
+                <p className="glow-gold mb-6 text-lg">Your score of {calculateIQ().toLocaleString()} qualifies for the leaderboard!</p>
                 <button 
                   onClick={() => setShowUsernameInput(true)}
-                  className="btn-primary px-6 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-orange-600 hover:to-yellow-600"
+                  className="btn-primary px-8 py-4 text-lg bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-orange-600 hover:to-yellow-600"
                 >
                   📝 Enter Leaderboard
                 </button>
@@ -298,27 +314,27 @@ export default function BagBrainIQTest() {
             )}
 
             {showUsernameInput && (
-              <div className="bg-black/40 border border-amber-500/30 rounded-lg p-6">
-                <h3 className="text-xl glow-gold mb-4">Enter Your Username</h3>
+              <div className="bg-black/40 border border-amber-500/30 rounded-lg p-8">
+                <h3 className="text-2xl glow-gold mb-6">Enter Your Username</h3>
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Your BagBrain alias..."
                   maxLength={20}
-                  className="input-standard w-full mb-4"
+                  className="input-standard w-full mb-6 text-lg p-4"
                 />
-                <div className="flex gap-3 justify-center">
+                <div className="flex gap-4 justify-center">
                   <button 
                     onClick={handleSubmitUsername}
                     disabled={!username.trim() || isAddingScore}
-                    className="btn-primary px-6 py-3"
+                    className="btn-primary px-8 py-4 text-lg"
                   >
                     {isAddingScore ? 'Adding...' : '🏆 Submit'}
                   </button>
                   <button 
                     onClick={() => setShowUsernameInput(false)}
-                    className="btn-primary px-6 py-3 opacity-75"
+                    className="btn-primary px-8 py-4 text-lg opacity-75"
                   >
                     Cancel
                   </button>
@@ -326,23 +342,23 @@ export default function BagBrainIQTest() {
               </div>
             )}
             
-            <div className="flex gap-4 justify-center">
+            <div className="flex gap-6 justify-center">
               <button 
                 onClick={restartTest}
-                className="btn-primary px-6 py-3"
+                className="btn-primary px-8 py-4 text-lg"
               >
                 🔄 Test Again
               </button>
               
               <button 
                 onClick={() => setShowLeaderboard(true)}
-                className="btn-primary px-6 py-3"
+                className="btn-primary px-8 py-4 text-lg"
               >
                 🏆 View Leaderboard
               </button>
               
               <Link href="/">
-                <button className="btn-primary px-6 py-3">
+                <button className="btn-primary px-8 py-4 text-lg">
                   🏠 Back to Dashboard
                 </button>
               </Link>
@@ -356,37 +372,37 @@ export default function BagBrainIQTest() {
   const question = questions[currentQuestion];
 
   return (
-    <div className="min-h-screen p-4 flex items-center justify-center">
-      <div className="max-w-2xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-8">
-        <div className="mb-6">
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
-            <div className="flex items-center gap-4">
-              <div className="text-sm glow-gold opacity-75">
+    <div className="min-h-screen p-6 flex items-center justify-center">
+      <div className="max-w-3xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-10">
+        <div className="mb-12">
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-4xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
+            <div className="flex items-center gap-6">
+              <div className="text-lg glow-gold opacity-75">
                 Question {currentQuestion + 1} of {questions.length}
               </div>
               <Link href="/">
-                <button className="text-sm glow-gold opacity-75 hover:opacity-100">
+                <button className="text-lg glow-gold opacity-75 hover:opacity-100 px-4 py-2">
                   ← Back
                 </button>
               </Link>
             </div>
           </div>
           
-          <div className="w-full bg-gray-800 rounded-full h-2 mb-4">
+          <div className="w-full bg-gray-800 rounded-full h-3 mb-6">
             <div 
-              className="bg-gradient-to-r from-yellow-400 to-amber-500 h-2 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-yellow-400 to-amber-500 h-3 rounded-full transition-all duration-300"
               style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
             ></div>
           </div>
         </div>
 
-        <div className="mb-8">
-          <h2 className="text-xl glow-gold mb-6 text-center">
+        <div className="mb-12">
+          <h2 className="text-3xl glow-gold mb-10 text-center leading-relaxed">
             {question.question}
           </h2>
           
-          <div className="space-y-4">
+          <div className="space-y-6">
             {question.options.map((option, index) => (
               <MobilePopover 
                 key={index}
@@ -397,9 +413,9 @@ export default function BagBrainIQTest() {
               >
                 <button
                   onClick={() => handleAnswer(option.points)}
-                  className="w-full p-4 bg-black/40 border border-amber-500/20 rounded-lg text-left glow-gold hover:border-amber-500/50 hover:bg-black/60 transition-all"
+                  className="w-full p-6 bg-black/40 border border-amber-500/20 rounded-lg text-left glow-gold hover:border-amber-500/50 hover:bg-black/60 transition-all text-lg leading-relaxed"
                 >
-                  <span className="font-bold text-amber-400 mr-2">{String.fromCharCode(65 + index)}.</span>
+                  <span className="font-bold text-amber-400 mr-3 text-xl">{String.fromCharCode(65 + index)}.</span>
                   {option.text}
                 </button>
               </MobilePopover>
@@ -407,7 +423,7 @@ export default function BagBrainIQTest() {
           </div>
         </div>
 
-        <div className="text-center text-sm glow-gold opacity-50">
+        <div className="text-center text-base glow-gold opacity-50 pt-4">
           <MobilePopover 
             id="disclaimer" 
             content="No actual brains were harmed in the making of this test" 
