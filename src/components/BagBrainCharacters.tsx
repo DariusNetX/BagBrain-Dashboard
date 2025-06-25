@@ -1,11 +1,9 @@
-import bagbrainImage from '@assets/EC386CCE-F6F8-430A-88B7-A0F5D8AFC13D_1750882510411.png';
-
 export default function BagBrainCharacters() {
   return (
     <div className="fixed bottom-4 right-4 z-10">
       <div className="relative w-24 md:w-32">
         <img
-          src={bagbrainImage}
+          src="/new-bagbrain.png"
           alt="BagBrain Mascot"
           className="w-full h-auto drop-shadow-xl animate-bounce-slow hover:scale-110 transition-all duration-500"
           onError={(e) => {
