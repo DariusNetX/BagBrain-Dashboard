@@ -255,3 +255,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Increased button sizes and section padding for better mobile accessibility
 ✓ Applied consistent text sizing hierarchy across all IQ test components
 ✓ Improved visual hierarchy with better spacing between interactive elements
+✓ Removed redundant "Connect Wallet" button text from Vault stake/withdraw buttons
+✓ Cleaned up interface to avoid confusion with dedicated WalletConnect component
+✓ Streamlined user experience with clearer action button labels

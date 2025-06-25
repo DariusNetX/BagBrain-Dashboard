@@ -188,7 +188,7 @@ const Vault = () => {
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
             className="btn-primary flex-1"
           >
-            {!isConnected ? 'Connect Wallet' : 'Stake $BAG'}
+            Stake $BAG
           </button>
         </MobilePopover>
           
@@ -204,7 +204,7 @@ const Vault = () => {
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
             className="btn-primary flex-1"
           >
-            {!isConnected ? 'Connect Wallet' : 'Withdraw $BAG'}
+            Withdraw $BAG
           </button>
         </MobilePopover>
         </div>
