@@ -576,7 +576,7 @@ export default function BagBrainIQTest() {
               >
                 <button
                   onClick={() => handleAnswer(option.points)}
-                  className="w-full p-6 sm:p-8 bg-black/40 border-2 border-amber-500/20 rounded-xl text-left glow-gold hover:border-amber-500/60 hover:bg-black/70 transition-all duration-300 text-lg sm:text-xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[4rem] sm:min-h-[5rem] flex items-center"
+                  className="w-full p-6 sm:p-8 bg-black/40 border-2 border-amber-500/20 rounded-xl text-left glow-gold hover:border-amber-500/60 hover:bg-black/70 transition-all duration-300 text-xl sm:text-2xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[4rem] sm:min-h-[5rem] flex items-center"
                 >
                   <span className="font-bold text-amber-400 mr-4 sm:mr-6 text-2xl sm:text-3xl flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
                   <span className="flex-1">{option.text}</span>
