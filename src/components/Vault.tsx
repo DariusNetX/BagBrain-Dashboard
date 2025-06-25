@@ -133,69 +133,68 @@ const Vault = () => {
         </p>
         
         <input
-          className="w-full p-3 mb-4 bg-black/50 border border-yellow-500/50 rounded-lg text-yellow-300 placeholder-yellow-600"
           type="number"
-          placeholder="Amount of $BAG"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+          placeholder="Amount of $BAG"
+          className="input-standard w-full mb-4"
           min="0"
           step="0.01"
         />
         <div className="flex gap-2">
           <button 
-            data-tooltip-id="stakeTip"
-            data-tooltip-content="🧠 Deploy your bags to the vault. Bigger brain, bigger gains."
-            className="bg-gradient-to-r from-purple-600 to-yellow-500 hover:from-yellow-500 hover:to-purple-600 text-black font-bold py-3 px-6 rounded-lg transition-all flex-1 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
             onClick={handleStake}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
+            className="btn-primary flex-1"
+            title="YOLO into the vault"
           >
             {!isConnected ? 'Connect Wallet' : 'Stake $BAG'}
           </button>
           
           <button 
-            className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-orange-500 hover:to-red-500 text-black font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-200 hover:scale-105 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
-            title="You're not giving up… just claiming what's yours."
+            className="btn-primary flex-1"
+            title="claiming what's yours"
           >
-            {!isConnected ? 'Connect Wallet' : '💸 Withdraw $BAG'}
+            {!isConnected ? 'Connect Wallet' : 'Withdraw $BAG'}
           </button>
         </div>
         
         {txStatus === 'pending' && (
-          <p className="mt-2 text-yellow-300 text-sm animate-pulse">
-            ⏳ Summoning liquidity gods...
+          <p className="mt-4 glow-gold text-base animate-pulse text-center">
+            ⏳ Summoning liquidity gods... Be patient.
           </p>
         )}
 
         {txStatus === 'success' && (
-          <p className="mt-2 glow-gold text-sm">
-            ✅ Brains deployed. You're in.
+          <p className="mt-4 glow-gold text-base transition-opacity duration-300 text-center">
+            ✅ You're officially a legend. Transaction confirmed!
           </p>
         )}
 
         {txStatus === 'error' && (
-          <p className="mt-2 glow-gold text-sm">
+          <p className="mt-4 glow-gold text-base transition-opacity duration-300 text-center">
             ❌ Something broke. But you're still a legend.
           </p>
         )}
         
-        <p className="text-sm glow-gold mt-2">{status}</p>
+        <p className="text-base glow-gold mt-4 text-center">{status}</p>
         
-        <p className="text-center text-xs glow-gold mt-10">
+        <p className="text-center text-sm glow-gold mt-8">
           BagBrain is not responsible for emotional damage caused by market fluctuations. DYOR, but make it meme.
         </p>
       </div>
       
       {userStake && userStake !== '--' && parseFloat(amount || '0') > parseFloat(userStake) && amount && (
-        <p className="glow-gold text-sm mt-2">
+        <p className="glow-gold text-base mt-4 text-center">
           Insufficient staked balance for withdrawal
         </p>
       )}
       
       {error && (
-        <p className="glow-gold text-sm mt-2">
+        <p className="glow-gold text-base mt-4 text-center">
           {error}
         </p>
       )}
