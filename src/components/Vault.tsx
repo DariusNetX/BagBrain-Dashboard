@@ -88,7 +88,7 @@ const Vault = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 w-full max-w-4xl mx-auto">
+    <div className="bg-black/80 backdrop-blur-sm border border-yellow-500/30 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold glow-gold">🧠 BagBrain Vault</h1>
       <p className="mt-2 glow-gold text-sm md:text-base max-w-lg">
         Stake your $BAG. Embrace the chaos. Become the meme.
@@ -125,7 +125,7 @@ const Vault = () => {
         </p>
         
         <input
-          className="w-full p-2 mb-2 text-black rounded"
+          className="w-full p-3 mb-4 bg-black/50 border border-yellow-500/50 rounded-lg text-yellow-300 placeholder-yellow-600"
           type="number"
           placeholder="Amount of $BAG"
           value={amount}
@@ -137,7 +137,7 @@ const Vault = () => {
           <button 
             data-tooltip-id="stakeTip"
             data-tooltip-content="🧠 Deploy your bags to the vault. Bigger brain, bigger gains."
-            className="bg-vaultpurple hover:bg-baggold text-black font-bold py-2 px-4 rounded transition-all flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-gradient-to-r from-purple-600 to-yellow-500 hover:from-yellow-500 hover:to-purple-600 text-black font-bold py-3 px-6 rounded-lg transition-all flex-1 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
             onClick={handleStake}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
           >
@@ -145,7 +145,7 @@ const Vault = () => {
           </button>
           
           <button 
-            className="bg-yellow-400 hover:bg-yellow-300 text-black px-6 py-3 rounded-lg shadow-md transition-transform duration-200 hover:scale-105 font-display flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-orange-500 hover:to-red-500 text-black font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-200 hover:scale-105 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}

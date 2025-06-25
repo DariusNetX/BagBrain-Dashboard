@@ -10,7 +10,7 @@ export function WalletConnect() {
 
   if (isConnected && address) {
     return (
-      <div className="bg-white rounded-xl shadow-md p-4 w-full flex items-center gap-3">
+      <div className="bg-black/80 backdrop-blur-sm border border-green-500/30 rounded-xl shadow-2xl p-4 w-full flex items-center gap-3">
         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
         <span className="glow-gold font-mono text-sm">{formatAddress(address)}</span>
         <button
@@ -25,7 +25,7 @@ export function WalletConnect() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 w-full max-w-4xl mx-auto">
+    <div className="bg-black/80 backdrop-blur-sm border border-purple-500/30 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 glow-cyan">🦊 Wallet Connection</h2>
       <div className="text-center">
         <Wallet className="w-8 h-8 text-purple-400 mx-auto mb-3" />
@@ -42,7 +42,7 @@ export function WalletConnect() {
         <button
           onClick={connectWallet}
           disabled={isConnecting}
-          className="bg-zinc-800 hover:bg-zinc-700 text-white px-5 py-2 rounded-md border border-bagbrain-glow transition-all hover:shadow-lg font-mono"
+          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-blue-600 hover:to-cyan-600 text-white font-bold px-6 py-3 rounded-lg border border-cyan-500/50 transition-all hover:shadow-lg hover:scale-105"
           title="Connect to begin your descent into madness."
         >
           {isConnecting ? 'Connecting...' : '🔗 Connect MetaMask'}

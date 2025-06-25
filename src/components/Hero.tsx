@@ -14,7 +14,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="text-center py-12 px-6">
+    <div className="text-center py-12 px-6 relative">
       <img
         src="/baghead-mascot.png"
         alt="BagHead Mascot"
