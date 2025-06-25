@@ -277,20 +277,20 @@ export default function BagBrainIQTest() {
     const rating = getIQRating(iq);
 
     return (
-      <div className="min-h-screen p-6 flex items-center justify-center">
-        <div className="max-w-3xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-10 text-center">
-          <h1 className="text-5xl font-bold mb-10 glow-gold">
+      <div className="min-h-screen p-4 sm:p-6 flex items-center justify-center">
+        <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10 text-center mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-8 sm:mb-10 glow-gold">
             🧠 Your BagBrain IQ Results
           </h1>
           
-          <div className="mb-12">
-            <div className="text-7xl font-bold glow-gold mb-6">
+          <div className="mb-10 sm:mb-12">
+            <div className="text-5xl sm:text-7xl font-bold glow-gold mb-4 sm:mb-6">
               {iq.toLocaleString()}
             </div>
-            <div className="text-4xl glow-gold mb-6">
+            <div className="text-2xl sm:text-4xl glow-gold mb-4 sm:mb-6 px-4 break-words">
               {rating}
             </div>
-            <p className="glow-gold text-xl opacity-75 leading-relaxed">
+            <p className="glow-gold text-lg sm:text-xl opacity-75 leading-relaxed px-4">
               <MobilePopover 
                 id="iq-explanation" 
                 content="Your BagBrain intelligence quotient, scientifically calculated by meme algorithms on a scale of 0-10,000" 
@@ -302,9 +302,9 @@ export default function BagBrainIQTest() {
             </p>
           </div>
 
-          <div className="bg-black/40 border border-amber-500/30 rounded-lg p-8 mb-8">
-            <h3 className="text-3xl glow-gold mb-6">🎭 Share Your BagBrain Achievement</h3>
-            <p className="glow-gold mb-8 text-lg leading-relaxed">
+          <div className="bg-black/40 border border-amber-500/30 rounded-lg p-6 sm:p-8 mb-8">
+            <h3 className="text-2xl sm:text-3xl glow-gold mb-4 sm:mb-6">🎭 Share Your BagBrain Achievement</h3>
+            <p className="glow-gold mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed px-2">
               <MobilePopover 
                 id="share-achievement" 
                 content="Spread the BagBrain consciousness across the digital realm" 
@@ -317,24 +317,24 @@ export default function BagBrainIQTest() {
               </MobilePopover>
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
               <button 
                 onClick={() => shareToTwitter(iq, rating)}
-                className="btn-primary px-6 py-4 text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 flex items-center justify-center gap-2"
+                className="btn-primary px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 flex items-center justify-center gap-2"
               >
                 🐦 Twitter
               </button>
               
               <button 
                 onClick={() => shareToFacebook(iq, rating)}
-                className="btn-primary px-6 py-4 text-lg bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 flex items-center justify-center gap-2"
+                className="btn-primary px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 flex items-center justify-center gap-2"
               >
                 📘 Facebook
               </button>
               
               <button 
                 onClick={() => shareToInstagram(iq, rating)}
-                className="btn-primary px-6 py-4 text-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 flex items-center justify-center gap-2"
+                className="btn-primary px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 flex items-center justify-center gap-2"
               >
                 📸 Instagram
               </button>
@@ -342,40 +342,42 @@ export default function BagBrainIQTest() {
             
             <button 
               onClick={() => shareGeneric(iq, rating)}
-              className="btn-primary px-8 py-4 text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 w-full"
+              className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 w-full max-w-md mx-auto block"
             >
               📤 Share Anywhere
             </button>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {!claimed ? (
-              <MobilePopover 
-                id="claim-badge" 
-                content="Mint your achievement to the blockchain of consciousness" 
-                isActive={activePopover === 'claim-badge'} 
-                onToggle={togglePopover}
-              >
-                <button 
-                  onClick={handleClaimBadge}
-                  className="btn-primary px-10 py-5 text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600"
+              <div className="flex justify-center">
+                <MobilePopover 
+                  id="claim-badge" 
+                  content="Mint your achievement to the blockchain of consciousness" 
+                  isActive={activePopover === 'claim-badge'} 
+                  onToggle={togglePopover}
                 >
-                  🏆 Claim Your Badge
-                </button>
-              </MobilePopover>
+                  <button 
+                    onClick={handleClaimBadge}
+                    className="btn-primary px-8 sm:px-10 py-4 sm:py-5 text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600"
+                  >
+                    🏆 Claim Your Badge
+                  </button>
+                </MobilePopover>
+              </div>
             ) : (
-              <div className="text-green-400 text-2xl glow-gold py-4">
+              <div className="text-green-400 text-xl sm:text-2xl glow-gold py-4">
                 ✅ Badge Claimed! You are now officially certified BagBrain.
               </div>
             )}
 
             {(isHighScore || calculateIQ() >= 5000) && !showUsernameInput && !showLeaderboard && (
-              <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-lg p-8">
-                <h3 className="text-2xl glow-gold mb-6">🎉 HIGH SCORE ACHIEVED!</h3>
-                <p className="glow-gold mb-6 text-lg">Your score of {calculateIQ().toLocaleString()} qualifies for the leaderboard!</p>
+              <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-lg p-6 sm:p-8 mx-auto max-w-2xl">
+                <h3 className="text-xl sm:text-2xl glow-gold mb-4 sm:mb-6">🎉 HIGH SCORE ACHIEVED!</h3>
+                <p className="glow-gold mb-4 sm:mb-6 text-base sm:text-lg">Your score of {calculateIQ().toLocaleString()} qualifies for the leaderboard!</p>
                 <button 
                   onClick={() => setShowUsernameInput(true)}
-                  className="btn-primary px-8 py-4 text-lg bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-orange-600 hover:to-yellow-600"
+                  className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-orange-600 hover:to-yellow-600"
                 >
                   📝 Enter Leaderboard
                 </button>
@@ -383,27 +385,27 @@ export default function BagBrainIQTest() {
             )}
 
             {showUsernameInput && (
-              <div className="bg-black/40 border border-amber-500/30 rounded-lg p-8">
-                <h3 className="text-2xl glow-gold mb-6">Enter Your Username</h3>
+              <div className="bg-black/40 border border-amber-500/30 rounded-lg p-6 sm:p-8 mx-auto max-w-2xl">
+                <h3 className="text-xl sm:text-2xl glow-gold mb-4 sm:mb-6">Enter Your Username</h3>
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Your BagBrain alias..."
                   maxLength={20}
-                  className="input-standard w-full mb-6 text-lg p-4"
+                  className="input-standard w-full mb-4 sm:mb-6 text-base sm:text-lg p-3 sm:p-4"
                 />
-                <div className="flex gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <button 
                     onClick={handleSubmitUsername}
                     disabled={!username.trim() || isAddingScore}
-                    className="btn-primary px-8 py-4 text-lg"
+                    className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
                   >
                     {isAddingScore ? 'Adding...' : '🏆 Submit'}
                   </button>
                   <button 
                     onClick={() => setShowUsernameInput(false)}
-                    className="btn-primary px-8 py-4 text-lg opacity-75"
+                    className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg opacity-75"
                   >
                     Cancel
                   </button>
@@ -411,23 +413,23 @@ export default function BagBrainIQTest() {
               </div>
             )}
             
-            <div className="flex gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-4 sm:pt-6">
               <button 
                 onClick={restartTest}
-                className="btn-primary px-8 py-4 text-lg"
+                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg order-3 sm:order-1"
               >
                 🔄 Test Again
               </button>
               
               <button 
                 onClick={() => setShowLeaderboard(true)}
-                className="btn-primary px-8 py-4 text-lg"
+                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg order-2 sm:order-2"
               >
                 🏆 View Leaderboard
               </button>
               
               <Link href="/">
-                <button className="btn-primary px-8 py-4 text-lg">
+                <button className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg order-1 sm:order-3">
                   🏠 Back to Dashboard
                 </button>
               </Link>
