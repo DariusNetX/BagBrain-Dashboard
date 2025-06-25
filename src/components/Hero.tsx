@@ -52,29 +52,23 @@ export default function Hero() {
           }}
         />
       </div>
-      <h1 
-        className="text-4xl md:text-5xl glow-text text-center mt-8 cursor-pointer hover:scale-110 transition-all duration-300" 
-        onClick={(e) => {
-          console.log('🎯 Headline clicked! Triggering confetti...');
-          fireConfetti();
-        }}
-        style={{
-          textShadow: '0 0 4px #ffd700, 0 0 8px #ffa500, 0 0 12px #ff8c00',
-          color: '#fff700'
-        }}
-      >
+      <h1 className="text-5xl md:text-6xl glow-text text-center mt-8 cursor-pointer hover:scale-105 transition-all duration-300 font-bold" 
+          onClick={(e) => {
+            console.log('🎯 Headline clicked! Triggering confetti...');
+            fireConfetti();
+          }}>
         I Have Bags For Brains 💰🧠
       </h1>
-      <p className="mt-4 text-lg glow-gold font-body">
+      <p className="mt-6 text-lg glow-gold text-center font-medium">
         Stake. Withdraw. Meme. Repeat. <br /> The cult of BagBrain has begun.
       </p>
       
-      <div className="mt-8 space-y-3">
-        <p className="glow-cyan font-mono text-xl md:text-2xl animate-pulse tracking-wide" title="Brains in. Liquidity out.">
+      <div className="mt-8 space-y-4">
+        <p className="glow-gold font-mono text-xl animate-pulse tracking-wide text-center" title="Brains in. Liquidity out.">
           🧠 {totalStaked || '0'} $BAG staked
         </p>
         
-        <p className="glow-purple font-mono text-sm md:text-base" title="Backed by vibes and bag strength.">
+        <p className="glow-gold font-mono text-lg text-center" title="Backed by vibes and bag strength.">
           💧 Total Pool: {blaze || '0'} BLAZE / {bag || '0'} $BAG
         </p>
       </div>

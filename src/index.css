@@ -88,12 +88,11 @@ body::before {
   animation: bounce-slow 2.5s infinite ease-in-out;
 }
 
-/* Custom Glow Classes */
+/* Standardized Glow Classes */
 .glow-text {
   text-shadow: 
-    0 0 4px #ffd700,
-    0 0 8px #ffa500,
-    0 0 12px #ff8c00;
+    0 0 3px #ffd700,
+    0 0 6px #ffa500;
   color: #fff700 !important;
   font-weight: bold;
   animation: glow-pulse 2s ease-in-out infinite alternate;
@@ -117,18 +116,67 @@ body::before {
   font-weight: bold;
 }
 
+/* Button Standardization */
+.btn-primary {
+  background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: none;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ffb700 0%, #ff8c00 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn-primary:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Input Standardization */
+.input-standard {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  color: #fff700;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.input-standard:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.input-standard::placeholder {
+  color: rgba(255, 247, 0, 0.5);
+}
+
 @keyframes glow-pulse {
   0% {
     text-shadow: 
-      0 0 4px #ffd700,
-      0 0 8px #ffa500,
-      0 0 12px #ff8c00;
+      0 0 3px #ffd700,
+      0 0 6px #ffa500;
   }
   100% {
     text-shadow: 
-      0 0 6px #ffd700,
-      0 0 12px #ffa500,
-      0 0 18px #ff8c00;
+      0 0 4px #ffd700,
+      0 0 8px #ffa500;
   }
 }
 

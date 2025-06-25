@@ -21,26 +21,26 @@ const LPStats = () => {
 
   return (
     <div className="bg-black/60 backdrop-blur-md border border-cyan-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 glow-cyan">💱 Liquidity Pool Stats</h2>
-      <p className="mb-2 glow-gold">$BAG Reserve: {bag}</p>
-      <p className="mb-2 glow-gold">$BLAZE Reserve: {blaze}</p>
-      <p className="mb-2 glow-gold">Exchange Rate: 1 BLAZE = {price} $BAG</p>
-      <p className="mb-2 glow-purple" title="You provide. The people trade. You win.">Your Liquidity: 2.4 BLAZE / 1.2M $BAG</p>
+      <h2 className="text-2xl font-bold mb-6 glow-gold">💱 Liquidity Pool Stats</h2>
+      <p className="mb-3 glow-gold text-base">$BAG Reserve: {bag}</p>
+      <p className="mb-3 glow-gold text-base">$BLAZE Reserve: {blaze}</p>
+      <p className="mb-3 glow-gold text-base">Exchange Rate: 1 BLAZE = {price} $BAG</p>
+      <p className="mb-4 glow-gold text-base" title="You provide. The people trade. You win.">Your Liquidity: 2.4 BLAZE / 1.2M $BAG</p>
       
       {txStatus === 'pending' && (
-        <p className="mt-2 text-yellow-300 text-sm animate-pulse">
+        <p className="mt-4 glow-gold text-base animate-pulse text-center">
           ⏳ Summoning brains... Waiting for confirmation.
         </p>
       )}
 
       {txStatus === 'success' && (
-        <p className="mt-2 text-green-400 text-sm transition-opacity duration-300">
+        <p className="mt-4 glow-gold text-base transition-opacity duration-300 text-center">
           ✅ Brains deployed. Transaction confirmed!
         </p>
       )}
 
       {txStatus === 'error' && (
-        <p className="mt-2 text-red-400 text-sm transition-opacity duration-300">
+        <p className="mt-4 glow-gold text-base transition-opacity duration-300 text-center">
           ❌ Oops. Your bags escaped. Try again.
         </p>
       )}

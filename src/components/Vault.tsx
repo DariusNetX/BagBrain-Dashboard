@@ -97,26 +97,26 @@ const Vault = () => {
         />
       </div>
       
-      <h1 className="text-3xl font-bold glow-gold">🧠 BagBrain Vault</h1>
-      <p className="mt-2 glow-gold text-sm md:text-base max-w-lg">
+      <h2 className="text-2xl font-bold glow-gold mb-4">🧠 BagBrain Vault</h2>
+      <p className="mb-6 glow-gold text-base">
         Stake your $BAG. Embrace the chaos. Become the meme.
       </p>
       
       {!isConnected && (
         <div className="mb-6">
           <WalletConnect />
-          <p className="text-center glow-gold mt-4" title="Fumble the bag and you fumble the mission.">
+          <p className="text-center glow-gold mt-4 text-base" title="Fumble the bag and you fumble the mission.">
             🪙 Connect your wallet to begin your descent into degen finance.
           </p>
         </div>
       )}
       
       {isConnected && address && (
-        <p className="text-xs glow-gold mb-4">Connected Wallet: {address}</p>
+        <p className="text-sm glow-gold mb-4">Connected Wallet: {address}</p>
       )}
       
-      <p className="mb-2 glow-cyan" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
-      <p className="mb-2 glow-purple">Your Stake: {userStake || '--'} $BAG</p>
+      <p className="mb-3 glow-gold text-base" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
+      <p className="mb-4 glow-gold text-base">Your Stake: {userStake || '--'} $BAG</p>
       {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
         <p className="glow-gold text-sm mb-2" title="Brains are for staking. Not for thinking.">
           You haven't staked any $BAG yet. What are you waiting for?
