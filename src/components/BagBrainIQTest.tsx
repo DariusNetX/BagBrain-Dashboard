@@ -443,37 +443,37 @@ export default function BagBrainIQTest() {
   const question = questions[currentQuestion];
 
   return (
-    <div className="min-h-screen p-6 flex items-center justify-center">
-      <div className="max-w-3xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-10">
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
-            <div className="flex items-center gap-6">
-              <div className="text-lg glow-gold opacity-75">
+    <div className="min-h-screen p-4 sm:p-6 flex items-center justify-center">
+      <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10">
+        <div className="mb-10 sm:mb-12">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
+            <h1 className="text-3xl sm:text-5xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
+            <div className="flex items-center gap-4 sm:gap-6">
+              <div className="text-lg sm:text-xl glow-gold opacity-75">
                 Question {currentQuestion + 1} of {questions.length}
               </div>
               <Link href="/">
-                <button className="text-lg glow-gold opacity-75 hover:opacity-100 px-4 py-2">
+                <button className="text-lg sm:text-xl glow-gold opacity-75 hover:opacity-100 px-4 py-2">
                   ← Back
                 </button>
               </Link>
             </div>
           </div>
           
-          <div className="w-full bg-gray-800 rounded-full h-3 mb-6">
+          <div className="w-full bg-gray-800 rounded-full h-4 mb-6">
             <div 
-              className="bg-gradient-to-r from-yellow-400 to-amber-500 h-3 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-yellow-400 to-amber-500 h-4 rounded-full transition-all duration-300"
               style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
             ></div>
           </div>
         </div>
 
-        <div className="mb-12">
-          <h2 className="text-3xl glow-gold mb-10 text-center leading-relaxed">
+        <div className="mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-4xl glow-gold mb-8 sm:mb-12 text-center leading-relaxed px-2">
             {question.question}
           </h2>
           
-          <div className="space-y-6">
+          <div className="flex flex-col space-y-4 sm:space-y-6">
             {question.options.map((option, index) => (
               <MobilePopover 
                 key={index}
@@ -484,17 +484,17 @@ export default function BagBrainIQTest() {
               >
                 <button
                   onClick={() => handleAnswer(option.points)}
-                  className="w-full p-6 bg-black/40 border border-amber-500/20 rounded-lg text-left glow-gold hover:border-amber-500/50 hover:bg-black/60 transition-all text-lg leading-relaxed"
+                  className="w-full p-6 sm:p-8 bg-black/40 border-2 border-amber-500/20 rounded-xl text-left glow-gold hover:border-amber-500/60 hover:bg-black/70 transition-all duration-300 text-lg sm:text-xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[4rem] sm:min-h-[5rem] flex items-center"
                 >
-                  <span className="font-bold text-amber-400 mr-3 text-xl">{String.fromCharCode(65 + index)}.</span>
-                  {option.text}
+                  <span className="font-bold text-amber-400 mr-4 sm:mr-6 text-2xl sm:text-3xl flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
+                  <span className="flex-1">{option.text}</span>
                 </button>
               </MobilePopover>
             ))}
           </div>
         </div>
 
-        <div className="text-center text-base glow-gold opacity-50 pt-4">
+        <div className="text-center text-base sm:text-lg glow-gold opacity-50 pt-4 sm:pt-6">
           <MobilePopover 
             id="disclaimer" 
             content="No actual brains were harmed in the making of this test" 
