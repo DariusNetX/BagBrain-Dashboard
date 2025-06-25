@@ -1,25 +1,43 @@
 import { useVaultData } from '../hooks/useVaultData';
 import { useLPStats } from '../hooks/useLPStats';
 import { useConfetti } from '../hooks/useConfetti';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { removeBackground } from '../utils/imageUtils';
 
 export default function Hero() {
   const { totalStaked } = useVaultData();
   const { reserves } = useLPStats();
   const { bag, blaze } = reserves;
   const { fireConfetti } = useConfetti();
+  const [processedImage, setProcessedImage] = useState<string>('');
 
   useEffect(() => {
     console.log('Hero component mounted');
+    
+    // Process image to remove background
+    const processImage = async () => {
+      try {
+        const processed = await removeBackground('/bagbrain-character-2.png');
+        setProcessedImage(processed);
+      } catch (error) {
+        console.log('Background removal failed, using original image');
+      }
+    };
+    
+    processImage();
   }, []);
 
   return (
     <div className="text-center py-12 px-6 relative">
       <div className="mx-auto w-32 md:w-40 mb-4">
         <img
-          src="/bagbrain-character-2.png"
+          src={processedImage || "/bagbrain-character-2.png"}
           alt="BagBrain Character"
-          className="w-full h-auto drop-shadow-2xl animate-bounce-slow hover:scale-110 transition-transform duration-300"
+          className="w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300"
+          style={{
+            filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.2))',
+            background: 'transparent'
+          }}
           onLoad={() => console.log('BagBrain character loaded successfully')}
           onError={(e) => {
             console.log('Character image failed, trying backup');
