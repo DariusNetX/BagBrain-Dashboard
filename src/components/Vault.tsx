@@ -88,7 +88,15 @@ const Vault = () => {
   }
 
   return (
-    <div className="bg-black/80 backdrop-blur-sm border border-yellow-500/30 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
+    <div className="bg-black/80 backdrop-blur-sm border border-yellow-500/30 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto relative overflow-hidden">
+      <div className="absolute top-4 right-4 w-16 h-16 opacity-20">
+        <img
+          src="/bagbrain-character-1.png"
+          alt="BagBrain Vault Guardian"
+          className="w-full h-auto"
+        />
+      </div>
+      
       <h1 className="text-3xl font-bold glow-gold">🧠 BagBrain Vault</h1>
       <p className="mt-2 glow-gold text-sm md:text-base max-w-lg">
         Stake your $BAG. Embrace the chaos. Become the meme.

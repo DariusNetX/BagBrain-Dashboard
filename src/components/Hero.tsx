@@ -15,18 +15,22 @@ export default function Hero() {
 
   return (
     <div className="text-center py-12 px-6 relative">
-      <div className="mx-auto w-28 md:w-36 mb-4">
+      <div className="mx-auto w-32 md:w-40 mb-4">
         <img
-          src="/baghead-mascot.svg"
-          alt="BagHead Mascot"
-          className="w-full h-auto drop-shadow-xl animate-bounce-slow"
-          onLoad={() => console.log('SVG mascot loaded successfully')}
+          src="/bagbrain-character-2.png"
+          alt="BagBrain Character"
+          className="w-full h-auto drop-shadow-2xl animate-bounce-slow hover:scale-110 transition-transform duration-300"
+          onLoad={() => console.log('BagBrain character loaded successfully')}
           onError={(e) => {
-            console.log('SVG failed, using backup');
-            const container = e.currentTarget.parentElement;
-            if (container) {
-              container.innerHTML = '<div class="w-28 h-28 md:w-36 md:h-36 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
-            }
+            console.log('Character image failed, trying backup');
+            e.currentTarget.src = '/bagbrain-character-1.png';
+            e.currentTarget.onError = () => {
+              console.log('All character images failed, using fallback');
+              const container = e.currentTarget.parentElement;
+              if (container) {
+                container.innerHTML = '<div class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
+              }
+            };
           }}
         />
       </div>
