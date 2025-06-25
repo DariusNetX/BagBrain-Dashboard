@@ -300,3 +300,7 @@ Preferred communication style: Simple, everyday language.
 ✓ Fixed Results page React hooks violation by moving useEffect to proper component level
 ✓ Increased answer choice font sizes from text-lg/text-xl to text-xl/text-2xl for better readability
 ✓ Maintained consistent letter option sizing and button layout structure
+✓ Enhanced answer choice background consistency with dashboard dark theme
+✓ Updated button backgrounds from bg-black/40 to bg-black/80 for better contrast
+✓ Strengthened border colors from border-amber-500/20 to border-amber-500/30
+✓ Applied darker hover states (bg-black/90, border-amber-500/80) for improved visibility
