@@ -17,13 +17,10 @@ function App() {
           <div className="w-full max-w-6xl">
             <Hero />
           </div>
-          <div className="w-full space-y-6 flex flex-col items-center">
+          <div className="w-full space-y-8 flex flex-col items-center">
             <Vault />
             <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity." className="w-full max-w-4xl">
               <LPStats />
-            </div>
-            <div className="w-full max-w-4xl">
-              <WalletConnect />
             </div>
             <div className="w-full max-w-4xl">
               <BottomCTA />

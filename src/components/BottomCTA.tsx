@@ -39,7 +39,7 @@ export default function BottomCTA() {
         </MobilePopover>
       </p>
       
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
         <MobilePopover 
           id="share-btn" 
           content="Spread the BagBrain gospel to the masses" 
