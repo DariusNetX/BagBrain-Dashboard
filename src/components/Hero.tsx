@@ -59,7 +59,7 @@ export default function Hero() {
           fireConfetti();
         }}
         style={{
-          textShadow: '0 0 8px #ffd700, 0 0 16px #ffa500, 0 0 24px #ff8c00',
+          textShadow: '0 0 4px #ffd700, 0 0 8px #ffa500, 0 0 12px #ff8c00',
           color: '#fff700'
         }}
       >
