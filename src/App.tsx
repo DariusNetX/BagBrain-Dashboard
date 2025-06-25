@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
 import BagHeadMascot from './components/BagHeadMascot';
+import BagBrainCharacters from './components/BagBrainCharacters';
 import { WalletConnect } from './components/WalletConnect';
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
             <BagHeadMascot />
           </div>
         </div>
+        
+        <BagBrainCharacters />
 
         <Tooltip 
           id="stakeTip" 
