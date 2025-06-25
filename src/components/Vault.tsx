@@ -90,37 +90,37 @@ const Vault = () => {
   return (
     <div className="bg-white rounded-xl shadow-md p-4 w-full max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold glow-gold">🧠 BagBrain Vault</h1>
-      <p className="mt-2 text-zinc-400 text-sm md:text-base max-w-lg">
+      <p className="mt-2 glow-gold text-sm md:text-base max-w-lg">
         Stake your $BAG. Embrace the chaos. Become the meme.
       </p>
       
       {!isConnected && (
         <div className="mb-6">
           <WalletConnect />
-          <p className="text-center text-yellow-300 mt-4" title="Fumble the bag and you fumble the mission.">
+          <p className="text-center glow-gold mt-4" title="Fumble the bag and you fumble the mission.">
             🪙 Connect your wallet to begin your descent into degen finance.
           </p>
         </div>
       )}
       
       {isConnected && address && (
-        <p className="text-xs text-gray-400 mb-4">Connected Wallet: {address}</p>
+        <p className="text-xs glow-gold mb-4">Connected Wallet: {address}</p>
       )}
       
       <p className="mb-2 glow-cyan" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
       <p className="mb-2 glow-purple">Your Stake: {userStake || '--'} $BAG</p>
       {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
-        <p className="text-red-300 text-sm mb-2" title="Brains are for staking. Not for thinking.">
+        <p className="glow-gold text-sm mb-2" title="Brains are for staking. Not for thinking.">
           You haven't staked any $BAG yet. What are you waiting for?
         </p>
       )}
-      <p className="mb-4 text-gray-400" title="No $BAG? No brain. No entry.">Wallet Balance: 0 $BAG</p>
+      <p className="mb-4 glow-gold" title="No $BAG? No brain. No entry.">Wallet Balance: 0 $BAG</p>
 
       <div className="mt-6">
         <h2 className="text-xl md:text-2xl font-bold glow-purple">
           🔒 Vault Access
         </h2>
-        <p className="text-zinc-400 text-sm">
+        <p className="glow-gold text-sm">
           Lock your $BAG. Feed the brain. Secure your place in meme history.
         </p>
         
@@ -162,32 +162,32 @@ const Vault = () => {
         )}
 
         {txStatus === 'success' && (
-          <p className="mt-2 text-green-400 text-sm">
+          <p className="mt-2 glow-gold text-sm">
             ✅ Brains deployed. You're in.
           </p>
         )}
 
         {txStatus === 'error' && (
-          <p className="mt-2 text-red-400 text-sm">
+          <p className="mt-2 glow-gold text-sm">
             ❌ Something broke. But you're still a legend.
           </p>
         )}
         
-        <p className="text-sm text-gray-300 mt-2">{status}</p>
+        <p className="text-sm glow-gold mt-2">{status}</p>
         
-        <p className="text-center text-xs text-zinc-500 mt-10">
+        <p className="text-center text-xs glow-gold mt-10">
           BagBrain is not responsible for emotional damage caused by market fluctuations. DYOR, but make it meme.
         </p>
       </div>
       
       {userStake && userStake !== '--' && parseFloat(amount || '0') > parseFloat(userStake) && amount && (
-        <p className="text-red-400 text-sm mt-2">
+        <p className="glow-gold text-sm mt-2">
           Insufficient staked balance for withdrawal
         </p>
       )}
       
       {error && (
-        <p className="text-red-400 text-sm mt-2">
+        <p className="glow-gold text-sm mt-2">
           {error}
         </p>
       )}

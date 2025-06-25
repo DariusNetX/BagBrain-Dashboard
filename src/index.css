@@ -84,14 +84,14 @@ body {
 }
 
 .glow-cyan {
-  text-shadow: 0 0 6px #00ffff, 0 0 12px #0080ff;
-  color: #40e0d0 !important;
+  text-shadow: 0 0 6px #ffd700, 0 0 12px #ffa500;
+  color: #fff700 !important;
   font-weight: bold;
 }
 
 .glow-purple {
-  text-shadow: 0 0 6px #9966cc, 0 0 12px #6644aa;
-  color: #bb88ff !important;
+  text-shadow: 0 0 6px #ffd700, 0 0 12px #ffa500;
+  color: #fff700 !important;
   font-weight: bold;
 }
 
