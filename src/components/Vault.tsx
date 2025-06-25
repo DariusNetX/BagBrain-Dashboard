@@ -108,8 +108,15 @@ const Vault = () => {
       {!isConnected && (
         <div className="mb-6">
           <WalletConnect />
-          <p className="text-center glow-gold mt-4 text-base" title="Fumble the bag and you fumble the mission.">
-            🪙 Connect your wallet to begin your descent into degen finance.
+          <p className="text-center glow-gold mt-4 text-base">
+            🪙 <MobilePopover 
+              id="wallet-connect" 
+              content="Fumble the bag and you fumble the mission." 
+              isActive={activePopover === 'wallet-connect'} 
+              onToggle={togglePopover}
+            >
+              Connect your wallet to begin your descent into degen finance.
+            </MobilePopover>
           </p>
         </div>
       )}
@@ -118,14 +125,39 @@ const Vault = () => {
         <p className="text-sm glow-gold mb-4">Connected Wallet: {address}</p>
       )}
       
-      <p className="mb-3 glow-gold text-base" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
+      <p className="mb-3 glow-gold text-base">
+        <MobilePopover 
+          id="total-staked" 
+          content="Brains in. Liquidity out." 
+          isActive={activePopover === 'total-staked'} 
+          onToggle={togglePopover}
+        >
+          Total Staked: {totalStaked || '--'} $BAG
+        </MobilePopover>
+      </p>
       <p className="mb-4 glow-gold text-base">Your Stake: {userStake || '--'} $BAG</p>
       {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
-        <p className="glow-gold text-sm mb-2" title="Brains are for staking. Not for thinking.">
-          You haven't staked any $BAG yet. What are you waiting for?
+        <p className="mb-6 glow-gold text-center text-base">
+          💼 <MobilePopover 
+            id="first-stake" 
+            content="First time? Make it count." 
+            isActive={activePopover === 'first-stake'} 
+            onToggle={togglePopover}
+          >
+            Ready to stake? Your bags are waiting for brains.
+          </MobilePopover>
         </p>
       )}
-      <p className="mb-4 glow-gold" title="No $BAG? No brain. No entry.">Wallet Balance: 0 $BAG</p>
+      <p className="mb-4 glow-gold text-base">
+        <MobilePopover 
+          id="wallet-balance" 
+          content="No $BAG? No brain. No entry." 
+          isActive={activePopover === 'wallet-balance'} 
+          onToggle={togglePopover}
+        >
+          Wallet Balance: 0 $BAG
+        </MobilePopover>
+      </p>
 
       <div className="mt-6">
         <h2 className="text-xl md:text-2xl font-bold glow-purple">
