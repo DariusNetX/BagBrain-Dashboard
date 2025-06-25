@@ -258,3 +258,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Removed redundant "Connect Wallet" button text from Vault stake/withdraw buttons
 ✓ Cleaned up interface to avoid confusion with dedicated WalletConnect component
 ✓ Streamlined user experience with clearer action button labels
+✓ Replaced bouncing gold circle at bottom with custom BagBrain character mascot
+✓ Updated BagBrainCharacters component to use new authentic character image
+✓ Simplified component by removing character rotation and using single mascot design
