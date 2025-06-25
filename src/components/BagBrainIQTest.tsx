@@ -306,6 +306,52 @@ export default function BagBrainIQTest() {
     const iq = calculateIQ();
     const rating = getIQRating(iq);
 
+    // Trigger confetti and audio on results display
+    useEffect(() => {
+      const celebrateResults = async () => {
+        // Fire confetti
+        fireConfetti();
+        
+        // Play cheering audio with multiple fallbacks
+        try {
+          // Create a short celebration sound using Web Audio API
+          const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+          
+          // Create a simple celebratory tone sequence
+          const createTone = (frequency: number, duration: number, delay: number) => {
+            setTimeout(() => {
+              const oscillator = audioContext.createOscillator();
+              const gainNode = audioContext.createGain();
+              
+              oscillator.connect(gainNode);
+              gainNode.connect(audioContext.destination);
+              
+              oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+              oscillator.type = 'sine';
+              
+              gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+              gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
+              gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+              
+              oscillator.start(audioContext.currentTime);
+              oscillator.stop(audioContext.currentTime + duration);
+            }, delay);
+          };
+          
+          // Play celebration sequence: C-E-G-C (major chord arpeggio)
+          createTone(523.25, 0.2, 0);    // C5
+          createTone(659.25, 0.2, 100);  // E5  
+          createTone(783.99, 0.2, 200);  // G5
+          createTone(1046.50, 0.3, 300); // C6
+          
+        } catch (error) {
+          console.log('Audio celebration failed:', error);
+        }
+      };
+      
+      celebrateResults();
+    }, []); // Empty dependency array means this runs once when component mounts
+
     return (
       <div className="min-h-screen p-4 sm:p-6 flex items-center justify-center">
         <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10 text-center mx-auto">
