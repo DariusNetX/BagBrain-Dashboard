@@ -85,6 +85,36 @@ const questions: Question[] = [
       { text: "Converting your salary to $BAG tokens", tooltip: "Living the full BagBrain lifestyle", points: 28 },
       { text: "I AM the bag", tooltip: "Achieved perfect unity with the bags", points: 40 }
     ]
+  },
+  {
+    id: 8,
+    question: "What's your preferred method of FOMO management?",
+    options: [
+      { text: "Buy first, research later", tooltip: "The classic impulse purchase strategy", points: 12 },
+      { text: "Set price alerts then ignore them", tooltip: "The art of selective hearing", points: 16 },
+      { text: "Join every Discord and panic equally", tooltip: "Democratic distribution of anxiety", points: 20 },
+      { text: "Embrace the chaos, become one with FOMO", tooltip: "Zen master of market madness", points: 25 }
+    ]
+  },
+  {
+    id: 9,
+    question: "When the market crashes, you:",
+    options: [
+      { text: "Sell everything and hide", tooltip: "Sometimes survival instincts kick in", points: 8 },
+      { text: "Buy the dip with your lunch money", tooltip: "Ramen noodles for financial freedom", points: 18 },
+      { text: "Tattoo 'HODL' on your forehead", tooltip: "Permanent commitment to the cause", points: 22 },
+      { text: "Thank the market for the discount", tooltip: "Advanced BagBrain enlightenment achieved", points: 30 }
+    ]
+  },
+  {
+    id: 10,
+    question: "Complete this sentence: 'Wen moon?'",
+    options: [
+      { text: "Soon™", tooltip: "The eternal promise of crypto", points: 14 },
+      { text: "After I sell", tooltip: "Murphy's Law of cryptocurrency", points: 19 },
+      { text: "Moon is a state of mind", tooltip: "Philosophy meets portfolio", points: 24 },
+      { text: "We ARE the moon", tooltip: "Ultimate BagBrain transcendence", points: 35 }
+    ]
   }
 ];
 

@@ -286,3 +286,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Expanded button sizes to minimum 4rem height (5rem on desktop) for easier selection
 ✓ Added hover and active scale animations for better user feedback
 ✓ Improved container width and padding for optimal reading experience
+✓ Expanded IQ Test from 7 to 10 questions with new crypto-themed content
+✓ Added questions about FOMO management, market crashes, and meme culture
+✓ Maintained consistent scoring system and BagBrain personality throughout
