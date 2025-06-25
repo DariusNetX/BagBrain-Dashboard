@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useLPStats } from '../hooks/useLPStats';
+import { useMobilePopover } from '../hooks/useMobilePopover';
+import { MobilePopover } from './MobilePopover';
 
 const LPStats = () => {
   const { reserves, isLoading, error } = useLPStats();
   const { bag, blaze, price } = reserves;
   const [txStatus, setTxStatus] = useState('');
+  const { activePopover, togglePopover } = useMobilePopover();
 
   if (isLoading) {
     return (
@@ -25,7 +28,16 @@ const LPStats = () => {
       <p className="mb-3 glow-gold text-base">$BAG Reserve: {bag}</p>
       <p className="mb-3 glow-gold text-base">$BLAZE Reserve: {blaze}</p>
       <p className="mb-3 glow-gold text-base">Exchange Rate: 1 BLAZE = {price} $BAG</p>
-      <p className="mb-4 glow-gold text-base" title="You provide. The people trade. You win.">Your Liquidity: 2.4 BLAZE / 1.2M $BAG</p>
+      <p className="mb-4 glow-gold text-base">
+        <MobilePopover 
+          id="user-liquidity" 
+          content="You provide. The people trade. You win." 
+          isActive={activePopover === 'user-liquidity'} 
+          onToggle={togglePopover}
+        >
+          Your Liquidity: 2.4 BLAZE / 1.2M $BAG
+        </MobilePopover>
+      </p>
       
       {txStatus === 'pending' && (
         <p className="mt-4 glow-gold text-base animate-pulse text-center">

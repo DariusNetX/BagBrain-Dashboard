@@ -1,14 +1,17 @@
 import { useVaultData } from '../hooks/useVaultData';
 import { useLPStats } from '../hooks/useLPStats';
 import { useConfetti } from '../hooks/useConfetti';
+import { useMobilePopover } from '../hooks/useMobilePopover';
 import { useEffect, useState } from 'react';
 import { removeBackground } from '../utils/imageUtils';
+import { MobilePopover } from './MobilePopover';
 
 export default function Hero() {
   const { totalStaked } = useVaultData();
   const { reserves } = useLPStats();
   const { bag, blaze } = reserves;
   const { fireConfetti } = useConfetti();
+  const { activePopover, togglePopover } = useMobilePopover();
   const [processedImage, setProcessedImage] = useState<string>('');
 
   useEffect(() => {
@@ -64,12 +67,26 @@ export default function Hero() {
       </p>
       
       <div className="mt-8 space-y-4">
-        <p className="glow-gold font-mono text-xl animate-pulse tracking-wide text-center" title="Brains in. Liquidity out.">
-          🧠 {totalStaked || '0'} $BAG staked
+        <p className="glow-gold font-mono text-xl animate-pulse tracking-wide text-center">
+          🧠 <MobilePopover 
+            id="staked-info" 
+            content="Brains in. Liquidity out." 
+            isActive={activePopover === 'staked-info'} 
+            onToggle={togglePopover}
+          >
+            {totalStaked || '0'} $BAG staked
+          </MobilePopover>
         </p>
         
-        <p className="glow-gold font-mono text-lg text-center" title="Backed by vibes and bag strength.">
-          💧 Total Pool: {blaze || '0'} BLAZE / {bag || '0'} $BAG
+        <p className="glow-gold font-mono text-lg text-center">
+          💧 <MobilePopover 
+            id="pool-info" 
+            content="Backed by vibes and bag strength." 
+            isActive={activePopover === 'pool-info'} 
+            onToggle={togglePopover}
+          >
+            Total Pool: {blaze || '0'} BLAZE / {bag || '0'} $BAG
+          </MobilePopover>
         </p>
       </div>
     </div>

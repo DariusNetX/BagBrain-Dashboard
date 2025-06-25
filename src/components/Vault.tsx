@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { ethers } from 'ethers';
 import { useWallet } from '../hooks/useWallet';
 import { useVaultData } from '../hooks/useVaultData';
+import { useMobilePopover } from '../hooks/useMobilePopover';
 import { WalletConnect } from './WalletConnect';
+import { MobilePopover } from './MobilePopover';
 
 const VAULT_ADDRESS = '0xe54cde34f920f135B5a6B015e3841758E446b0D0';
 const BAG_ADDRESS = '0x5ffdfc954b057581500772ea8b7a26182dc4f8b4';
@@ -23,6 +25,7 @@ const Vault = () => {
   const [status, setStatus] = useState('');
   const [txStatus, setTxStatus] = useState('');
   const { totalStaked, userStake, isLoading, error } = useVaultData();
+  const { activePopover, togglePopover } = useMobilePopover();
 
   const handleStake = async () => {
     try {
@@ -142,24 +145,36 @@ const Vault = () => {
           step="0.01"
         />
         <div className="flex gap-2">
+          <MobilePopover 
+          id="stake-btn" 
+          content="YOLO into the vault" 
+          isActive={activePopover === 'stake-btn'} 
+          onToggle={togglePopover}
+        >
           <button 
             onClick={handleStake}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
             className="btn-primary flex-1"
-            title="YOLO into the vault"
           >
             {!isConnected ? 'Connect Wallet' : 'Stake $BAG'}
           </button>
+        </MobilePopover>
           
+        <MobilePopover 
+          id="withdraw-btn" 
+          content="claiming what's yours" 
+          isActive={activePopover === 'withdraw-btn'} 
+          onToggle={togglePopover}
+        >
           <button 
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
             className="btn-primary flex-1"
-            title="claiming what's yours"
           >
             {!isConnected ? 'Connect Wallet' : 'Withdraw $BAG'}
           </button>
+        </MobilePopover>
         </div>
         
         {txStatus === 'pending' && (
