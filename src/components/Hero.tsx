@@ -31,8 +31,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="text-center py-12 px-6 relative bg-black/30 backdrop-blur-sm rounded-lg mx-4 mb-8 border border-yellow-500/20">
-      <div className="mx-auto w-32 md:w-40 mb-4">
+    <div className="text-center py-16 px-8 relative bg-black/40 backdrop-blur-md rounded-xl border border-yellow-500/30 shadow-2xl">
+      <div className="mx-auto w-36 md:w-44 mb-6">
         <img
           src={processedImage || "/bagbrain-character-2.png"}
           alt="BagBrain Character"
@@ -49,25 +49,25 @@ export default function Hero() {
               console.log('All character images failed, using fallback');
               const container = e.currentTarget.parentElement;
               if (container) {
-                container.innerHTML = '<div class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
+                container.innerHTML = '<div class="w-36 h-36 md:w-44 md:h-44 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
               }
             };
           }}
         />
       </div>
-      <h1 className="text-5xl md:text-6xl glow-text text-center mt-8 cursor-pointer hover:scale-105 transition-all duration-300 font-bold" 
+      <h1 className="text-6xl md:text-7xl glow-text text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300 font-bold" 
           onClick={(e) => {
             console.log('🎯 Headline clicked! Triggering confetti...');
             fireConfetti();
           }}>
         I Have Bags For Brains 💰🧠
       </h1>
-      <p className="mt-6 text-lg glow-gold text-center font-medium">
+      <p className="mt-8 text-xl glow-gold text-center font-medium leading-relaxed">
         Stake. Withdraw. Meme. Repeat. <br /> The cult of BagBrain has begun.
       </p>
       
-      <div className="mt-8 space-y-4">
-        <p className="glow-gold font-mono text-xl animate-pulse tracking-wide text-center">
+      <div className="mt-12 space-y-6">
+        <p className="glow-gold font-mono text-2xl animate-pulse tracking-wide text-center">
           🧠 <MobilePopover 
             id="staked-info" 
             content="Brains in. Liquidity out." 
@@ -78,7 +78,7 @@ export default function Hero() {
           </MobilePopover>
         </p>
         
-        <p className="glow-gold font-mono text-lg text-center">
+        <p className="glow-gold font-mono text-xl text-center">
           💧 <MobilePopover 
             id="pool-info" 
             content="Backed by vibes and bag strength." 

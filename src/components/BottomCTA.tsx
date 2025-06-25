@@ -23,7 +23,7 @@ export default function BottomCTA() {
   };
 
   return (
-    <div className="mt-16 p-8 bg-black/60 rounded-lg border border-amber-500/30 text-center">
+    <div className="p-10 bg-black/60 rounded-xl border border-amber-500/30 text-center shadow-2xl">
       <h2 className="text-2xl font-bold mb-4 glow-gold">
         🎭 Join the BagBrain Cult
       </h2>

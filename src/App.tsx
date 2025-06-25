@@ -14,28 +14,38 @@ import { WalletConnect } from './components/WalletConnect';
 function Dashboard() {
   return (
     <>
-      <div className="flex flex-col min-h-screen w-full items-center justify-start p-4 gap-6">
-        <div className="w-full max-w-6xl">
-          <div className="flex justify-between items-center mb-4">
-            <Hero />
-            <Link href="/iq">
-              <button className="btn-primary px-6 py-3 text-sm">
-                🧠 Test Your IQ
-              </button>
-            </Link>
-          </div>
+      {/* Sticky IQ Test Button */}
+      <div className="fixed top-4 right-4 z-20">
+        <Link href="/iq">
+          <button className="btn-primary px-6 py-3 text-sm shadow-2xl border-2 border-yellow-500/50 hover:border-yellow-500/80 transition-all">
+            🧠 Test Your IQ
+          </button>
+        </Link>
+      </div>
+
+      <div className="flex flex-col min-h-screen w-full items-center justify-start p-6 gap-8">
+        {/* Hero Section */}
+        <div className="w-full max-w-6xl mt-4">
+          <Hero />
         </div>
-        <div className="w-full space-y-8 flex flex-col items-center">
-          <Vault />
+        
+        {/* Main Content */}
+        <div className="w-full space-y-10 flex flex-col items-center">
+          <div className="w-full max-w-4xl">
+            <Vault />
+          </div>
+          
           <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity." className="w-full max-w-4xl">
             <LPStats />
           </div>
+          
           <div className="w-full max-w-4xl">
             <BottomCTA />
           </div>
         </div>
 
-        <div className="w-32 md:w-40">
+        {/* Bottom Mascot */}
+        <div className="w-32 md:w-40 mt-8 mb-6">
           <BagHeadMascot />
         </div>
       </div>
