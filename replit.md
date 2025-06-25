@@ -201,3 +201,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Simplified BagHead mascot to responsive centered layout with slow bounce animation
 ✓ Refined bounce animation timing to 2.5s infinite ease-in-out for optimal visual rhythm
 ✓ Updated body styling to test tan background (#fef3c7) with black text and golden glow effects
+✓ Enhanced glow-text class with refined golden colors (#fff700) and improved text shadow effects
+✓ Applied glow-text styling to main Hero heading with bright golden glow effect
+✓ Simplified Tailwind config to allow custom CSS classes and removed complex theme extensions

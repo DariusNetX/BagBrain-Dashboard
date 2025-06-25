@@ -69,3 +69,10 @@ body {
   animation: bounce-slow 2.5s infinite ease-in-out;
 }
 
+/* Custom Glow Class */
+.glow-text {
+  text-shadow: 0 0 6px #ffd700, 0 0 12px #ffa500;
+  color: #fff700;
+  font-weight: bold;
+}
+

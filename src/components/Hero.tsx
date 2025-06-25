@@ -13,8 +13,8 @@ export default function Hero() {
         alt="BagHead Mascot"
         className="mx-auto w-28 md:w-36 mb-4 drop-shadow-xl"
       />
-      <h1 className="text-4xl md:text-6xl font-display text-bagbrain-accent drop-shadow-lg">
-        I Have Bags for Brains 🧠💰
+      <h1 className="text-4xl md:text-5xl glow-text text-center mt-8">
+        I Have Bags For Brains 💰🧠
       </h1>
       <p className="mt-4 text-lg text-zinc-300 font-body">
         Stake. Withdraw. Meme. Repeat. <br /> The cult of BagBrain has begun.
