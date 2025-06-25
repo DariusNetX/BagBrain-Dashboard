@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { pgTable, serial, varchar, integer, timestamp } from 'drizzle-orm/pg-core';
 
 // BagBrain ecosystem data models
 export const vaultSchema = z.object({
@@ -35,3 +36,24 @@ export type StakeTransaction = z.infer<typeof stakeTransactionSchema>;
 export type InsertVault = z.infer<typeof insertVaultSchema>;
 export type InsertLPStats = z.infer<typeof insertLpStatsSchema>;
 export type InsertStakeTransaction = z.infer<typeof insertStakeTransactionSchema>;
+
+// IQ Test Leaderboard Schema
+export const iqLeaderboardSchema = z.object({
+  id: z.number(),
+  username: z.string().min(1).max(20),
+  score: z.number().min(0).max(10000),
+  timestamp: z.string()
+});
+
+export const insertIqLeaderboardSchema = iqLeaderboardSchema.omit({ id: true, timestamp: true });
+
+export type IQLeaderboard = z.infer<typeof iqLeaderboardSchema>;
+export type InsertIQLeaderboard = z.infer<typeof insertIqLeaderboardSchema>;
+
+// Drizzle Tables
+export const iqLeaderboard = pgTable('iq_leaderboard', {
+  id: serial('id').primaryKey(),
+  username: varchar('username', { length: 20 }).notNull(),
+  score: integer('score').notNull(),
+  timestamp: timestamp('timestamp').defaultNow().notNull()
+});

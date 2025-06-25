@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { useMobilePopover } from '../hooks/useMobilePopover';
+import { useLeaderboard } from '../hooks/useLeaderboard';
 import { MobilePopover } from './MobilePopover';
 import { useConfetti } from '../hooks/useConfetti';
 
@@ -92,8 +93,13 @@ export default function BagBrainIQTest() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [claimed, setClaimed] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showUsernameInput, setShowUsernameInput] = useState(false);
+  const [username, setUsername] = useState('');
+  const [isHighScore, setIsHighScore] = useState(false);
   const { activePopover, togglePopover } = useMobilePopover();
   const { fireConfetti } = useConfetti();
+  const { topScores, addScore, isAddingScore, checkHighScore } = useLeaderboard();
 
   const handleAnswer = (points: number) => {
     const newAnswers = [...answers, points];
@@ -140,7 +146,89 @@ export default function BagBrainIQTest() {
     setAnswers([]);
     setShowResults(false);
     setClaimed(false);
+    setShowLeaderboard(false);
+    setShowUsernameInput(false);
+    setUsername('');
+    setIsHighScore(false);
   };
+
+  const handleSubmitUsername = () => {
+    if (username.trim()) {
+      const iq = calculateIQ();
+      addScore({ username: username.trim(), score: iq });
+      setShowUsernameInput(false);
+      setShowLeaderboard(true);
+      fireConfetti();
+    }
+  };
+
+  // Check if score qualifies for leaderboard when results are shown
+  useEffect(() => {
+    if (showResults && !isHighScore) {
+      const iq = calculateIQ();
+      checkHighScore(iq).then(setIsHighScore);
+    }
+  }, [showResults]);
+
+  if (showLeaderboard) {
+    return (
+      <div className="min-h-screen p-4 flex items-center justify-center">
+        <div className="max-w-2xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-8 text-center">
+          <h1 className="text-4xl font-bold mb-6 glow-gold">
+            🏆 BagBrain IQ Leaderboard
+          </h1>
+          
+          <div className="mb-8">
+            {topScores.length > 0 ? (
+              <div className="space-y-4">
+                {topScores.map((score, index) => (
+                  <div 
+                    key={score.id} 
+                    className={`p-4 rounded-lg border ${
+                      index === 0 ? 'border-yellow-500/50 bg-yellow-900/20' :
+                      index === 1 ? 'border-gray-400/50 bg-gray-800/20' :
+                      'border-amber-600/50 bg-amber-900/20'
+                    }`}
+                  >
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">
+                          {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
+                        </span>
+                        <span className="text-xl glow-gold font-bold">
+                          {score.username}
+                        </span>
+                      </div>
+                      <span className="text-xl glow-gold font-bold">
+                        {score.score.toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="glow-gold text-lg">No scores recorded yet. Be the first!</p>
+            )}
+          </div>
+
+          <div className="flex gap-4 justify-center">
+            <button 
+              onClick={restartTest}
+              className="btn-primary px-6 py-3"
+            >
+              🔄 Test Again
+            </button>
+            
+            <Link href="/">
+              <button className="btn-primary px-6 py-3">
+                🏠 Back to Dashboard
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (showResults) {
     const iq = calculateIQ();
@@ -192,6 +280,48 @@ export default function BagBrainIQTest() {
                 ✅ Badge Claimed! You are now officially certified BagBrain.
               </div>
             )}
+
+            {isHighScore && !showUsernameInput && !showLeaderboard && (
+              <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-lg p-6">
+                <h3 className="text-xl glow-gold mb-4">🎉 HIGH SCORE ACHIEVED!</h3>
+                <p className="glow-gold mb-4">Your score qualifies for the leaderboard!</p>
+                <button 
+                  onClick={() => setShowUsernameInput(true)}
+                  className="btn-primary px-6 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-orange-600 hover:to-yellow-600"
+                >
+                  📝 Enter Leaderboard
+                </button>
+              </div>
+            )}
+
+            {showUsernameInput && (
+              <div className="bg-black/40 border border-amber-500/30 rounded-lg p-6">
+                <h3 className="text-xl glow-gold mb-4">Enter Your Username</h3>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Your BagBrain alias..."
+                  maxLength={20}
+                  className="input-standard w-full mb-4"
+                />
+                <div className="flex gap-3 justify-center">
+                  <button 
+                    onClick={handleSubmitUsername}
+                    disabled={!username.trim() || isAddingScore}
+                    className="btn-primary px-6 py-3"
+                  >
+                    {isAddingScore ? 'Adding...' : '🏆 Submit'}
+                  </button>
+                  <button 
+                    onClick={() => setShowUsernameInput(false)}
+                    className="btn-primary px-6 py-3 opacity-75"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
             
             <div className="flex gap-4 justify-center">
               <button 
@@ -199,6 +329,13 @@ export default function BagBrainIQTest() {
                 className="btn-primary px-6 py-3"
               >
                 🔄 Test Again
+              </button>
+              
+              <button 
+                onClick={() => setShowLeaderboard(true)}
+                className="btn-primary px-6 py-3"
+              >
+                🏆 View Leaderboard
               </button>
               
               <Link href="/">
