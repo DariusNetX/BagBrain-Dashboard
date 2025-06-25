@@ -162,6 +162,45 @@ export default function BagBrainIQTest() {
     }
   };
 
+  const shareToTwitter = (iq: number, rating: string) => {
+    const text = `I just scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm officially ${rating}! 🧠💰 Join the cult of BagBrain and test your own intelligence at`;
+    const url = window.location.origin;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank', 'width=550,height=420');
+  };
+
+  const shareToFacebook = (iq: number, rating: string) => {
+    const url = window.location.origin;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm ${rating}! Test your BagBrain intelligence now!`)}`;
+    window.open(facebookUrl, '_blank', 'width=580,height=296');
+  };
+
+  const shareToInstagram = (iq: number, rating: string) => {
+    // Instagram doesn't have direct URL sharing, so we copy to clipboard with instructions
+    const shareText = `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm ${rating}! 🧠💰\n\nTest your BagBrain intelligence: ${window.location.origin}\n\n#BagBrain #IQTest #Meme #Crypto`;
+    navigator.clipboard.writeText(shareText).then(() => {
+      alert('Share text copied to clipboard! Paste it in your Instagram story or post.');
+    });
+  };
+
+  const shareGeneric = (iq: number, rating: string) => {
+    const shareData = {
+      title: 'BagBrain IQ Test Results',
+      text: `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm ${rating}! Test your own BagBrain intelligence.`,
+      url: window.location.origin
+    };
+
+    if (navigator.share) {
+      navigator.share(shareData);
+    } else {
+      // Fallback: copy to clipboard
+      const shareText = `${shareData.text}\n\n${shareData.url}`;
+      navigator.clipboard.writeText(shareText).then(() => {
+        alert('Share text copied to clipboard!');
+      });
+    }
+  };
+
   // Check if score qualifies for leaderboard when results are shown
   useEffect(() => {
     if (showResults && !isHighScore) {
@@ -264,8 +303,8 @@ export default function BagBrainIQTest() {
           </div>
 
           <div className="bg-black/40 border border-amber-500/30 rounded-lg p-8 mb-8">
-            <h3 className="text-2xl glow-gold mb-4">🎭 Share Your BagBrain Achievement</h3>
-            <p className="glow-gold mb-6 text-lg leading-relaxed">
+            <h3 className="text-3xl glow-gold mb-6">🎭 Share Your BagBrain Achievement</h3>
+            <p className="glow-gold mb-8 text-lg leading-relaxed">
               <MobilePopover 
                 id="share-achievement" 
                 content="Spread the BagBrain consciousness across the digital realm" 
@@ -277,6 +316,36 @@ export default function BagBrainIQTest() {
                 </span>
               </MobilePopover>
             </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <button 
+                onClick={() => shareToTwitter(iq, rating)}
+                className="btn-primary px-6 py-4 text-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 flex items-center justify-center gap-2"
+              >
+                🐦 Twitter
+              </button>
+              
+              <button 
+                onClick={() => shareToFacebook(iq, rating)}
+                className="btn-primary px-6 py-4 text-lg bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 flex items-center justify-center gap-2"
+              >
+                📘 Facebook
+              </button>
+              
+              <button 
+                onClick={() => shareToInstagram(iq, rating)}
+                className="btn-primary px-6 py-4 text-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 flex items-center justify-center gap-2"
+              >
+                📸 Instagram
+              </button>
+            </div>
+            
+            <button 
+              onClick={() => shareGeneric(iq, rating)}
+              className="btn-primary px-8 py-4 text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 w-full"
+            >
+              📤 Share Anywhere
+            </button>
           </div>
 
           <div className="space-y-8">
