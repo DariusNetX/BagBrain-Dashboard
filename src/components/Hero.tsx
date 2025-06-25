@@ -21,17 +21,13 @@ export default function Hero() {
           alt="BagHead Mascot"
           className="w-full h-auto drop-shadow-xl animate-bounce-slow"
           loading="eager"
-          onLoad={() => console.log('Primary PNG loaded successfully')}
+          onLoad={() => console.log('BagHead mascot PNG loaded successfully')}
           onError={(e) => {
-            console.log('Primary PNG failed, trying SVG fallback');
-            e.currentTarget.src = '/baghead-fallback.svg';
-            e.currentTarget.onError = () => {
-              console.log('SVG fallback failed, using emoji');
-              const container = e.currentTarget.parentElement;
-              if (container) {
-                container.innerHTML = '<div class="w-28 h-28 md:w-36 md:h-36 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow">💰</div>';
-              }
-            };
+            console.log('PNG failed to load, showing emoji fallback');
+            const container = e.currentTarget.parentElement;
+            if (container) {
+              container.innerHTML = '<div class="w-28 h-28 md:w-36 md:h-36 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
+            }
           }}
         />
       </div>
