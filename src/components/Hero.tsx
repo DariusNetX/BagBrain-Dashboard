@@ -15,18 +15,26 @@ export default function Hero() {
 
   return (
     <div className="text-center py-12 px-6 relative">
-      <img
-        src="/baghead-mascot.png"
-        alt="BagHead Mascot"
-        className="mx-auto w-28 md:w-36 mb-4 drop-shadow-xl"
-        loading="eager"
-        onError={(e) => {
-          console.error('Image failed to load:', e.currentTarget.src);
-          e.currentTarget.style.display = 'none';
-          e.currentTarget.nextElementSibling?.insertAdjacentHTML('beforebegin', '<div style="width: 112px; height: 112px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 16px;">💰</div>');
-        }}
-        onLoad={() => console.log('Baghead image loaded successfully')}
-      />
+      <div className="mx-auto w-28 md:w-36 mb-4">
+        <img
+          src="/baghead-mascot.png"
+          alt="BagHead Mascot"
+          className="w-full h-auto drop-shadow-xl animate-bounce-slow"
+          loading="eager"
+          onLoad={() => console.log('Primary PNG loaded successfully')}
+          onError={(e) => {
+            console.log('Primary PNG failed, trying SVG fallback');
+            e.currentTarget.src = '/baghead-fallback.svg';
+            e.currentTarget.onError = () => {
+              console.log('SVG fallback failed, using emoji');
+              const container = e.currentTarget.parentElement;
+              if (container) {
+                container.innerHTML = '<div class="w-28 h-28 md:w-36 md:h-36 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow">💰</div>';
+              }
+            };
+          }}
+        />
+      </div>
       <h1 
         className="text-4xl md:text-5xl glow-text text-center mt-8 cursor-pointer hover:scale-110 transition-all duration-300" 
         onClick={(e) => {
