@@ -109,17 +109,21 @@ export default function BagBrainIQTest() {
   const calculateIQ = () => {
     const totalPoints = answers.reduce((sum, points) => sum + points, 0);
     const maxPoints = questions.reduce((sum, q) => sum + Math.max(...q.options.map(o => o.points)), 0);
-    const baseIQ = Math.floor((totalPoints / maxPoints) * 100) + Math.floor(Math.random() * 50) + 100;
-    return Math.min(baseIQ, 420); // Cap at meme number
+    const baseScore = Math.floor((totalPoints / maxPoints) * 8000) + Math.floor(Math.random() * 2000);
+    return Math.min(baseScore, 10000);
   };
 
   const getIQRating = (iq: number) => {
-    if (iq >= 300) return "🧠 Transcendent BagBrain Deity";
-    if (iq >= 250) return "💎 Diamond Brain Overlord";
-    if (iq >= 200) return "🚀 Rocket Fuel Intelligence";
-    if (iq >= 150) return "⚡ High Voltage Brain";
-    if (iq >= 100) return "🎯 Standard Issue Bag Holder";
-    return "🥔 Potato Brain (But we love you)";
+    if (iq >= 9000) return "🧠 Transcendent BagBrain Deity - Over 9000!";
+    if (iq >= 8000) return "💎 Diamond Brain Overlord - Elite Tier";
+    if (iq >= 7000) return "🚀 Rocket Fuel Intelligence - Galaxy Brain";
+    if (iq >= 6000) return "⚡ High Voltage Brain - Big Brain Energy";
+    if (iq >= 5000) return "🎯 Master Bag Strategist - Above Average";
+    if (iq >= 4000) return "🔥 Solid Brain Foundation - Respectable";
+    if (iq >= 3000) return "📈 Growing Brain Power - On the Rise";
+    if (iq >= 2000) return "🌱 Developing Bag Wisdom - Learning Mode";
+    if (iq >= 1000) return "🎲 Random Walk Brain - Chaos Theory";
+    return "🥔 Potato Brain (But we love you anyway)";
   };
 
   const handleClaimBadge = () => {
@@ -150,8 +154,8 @@ export default function BagBrainIQTest() {
           </h1>
           
           <div className="mb-8">
-            <div className="text-6xl font-bold glow-gold mb-4">
-              {iq}
+            <div className="text-5xl font-bold glow-gold mb-4">
+              {iq.toLocaleString()}
             </div>
             <div className="text-2xl glow-gold mb-4">
               {rating}
@@ -159,11 +163,11 @@ export default function BagBrainIQTest() {
             <p className="glow-gold text-base opacity-75">
               <MobilePopover 
                 id="iq-explanation" 
-                content="Your BagBrain intelligence quotient, scientifically calculated by meme algorithms" 
+                content="Your BagBrain intelligence quotient, scientifically calculated by meme algorithms on a scale of 0-10,000" 
                 isActive={activePopover === 'iq-explanation'} 
                 onToggle={togglePopover}
               >
-                Calculated using advanced BagBrain quantum mechanics
+                Calculated using advanced BagBrain quantum mechanics (0-10,000 scale)
               </MobilePopover>
             </p>
           </div>

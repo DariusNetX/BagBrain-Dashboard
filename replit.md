@@ -244,3 +244,5 @@ Preferred communication style: Simple, everyday language.
 ✓ Implemented IQ scoring algorithm with meme ratings and badge claiming system
 ✓ Applied consistent BagBrain aesthetic with graffiti/glitch styling and golden theme
 ✓ Added mobile popover tooltips to all question options with humorous explanations
+✓ Updated IQ scoring system to 0-10,000 scale with expanded rating categories
+✓ Added number formatting with commas for better readability of high scores
