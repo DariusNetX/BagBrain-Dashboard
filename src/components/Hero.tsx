@@ -11,9 +11,14 @@ export default function Hero() {
   return (
     <div className="text-center py-12 px-6">
       <img
-        src="/baghead-mascot.png"
+        src="/test-mascot.svg"
         alt="BagHead Mascot"
         className="mx-auto w-28 md:w-36 mb-4 drop-shadow-xl"
+        onError={(e) => {
+          console.error('Image failed to load:', e.currentTarget.src);
+          e.currentTarget.style.border = '2px solid red';
+        }}
+        onLoad={() => console.log('Baghead image loaded successfully')}
       />
       <h1 
         className="text-4xl md:text-5xl glow-text text-center mt-8 cursor-pointer hover:scale-105 transition-transform" 
