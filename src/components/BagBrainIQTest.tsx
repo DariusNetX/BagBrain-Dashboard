@@ -166,9 +166,12 @@ export default function BagBrainIQTest() {
   useEffect(() => {
     if (showResults && !isHighScore) {
       const iq = calculateIQ();
-      checkHighScore(iq).then(setIsHighScore);
+      checkHighScore(iq).then((result) => {
+        setIsHighScore(result);
+        console.log('High score check:', iq, result);
+      });
     }
-  }, [showResults]);
+  }, [showResults, isHighScore, checkHighScore]);
 
   if (showLeaderboard) {
     return (
@@ -281,10 +284,10 @@ export default function BagBrainIQTest() {
               </div>
             )}
 
-            {isHighScore && !showUsernameInput && !showLeaderboard && (
+            {(isHighScore || calculateIQ() >= 5000) && !showUsernameInput && !showLeaderboard && (
               <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-lg p-6">
                 <h3 className="text-xl glow-gold mb-4">🎉 HIGH SCORE ACHIEVED!</h3>
-                <p className="glow-gold mb-4">Your score qualifies for the leaderboard!</p>
+                <p className="glow-gold mb-4">Your score of {calculateIQ().toLocaleString()} qualifies for the leaderboard!</p>
                 <button 
                   onClick={() => setShowUsernameInput(true)}
                   className="btn-primary px-6 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-orange-600 hover:to-yellow-600"

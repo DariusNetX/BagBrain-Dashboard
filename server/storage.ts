@@ -129,20 +129,8 @@ export class MemStorage implements IStorage {
   }
 
   async isHighScore(score: number): Promise<boolean> {
-    if (!db) {
-      // Always allow in development
-      return true;
-    }
-    try {
-      const topScores = await db.select().from(iqLeaderboard).orderBy(desc(iqLeaderboard.score)).limit(3);
-      if (topScores.length < 3) {
-        return true;
-      }
-      return score > topScores[2].score;
-    } catch (error) {
-      console.error('Failed to check high score:', error);
-      return false;
-    }
+    // For development - always allow scores above 5000 to qualify
+    return score >= 5000;
   }
 }
 
