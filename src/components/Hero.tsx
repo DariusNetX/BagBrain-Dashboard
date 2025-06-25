@@ -15,8 +15,20 @@ export default function Hero() {
 
   return (
     <div className="text-center py-12 px-6 relative">
-      <div className="mx-auto w-28 md:w-36 mb-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">
-        💰
+      <div className="mx-auto w-28 md:w-36 mb-4">
+        <img
+          src="/baghead-mascot.svg"
+          alt="BagHead Mascot"
+          className="w-full h-auto drop-shadow-xl animate-bounce-slow"
+          onLoad={() => console.log('SVG mascot loaded successfully')}
+          onError={(e) => {
+            console.log('SVG failed, using backup');
+            const container = e.currentTarget.parentElement;
+            if (container) {
+              container.innerHTML = '<div class="w-28 h-28 md:w-36 md:h-36 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
+            }
+          }}
+        />
       </div>
       <h1 
         className="text-4xl md:text-5xl glow-text text-center mt-8 cursor-pointer hover:scale-110 transition-all duration-300" 
