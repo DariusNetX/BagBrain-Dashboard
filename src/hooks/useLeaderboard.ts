@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '../lib/queryClient';
-import type { IQLeaderboard, InsertIQLeaderboard } from '@shared/schema';
+import type { IQLeaderboard, InsertIQLeaderboard } from '../../shared/schema';
 
 export const useLeaderboard = () => {
   const queryClient = useQueryClient();

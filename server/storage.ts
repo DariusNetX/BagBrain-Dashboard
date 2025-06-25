@@ -1,4 +1,15 @@
-import { Vault, LPStats, StakeTransaction, InsertVault, InsertLPStats, InsertStakeTransaction } from '../shared/schema.js';
+import { 
+  Vault, 
+  LPStats, 
+  StakeTransaction, 
+  IQLeaderboard,
+  InsertVault, 
+  InsertLPStats, 
+  InsertStakeTransaction,
+  InsertIQLeaderboard,
+  iqLeaderboard
+} from '../shared/schema.js';
+import { eq, desc } from 'drizzle-orm';
 
 export interface IStorage {
   // Vault operations
