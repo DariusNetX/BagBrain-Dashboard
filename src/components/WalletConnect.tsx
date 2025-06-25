@@ -25,7 +25,8 @@ export function WalletConnect() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 w-full">
+    <div className="bg-white rounded-xl shadow-md p-4 w-full max-w-4xl mx-auto">
+      <h2 className="text-2xl font-bold mb-4 glow-cyan">🦊 Wallet Connection</h2>
       <div className="text-center">
         <Wallet className="w-8 h-8 text-purple-400 mx-auto mb-3" />
         <p className="text-gray-300 mb-4 font-mono text-sm">

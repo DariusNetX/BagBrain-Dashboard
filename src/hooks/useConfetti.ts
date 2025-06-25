@@ -2,19 +2,18 @@ import confetti from 'canvas-confetti';
 
 export const useConfetti = () => {
   const fireConfetti = async () => {
-    console.log('Firing confetti burst!');
+    console.log('🎉 Firing confetti burst!');
     
-    if (typeof window === 'undefined' || !window.confetti) {
-      console.error('Confetti library not available');
+    // Check if confetti is available
+    if (typeof confetti !== 'function') {
+      console.error('Confetti library not loaded');
       return;
     }
     
     const colors = ['#FFD700', '#FFA500', '#FF8C00', '#DAA520'];
     
     try {
-      // Import confetti dynamically to ensure it's available
-      const confettiModule = await import('canvas-confetti');
-      const confetti = confettiModule.default;
+      // Use imported confetti directly
       
       // Main burst
       confetti({

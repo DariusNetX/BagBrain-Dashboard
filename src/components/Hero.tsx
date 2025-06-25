@@ -22,7 +22,8 @@ export default function Hero() {
         loading="eager"
         onError={(e) => {
           console.error('Image failed to load:', e.currentTarget.src);
-          e.currentTarget.src = "data:image/svg+xml,%3Csvg width='128' height='128' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='64' cy='64' r='60' fill='%23FFD700'/%3E%3Ctext x='64' y='70' text-anchor='middle' font-size='16'%3E💰%3C/text%3E%3C/svg%3E";
+          e.currentTarget.style.display = 'none';
+          e.currentTarget.nextElementSibling?.insertAdjacentHTML('beforebegin', '<div style="width: 112px; height: 112px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 16px;">💰</div>');
         }}
         onLoad={() => console.log('Baghead image loaded successfully')}
       />

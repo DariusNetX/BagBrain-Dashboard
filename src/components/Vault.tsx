@@ -88,8 +88,8 @@ const Vault = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 w-full">
-      <h1 className="text-3xl font-bold text-baggold">BagBrain Vault</h1>
+    <div className="bg-white rounded-xl shadow-md p-4 w-full max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold glow-gold">🧠 BagBrain Vault</h1>
       <p className="mt-2 text-zinc-400 text-sm md:text-base max-w-lg">
         Stake your $BAG. Embrace the chaos. Become the meme.
       </p>
@@ -107,8 +107,8 @@ const Vault = () => {
         <p className="text-xs text-gray-400 mb-4">Connected Wallet: {address}</p>
       )}
       
-      <p className="mb-2" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
-      <p className="mb-2">Your Stake: {userStake || '--'} $BAG</p>
+      <p className="mb-2 glow-cyan" title="Brains in. Liquidity out.">Total Staked: {totalStaked || '--'} $BAG</p>
+      <p className="mb-2 glow-purple">Your Stake: {userStake || '--'} $BAG</p>
       {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
         <p className="text-red-300 text-sm mb-2" title="Brains are for staking. Not for thinking.">
           You haven't staked any $BAG yet. What are you waiting for?

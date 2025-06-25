@@ -15,12 +15,14 @@ function App() {
           <div className="w-full max-w-6xl">
             <Hero />
           </div>
-          <div className="w-full max-w-4xl space-y-6">
+          <div className="w-full space-y-6 flex flex-col items-center">
             <Vault />
-            <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity.">
+            <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity." className="w-full max-w-4xl">
               <LPStats />
             </div>
-            <WalletConnect />
+            <div className="w-full max-w-4xl">
+              <WalletConnect />
+            </div>
           </div>
 
           <div className="w-32 md:w-40">
