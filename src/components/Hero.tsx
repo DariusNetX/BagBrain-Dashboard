@@ -1,6 +1,7 @@
 import { useVaultData } from '../hooks/useVaultData';
 import { useLPStats } from '../hooks/useLPStats';
 import { useConfetti } from '../hooks/useConfetti';
+import { useEffect } from 'react';
 
 export default function Hero() {
   const { totalStaked } = useVaultData();
@@ -8,10 +9,14 @@ export default function Hero() {
   const { bag, blaze } = reserves;
   const { fireConfetti } = useConfetti();
 
+  useEffect(() => {
+    console.log('Hero component mounted');
+  }, []);
+
   return (
     <div className="text-center py-12 px-6">
       <img
-        src="/test-mascot.svg"
+        src="/baghead-mascot.png"
         alt="BagHead Mascot"
         className="mx-auto w-28 md:w-36 mb-4 drop-shadow-xl"
         onError={(e) => {
@@ -21,8 +26,15 @@ export default function Hero() {
         onLoad={() => console.log('Baghead image loaded successfully')}
       />
       <h1 
-        className="text-4xl md:text-5xl glow-text text-center mt-8 cursor-pointer hover:scale-105 transition-transform" 
-        onClick={fireConfetti}
+        className="text-4xl md:text-5xl glow-text text-center mt-8 cursor-pointer hover:scale-110 transition-all duration-300" 
+        onClick={(e) => {
+          console.log('🎯 Headline clicked! Triggering confetti...');
+          fireConfetti();
+        }}
+        style={{
+          textShadow: '0 0 8px #ffd700, 0 0 16px #ffa500, 0 0 24px #ff8c00',
+          color: '#fff700'
+        }}
       >
         I Have Bags For Brains 💰🧠
       </h1>
