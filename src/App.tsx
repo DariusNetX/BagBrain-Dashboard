@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
 import { Tooltip } from 'react-tooltip';
+import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
 import BagHeadMascot from './components/BagHeadMascot';
@@ -10,7 +11,8 @@ function App() {
   return (
     <div className="App relative min-h-screen">
       <QueryClientProvider client={queryClient}>
-        <div className="flex flex-col min-h-screen w-full items-center justify-start p-4 gap-6 bg-yellow-50 text-black">
+        <div className="flex flex-col min-h-screen w-full items-center justify-start p-4 gap-6">
+          <Hero />
           <div className="w-full max-w-4xl space-y-6">
             <Vault />
             <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity.">
