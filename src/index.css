@@ -147,6 +147,17 @@ body::before {
   box-shadow: none;
 }
 
+/* IQ Test Answer Choice Override */
+.iq-answer-choice {
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+.iq-answer-choice:hover {
+  background-color: #1a1a1a !important;
+  background: #1a1a1a !important;
+}
+
 /* Input Standardization */
 .input-standard {
   background: rgba(0, 0, 0, 0.5);

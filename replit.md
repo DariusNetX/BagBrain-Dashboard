@@ -352,3 +352,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Integrated audio celebration directly into confetti trigger system
 ✓ Removed manual audio button from Results page for cleaner interface
 ✓ Connected audio and confetti to fire together automatically when results are displayed
+✓ Fixed white background color issue on IQ Test answer choices with CSS override
+✓ Added iq-answer-choice class with !important styles to ensure dark background
+✓ Applied inline styles and hover states for consistent dark theme appearance
