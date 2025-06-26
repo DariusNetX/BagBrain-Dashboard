@@ -231,7 +231,7 @@ const Vault = () => {
           <button 
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
-                     (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
+                     (userStake && userStake !== '--' && userStake !== '0' && parseFloat(amount) > parseFloat(userStake))}
             className="btn-primary w-full viral-button-text"
           >
             💰 Withdraw $BAG
@@ -244,11 +244,7 @@ const Vault = () => {
           type={status.includes('Staking') ? 'stake' : 'withdraw'} 
         />
 
-        {txStatus === 'error' && (
-          <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
-            ❌ Something broke. But you're still a legend.
-          </p>
-        )}
+
         
         <p className="text-xl glow-gold mt-4 text-center">{status}</p>
         

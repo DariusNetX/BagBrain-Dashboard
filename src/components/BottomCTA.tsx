@@ -24,11 +24,30 @@ export default function BottomCTA() {
 
   return (
     <div className="p-10 bg-black/60 rounded-xl border border-amber-500/30 text-center shadow-2xl">
-      <h2 className="text-2xl font-bold mb-4 glow-gold">
-        🎭 Join the BagBrain Cult
+      <h2 className="section-title mb-6 text-center">
+        🎉 Share + Claim BagHead NFT
       </h2>
+      <p className="emphasis-text mb-4 text-center max-w-2xl mx-auto">
+        Join the cult. Share your score. Claim your place in BagBrain history.
+      </p>
       
-      <p className="mb-6 glow-gold text-base">
+      {/* Meme Callouts */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
+        <div className="bg-black/40 border border-green-500/30 rounded-lg p-4 text-center">
+          <div className="text-3xl mb-2">📈</div>
+          <p className="text-green-400 font-bold text-sm">Number Go Up = Brain Go Brrr</p>
+        </div>
+        <div className="bg-black/40 border border-purple-500/30 rounded-lg p-4 text-center">
+          <div className="text-3xl mb-2">🤝</div>
+          <p className="text-purple-400 font-bold text-sm">Apes Together Strong</p>
+        </div>
+        <div className="bg-black/40 border border-amber-500/30 rounded-lg p-4 text-center">
+          <div className="text-3xl mb-2">🚀</div>
+          <p className="text-amber-400 font-bold text-sm">This Time Is Different</p>
+        </div>
+      </div>
+      
+      <p className="mb-6 viral-label text-center">
         <MobilePopover 
           id="cult-message" 
           content="Spread the madness. Claim your identity." 

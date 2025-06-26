@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 interface MemeStatusProps {
   status: 'idle' | 'pending' | 'success' | 'error';
-  type: 'stake' | 'withdraw' | 'general';
+  type: 'stake' | 'withdraw';
 }
 
 const memeMessages = {

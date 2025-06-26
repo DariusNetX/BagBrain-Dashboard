@@ -8,7 +8,7 @@ interface Meme {
   animation: 'bounce' | 'pulse' | 'float' | 'shake';
 }
 
-const brainBagMemes: Meme[] = [
+const bagBrainMemes: Meme[] = [
   {
     id: 'diamond-hands',
     text: "When you HODL $BAG through -90% 💎🙌",
@@ -68,7 +68,7 @@ const brainBagMemes: Meme[] = [
 ];
 
 const ViralMemes = () => {
-  const [currentMeme, setCurrentMeme] = useState<Meme>(brainBagMemes[0]);
+  const [currentMeme, setCurrentMeme] = useState<Meme>(bagBrainMemes[0]);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -76,8 +76,8 @@ const ViralMemes = () => {
       setIsVisible(false);
       
       setTimeout(() => {
-        const randomIndex = Math.floor(Math.random() * brainBagMemes.length);
-        setCurrentMeme(brainBagMemes[randomIndex]);
+        const randomIndex = Math.floor(Math.random() * bagBrainMemes.length);
+        setCurrentMeme(bagBrainMemes[randomIndex]);
         setIsVisible(true);
       }, 500);
       
