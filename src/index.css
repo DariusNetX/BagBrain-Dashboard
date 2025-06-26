@@ -91,27 +91,27 @@ body::before {
 /* Standardized Glow Classes */
 .glow-text {
   text-shadow: 
-    0 0 3px #ffd700,
-    0 0 6px #ffa500;
+    0 0 1.5px #ffd700,
+    0 0 3px #ffa500;
   color: #fff700 !important;
   font-weight: bold;
   animation: glow-pulse 2s ease-in-out infinite alternate;
 }
 
 .glow-gold {
-  text-shadow: 0 0 3px #ffd700, 0 0 6px #ffa500;
+  text-shadow: 0 0 1.5px #ffd700, 0 0 3px #ffa500;
   color: #fff700 !important;
   font-weight: bold;
 }
 
 .glow-cyan {
-  text-shadow: 0 0 3px #ffd700, 0 0 6px #ffa500;
+  text-shadow: 0 0 1.5px #ffd700, 0 0 3px #ffa500;
   color: #fff700 !important;
   font-weight: bold;
 }
 
 .glow-purple {
-  text-shadow: 0 0 3px #ffd700, 0 0 6px #ffa500;
+  text-shadow: 0 0 1.5px #ffd700, 0 0 3px #ffa500;
   color: #fff700 !important;
   font-weight: bold;
 }
@@ -251,13 +251,13 @@ body::before {
 @keyframes glow-pulse {
   0% {
     text-shadow: 
-      0 0 3px #ffd700,
-      0 0 6px #ffa500;
+      0 0 1.5px #ffd700,
+      0 0 3px #ffa500;
   }
   100% {
     text-shadow: 
-      0 0 4px #ffd700,
-      0 0 8px #ffa500;
+      0 0 2px #ffd700,
+      0 0 4px #ffa500;
   }
 }
 

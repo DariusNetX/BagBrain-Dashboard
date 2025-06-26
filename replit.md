@@ -343,3 +343,5 @@ Preferred communication style: Simple, everyday language.
 ✓ Implemented immediate audio trigger on test completion through user interaction
 ✓ Moved leaderboard button above character image and centered it on Results page
 ✓ Removed leaderboard button from bottom navigation to reduce button clutter
+✓ Reduced glow effect intensity by 50% across all text elements for more subtle appearance
+✓ Updated text-shadow values from 3px/6px to 1.5px/3px for refined visual styling
