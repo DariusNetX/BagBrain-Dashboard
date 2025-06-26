@@ -5,6 +5,7 @@ import { useVaultData } from '../hooks/useVaultData';
 import { useMobilePopover } from '../hooks/useMobilePopover';
 import { WalletConnect } from './WalletConnect';
 import { MobilePopover } from './MobilePopover';
+import MemeStatusMessages from './MemeStatusMessages';
 
 const VAULT_ADDRESS = '0xe54cde34f920f135B5a6B015e3841758E446b0D0';
 const BAG_ADDRESS = '0x5ffdfc954b057581500772ea8b7a26182dc4f8b4';
@@ -238,17 +239,10 @@ const Vault = () => {
         </MobilePopover>
         </div>
         
-        {txStatus === 'pending' && (
-          <p className="mt-4 glow-gold text-xl animate-pulse text-center">
-            ⏳ Summoning liquidity gods... Be patient.
-          </p>
-        )}
-
-        {txStatus === 'success' && (
-          <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
-            ✅ You're officially a legend. Transaction confirmed!
-          </p>
-        )}
+        <MemeStatusMessages 
+          status={txStatus as 'idle' | 'pending' | 'success' | 'error'} 
+          type={status.includes('Staking') ? 'stake' : 'withdraw'} 
+        />
 
         {txStatus === 'error' && (
           <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">

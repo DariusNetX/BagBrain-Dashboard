@@ -312,6 +312,29 @@ body::before {
   50% { transform: translateY(-3px); opacity: 1; }
 }
 
+/* Viral Meme Animations */
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(5deg); }
+  66% { transform: translateY(-5px) rotate(-3deg); }
+}
+
+@keyframes float-delayed-2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(-4deg); }
+  75% { transform: translateY(-12px) rotate(6deg); }
+}
+
+.animate-float-delayed {
+  animation: float-delayed 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-delayed-2 {
+  animation: float-delayed-2 7s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
 /* Legacy glow classes for compatibility */
 .glow-text {
   text-shadow: 
