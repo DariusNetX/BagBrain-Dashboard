@@ -354,21 +354,7 @@ export default function BagBrainIQTest() {
               </button>
             </div>
             
-            {/* BagBrain Character Image */}
-            <div className="flex justify-center mb-6">
-              <img 
-                src="/bagbrain-results.png" 
-                alt="BagBrain Character celebrating your results" 
-                className="w-3 h-3 sm:w-4 sm:h-4 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                style={{
-                  filter: 'drop-shadow(0 0 20px rgba(255, 247, 0, 0.3))'
-                }}
-                onError={(e) => {
-                  console.log('BagBrain results character failed to load');
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-            </div>
+
           </div>
 
           <div className="bg-black/40 border border-amber-500/30 rounded-lg p-6 sm:p-8 mb-8">
