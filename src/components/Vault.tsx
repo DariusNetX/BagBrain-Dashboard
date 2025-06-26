@@ -100,64 +100,93 @@ const Vault = () => {
         />
       </div>
       
-      <h2 className="text-4xl font-bold glow-gold mb-4">🧠 BagBrain Vault</h2>
-      <p className="mb-6 glow-gold text-xl">
+      <h2 className="section-title mb-6">🧠 BagBrain Vault</h2>
+      <p className="emphasis-text mb-8 text-center">
         Stake your $BAG. Embrace the chaos. Become the meme.
       </p>
       
       {!isConnected && (
         <div className="mb-6">
           <WalletConnect />
-          <p className="text-center glow-gold mt-4 text-xl">
+          <p className="viral-subtitle text-center mt-6">
             🪙 <MobilePopover 
               id="wallet-connect" 
               content="Fumble the bag and you fumble the mission." 
               isActive={activePopover === 'wallet-connect'} 
               onToggle={togglePopover}
             >
-              Connect your wallet to begin your descent into degen finance.
+              Connect wallet to begin your descent into degen finance
             </MobilePopover>
           </p>
         </div>
       )}
       
       {isConnected && address && (
-        <p className="text-lg glow-gold mb-4">Connected Wallet: {address}</p>
+        <p className="viral-label mb-6 text-center">Connected: {address.slice(0, 6)}...{address.slice(-4)}</p>
       )}
       
-      <p className="mb-3 glow-gold text-xl">
-        <MobilePopover 
-          id="total-staked" 
-          content="Brains in. Liquidity out." 
-          isActive={activePopover === 'total-staked'} 
-          onToggle={togglePopover}
-        >
-          Total Staked: {totalStaked || '--'} $BAG
-        </MobilePopover>
-      </p>
-      <p className="mb-4 glow-gold text-xl">Your Stake: {userStake || '--'} $BAG</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="text-center">
+          <p className="viral-label mb-2">🧠 Total Vault</p>
+          <p className="viral-stat text-green-400" style={{
+            background: 'linear-gradient(135deg, #00ff88 0%, #00cc88 50%, #00ff88 100%)',
+            backgroundSize: '200% 200%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            <MobilePopover 
+              id="total-staked" 
+              content="Brains in. Liquidity out." 
+              isActive={activePopover === 'total-staked'} 
+              onToggle={togglePopover}
+            >
+              {totalStaked || '--'} $BAG
+            </MobilePopover>
+          </p>
+        </div>
+        
+        <div className="text-center">
+          <p className="viral-label mb-2">💎 Your Stake</p>
+          <p className="viral-stat text-purple-400" style={{
+            background: 'linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #a855f7 100%)',
+            backgroundSize: '200% 200%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            {userStake || '--'} $BAG
+          </p>
+        </div>
+      </div>
       {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
-        <p className="mb-6 glow-gold text-center text-xl">
-          💼 <MobilePopover 
-            id="first-stake" 
-            content="First time? Make it count." 
-            isActive={activePopover === 'first-stake'} 
+        <div className="text-center mb-8">
+          <p className="emphasis-text">
+            💼 <MobilePopover 
+              id="first-stake" 
+              content="First time? Make it count." 
+              isActive={activePopover === 'first-stake'} 
+              onToggle={togglePopover}
+            >
+              Ready to stake? Your bags are waiting for brains.
+            </MobilePopover>
+          </p>
+        </div>
+      )}
+      
+      <div className="text-center mb-6">
+        <p className="viral-label mb-2">💰 Wallet Balance</p>
+        <p className="text-2xl font-bold text-amber-400">
+          <MobilePopover 
+            id="wallet-balance" 
+            content="No $BAG? No brain. No entry." 
+            isActive={activePopover === 'wallet-balance'} 
             onToggle={togglePopover}
           >
-            Ready to stake? Your bags are waiting for brains.
+            0 $BAG
           </MobilePopover>
         </p>
-      )}
-      <p className="mb-4 glow-gold text-lg">
-        <MobilePopover 
-          id="wallet-balance" 
-          content="No $BAG? No brain. No entry." 
-          isActive={activePopover === 'wallet-balance'} 
-          onToggle={togglePopover}
-        >
-          Wallet Balance: 0 $BAG
-        </MobilePopover>
-      </p>
+      </div>
 
       <div className="mt-6">
         <h2 className="text-xl md:text-2xl font-bold glow-purple">

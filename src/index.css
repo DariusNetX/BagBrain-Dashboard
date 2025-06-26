@@ -193,7 +193,126 @@ body::before {
   z-index: 2;
 }
 
-/* Standardized Glow Classes */
+/* Enhanced Typography Hierarchy */
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff700 0%, #ffd700 25%, #ffb700 50%, #ffd700 75%, #fff700 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: viralShimmer 3s ease-in-out infinite, textFloat 4s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.viral-subtitle {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff8c00 0%, #ffd700 50%, #ff8c00 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: viralShimmer 2.5s ease-in-out infinite reverse;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #fff700;
+  text-shadow: 
+    0 0 5px #ffd700,
+    0 0 10px #ffa500,
+    0 0 15px rgba(255, 215, 0, 0.3);
+  animation: titlePulse 3s ease-in-out infinite;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.viral-stat {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #00ff88 0%, #00cc88 50%, #00ff88 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: viralShimmer 2s ease-in-out infinite, statBounce 2s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+.viral-label {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: #ff6b6b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+  animation: labelFloat 3s ease-in-out infinite;
+}
+
+.emphasis-text {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 700;
+  background: linear-gradient(45deg, #ff6b6b 0%, #ff8e53 50%, #ff6b6b 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: viralShimmer 2s ease-in-out infinite;
+}
+
+.viral-button-text {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Viral Typography Animations */
+@keyframes viralShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.02); }
+}
+
+@keyframes titlePulse {
+  0%, 100% { 
+    text-shadow: 
+      0 0 5px #ffd700,
+      0 0 10px #ffa500,
+      0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  50% { 
+    text-shadow: 
+      0 0 8px #ffd700,
+      0 0 15px #ffa500,
+      0 0 25px rgba(255, 215, 0, 0.5);
+  }
+}
+
+@keyframes statBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes labelFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(-3px); opacity: 1; }
+}
+
+/* Legacy glow classes for compatibility */
 .glow-text {
   text-shadow: 
     0 0 1.5px #ffd700,

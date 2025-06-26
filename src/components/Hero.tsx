@@ -55,28 +55,37 @@ export default function Hero() {
           }}
         />
       </div>
-      <h1 className="text-7xl md:text-8xl glow-text text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300 font-bold" 
+      <h1 className="hero-title text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300" 
           onClick={(e) => {
             console.log('🎯 Headline clicked! Triggering confetti...');
             fireConfetti();
           }}>
-        I Have Bags For Brains 💰🧠
+        I Have Bags For Brains
       </h1>
-      <p className="mt-8 text-3xl glow-gold text-center font-medium leading-relaxed">
-        Stake. Withdraw. Meme. Repeat. <br /> The cult of BagBrain has begun.
+      <div className="text-center mt-6 mb-4">
+        <span className="text-6xl animate-bounce">💰🧠</span>
+      </div>
+      <p className="viral-subtitle text-center mt-6 leading-tight">
+        Stake. Withdraw. Meme. Repeat.
+      </p>
+      <p className="emphasis-text text-center mt-4">
+        The cult of BagBrain has begun.
       </p>
       
-      <div className="mt-12 space-y-6">
-        <p className="glow-gold font-mono text-4xl animate-pulse tracking-wide text-center">
-          🧠 <MobilePopover 
-            id="staked-info" 
-            content="Brains in. Liquidity out." 
-            isActive={activePopover === 'staked-info'} 
-            onToggle={togglePopover}
-          >
-            {totalStaked || '0'} $BAG staked
-          </MobilePopover>
-        </p>
+      <div className="mt-16 space-y-8">
+        <div className="text-center">
+          <p className="viral-label mb-2">🧠 Total Brains Deployed</p>
+          <p className="viral-stat">
+            <MobilePopover 
+              id="staked-info" 
+              content="Brains in. Liquidity out." 
+              isActive={activePopover === 'staked-info'} 
+              onToggle={togglePopover}
+            >
+              {totalStaked || '0'} $BAG
+            </MobilePopover>
+          </p>
+        </div>
         
         <p className="glow-gold font-mono text-3xl text-center">
           💧 <MobilePopover 
