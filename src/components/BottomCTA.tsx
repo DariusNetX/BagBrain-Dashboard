@@ -36,8 +36,8 @@ export default function BottomCTA() {
       <h2 className="section-title mb-6 text-center relative z-10">
         🎉 Share + Claim BagHead NFT
       </h2>
-      <p className="emphasis-text mb-4 text-center max-w-2xl mx-auto">
-        Join the cult. Share your score. Claim your place in BagBrain history.
+      <p className="emphasis-text mb-8 text-center max-w-2xl mx-auto">
+        Spread the BagBrain gospel across the digital realm. Every share brings us closer to peak meme saturation.
       </p>
       
 

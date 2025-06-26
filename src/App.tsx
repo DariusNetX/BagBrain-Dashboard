@@ -93,8 +93,6 @@ function App() {
   return (
     <div className="App relative min-h-screen">
       <ViralBackground />
-      <ViralEffects />
-      <ViralMemes />
       <QueryClientProvider client={queryClient}>
         <Router>
           <Switch>
