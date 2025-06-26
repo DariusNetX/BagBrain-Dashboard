@@ -499,6 +499,69 @@ export default function BagBrainIQTest() {
     );
   }
 
+  // Intro page component
+  if (showIntro) {
+    return (
+      <div 
+        className="min-h-screen p-4 sm:p-6 flex items-center justify-center relative"
+        style={{
+          backgroundImage: 'url(/bagbrain-intro.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/75"></div>
+        
+        <div className="max-w-4xl w-full bg-black/90 rounded-lg border-2 border-amber-500/60 p-6 sm:p-10 text-center mx-auto relative z-10 backdrop-blur-md shadow-2xl">
+          <h1 className="text-4xl sm:text-6xl font-bold mb-8 sm:mb-10 glow-gold">
+            🧠 BagBrain IQ Test
+          </h1>
+          
+          <div className="mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-4xl font-bold glow-gold mb-6 sm:mb-8">
+              The IQ Test for Degens. Prove you've got Bags for Brains 🧠💰
+            </h2>
+            
+            <div className="space-y-4 sm:space-y-6 text-lg sm:text-xl glow-gold opacity-90 max-w-3xl mx-auto">
+              <p>
+                Welcome to the ultimate crypto intelligence challenge designed for true degens.
+              </p>
+              <p>
+                This isn't your average IQ test - it's specifically crafted to measure your 
+                BagBrain intelligence quotient across crypto culture, market psychology, and meme mastery.
+              </p>
+              <p>
+                10 questions. Multiple choice. Scored on a scale of 0-10,000.
+              </p>
+              <p className="text-amber-400 font-semibold">
+                Think you can prove you've got bags for brains? Let's find out.
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-4 sm:space-y-6">
+            <button 
+              onClick={startTest}
+              className="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold py-4 px-8 sm:py-6 sm:px-12 rounded-lg text-xl sm:text-2xl transition-all duration-300 hover:scale-105 shadow-lg"
+            >
+              🚀 Start the Test
+            </button>
+            
+            <div className="flex gap-4 sm:gap-6 justify-center">
+              <Link href="/">
+                <button className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">
+                  🏠 Back to Dashboard
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const question = questions[currentQuestion];
 
   return (
