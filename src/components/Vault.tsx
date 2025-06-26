@@ -250,10 +250,7 @@ const Vault = () => {
         </MobilePopover>
         </div>
         
-        <MemeStatusMessages 
-          status={txStatus as 'idle' | 'pending' | 'success' | 'error'} 
-          type={status.includes('Staking') ? 'stake' : 'withdraw'} 
-        />
+
 
 
         
