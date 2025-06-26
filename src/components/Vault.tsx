@@ -100,15 +100,15 @@ const Vault = () => {
         />
       </div>
       
-      <h2 className="text-2xl font-bold glow-gold mb-4">🧠 BagBrain Vault</h2>
-      <p className="mb-6 glow-gold text-base">
+      <h2 className="text-3xl font-bold glow-gold mb-4">🧠 BagBrain Vault</h2>
+      <p className="mb-6 glow-gold text-lg">
         Stake your $BAG. Embrace the chaos. Become the meme.
       </p>
       
       {!isConnected && (
         <div className="mb-6">
           <WalletConnect />
-          <p className="text-center glow-gold mt-4 text-base">
+          <p className="text-center glow-gold mt-4 text-lg">
             🪙 <MobilePopover 
               id="wallet-connect" 
               content="Fumble the bag and you fumble the mission." 
@@ -122,10 +122,10 @@ const Vault = () => {
       )}
       
       {isConnected && address && (
-        <p className="text-sm glow-gold mb-4">Connected Wallet: {address}</p>
+        <p className="text-base glow-gold mb-4">Connected Wallet: {address}</p>
       )}
       
-      <p className="mb-3 glow-gold text-base">
+      <p className="mb-3 glow-gold text-lg">
         <MobilePopover 
           id="total-staked" 
           content="Brains in. Liquidity out." 
@@ -135,9 +135,9 @@ const Vault = () => {
           Total Staked: {totalStaked || '--'} $BAG
         </MobilePopover>
       </p>
-      <p className="mb-4 glow-gold text-base">Your Stake: {userStake || '--'} $BAG</p>
+      <p className="mb-4 glow-gold text-lg">Your Stake: {userStake || '--'} $BAG</p>
       {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
-        <p className="mb-6 glow-gold text-center text-base">
+        <p className="mb-6 glow-gold text-center text-lg">
           💼 <MobilePopover 
             id="first-stake" 
             content="First time? Make it count." 
@@ -210,38 +210,38 @@ const Vault = () => {
         </div>
         
         {txStatus === 'pending' && (
-          <p className="mt-4 glow-gold text-base animate-pulse text-center">
+          <p className="mt-4 glow-gold text-lg animate-pulse text-center">
             ⏳ Summoning liquidity gods... Be patient.
           </p>
         )}
 
         {txStatus === 'success' && (
-          <p className="mt-4 glow-gold text-base transition-opacity duration-300 text-center">
+          <p className="mt-4 glow-gold text-lg transition-opacity duration-300 text-center">
             ✅ You're officially a legend. Transaction confirmed!
           </p>
         )}
 
         {txStatus === 'error' && (
-          <p className="mt-4 glow-gold text-base transition-opacity duration-300 text-center">
+          <p className="mt-4 glow-gold text-lg transition-opacity duration-300 text-center">
             ❌ Something broke. But you're still a legend.
           </p>
         )}
         
-        <p className="text-base glow-gold mt-4 text-center">{status}</p>
+        <p className="text-lg glow-gold mt-4 text-center">{status}</p>
         
-        <p className="text-center text-sm glow-gold mt-8">
+        <p className="text-center text-base glow-gold mt-8">
           BagBrain is not responsible for emotional damage caused by market fluctuations. DYOR, but make it meme.
         </p>
       </div>
       
       {userStake && userStake !== '--' && parseFloat(amount || '0') > parseFloat(userStake) && amount && (
-        <p className="glow-gold text-base mt-4 text-center">
+        <p className="glow-gold text-lg mt-4 text-center">
           Insufficient staked balance for withdrawal
         </p>
       )}
       
       {error && (
-        <p className="glow-gold text-base mt-4 text-center">
+        <p className="glow-gold text-lg mt-4 text-center">
           {error}
         </p>
       )}

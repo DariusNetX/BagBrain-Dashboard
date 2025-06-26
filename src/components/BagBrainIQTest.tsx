@@ -386,7 +386,7 @@ export default function BagBrainIQTest() {
             <div className="text-2xl sm:text-4xl glow-gold mb-4 sm:mb-6 px-4 break-words">
               {rating}
             </div>
-            <p className="glow-gold text-lg sm:text-xl opacity-75 leading-relaxed px-4 mb-6 sm:mb-8">
+            <p className="glow-gold text-xl sm:text-2xl opacity-75 leading-relaxed px-4 mb-6 sm:mb-8">
               <MobilePopover 
                 id="iq-explanation" 
                 content="Your BagBrain intelligence quotient, scientifically calculated by meme algorithms on a scale of 0-10,000" 
@@ -415,8 +415,8 @@ export default function BagBrainIQTest() {
           </div>
 
           <div className="bg-black/40 border border-amber-500/30 rounded-lg p-6 sm:p-8 mb-8">
-            <h3 className="text-2xl sm:text-3xl glow-gold mb-4 sm:mb-6">🎭 Share Your BagBrain Achievement</h3>
-            <p className="glow-gold mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed px-2">
+            <h3 className="text-3xl sm:text-4xl glow-gold mb-4 sm:mb-6">🎭 Share Your BagBrain Achievement</h3>
+            <p className="glow-gold mb-6 sm:mb-8 text-lg sm:text-xl leading-relaxed px-2">
               <MobilePopover 
                 id="share-achievement" 
                 content="Spread the BagBrain consciousness across the digital realm" 
