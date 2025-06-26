@@ -506,8 +506,25 @@ export default function BagBrainIQTest() {
 
   return (
     <div className="min-h-screen p-4 sm:p-6 flex items-center justify-center">
-      <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10">
-        <div className="mb-10 sm:mb-12">
+      <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10 relative overflow-hidden">
+        <div className="absolute top-8 right-8 w-20 h-20 opacity-6 animate-pulse">
+          <img
+            src="/bagbrain-cool.png"
+            alt="Smart BagBrain"
+            className="w-full h-full object-contain"
+            loading="lazy"
+          />
+        </div>
+        <div className="absolute bottom-8 left-8 w-16 h-16 opacity-4 animate-float-delayed">
+          <img
+            src="/bagbrain-confused.png"
+            alt="Thinking BagBrain"
+            className="w-full h-full object-contain"
+            loading="lazy"
+          />
+        </div>
+        
+        <div className="mb-10 sm:mb-12 relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
             <h1 className="text-4xl sm:text-6xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
             <div className="flex items-center gap-4 sm:gap-6">

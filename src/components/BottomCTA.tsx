@@ -26,7 +26,7 @@ export default function BottomCTA() {
     <div className="p-10 bg-black/60 rounded-xl border border-amber-500/30 text-center shadow-2xl relative overflow-hidden">
       <div className="absolute top-6 right-6 w-12 h-12 opacity-8 animate-pulse">
         <img
-          src="/attached_assets/AF238323-E4EA-4162-B88A-81DF270E8A05_1750909130574.png"
+          src="/bagbrain-cool.png"
           alt="Celebrating BagBrain"
           className="w-full h-full object-contain"
           loading="lazy"

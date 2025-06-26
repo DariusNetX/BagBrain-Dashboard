@@ -95,7 +95,7 @@ const Vault = () => {
     <div className="bg-black/60 backdrop-blur-md border border-yellow-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto relative overflow-hidden">
       <div className="absolute top-4 right-4 w-16 h-16 opacity-8 animate-pulse">
         <img
-          src="/attached_assets/AF238323-E4EA-4162-B88A-81DF270E8A05_1750909130574.png"
+          src="/bagbrain-cool.png"
           alt="Cool BagBrain Vault Guardian"
           className="w-full h-full object-contain"
           loading="lazy"
@@ -103,7 +103,7 @@ const Vault = () => {
       </div>
       <div className="absolute bottom-4 left-4 w-12 h-12 opacity-5 animate-float-delayed">
         <img
-          src="/attached_assets/537030C6-924F-4D87-8A8A-3118C7567FA5_1750909130574.png"
+          src="/bagbrain-confused.png"
           alt="Thinking BagBrain"
           className="w-full h-full object-contain"
           loading="lazy"

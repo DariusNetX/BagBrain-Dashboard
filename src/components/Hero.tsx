@@ -36,7 +36,7 @@ export default function Hero() {
         {/* Background Character Elements */}
         <div className="absolute -top-6 -left-6 w-20 h-20 opacity-15 animate-pulse hidden md:block">
           <img
-            src="/attached_assets/537030C6-924F-4D87-8A8A-3118C7567FA5_1750909130574.png"
+            src="/bagbrain-confused.png"
             alt="Confused BagBrain"
             className="w-full h-full object-contain"
             loading="lazy"
@@ -67,7 +67,7 @@ export default function Hero() {
         
         <div className="absolute -top-6 -right-6 w-16 h-16 opacity-12 animate-float-delayed-2 hidden md:block">
           <img
-            src="/attached_assets/AF238323-E4EA-4162-B88A-81DF270E8A05_1750909130574.png"
+            src="/bagbrain-cool.png"
             alt="Cool BagBrain"
             className="w-full h-full object-contain"
             loading="lazy"
