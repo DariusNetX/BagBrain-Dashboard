@@ -1,52 +1,52 @@
 import { useState, useEffect } from 'react';
 
-const memeHeaders = [
-  "Welcome to the BagBrain Ecosystem 🧠💰",
-  "Where Smooth Brains Meet Diamond Hands 💎🙌", 
-  "Professional Bag Holders Unite! 💼📉",
-  "Turning FOMO into YOLO since 2024 🎰🚀",
-  "Your Favorite Degen Destination 🤡💸",
-  "Making Unrealistic Gains Realistic 📈🦄",
-  "Hopium Dealer & Dream Maker ✨💫",
-  "From Zero to Hero (or Hero to Zero) 📊🎭"
+const allMemes = [
+  "💰 Number Go Up Technology",
+  "🧠 Weaponized Autism Engaged", 
+  "💎 Diamond Hands Activated",
+  "🚀 Destination: Moon Base Alpha",
+  "📈 Stonks Only Go Up Mode",
+  "🎯 Maximum Degen Protocol",
+  "⚡ Big Brain Energy Deployed",
+  "🔥 This Is The Way Forward",
+  "🎪 Welcome to the Circus",
+  "💸 Money Printer Go Brrr",
+  "🎭 Peak Performance Mode",
+  "🌙 Wen Moon? Soon Moon!",
+  "🎲 YOLO Capital Deployed",
+  "🧬 DNA: Degen Not Advised",
+  "🎯 Bags Status: Secured",
+  "⭐ Main Character Energy",
+  "🎨 Turning Red Into Green",
+  "🔮 Future Millionaire Vibes",
+  "🎪 Clown Market Activated",
+  "💫 Generational Wealth Loading"
 ];
 
 const MemeHeader = () => {
-  const [currentHeader, setCurrentHeader] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [currentMeme, setCurrentMeme] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsVisible(false);
-      
-      setTimeout(() => {
-        setCurrentHeader((prev) => (prev + 1) % memeHeaders.length);
-        setIsVisible(true);
-      }, 300);
-      
-    }, 5000); // Change every 5 seconds
+      setCurrentMeme((prev) => (prev + 1) % allMemes.length);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="text-center mb-6">
-      <div 
-        className={`transition-all duration-300 ${
-          isVisible ? 'opacity-100 transform scale-100' : 'opacity-0 transform scale-95'
-        }`}
-      >
-        <p className="text-lg md:text-xl font-bold mb-3 text-amber-300">
-          {memeHeaders[currentHeader]}
-        </p>
-        <div className="flex justify-center space-x-1">
-          {memeHeaders.map((_, index) => (
+    <div className="text-center py-6 mb-6">
+      <div className="inline-block px-6 py-3 bg-black/60 rounded-xl border border-amber-500/30 backdrop-blur-md">
+        <h2 className="text-lg md:text-xl glow-gold transition-all duration-500">
+          {allMemes[currentMeme]}
+        </h2>
+        
+        <div className="flex justify-center mt-3 gap-1 flex-wrap max-w-md mx-auto">
+          {allMemes.map((_, index) => (
             <div
               key={index}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                index === currentHeader 
-                  ? 'bg-amber-400 scale-125' 
-                  : 'bg-amber-400/30 scale-100'
+              className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                index === currentMeme ? 'bg-amber-400' : 'bg-gray-600'
               }`}
             />
           ))}

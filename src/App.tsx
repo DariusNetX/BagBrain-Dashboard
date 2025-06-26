@@ -12,9 +12,6 @@ import BottomCTA from './components/BottomCTA';
 import BagBrainIQTest from './components/BagBrainIQTest';
 import LeaderboardPreview from './components/LeaderboardPreview';
 import ViralBackground from './components/ViralBackground';
-import ViralEffects from './components/ViralEffects';
-import ViralMemes from './components/ViralMemes';
-import MemeTooltips from './components/MemeTooltips';
 import MemeHeader from './components/MemeHeader';
 import { WalletConnect } from './components/WalletConnect';
 
@@ -64,10 +61,7 @@ function Dashboard() {
           <Hero />
         </div>
         
-        {/* Meme Tooltips */}
-        <div className="w-full max-w-4xl">
-          <MemeTooltips />
-        </div>
+
         
         {/* Main Content */}
         <div className="w-full space-y-10 flex flex-col items-center">

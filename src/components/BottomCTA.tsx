@@ -40,21 +40,7 @@ export default function BottomCTA() {
         Join the cult. Share your score. Claim your place in BagBrain history.
       </p>
       
-      {/* Meme Callouts - Compact */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6 max-w-3xl mx-auto">
-        <div className="bg-black/40 border border-green-500/30 rounded-lg p-3 text-center">
-          <div className="text-2xl mb-1">📈</div>
-          <p className="text-green-400 font-bold text-xs">Number Go Up</p>
-        </div>
-        <div className="bg-black/40 border border-purple-500/30 rounded-lg p-3 text-center">
-          <div className="text-2xl mb-1">🤝</div>
-          <p className="text-purple-400 font-bold text-xs">Apes Strong</p>
-        </div>
-        <div className="bg-black/40 border border-amber-500/30 rounded-lg p-3 text-center">
-          <div className="text-2xl mb-1">🚀</div>
-          <p className="text-amber-400 font-bold text-xs">This Time</p>
-        </div>
-      </div>
+
       
       <p className="mb-6 viral-label text-center">
         <MobilePopover 
