@@ -189,10 +189,10 @@ const Vault = () => {
       </div>
 
       <div className="mt-6">
-        <h2 className="text-xl md:text-2xl font-bold glow-purple">
+        <h3 className="emphasis-text mb-4 text-center">
           🔒 Vault Access
-        </h2>
-        <p className="glow-gold text-sm">
+        </h3>
+        <p className="viral-label text-center mb-6">
           Lock your $BAG. Feed the brain. Secure your place in meme history.
         </p>
         
@@ -215,9 +215,9 @@ const Vault = () => {
           <button 
             onClick={handleStake}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
-            className="btn-primary w-full"
+            className="btn-primary w-full viral-button-text"
           >
-            Stake $BAG
+            🧠 Stake $BAG
           </button>
         </MobilePopover>
           
@@ -231,9 +231,9 @@ const Vault = () => {
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
-            className="btn-primary w-full"
+            className="btn-primary w-full viral-button-text"
           >
-            Withdraw $BAG
+            💰 Withdraw $BAG
           </button>
         </MobilePopover>
         </div>

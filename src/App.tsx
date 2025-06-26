@@ -25,9 +25,13 @@ function Dashboard() {
         <div className="relative">
           <Link href="/iq">
             <button 
-              className="btn-primary px-6 py-3 text-sm shadow-2xl border-2 border-yellow-500/50 hover:border-yellow-500/80 transition-all"
+              className="viral-button-text bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl border-2 border-purple-500/50 hover:border-purple-400/80 transition-all duration-300 hover:scale-105"
               onMouseEnter={() => setShowLeaderboard(true)}
               onMouseLeave={() => setShowLeaderboard(false)}
+              style={{
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.3), 0 0 30px rgba(236, 72, 153, 0.2)'
+              }}
             >
               🧠 Test Your IQ
             </button>
