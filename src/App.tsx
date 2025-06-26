@@ -2,6 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
 import { Tooltip } from 'react-tooltip';
 import { Router, Route, Switch, Link } from 'wouter';
+import { useState } from 'react';
 import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
@@ -9,18 +10,38 @@ import BagHeadMascot from './components/BagHeadMascot';
 import BagBrainCharacters from './components/BagBrainCharacters';
 import BottomCTA from './components/BottomCTA';
 import BagBrainIQTest from './components/BagBrainIQTest';
+import LeaderboardPreview from './components/LeaderboardPreview';
 import { WalletConnect } from './components/WalletConnect';
 
 function Dashboard() {
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+
   return (
     <>
-      {/* Sticky IQ Test Button */}
-      <div className="fixed top-4 right-4 z-20">
-        <Link href="/iq">
-          <button className="btn-primary px-6 py-3 text-sm shadow-2xl border-2 border-yellow-500/50 hover:border-yellow-500/80 transition-all">
-            🧠 Test Your IQ
-          </button>
-        </Link>
+      {/* Sticky IQ Test Button with Leaderboard Preview */}
+      <div className="fixed top-4 right-4 z-40">
+        <div className="relative">
+          <Link href="/iq">
+            <button 
+              className="btn-primary px-6 py-3 text-sm shadow-2xl border-2 border-yellow-500/50 hover:border-yellow-500/80 transition-all"
+              onMouseEnter={() => setShowLeaderboard(true)}
+              onMouseLeave={() => setShowLeaderboard(false)}
+            >
+              🧠 Test Your IQ
+            </button>
+          </Link>
+          
+          {/* Leaderboard Preview Tooltip */}
+          {showLeaderboard && (
+            <div 
+              className="absolute top-full right-0 mt-2 z-50 animate-fadeIn"
+              onMouseEnter={() => setShowLeaderboard(true)}
+              onMouseLeave={() => setShowLeaderboard(false)}
+            >
+              <LeaderboardPreview />
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="flex flex-col min-h-screen w-full items-center justify-start p-6 gap-8">
