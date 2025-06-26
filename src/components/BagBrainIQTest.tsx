@@ -415,6 +415,16 @@ export default function BagBrainIQTest() {
               </MobilePopover>
             </p>
             
+            {/* Leaderboard Button - Centered above character */}
+            <div className="flex justify-center mb-6">
+              <button 
+                onClick={() => setShowLeaderboard(true)}
+                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
+              >
+                🏆 View Leaderboard
+              </button>
+            </div>
+            
             {/* BagBrain Character Image with Audio Trigger */}
             <div className="flex justify-center mb-6">
               <img 
@@ -558,20 +568,13 @@ export default function BagBrainIQTest() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-4 sm:pt-6">
               <button 
                 onClick={restartTest}
-                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg order-3 sm:order-1"
+                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
               >
                 🔄 Test Again
               </button>
               
-              <button 
-                onClick={() => setShowLeaderboard(true)}
-                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg order-2 sm:order-2"
-              >
-                🏆 View Leaderboard
-              </button>
-              
               <Link href="/">
-                <button className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg order-1 sm:order-3">
+                <button className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">
                   🏠 Back to Dashboard
                 </button>
               </Link>

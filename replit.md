@@ -341,3 +341,5 @@ Preferred communication style: Simple, everyday language.
 ✓ Added manual audio trigger button and clickable character image for browser compatibility
 ✓ Enhanced audio context initialization with better error handling and console logging
 ✓ Implemented immediate audio trigger on test completion through user interaction
+✓ Moved leaderboard button above character image and centered it on Results page
+✓ Removed leaderboard button from bottom navigation to reduce button clutter
