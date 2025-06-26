@@ -176,7 +176,7 @@ const Vault = () => {
           min="0"
           step="0.01"
         />
-        <div className="flex gap-12">
+        <div className="flex flex-col gap-6">
           <MobilePopover 
           id="stake-btn" 
           content="YOLO into the vault" 
@@ -186,7 +186,7 @@ const Vault = () => {
           <button 
             onClick={handleStake}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
-            className="btn-primary flex-1"
+            className="btn-primary w-full"
           >
             Stake $BAG
           </button>
@@ -202,7 +202,7 @@ const Vault = () => {
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
                      (userStake && userStake !== '--' && userStake !== null && parseFloat(amount) > parseFloat(userStake))}
-            className="btn-primary flex-1 ml-3"
+            className="btn-primary w-full"
           >
             Withdraw $BAG
           </button>
