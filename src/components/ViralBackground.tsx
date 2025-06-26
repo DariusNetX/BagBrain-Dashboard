@@ -41,6 +41,27 @@ const ViralBackground = () => {
           </div>
         ))}
         
+        {/* BagBrain Character Backgrounds */}
+        <div className="character-bg confused" style={{
+          backgroundImage: `url(/attached_assets/537030C6-924F-4D87-8A8A-3118C7567FA5_1750909130574.png)`,
+          top: '20%',
+          left: '5%',
+          width: '120px',
+          height: '120px',
+          opacity: 0.06,
+          animationDelay: '1s'
+        }} />
+        
+        <div className="character-bg cool" style={{
+          backgroundImage: `url(/attached_assets/AF238323-E4EA-4162-B88A-81DF270E8A05_1750909130574.png)`,
+          bottom: '20%',
+          right: '5%',
+          width: '140px',
+          height: '140px',
+          opacity: 0.08,
+          animationDelay: '3s'
+        }} />
+
         {/* Floating brain particles */}
         {[...Array(6)].map((_, i) => (
           <div

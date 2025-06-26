@@ -32,11 +32,21 @@ export default function Hero() {
 
   return (
     <div className="text-center py-16 px-8 relative bg-black/40 backdrop-blur-md rounded-xl border border-yellow-500/30 shadow-2xl">
-      <div className="mx-auto w-36 md:w-44 mb-6">
+      <div className="mx-auto w-36 md:w-44 mb-6 relative">
+        {/* Background Character Elements */}
+        <div className="absolute -top-6 -left-6 w-20 h-20 opacity-15 animate-pulse hidden md:block">
+          <img
+            src="/attached_assets/537030C6-924F-4D87-8A8A-3118C7567FA5_1750909130574.png"
+            alt="Confused BagBrain"
+            className="w-full h-full object-contain"
+            loading="lazy"
+          />
+        </div>
+        
         <img
           src={processedImage || "/bagbrain-character-2.png"}
           alt="BagBrain Character"
-          className="w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300"
+          className="w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
           style={{
             filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.2))',
             background: 'transparent'
@@ -54,6 +64,15 @@ export default function Hero() {
             };
           }}
         />
+        
+        <div className="absolute -top-6 -right-6 w-16 h-16 opacity-12 animate-float-delayed-2 hidden md:block">
+          <img
+            src="/attached_assets/AF238323-E4EA-4162-B88A-81DF270E8A05_1750909130574.png"
+            alt="Cool BagBrain"
+            className="w-full h-full object-contain"
+            loading="lazy"
+          />
+        </div>
       </div>
       <h1 className="hero-title text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300" 
           onClick={(e) => {

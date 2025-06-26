@@ -335,6 +335,22 @@ body::before {
   animation-delay: 3s;
 }
 
+/* Character Background Animations */
+.character-bg {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  animation: character-float 8s ease-in-out infinite;
+}
+
+@keyframes character-float {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  33% { transform: translateY(-15px) rotate(2deg) scale(1.05); }
+  66% { transform: translateY(-8px) rotate(-1deg) scale(0.98); }
+}
+
 /* Legacy glow classes for compatibility */
 .glow-text {
   text-shadow: 
