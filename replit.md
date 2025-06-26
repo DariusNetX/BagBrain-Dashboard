@@ -308,3 +308,5 @@ Preferred communication style: Simple, everyday language.
 ✓ Fixed bottom dashboard character display by updating BagBrainCharacters to use bagbrain-results.png
 ✓ Replaced non-functional new-bagbrain.png reference with working character image
 ✓ Maintained progressive loading with emoji fallback and error handling
+✓ Resized Results page character from w-48/64 to w-24/32 for better viewport fit
+✓ Reduced bottom margin from mb-8 to mb-6 for improved page spacing

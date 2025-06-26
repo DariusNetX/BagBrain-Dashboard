@@ -378,11 +378,11 @@ export default function BagBrainIQTest() {
             </p>
             
             {/* BagBrain Character Image */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-6">
               <img 
                 src="/bagbrain-results.png" 
                 alt="BagBrain Character celebrating your results" 
-                className="w-48 h-48 sm:w-64 sm:h-64 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                className="w-24 h-24 sm:w-32 sm:h-32 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 style={{
                   filter: 'drop-shadow(0 0 20px rgba(255, 247, 0, 0.3))'
                 }}
