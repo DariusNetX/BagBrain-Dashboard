@@ -355,3 +355,5 @@ Preferred communication style: Simple, everyday language.
 ✓ Fixed white background color issue on IQ Test answer choices with CSS override
 ✓ Added iq-answer-choice class with !important styles to ensure dark background
 ✓ Applied inline styles and hover states for consistent dark theme appearance
+✓ Increased IQ Test answer choice font sizes by 20% (text-2xl/3xl to text-3xl/4xl)
+✓ Enhanced letter option sizes from text-3xl/4xl to text-4xl/5xl for better readability
