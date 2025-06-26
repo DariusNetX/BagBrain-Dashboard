@@ -336,3 +336,4 @@ Preferred communication style: Simple, everyday language.
 ✓ Added authentic bagbrain-character-clean.png from attached assets for reliable character display
 ✓ Implemented proper loading states with useState hooks to prevent fallback conflicts
 ✓ Added transparent emoji fallback during loading and simplified error state without gold gradient
+✓ Reduced Results page character image size from w-24/32 h-24/32 to w-12/16 h-12/16 for better proportions
