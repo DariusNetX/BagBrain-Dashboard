@@ -11,6 +11,8 @@ import BagBrainCharacters from './components/BagBrainCharacters';
 import BottomCTA from './components/BottomCTA';
 import BagBrainIQTest from './components/BagBrainIQTest';
 import LeaderboardPreview from './components/LeaderboardPreview';
+import ViralBackground from './components/ViralBackground';
+import ViralEffects from './components/ViralEffects';
 import { WalletConnect } from './components/WalletConnect';
 
 function Dashboard() {
@@ -79,6 +81,8 @@ function Dashboard() {
 function App() {
   return (
     <div className="App relative min-h-screen">
+      <ViralBackground />
+      <ViralEffects />
       <QueryClientProvider client={queryClient}>
         <Router>
           <Switch>

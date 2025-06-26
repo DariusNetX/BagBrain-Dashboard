@@ -3,18 +3,38 @@
 @tailwind utilities;
 
 body {
-  background: 
-    url('/meme-pattern.svg'),
-    linear-gradient(135deg, #050505 0%, #0f0510 25%, #050f05 50%, #0f0f05 75%, #050505 100%);
-  background-attachment: fixed, fixed;
-  background-size: 150px 150px, cover;
-  background-repeat: repeat, no-repeat;
-  color: #f5f5f5;
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
   font-size: 115%; /* Increase base font size by 15% */
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  
+  /* Viral animated background with multiple layers */
+  background: 
+    /* Moving money rain animation */
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffd700' fill-opacity='0.1'%3E%3Ctext x='10' y='20' font-size='16'%3E💰%3C/text%3E%3Ctext x='70' y='50' font-size='12'%3E🧠%3C/text%3E%3Ctext x='30' y='80' font-size='14'%3E💎%3C/text%3E%3Ctext x='85' y='25' font-size='10'%3E$%3C/text%3E%3C/g%3E%3C/svg%3E"),
+    /* Floating brain particles */
+    url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ff8c00' fill-opacity='0.08'%3E%3Ccircle cx='50' cy='60' r='3'/%3E%3Ccircle cx='150' cy='40' r='2'/%3E%3Ccircle cx='80' cy='150' r='4'/%3E%3Ccircle cx='170' cy='120' r='2'/%3E%3C/g%3E%3C/svg%3E"),
+    /* Golden dot matrix */
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    /* Radial money glow effects */
+    radial-gradient(circle at 15% 25%, rgba(255, 215, 0, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(255, 140, 0, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 50% 10%, rgba(218, 165, 32, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 20% 90%, rgba(255, 215, 0, 0.03) 0%, transparent 30%),
+    /* Main viral gradient */
+    linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #151515 50%, #1a1a1a 75%, #0f0f0f 100%);
+  
+  color: #e5e5e5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  
+  /* Subtle animation for the entire background */
+  animation: viralPulse 20s ease-in-out infinite;
 }
 
 body::before {
@@ -97,6 +117,82 @@ body::before {
   animation: fadeIn 0.2s ease-out forwards;
 }
 
+/* Viral Background Animations */
+@keyframes viralPulse {
+  0%, 100% { 
+    background-size: 100px 100px, 200px 200px, 60px 60px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-position: 0 0, 50px 50px, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  25% { 
+    background-size: 110px 110px, 220px 220px, 65px 65px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-position: -10px -5px, 60px 40px, -5px -3px, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  50% { 
+    background-size: 105px 105px, 210px 210px, 62px 62px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-position: -5px -10px, 45px 55px, -3px -5px, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  75% { 
+    background-size: 115px 115px, 225px 225px, 67px 67px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-position: -15px 5px, 65px 35px, -7px 2px, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes moneyRain {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+}
+
+@keyframes goldShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Viral floating elements */
+.viral-money-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.money-particle {
+  position: absolute;
+  font-size: 24px;
+  animation: moneyRain 15s linear infinite;
+  opacity: 0.6;
+}
+
+.brain-particle {
+  position: absolute;
+  font-size: 20px;
+  animation: floatUp 20s linear infinite;
+  opacity: 0.4;
+}
+
+.shimmer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
+  background-size: 200% 200%;
+  animation: goldShimmer 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* Standardized Glow Classes */
 .glow-text {
   text-shadow: 
@@ -105,6 +201,11 @@ body::before {
   color: #fff700 !important;
   font-weight: bold;
   animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+  0% { text-shadow: 0 0 1.5px #ffd700, 0 0 3px #ffa500; }
+  100% { text-shadow: 0 0 2px #ffd700, 0 0 4px #ffa500, 0 0 6px #ffd700; }
 }
 
 .glow-gold {
