@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Share } from "lucide-react";
+import { useMobilePopover } from '../hooks/useMobilePopover';
+import { MobilePopover } from './MobilePopover';
 
 interface Meme {
   id: string;
@@ -86,6 +88,7 @@ const memes: Meme[] = [
 export default function MemeCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const { activePopover, togglePopover } = useMobilePopover();
 
   // Auto-advance every 4 seconds
   useEffect(() => {
@@ -115,6 +118,13 @@ export default function MemeCarousel() {
 
   const currentMeme = memes[currentIndex];
 
+  const shareToTwitter = (meme: Meme) => {
+    const text = `Check out this BagBrain meme: ${meme.title} 🧠💰\n\n#BagBrain #DeFi #CryptoMemes #WAGMI`;
+    const url = `${window.location.origin}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank');
+  };
+
   return (
     <div className="w-full max-w-6xl mx-auto p-4 sm:p-6">
       <div className="bg-black/60 border border-amber-500/30 rounded-lg p-6 sm:p-8">
@@ -124,13 +134,31 @@ export default function MemeCarousel() {
         
         <div className="relative">
           {/* Main meme display */}
-          <div className="relative overflow-hidden rounded-lg bg-black/40 max-w-2xl mx-auto">
+          <div className="relative overflow-hidden rounded-lg bg-black/40 max-w-2xl mx-auto group">
             <img
               src={currentMeme.src}
               alt={currentMeme.alt}
               className="w-full h-auto object-contain transition-opacity duration-500"
               loading="lazy"
             />
+            
+            {/* Twitter Share Button Overlay - Desktop Hover */}
+            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">
+              <MobilePopover
+                id={`share-meme-${currentIndex}`}
+                content="Share this BagBrain meme to Twitter and spread the degen wisdom!"
+                isActive={activePopover === `share-meme-${currentIndex}`}
+                onToggle={togglePopover}
+              >
+                <button
+                  onClick={() => shareToTwitter(currentMeme)}
+                  className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                  aria-label="Share to Twitter"
+                >
+                  <Share className="w-5 h-5" />
+                </button>
+              </MobilePopover>
+            </div>
             
             {/* Navigation arrows */}
             <button
@@ -150,11 +178,30 @@ export default function MemeCarousel() {
             </button>
           </div>
 
-          {/* Meme title */}
-          <div className="text-center mt-4 mb-6">
-            <h3 className="text-lg sm:text-xl font-bold glow-gold">
-              {currentMeme.title}
-            </h3>
+          {/* Meme title with mobile share button */}
+          <div className="flex items-center justify-between mt-4 mb-6">
+            <div className="flex-1 text-center">
+              <h3 className="text-lg sm:text-xl font-bold glow-gold">
+                {currentMeme.title}
+              </h3>
+            </div>
+            {/* Mobile Share Button */}
+            <div className="ml-4 md:hidden">
+              <MobilePopover
+                id={`share-meme-mobile-${currentIndex}`}
+                content="Share this BagBrain meme to Twitter and spread the degen wisdom!"
+                isActive={activePopover === `share-meme-mobile-${currentIndex}`}
+                onToggle={togglePopover}
+              >
+                <button
+                  onClick={() => shareToTwitter(currentMeme)}
+                  className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                  aria-label="Share to Twitter"
+                >
+                  <Share className="w-4 h-4" />
+                </button>
+              </MobilePopover>
+            </div>
           </div>
 
           {/* Dot indicators */}
