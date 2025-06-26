@@ -324,3 +324,4 @@ Preferred communication style: Simple, everyday language.
 ✓ Enhanced LPStats: title to text-3xl, all data text to text-lg, error messages to text-base
 ✓ Improved WalletConnect: title to text-3xl, description to text-lg, address to text-base
 ✓ Enhanced Results page: explanation text to text-xl/2xl, share section to text-3xl/4xl and text-lg/xl
+✓ Increased button spacing between Stake and Withdraw buttons from gap-8 to gap-12 for better visual separation

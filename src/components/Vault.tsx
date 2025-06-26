@@ -176,7 +176,7 @@ const Vault = () => {
           min="0"
           step="0.01"
         />
-        <div className="flex gap-8">
+        <div className="flex gap-12">
           <MobilePopover 
           id="stake-btn" 
           content="YOLO into the vault" 
