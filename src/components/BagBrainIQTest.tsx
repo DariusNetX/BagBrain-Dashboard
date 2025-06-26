@@ -320,8 +320,19 @@ export default function BagBrainIQTest() {
     const rating = getIQRating(iq);
 
     return (
-      <div className="min-h-screen p-4 sm:p-6 flex items-center justify-center">
-        <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10 text-center mx-auto">
+      <div 
+        className="min-h-screen p-4 sm:p-6 flex items-center justify-center relative"
+        style={{
+          backgroundImage: 'url(/bagbrain-results-bg.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/70"></div>
+        
+        <div className="max-w-4xl w-full bg-black/90 rounded-lg border-2 border-amber-500/60 p-6 sm:p-10 text-center mx-auto relative z-10 backdrop-blur-md shadow-2xl">
           <h1 className="text-4xl sm:text-5xl font-bold mb-8 sm:mb-10 glow-gold">
             🧠 Your BagBrain IQ Results
           </h1>
