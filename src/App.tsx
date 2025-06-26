@@ -13,7 +13,7 @@ import BagBrainIQTest from './components/BagBrainIQTest';
 import LeaderboardPreview from './components/LeaderboardPreview';
 import ViralBackground from './components/ViralBackground';
 import MemeHeader from './components/MemeHeader';
-import { WalletConnect } from './components/WalletConnect';
+
 
 function Dashboard() {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
