@@ -119,6 +119,7 @@ const questions: Question[] = [
 ];
 
 export default function BagBrainIQTest() {
+  const [showIntro, setShowIntro] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -185,6 +186,7 @@ export default function BagBrainIQTest() {
   };
 
   const restartTest = () => {
+    setShowIntro(true);
     setCurrentQuestion(0);
     setAnswers([]);
     setShowResults(false);
@@ -193,6 +195,14 @@ export default function BagBrainIQTest() {
     setShowUsernameInput(false);
     setUsername('');
     setIsHighScore(false);
+  };
+
+  const startTest = () => {
+    setShowIntro(false);
+  };
+
+  const startTest = () => {
+    setShowIntro(false);
   };
 
   const handleSubmitUsername = () => {
