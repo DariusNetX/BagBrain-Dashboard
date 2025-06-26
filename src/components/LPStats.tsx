@@ -24,12 +24,13 @@ const LPStats = () => {
 
   return (
     <div className="bg-black/60 backdrop-blur-md border border-cyan-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto relative overflow-hidden">
-      <div className="absolute top-4 left-4 w-14 h-14 opacity-6 animate-float-delayed">
+      <div className="absolute top-4 left-4 w-14 h-14 opacity-12 animate-float-delayed">
         <img
           src="/bagbrain-confused.png"
           alt="Confused BagBrain"
           className="w-full h-full object-contain"
-          loading="lazy"
+          loading="eager"
+          onLoad={() => console.log('✓ LP Stats confused BagBrain loaded')}
         />
       </div>
       <h2 className="section-title mb-8 relative z-10">💱 Liquidity Pool Stats</h2>

@@ -34,12 +34,13 @@ export default function Hero() {
     <div className="text-center py-16 px-8 relative bg-black/40 backdrop-blur-md rounded-xl border border-yellow-500/30 shadow-2xl">
       <div className="mx-auto w-36 md:w-44 mb-6 relative">
         {/* Background Character Elements */}
-        <div className="absolute -top-6 -left-6 w-20 h-20 opacity-15 animate-pulse hidden md:block">
+        <div className="absolute -top-6 -left-6 w-20 h-20 opacity-25 animate-pulse hidden md:block">
           <img
             src="/bagbrain-confused.png"
             alt="Confused BagBrain"
             className="w-full h-full object-contain"
-            loading="lazy"
+            loading="eager"
+            onLoad={() => console.log('✓ Hero confused BagBrain loaded')}
           />
         </div>
         
@@ -65,12 +66,13 @@ export default function Hero() {
           }}
         />
         
-        <div className="absolute -top-6 -right-6 w-16 h-16 opacity-12 animate-float-delayed-2 hidden md:block">
+        <div className="absolute -top-6 -right-6 w-16 h-16 opacity-20 animate-float-delayed-2 hidden md:block">
           <img
             src="/bagbrain-cool.png"
             alt="Cool BagBrain"
             className="w-full h-full object-contain"
-            loading="lazy"
+            loading="eager"
+            onLoad={() => console.log('✓ Hero cool BagBrain loaded')}
           />
         </div>
       </div>

@@ -42,27 +42,29 @@ const ViralBackground = () => {
         ))}
         
         {/* BagBrain Character Backgrounds */}
-        <div className="absolute top-1/4 left-8 w-32 h-32 opacity-8 animate-float-delayed">
+        <div className="absolute top-1/4 left-8 w-32 h-32 opacity-15 animate-float-delayed hidden lg:block">
           <img
             src="/bagbrain-confused.png"
             alt="Confused BagBrain Background"
             className="w-full h-full object-contain"
-            loading="lazy"
+            loading="eager"
+            onLoad={() => console.log('✓ Confused BagBrain background loaded successfully')}
             onError={(e) => {
-              console.log('Background character image failed to load');
+              console.error('✗ Failed to load confused BagBrain background');
               e.currentTarget.style.display = 'none';
             }}
           />
         </div>
         
-        <div className="absolute bottom-1/4 right-8 w-36 h-36 opacity-10 animate-float-delayed-2">
+        <div className="absolute bottom-1/4 right-8 w-36 h-36 opacity-20 animate-float-delayed-2 hidden lg:block">
           <img
             src="/bagbrain-cool.png"
             alt="Cool BagBrain Background"
             className="w-full h-full object-contain"
-            loading="lazy"
+            loading="eager"
+            onLoad={() => console.log('✓ Cool BagBrain background loaded successfully')}
             onError={(e) => {
-              console.log('Background character image failed to load');
+              console.error('✗ Failed to load cool BagBrain background');
               e.currentTarget.style.display = 'none';
             }}
           />
