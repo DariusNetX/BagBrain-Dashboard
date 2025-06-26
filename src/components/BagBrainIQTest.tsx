@@ -201,10 +201,6 @@ export default function BagBrainIQTest() {
     setShowIntro(false);
   };
 
-  const startTest = () => {
-    setShowIntro(false);
-  };
-
   const handleSubmitUsername = () => {
     if (username.trim()) {
       const iq = calculateIQ();
