@@ -23,8 +23,16 @@ const LPStats = () => {
   }
 
   return (
-    <div className="bg-black/60 backdrop-blur-md border border-cyan-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
-      <h2 className="section-title mb-8">💱 Liquidity Pool Stats</h2>
+    <div className="bg-black/60 backdrop-blur-md border border-cyan-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto relative overflow-hidden">
+      <div className="absolute top-4 left-4 w-14 h-14 opacity-6 animate-float-delayed">
+        <img
+          src="/attached_assets/537030C6-924F-4D87-8A8A-3118C7567FA5_1750909130574.png"
+          alt="Confused BagBrain"
+          className="w-full h-full object-contain"
+          loading="lazy"
+        />
+      </div>
+      <h2 className="section-title mb-8 relative z-10">💱 Liquidity Pool Stats</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="text-center">
