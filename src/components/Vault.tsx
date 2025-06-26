@@ -100,15 +100,15 @@ const Vault = () => {
         />
       </div>
       
-      <h2 className="text-3xl font-bold glow-gold mb-4">🧠 BagBrain Vault</h2>
-      <p className="mb-6 glow-gold text-lg">
+      <h2 className="text-4xl font-bold glow-gold mb-4">🧠 BagBrain Vault</h2>
+      <p className="mb-6 glow-gold text-xl">
         Stake your $BAG. Embrace the chaos. Become the meme.
       </p>
       
       {!isConnected && (
         <div className="mb-6">
           <WalletConnect />
-          <p className="text-center glow-gold mt-4 text-lg">
+          <p className="text-center glow-gold mt-4 text-xl">
             🪙 <MobilePopover 
               id="wallet-connect" 
               content="Fumble the bag and you fumble the mission." 
@@ -122,10 +122,10 @@ const Vault = () => {
       )}
       
       {isConnected && address && (
-        <p className="text-base glow-gold mb-4">Connected Wallet: {address}</p>
+        <p className="text-lg glow-gold mb-4">Connected Wallet: {address}</p>
       )}
       
-      <p className="mb-3 glow-gold text-lg">
+      <p className="mb-3 glow-gold text-xl">
         <MobilePopover 
           id="total-staked" 
           content="Brains in. Liquidity out." 
@@ -135,9 +135,9 @@ const Vault = () => {
           Total Staked: {totalStaked || '--'} $BAG
         </MobilePopover>
       </p>
-      <p className="mb-4 glow-gold text-lg">Your Stake: {userStake || '--'} $BAG</p>
+      <p className="mb-4 glow-gold text-xl">Your Stake: {userStake || '--'} $BAG</p>
       {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
-        <p className="mb-6 glow-gold text-center text-lg">
+        <p className="mb-6 glow-gold text-center text-xl">
           💼 <MobilePopover 
             id="first-stake" 
             content="First time? Make it count." 
@@ -148,7 +148,7 @@ const Vault = () => {
           </MobilePopover>
         </p>
       )}
-      <p className="mb-4 glow-gold text-base">
+      <p className="mb-4 glow-gold text-lg">
         <MobilePopover 
           id="wallet-balance" 
           content="No $BAG? No brain. No entry." 

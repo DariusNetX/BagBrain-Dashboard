@@ -55,19 +55,19 @@ export default function Hero() {
           }}
         />
       </div>
-      <h1 className="text-6xl md:text-7xl glow-text text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300 font-bold" 
+      <h1 className="text-7xl md:text-8xl glow-text text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300 font-bold" 
           onClick={(e) => {
             console.log('🎯 Headline clicked! Triggering confetti...');
             fireConfetti();
           }}>
         I Have Bags For Brains 💰🧠
       </h1>
-      <p className="mt-8 text-2xl glow-gold text-center font-medium leading-relaxed">
+      <p className="mt-8 text-3xl glow-gold text-center font-medium leading-relaxed">
         Stake. Withdraw. Meme. Repeat. <br /> The cult of BagBrain has begun.
       </p>
       
       <div className="mt-12 space-y-6">
-        <p className="glow-gold font-mono text-3xl animate-pulse tracking-wide text-center">
+        <p className="glow-gold font-mono text-4xl animate-pulse tracking-wide text-center">
           🧠 <MobilePopover 
             id="staked-info" 
             content="Brains in. Liquidity out." 
@@ -78,7 +78,7 @@ export default function Hero() {
           </MobilePopover>
         </p>
         
-        <p className="glow-gold font-mono text-2xl text-center">
+        <p className="glow-gold font-mono text-3xl text-center">
           💧 <MobilePopover 
             id="pool-info" 
             content="Backed by vibes and bag strength." 
