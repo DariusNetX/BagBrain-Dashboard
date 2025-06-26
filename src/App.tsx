@@ -13,6 +13,7 @@ import BagBrainIQTest from './components/BagBrainIQTest';
 import LeaderboardPreview from './components/LeaderboardPreview';
 import ViralBackground from './components/ViralBackground';
 import MemeHeader from './components/MemeHeader';
+import MemeCarousel from './components/MemeCarousel';
 
 
 function Dashboard() {
@@ -75,6 +76,11 @@ function Dashboard() {
           
           <div className="w-full max-w-4xl">
             <BottomCTA />
+          </div>
+
+          {/* Meme Carousel */}
+          <div className="w-full max-w-6xl">
+            <MemeCarousel />
           </div>
         </div>
 
