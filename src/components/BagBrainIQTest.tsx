@@ -359,7 +359,7 @@ export default function BagBrainIQTest() {
               <img 
                 src="/bagbrain-results.png" 
                 alt="BagBrain Character celebrating your results" 
-                className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                className="w-3 h-3 sm:w-4 sm:h-4 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 style={{
                   filter: 'drop-shadow(0 0 20px rgba(255, 247, 0, 0.3))'
                 }}

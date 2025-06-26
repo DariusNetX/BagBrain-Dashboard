@@ -357,3 +357,4 @@ Preferred communication style: Simple, everyday language.
 ✓ Applied inline styles and hover states for consistent dark theme appearance
 ✓ Increased IQ Test answer choice font sizes by 20% (text-2xl/3xl to text-3xl/4xl)
 ✓ Enhanced letter option sizes from text-3xl/4xl to text-4xl/5xl for better readability
+✓ Reduced Results page character image size by 75% (w-12/16 h-12/16 to w-3/4 h-3/4)
