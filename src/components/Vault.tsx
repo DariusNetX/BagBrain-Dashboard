@@ -5,7 +5,7 @@ import { useVaultData } from '../hooks/useVaultData';
 import { useMobilePopover } from '../hooks/useMobilePopover';
 import { WalletConnect } from './WalletConnect';
 import { MobilePopover } from './MobilePopover';
-import MemeStatusMessages from './MemeStatusMessages';
+
 
 const VAULT_ADDRESS = '0xe54cde34f920f135B5a6B015e3841758E446b0D0';
 const BAG_ADDRESS = '0x5ffdfc954b057581500772ea8b7a26182dc4f8b4';
