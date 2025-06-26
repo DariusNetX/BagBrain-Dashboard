@@ -1,0 +1,200 @@
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+interface Meme {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+}
+
+const memes: Meme[] = [
+  {
+    id: "sonic-bridge",
+    src: "/meme-sonic-bridge.png",
+    alt: "Just bridged my last two brain cells to Sonic. Still paid gas twice. Worth it.",
+    title: "The Bridge Life"
+  },
+  {
+    id: "sonic-brain-cells",
+    src: "/meme-sonic-brain-cells.png", 
+    alt: "Just bridged my last two brain cells to Sonic. Still paid gas twice. Worth it.",
+    title: "Brain Cell Bridge"
+  },
+  {
+    id: "twice-bags-brains",
+    src: "/meme-twice-bags-brains.png",
+    alt: "I have twice the bags but half the brains",
+    title: "Bag Math"
+  },
+  {
+    id: "portfolio-drip",
+    src: "/meme-portfolio-drip.png",
+    alt: "My portfolio's down but my drip's eternal",
+    title: "Eternal Drip"
+  },
+  {
+    id: "bible-markets",
+    src: "/meme-bible-markets.png",
+    alt: "He who understands memes understands markets",
+    title: "Meme Bible"
+  },
+  {
+    id: "apy-gas-broke",
+    src: "/meme-apy-gas-broke.png",
+    alt: "If APY is 42 and gas is $89, how broke am I?",
+    title: "DeFi Math"
+  },
+  {
+    id: "tradition-top",
+    src: "/meme-tradition-top.png",
+    alt: "Still bought the top. It's tradition.",
+    title: "Top Buyer"
+  },
+  {
+    id: "iq-wallet-wrecked",
+    src: "/meme-iq-wallet-wrecked.png",
+    alt: "Scored 9,500 on the IQ test. Wallet still wrecked.",
+    title: "Smart but Broke"
+  },
+  {
+    id: "confusion-gas-fees",
+    src: "/meme-confusion-gas-fees.png",
+    alt: "Midbaghead confusion: Me calculating gas fees with vibes and vibes only",
+    title: "Gas Fee Vibes"
+  },
+  {
+    id: "sonic-rocket",
+    src: "/meme-sonic-rocket.png",
+    alt: "My transaction IQ is measured in blocks per second",
+    title: "Sonic Speed"
+  },
+  {
+    id: "still-holding-genius",
+    src: "/meme-still-holding-genius.png",
+    alt: "Still holding. Still bagged. Still a genius.",
+    title: "Diamond Hands"
+  },
+  {
+    id: "iq-two-confirmed",
+    src: "/meme-iq-two-confirmed.png",
+    alt: "Scored a 2. Bag confirmed. IQ? Optional.",
+    title: "IQ Optional"
+  }
+];
+
+export default function MemeCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+
+  // Auto-advance every 4 seconds
+  useEffect(() => {
+    if (!isAutoPlay) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % memes.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlay]);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + memes.length) % memes.length);
+    setIsAutoPlay(false);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % memes.length);
+    setIsAutoPlay(false);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    setIsAutoPlay(false);
+  };
+
+  const currentMeme = memes[currentIndex];
+
+  return (
+    <div className="w-full max-w-6xl mx-auto p-4 sm:p-6">
+      <div className="bg-black/60 border border-amber-500/30 rounded-lg p-6 sm:p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold glow-gold text-center mb-6 sm:mb-8">
+          🎭 BagBrain Meme Gallery
+        </h2>
+        
+        <div className="relative">
+          {/* Main meme display */}
+          <div className="relative overflow-hidden rounded-lg bg-black/40 aspect-square max-w-md mx-auto">
+            <img
+              src={currentMeme.src}
+              alt={currentMeme.alt}
+              className="w-full h-full object-cover transition-opacity duration-500"
+              loading="lazy"
+            />
+            
+            {/* Navigation arrows */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 border border-amber-500/50 rounded-full p-2 transition-all duration-300 hover:scale-110"
+              aria-label="Previous meme"
+            >
+              <ChevronLeft className="w-5 h-5 text-amber-400" />
+            </button>
+            
+            <button
+              onClick={goToNext}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 border border-amber-500/50 rounded-full p-2 transition-all duration-300 hover:scale-110"
+              aria-label="Next meme"
+            >
+              <ChevronRight className="w-5 h-5 text-amber-400" />
+            </button>
+          </div>
+
+          {/* Meme title */}
+          <div className="text-center mt-4 mb-6">
+            <h3 className="text-lg sm:text-xl font-bold glow-gold">
+              {currentMeme.title}
+            </h3>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center space-x-2 mb-4">
+            {memes.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-amber-400 w-6'
+                    : 'bg-amber-400/30 hover:bg-amber-400/60'
+                }`}
+                aria-label={`Go to meme ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Auto-play toggle */}
+          <div className="text-center">
+            <button
+              onClick={() => setIsAutoPlay(!isAutoPlay)}
+              className={`text-sm px-4 py-2 rounded-lg border transition-all duration-300 ${
+                isAutoPlay
+                  ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
+                  : 'bg-black/40 border-amber-500/30 text-amber-400/70 hover:border-amber-500/50 hover:text-amber-400'
+              }`}
+            >
+              {isAutoPlay ? '⏸️ Pause' : '▶️ Auto-play'}
+            </button>
+          </div>
+
+          {/* Meme counter */}
+          <div className="text-center mt-3">
+            <span className="text-sm text-amber-400/70">
+              {currentIndex + 1} of {memes.length}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
