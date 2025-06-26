@@ -89,13 +89,13 @@ const ViralMemes = () => {
   const getPositionClasses = (position: string) => {
     switch (position) {
       case 'top':
-        return 'top-20 left-4';
+        return 'top-4 left-4 xl:left-8';
       case 'bottom':
-        return 'bottom-20 right-4';
+        return 'bottom-4 right-4 xl:right-8';
       case 'center':
-        return 'top-1/2 left-4 transform -translate-y-1/2';
+        return 'top-1/3 right-4 xl:right-8 transform -translate-y-1/2';
       default:
-        return 'top-1/2 right-4 transform -translate-y-1/2';
+        return 'top-2/3 left-4 xl:left-8 transform -translate-y-1/2';
     }
   };
 
@@ -115,52 +115,52 @@ const ViralMemes = () => {
   };
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-20">
+    <div className="fixed inset-0 pointer-events-none z-10">
       {/* Main rotating meme */}
       <div 
         className={`fixed ${getPositionClasses(currentMeme.position)} transition-all duration-500 ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
         }`}
       >
-        <div className={`bg-black/80 backdrop-blur-md border border-amber-500/60 rounded-xl p-4 max-w-xs ${getAnimationClasses(currentMeme.animation)}`}>
+        <div className={`bg-black/80 backdrop-blur-md border border-amber-500/60 rounded-xl p-3 max-w-48 ${getAnimationClasses(currentMeme.animation)}`}>
           <div className="text-center">
-            <div className="text-3xl mb-2">{currentMeme.emoji}</div>
-            <p className="text-amber-300 font-bold text-sm leading-tight">
+            <div className="text-xl mb-1">{currentMeme.emoji}</div>
+            <p className="text-amber-300 font-bold text-xs leading-tight">
               {currentMeme.text}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Static corner memes */}
-      <div className="fixed top-32 right-4 bg-black/70 backdrop-blur-sm border border-purple-500/40 rounded-lg p-3 max-w-48 animate-pulse">
+      {/* Static corner memes - repositioned */}
+      <div className="fixed top-24 right-4 xl:right-8 bg-black/70 backdrop-blur-sm border border-purple-500/40 rounded-lg p-2 max-w-40 animate-pulse hidden lg:block">
         <div className="text-center">
-          <div className="text-2xl mb-1">🤡</div>
+          <div className="text-lg mb-1">🤡</div>
           <p className="text-purple-300 font-semibold text-xs">
-            "I'm not gambling, I'm investing!"
+            "Not gambling!"
           </p>
         </div>
       </div>
 
-      <div className="fixed bottom-32 left-4 bg-black/70 backdrop-blur-sm border border-green-500/40 rounded-lg p-3 max-w-48 animate-bounce-slow">
+      <div className="fixed bottom-24 left-4 xl:left-8 bg-black/70 backdrop-blur-sm border border-green-500/40 rounded-lg p-2 max-w-40 animate-bounce-slow hidden lg:block">
         <div className="text-center">
-          <div className="text-2xl mb-1">🐂</div>
+          <div className="text-lg mb-1">🐂</div>
           <p className="text-green-300 font-semibold text-xs">
-            "Bull market is permanent this time!"
+            "This time!"
           </p>
         </div>
       </div>
 
-      {/* Floating meme bubbles */}
-      <div className="fixed top-40 left-1/4 animate-float-delayed">
-        <div className="bg-black/60 border border-cyan-500/30 rounded-full w-16 h-16 flex items-center justify-center">
-          <span className="text-2xl">🍕</span>
+      {/* Floating meme bubbles - smaller and repositioned */}
+      <div className="fixed top-1/4 left-8 animate-float-delayed hidden xl:block">
+        <div className="bg-black/50 border border-cyan-500/30 rounded-full w-12 h-12 flex items-center justify-center">
+          <span className="text-lg">🍕</span>
         </div>
       </div>
 
-      <div className="fixed bottom-40 right-1/4 animate-float-delayed-2">
-        <div className="bg-black/60 border border-pink-500/30 rounded-full w-16 h-16 flex items-center justify-center">
-          <span className="text-2xl">🦍</span>
+      <div className="fixed bottom-1/4 right-8 animate-float-delayed-2 hidden xl:block">
+        <div className="bg-black/50 border border-pink-500/30 rounded-full w-12 h-12 flex items-center justify-center">
+          <span className="text-lg">🦍</span>
         </div>
       </div>
     </div>

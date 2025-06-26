@@ -38,7 +38,7 @@ const MemeTooltips = () => {
   const { activePopover, togglePopover } = useMobilePopover();
 
   return (
-    <div className="flex flex-wrap gap-3 justify-center mt-8 mb-6">
+    <div className="flex flex-wrap gap-2 justify-center mt-6 mb-4 px-4">
       {memeTooltips.map((meme) => (
         <MobilePopover
           key={meme.id}
@@ -47,7 +47,7 @@ const MemeTooltips = () => {
           isActive={activePopover === meme.id}
           onToggle={togglePopover}
         >
-          <span className="bg-black/60 border border-amber-500/40 rounded-full px-4 py-2 text-amber-300 font-bold text-sm cursor-pointer hover:bg-black/80 hover:border-amber-500/60 transition-all duration-300 hover:scale-105">
+          <span className="bg-black/60 border border-amber-500/40 rounded-full px-3 py-1 text-amber-300 font-bold text-xs cursor-pointer hover:bg-black/80 hover:border-amber-500/60 transition-all duration-300 hover:scale-105">
             {meme.text}
           </span>
         </MobilePopover>

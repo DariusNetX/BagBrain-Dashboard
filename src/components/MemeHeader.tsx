@@ -30,20 +30,20 @@ const MemeHeader = () => {
   }, []);
 
   return (
-    <div className="text-center mb-8">
+    <div className="text-center mb-6">
       <div 
         className={`transition-all duration-300 ${
           isVisible ? 'opacity-100 transform scale-100' : 'opacity-0 transform scale-95'
         }`}
       >
-        <p className="viral-subtitle mb-4">
+        <p className="text-lg md:text-xl font-bold mb-3 text-amber-300">
           {memeHeaders[currentHeader]}
         </p>
-        <div className="flex justify-center space-x-2">
+        <div className="flex justify-center space-x-1">
           {memeHeaders.map((_, index) => (
             <div
               key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                 index === currentHeader 
                   ? 'bg-amber-400 scale-125' 
                   : 'bg-amber-400/30 scale-100'
