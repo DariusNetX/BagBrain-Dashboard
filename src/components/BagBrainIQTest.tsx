@@ -502,24 +502,20 @@ export default function BagBrainIQTest() {
   const question = questions[currentQuestion];
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 flex items-center justify-center">
-      <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10 relative overflow-hidden">
-        <div className="absolute top-8 right-8 w-20 h-20 opacity-6 animate-pulse">
-          <img
-            src="/bagbrain-cool.png"
-            alt="Smart BagBrain"
-            className="w-full h-full object-contain"
-            loading="lazy"
-          />
-        </div>
-        <div className="absolute bottom-8 left-8 w-16 h-16 opacity-4 animate-float-delayed">
-          <img
-            src="/bagbrain-confused.png"
-            alt="Thinking BagBrain"
-            className="w-full h-full object-contain"
-            loading="lazy"
-          />
-        </div>
+    <div 
+      className="min-h-screen p-4 sm:p-6 flex items-center justify-center relative"
+      style={{
+        backgroundImage: `url(/bagbrain-q${currentQuestion + 1}.png)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/75"></div>
+      
+      <div className="max-w-4xl w-full bg-black/85 rounded-lg border-2 border-amber-500/50 p-6 sm:p-10 relative z-10 overflow-hidden backdrop-blur-sm shadow-2xl">
+
         
         <div className="mb-10 sm:mb-12 relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
