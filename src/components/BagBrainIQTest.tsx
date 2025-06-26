@@ -131,69 +131,87 @@ export default function BagBrainIQTest() {
   const { fireConfetti } = useConfetti();
   const { topScores, addScore, isAddingScore, checkHighScore } = useLeaderboard();
 
-  // Celebration effect when results are shown
-  useEffect(() => {
-    if (showResults) {
-      const celebrateResults = async () => {
-        // Fire confetti
-        fireConfetti();
-        
-        // Play cheering audio with Web Audio API
+  // Audio celebration function
+  const playCelebrationAudio = async () => {
+    try {
+      console.log('Attempting to play celebration audio...');
+      
+      // Create audio context
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioContextClass) {
+        console.log('Web Audio API not supported');
+        return;
+      }
+      
+      const audioContext = new AudioContextClass();
+      
+      // Resume audio context if suspended
+      if (audioContext.state === 'suspended') {
+        await audioContext.resume();
+        console.log('Audio context resumed from suspended state');
+      }
+      
+      console.log('Audio context state:', audioContext.state);
+      
+      const createTone = (frequency: number, duration: number, startTime: number) => {
         try {
-          const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
           
-          // Resume audio context if suspended (required for user interaction)
-          if (audioContext.state === 'suspended') {
-            await audioContext.resume();
-          }
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
           
-          const createTone = (frequency: number, duration: number, delay: number) => {
-            setTimeout(async () => {
-              try {
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-                gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 0.01);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
-                
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + duration);
-                
-                console.log(`Playing tone: ${frequency}Hz`);
-              } catch (toneError) {
-                console.log('Individual tone failed:', toneError);
-              }
-            }, delay);
-          };
+          oscillator.frequency.setValueAtTime(frequency, startTime);
+          oscillator.type = 'sine';
           
-          console.log('Starting audio celebration sequence...');
+          gainNode.gain.setValueAtTime(0, startTime);
+          gainNode.gain.linearRampToValueAtTime(0.2, startTime + 0.01);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
           
-          // Play celebration sequence: C-E-G-C (major chord arpeggio)
-          createTone(523.25, 0.25, 0);    // C5
-          createTone(659.25, 0.25, 150);  // E5  
-          createTone(783.99, 0.25, 300);  // G5
-          createTone(1046.50, 0.4, 450);  // C6
+          oscillator.start(startTime);
+          oscillator.stop(startTime + duration);
           
-        } catch (error) {
-          console.log('Audio celebration failed:', error);
-          
-          // Fallback: Try simple beep using system notification
-          try {
-            navigator.vibrate && navigator.vibrate([100, 50, 100, 50, 200]);
-          } catch (vibrateError) {
-            console.log('Vibration fallback also failed');
-          }
+          console.log(`Tone scheduled: ${frequency}Hz at ${startTime}`);
+        } catch (toneError) {
+          console.log('Tone creation failed:', toneError);
         }
       };
       
-      celebrateResults();
+      // Schedule celebration sequence with proper timing
+      const now = audioContext.currentTime;
+      createTone(523.25, 0.3, now + 0.1);    // C5
+      createTone(659.25, 0.3, now + 0.25);   // E5  
+      createTone(783.99, 0.3, now + 0.4);    // G5
+      createTone(1046.50, 0.5, now + 0.55);  // C6
+      
+      console.log('Audio celebration sequence scheduled successfully');
+      
+    } catch (error) {
+      console.log('Audio celebration failed:', error);
+      
+      // Fallback vibration
+      if (navigator.vibrate) {
+        try {
+          navigator.vibrate([100, 50, 100, 50, 200]);
+          console.log('Fallback vibration activated');
+        } catch (vibrateError) {
+          console.log('Vibration fallback also failed:', vibrateError);
+        }
+      }
+    }
+  };
+
+  // Celebration effect when results are shown
+  useEffect(() => {
+    if (showResults) {
+      const celebrateResults = () => {
+        console.log('Triggering celebration effects...');
+        fireConfetti();
+        playCelebrationAudio();
+      };
+      
+      // Small delay to ensure DOM is ready
+      setTimeout(celebrateResults, 100);
     }
   }, [showResults, fireConfetti]);
 
@@ -397,20 +415,32 @@ export default function BagBrainIQTest() {
               </MobilePopover>
             </p>
             
-            {/* BagBrain Character Image */}
+            {/* BagBrain Character Image with Audio Trigger */}
             <div className="flex justify-center mb-6">
               <img 
                 src="/bagbrain-results.png" 
                 alt="BagBrain Character celebrating your results" 
-                className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
                 style={{
                   filter: 'drop-shadow(0 0 20px rgba(255, 247, 0, 0.3))'
                 }}
+                onClick={playCelebrationAudio}
+                title="Click for celebration sound!"
                 onError={(e) => {
                   console.log('BagBrain results character failed to load');
                   e.currentTarget.style.display = 'none';
                 }}
               />
+            </div>
+            
+            {/* Manual audio trigger button for browsers that block auto-play */}
+            <div className="flex justify-center mb-6">
+              <button 
+                onClick={playCelebrationAudio}
+                className="btn-primary px-6 py-2 text-sm opacity-75 hover:opacity-100 transition-opacity"
+              >
+                🔊 Play Celebration Sound
+              </button>
             </div>
           </div>
 
