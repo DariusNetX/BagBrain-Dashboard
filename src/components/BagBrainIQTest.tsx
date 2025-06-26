@@ -596,9 +596,9 @@ export default function BagBrainIQTest() {
               >
                 <button
                   onClick={() => handleAnswer(option.points)}
-                  className="w-full p-6 sm:p-8 bg-black/80 border-2 border-amber-500/30 rounded-xl text-left glow-gold hover:border-amber-500/80 hover:bg-black/90 transition-all duration-300 text-xl sm:text-2xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[4rem] sm:min-h-[5rem] flex items-center"
+                  className="w-full p-6 sm:p-8 bg-black border-2 border-amber-500/40 rounded-xl text-left glow-gold hover:border-amber-500/80 hover:bg-gray-900 transition-all duration-300 text-2xl sm:text-3xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[4rem] sm:min-h-[5rem] flex items-center"
                 >
-                  <span className="font-bold text-amber-400 mr-4 sm:mr-6 text-2xl sm:text-3xl flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
+                  <span className="font-bold text-amber-400 mr-4 sm:mr-6 text-3xl sm:text-4xl flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
                   <span className="flex-1">{option.text}</span>
                 </button>
               </MobilePopover>

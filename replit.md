@@ -314,3 +314,7 @@ Preferred communication style: Simple, everyday language.
 ✓ Enhanced error handling with console logging for audio debugging
 ✓ Added vibration fallback for mobile devices when audio fails
 ✓ Improved tone timing and volume levels for better celebration experience
+✓ Increased IQ Test font sizes from text-xl/2xl to text-2xl/3xl for better readability
+✓ Enhanced letter options from text-2xl/3xl to text-3xl/4xl for improved visibility
+✓ Changed answer backgrounds from bg-black/80 to solid bg-black for maximum contrast
+✓ Improved border opacity from border-amber-500/30 to border-amber-500/40
