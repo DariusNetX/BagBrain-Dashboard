@@ -242,7 +242,7 @@ const Vault = () => {
           <button 
             onClick={handleWithdraw}
             disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
-                     (userStake && userStake !== '--' && userStake !== '0' && parseFloat(amount) > parseFloat(userStake))}
+                     Boolean(userStake && userStake !== '--' && userStake !== '0' && parseFloat(amount) > parseFloat(userStake))}
             className="btn-primary w-full viral-button-text"
           >
             💰 Withdraw $BAG
