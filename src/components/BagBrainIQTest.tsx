@@ -335,8 +335,8 @@ export default function BagBrainIQTest() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/70"></div>
+        {/* Clean overlay for results page */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/80"></div>
         
         <div className="max-w-4xl w-full bg-black/90 rounded-lg border-2 border-amber-500/60 p-6 sm:p-10 text-center mx-auto relative z-10 backdrop-blur-md shadow-2xl">
           <h1 className="text-4xl sm:text-5xl font-bold mb-8 sm:mb-10 glow-gold">
@@ -517,8 +517,8 @@ export default function BagBrainIQTest() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/75"></div>
+        {/* Simplified overlay for better readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/80"></div>
         
         <div className="max-w-4xl w-full bg-black/90 rounded-lg border-2 border-amber-500/60 p-6 sm:p-10 text-center mx-auto relative z-10 backdrop-blur-md shadow-2xl">
           <h1 className="text-4xl sm:text-6xl font-bold mb-8 sm:mb-10 glow-gold">
@@ -580,8 +580,8 @@ export default function BagBrainIQTest() {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/75"></div>
+      {/* Simplified overlay for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
       
       <div className="max-w-4xl w-full bg-black/85 rounded-lg border-2 border-amber-500/50 p-6 sm:p-10 relative z-10 overflow-hidden backdrop-blur-sm shadow-2xl">
 

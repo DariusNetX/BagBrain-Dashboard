@@ -434,3 +434,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Reduced particle count and character overlays for cleaner visual presentation
 ✓ Consolidated multiple background layers into single streamlined system
 ✓ Maintained BagBrain aesthetic while improving visual clarity
+✓ Cleaned up IQ Test background overlay system for better readability
+✓ Simplified background gradients while preserving BagBrain character art
+✓ Improved visual hierarchy on intro, question, and results pages
