@@ -97,7 +97,7 @@ function Dashboard() {
 
 function App() {
   return (
-    <div className="App relative min-h-screen">
+    <div className="App relative min-h-screen w-full">
       <ViralBackground />
       <QueryClientProvider client={queryClient}>
         <Router>

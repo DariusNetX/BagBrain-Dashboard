@@ -42,6 +42,8 @@ body {
   
   /* Subtle animation for the entire background */
   animation: viralPulse 20s ease-in-out infinite;
+  background-attachment: fixed;
+  background-size: 100px 100px, 200px 200px, 60px 60px, 300px 300px, 400px 400px, 250px 250px, 350px 350px, cover;
 }
 
 body::before {
