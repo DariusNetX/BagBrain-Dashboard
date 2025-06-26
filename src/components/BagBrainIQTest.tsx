@@ -142,34 +142,54 @@ export default function BagBrainIQTest() {
         try {
           const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
           
+          // Resume audio context if suspended (required for user interaction)
+          if (audioContext.state === 'suspended') {
+            await audioContext.resume();
+          }
+          
           const createTone = (frequency: number, duration: number, delay: number) => {
-            setTimeout(() => {
-              const oscillator = audioContext.createOscillator();
-              const gainNode = audioContext.createGain();
-              
-              oscillator.connect(gainNode);
-              gainNode.connect(audioContext.destination);
-              
-              oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-              oscillator.type = 'sine';
-              
-              gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-              gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
-              gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
-              
-              oscillator.start(audioContext.currentTime);
-              oscillator.stop(audioContext.currentTime + duration);
+            setTimeout(async () => {
+              try {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 0.01);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration);
+                
+                console.log(`Playing tone: ${frequency}Hz`);
+              } catch (toneError) {
+                console.log('Individual tone failed:', toneError);
+              }
             }, delay);
           };
           
+          console.log('Starting audio celebration sequence...');
+          
           // Play celebration sequence: C-E-G-C (major chord arpeggio)
-          createTone(523.25, 0.2, 0);    // C5
-          createTone(659.25, 0.2, 100);  // E5  
-          createTone(783.99, 0.2, 200);  // G5
-          createTone(1046.50, 0.3, 300); // C6
+          createTone(523.25, 0.25, 0);    // C5
+          createTone(659.25, 0.25, 150);  // E5  
+          createTone(783.99, 0.25, 300);  // G5
+          createTone(1046.50, 0.4, 450);  // C6
           
         } catch (error) {
           console.log('Audio celebration failed:', error);
+          
+          // Fallback: Try simple beep using system notification
+          try {
+            navigator.vibrate && navigator.vibrate([100, 50, 100, 50, 200]);
+          } catch (vibrateError) {
+            console.log('Vibration fallback also failed');
+          }
         }
       };
       
