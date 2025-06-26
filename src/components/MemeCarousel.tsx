@@ -124,11 +124,11 @@ export default function MemeCarousel() {
         
         <div className="relative">
           {/* Main meme display */}
-          <div className="relative overflow-hidden rounded-lg bg-black/40 aspect-square max-w-md mx-auto">
+          <div className="relative overflow-hidden rounded-lg bg-black/40 max-w-2xl mx-auto">
             <img
               src={currentMeme.src}
               alt={currentMeme.alt}
-              className="w-full h-full object-cover transition-opacity duration-500"
+              className="w-full h-auto object-contain transition-opacity duration-500"
               loading="lazy"
             />
             
