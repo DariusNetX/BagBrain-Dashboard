@@ -345,3 +345,7 @@ Preferred communication style: Simple, everyday language.
 ✓ Removed leaderboard button from bottom navigation to reduce button clutter
 ✓ Reduced glow effect intensity by 50% across all text elements for more subtle appearance
 ✓ Updated text-shadow values from 3px/6px to 1.5px/3px for refined visual styling
+✓ Increased font size of all text by 15% across the entire application
+✓ Added 115% base font-size to body element for global scaling
+✓ Updated Hero, Vault, LPStats, WalletConnect, and IQ Test components with larger text sizes
+✓ Enhanced readability with systematic font size increases maintaining visual hierarchy

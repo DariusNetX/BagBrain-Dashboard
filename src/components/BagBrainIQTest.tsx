@@ -592,13 +592,13 @@ export default function BagBrainIQTest() {
       <div className="max-w-4xl w-full bg-black/60 rounded-lg border border-amber-500/30 p-6 sm:p-10">
         <div className="mb-10 sm:mb-12">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
-            <h1 className="text-3xl sm:text-5xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
+            <h1 className="text-4xl sm:text-6xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
             <div className="flex items-center gap-4 sm:gap-6">
-              <div className="text-lg sm:text-xl glow-gold opacity-75">
+              <div className="text-xl sm:text-2xl glow-gold opacity-75">
                 Question {currentQuestion + 1} of {questions.length}
               </div>
               <Link href="/">
-                <button className="text-lg sm:text-xl glow-gold opacity-75 hover:opacity-100 px-4 py-2">
+                <button className="text-xl sm:text-2xl glow-gold opacity-75 hover:opacity-100 px-4 py-2">
                   ← Back
                 </button>
               </Link>
@@ -614,7 +614,7 @@ export default function BagBrainIQTest() {
         </div>
 
         <div className="mb-10 sm:mb-12">
-          <h2 className="text-2xl sm:text-4xl glow-gold mb-8 sm:mb-12 text-center leading-relaxed px-2">
+          <h2 className="text-3xl sm:text-5xl glow-gold mb-8 sm:mb-12 text-center leading-relaxed px-2">
             {question.question}
           </h2>
           

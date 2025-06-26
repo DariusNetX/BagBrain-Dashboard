@@ -24,11 +24,11 @@ const LPStats = () => {
 
   return (
     <div className="bg-black/60 backdrop-blur-md border border-cyan-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 glow-gold">💱 Liquidity Pool Stats</h2>
-      <p className="mb-3 glow-gold text-lg">$BAG Reserve: {bag}</p>
-      <p className="mb-3 glow-gold text-lg">$BLAZE Reserve: {blaze}</p>
-      <p className="mb-3 glow-gold text-lg">Exchange Rate: 1 BLAZE = {price} $BAG</p>
-      <p className="mb-4 glow-gold text-lg">
+      <h2 className="text-4xl font-bold mb-6 glow-gold">💱 Liquidity Pool Stats</h2>
+      <p className="mb-3 glow-gold text-xl">$BAG Reserve: {bag}</p>
+      <p className="mb-3 glow-gold text-xl">$BLAZE Reserve: {blaze}</p>
+      <p className="mb-3 glow-gold text-xl">Exchange Rate: 1 BLAZE = {price} $BAG</p>
+      <p className="mb-4 glow-gold text-xl">
         <MobilePopover 
           id="user-liquidity" 
           content="You provide. The people trade. You win." 
@@ -40,26 +40,26 @@ const LPStats = () => {
       </p>
       
       {txStatus === 'pending' && (
-        <p className="mt-4 glow-gold text-lg animate-pulse text-center">
+        <p className="mt-4 glow-gold text-xl animate-pulse text-center">
           ⏳ Summoning brains... Waiting for confirmation.
         </p>
       )}
 
       {txStatus === 'success' && (
-        <p className="mt-4 glow-gold text-lg transition-opacity duration-300 text-center">
+        <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
           ✅ Brains deployed. Transaction confirmed!
         </p>
       )}
 
       {txStatus === 'error' && (
-        <p className="mt-4 glow-gold text-lg transition-opacity duration-300 text-center">
+        <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
           ❌ Oops. Your bags escaped. Try again.
         </p>
       )}
       
       {error && (
         <div className="mt-4 pt-4 border-t border-red-500/30">
-          <p className="text-base text-red-400">
+          <p className="text-lg text-red-400">
             Error: {error}
           </p>
         </div>
@@ -67,7 +67,7 @@ const LPStats = () => {
       
       {!error && bag !== '--' && (
         <div className="mt-4 pt-4 border-t border-green-500/30">
-          <p className="text-base text-gray-400">
+          <p className="text-lg text-gray-400">
             Live data from blockchain
           </p>
         </div>

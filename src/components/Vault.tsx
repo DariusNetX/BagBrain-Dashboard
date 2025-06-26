@@ -210,38 +210,38 @@ const Vault = () => {
         </div>
         
         {txStatus === 'pending' && (
-          <p className="mt-4 glow-gold text-lg animate-pulse text-center">
+          <p className="mt-4 glow-gold text-xl animate-pulse text-center">
             ⏳ Summoning liquidity gods... Be patient.
           </p>
         )}
 
         {txStatus === 'success' && (
-          <p className="mt-4 glow-gold text-lg transition-opacity duration-300 text-center">
+          <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
             ✅ You're officially a legend. Transaction confirmed!
           </p>
         )}
 
         {txStatus === 'error' && (
-          <p className="mt-4 glow-gold text-lg transition-opacity duration-300 text-center">
+          <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
             ❌ Something broke. But you're still a legend.
           </p>
         )}
         
-        <p className="text-lg glow-gold mt-4 text-center">{status}</p>
+        <p className="text-xl glow-gold mt-4 text-center">{status}</p>
         
-        <p className="text-center text-base glow-gold mt-8">
+        <p className="text-center text-lg glow-gold mt-8">
           BagBrain is not responsible for emotional damage caused by market fluctuations. DYOR, but make it meme.
         </p>
       </div>
       
       {userStake && userStake !== '--' && parseFloat(amount || '0') > parseFloat(userStake) && amount && (
-        <p className="glow-gold text-lg mt-4 text-center">
+        <p className="glow-gold text-xl mt-4 text-center">
           Insufficient staked balance for withdrawal
         </p>
       )}
       
       {error && (
-        <p className="glow-gold text-lg mt-4 text-center">
+        <p className="glow-gold text-xl mt-4 text-center">
           {error}
         </p>
       )}
