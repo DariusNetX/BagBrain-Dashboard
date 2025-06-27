@@ -158,8 +158,9 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Router>
           <Switch>
-            <Route path="/" component={Dashboard} />
             <Route path="/iq" component={BagBrainIQTest} />
+            <Route path="/arcade" component={ArcadePage} />
+            <Route path="/" component={Dashboard} />
           </Switch>
         </Router>
 
