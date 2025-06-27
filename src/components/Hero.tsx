@@ -107,12 +107,13 @@ export default function Hero() {
           />
         </div>
       </div>
-      <h1 className="hero-title text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300" 
+      <h1 className="mega-headline text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300" 
           onClick={() => {
             console.log('🎯 Headline clicked! Triggering confetti...');
             fireConfetti();
           }}>
-        I Have Bags For Brains
+        Welcome to BagBrain 🧠<br />
+        <span className="subtitle-accent">Where Brains Get Bagged</span>
       </h1>
       
       {/* Dynamic rolling taglines */}
