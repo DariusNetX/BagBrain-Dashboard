@@ -6,6 +6,29 @@ import { useEffect, useState } from 'react';
 import { removeBackground } from '../utils/imageUtils';
 import { MobilePopover } from './MobilePopover';
 
+const allMemes = [
+  "💰 Number Go Up Technology",
+  "🧠 Weaponized Autism Engaged", 
+  "💎 Diamond Hands Activated",
+  "🚀 Destination: Moon Base Alpha",
+  "📈 Stonks Only Go Up Mode",
+  "🎯 Maximum Degen Protocol",
+  "⚡ Big Brain Energy Deployed",
+  "🔥 This Is The Way Forward",
+  "🎪 Welcome to the Circus",
+  "💸 Money Printer Go Brrr",
+  "🎭 Peak Performance Mode",
+  "🌙 Wen Moon? Soon Moon!",
+  "🎲 YOLO Capital Deployed",
+  "🧬 DNA: Degen Not Advised",
+  "🎯 Bags Status: Secured",
+  "⭐ Main Character Energy",
+  "🎨 Turning Red Into Green",
+  "🔮 Future Millionaire Vibes",
+  "🎪 Clown Market Activated",
+  "💫 Generational Wealth Loading"
+];
+
 export default function Hero() {
   const { totalStaked } = useVaultData();
   const { reserves } = useLPStats();
@@ -13,6 +36,7 @@ export default function Hero() {
   const { fireConfetti } = useConfetti();
   const { activePopover, togglePopover } = useMobilePopover();
   const [processedImage, setProcessedImage] = useState<string>('');
+  const [currentMeme, setCurrentMeme] = useState(0);
 
   useEffect(() => {
     console.log('Hero component mounted');
@@ -28,6 +52,13 @@ export default function Hero() {
     };
     
     processImage();
+    
+    // Set up tagline rotation
+    const taglineInterval = setInterval(() => {
+      setCurrentMeme((prev) => (prev + 1) % allMemes.length);
+    }, 2500);
+    
+    return () => clearInterval(taglineInterval);
   }, []);
 
   return (
@@ -56,7 +87,7 @@ export default function Hero() {
           onError={(e) => {
             console.log('Character image failed, trying backup');
             e.currentTarget.src = '/bagbrain-character-1.png';
-            e.currentTarget.onError = () => {
+            e.currentTarget.onerror = () => {
               console.log('All character images failed, using fallback');
               const container = e.currentTarget.parentElement;
               if (container) {
@@ -77,12 +108,23 @@ export default function Hero() {
         </div>
       </div>
       <h1 className="hero-title text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300" 
-          onClick={(e) => {
+          onClick={() => {
             console.log('🎯 Headline clicked! Triggering confetti...');
             fireConfetti();
           }}>
         I Have Bags For Brains
       </h1>
+      
+      {/* Dynamic rolling taglines */}
+      <div className="text-center mt-6">
+        <div className="inline-block px-6 py-3 bg-black/60 rounded-xl border border-amber-500/30 backdrop-blur-md">
+          <div className="text-2xl md:text-3xl font-semibold glow-gold">
+            <div className="animate-fadeIn">
+              <span id="dynamic-tagline">{allMemes[currentMeme]}</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="text-center mt-6 mb-4">
         <span className="text-6xl animate-bounce">💰🧠</span>
       </div>

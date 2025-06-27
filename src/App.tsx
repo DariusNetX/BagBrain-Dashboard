@@ -12,7 +12,7 @@ import BottomCTA from './components/BottomCTA';
 import BagBrainIQTest from './components/BagBrainIQTest';
 import LeaderboardPreview from './components/LeaderboardPreview';
 import ViralBackground from './components/ViralBackground';
-import MemeHeader from './components/MemeHeader';
+
 import MemeCarousel from './components/MemeCarousel';
 
 
