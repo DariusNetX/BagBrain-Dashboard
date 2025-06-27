@@ -52,10 +52,7 @@ function Dashboard() {
       </div>
 
       <div className="flex flex-col min-h-screen w-full items-center justify-start p-6 gap-8">
-        {/* Meme Header */}
-        <div className="w-full max-w-6xl mt-4">
-          <MemeHeader />
-        </div>
+
         
         {/* Hero Section */}
         <div className="w-full max-w-6xl">
