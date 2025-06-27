@@ -126,7 +126,7 @@ export default function MemeCarousel() {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4 sm:p-6">
+    <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 animate-gentle-bounce">
       <div className="bg-black/60 border border-amber-500/30 rounded-lg p-6 sm:p-8">
         <h2 className="text-2xl sm:text-3xl font-bold glow-gold text-center mb-6 sm:mb-8">
           🎭 BagBrain Meme Gallery
@@ -134,7 +134,7 @@ export default function MemeCarousel() {
         
         <div className="relative">
           {/* Main meme display */}
-          <div className="relative overflow-hidden rounded-lg bg-black/40 max-w-2xl mx-auto group">
+          <div className="relative overflow-hidden rounded-lg bg-black/40 max-w-2xl mx-auto group animate-bounce-meme">
             <img
               src={currentMeme.src}
               alt={currentMeme.alt}
