@@ -485,6 +485,16 @@ export default function BagBrainIQTest() {
               </div>
             )}
             
+            {/* Auto-revealed leaderboard */}
+            {autoRevealLeaderboard && (
+              <div className="mb-8 animate-fadeIn">
+                <h3 className="text-2xl md:text-3xl font-bold glow-gold mb-4 text-center">
+                  🏆 Current Leaderboard
+                </h3>
+                <LeaderboardPreview />
+              </div>
+            )}
+            
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-4 sm:pt-6">
               <button 
                 onClick={restartTest}
