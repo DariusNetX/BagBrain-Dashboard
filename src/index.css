@@ -212,6 +212,7 @@ body::before {
     0 8px 25px rgba(37, 99, 235, 0.3),
     0 4px 12px rgba(59, 130, 246, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
@@ -220,6 +221,7 @@ body::before {
     0 12px 35px rgba(37, 99, 235, 0.4),
     0 6px 18px rgba(59, 130, 246, 0.3),
     0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .btn-lg {
@@ -229,6 +231,38 @@ body::before {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile responsiveness for buttons */
+@media (max-width: 768px) {
+  .btn-lg {
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Arcade game tiles responsive layout */
+@media (max-width: 768px) {
+  .arcade-game-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .arcade-game-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .arcade-game-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 /* Coming Soon Button Styling */

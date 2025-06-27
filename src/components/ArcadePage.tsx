@@ -36,7 +36,7 @@ export default function ArcadePage() {
           </div>
 
           {/* Game Teasers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="arcade-game-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <div className="bg-black/40 border border-purple-400/30 rounded-lg p-6 enhanced-hover">
               <div className="text-3xl mb-3">🌉</div>
               <h3 className="text-xl font-bold glow-gold mb-2">Bridge My Brain</h3>
