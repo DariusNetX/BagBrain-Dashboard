@@ -267,6 +267,16 @@ body::before {
   text-shadow: 0 0 1.5px #10b981, 0 0 3px #10b981;
 }
 
+.glow-red {
+  color: #ef4444;
+  text-shadow: 0 0 1.5px #ef4444, 0 0 3px #ef4444;
+}
+
+.glow-orange {
+  color: #f97316;
+  text-shadow: 0 0 1.5px #f97316, 0 0 3px #f97316;
+}
+
 @keyframes shimmer {
   0% {
     left: -100%;
