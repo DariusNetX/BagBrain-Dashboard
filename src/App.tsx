@@ -119,8 +119,20 @@ function Dashboard() {
               </a>
             </div>
             
-            <div className="mt-4 text-sm glow-cyan opacity-80">
-              Stay updated with the latest BagBrain developments and memes
+            <div className="mt-6 text-center space-y-3">
+              <div className="text-sm glow-cyan opacity-80">
+                Stay updated with the latest BagBrain developments and memes
+              </div>
+              
+              {/* Copyright and Disclaimer */}
+              <div className="border-t border-blue-500/20 pt-4 space-y-2">
+                <div className="text-sm glow-gold opacity-70">
+                  © 2025 BagBrain. All Rights Reserved.
+                </div>
+                <div className="text-xs opacity-60 italic">
+                  Not financial advice. Just vibes and bags.
+                </div>
+              </div>
             </div>
           </div>
         </footer>
