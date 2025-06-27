@@ -557,3 +557,59 @@ body::before {
   }
 }
 
+/* Mega Headline Styling - Eye-Catching Welcome Message */
+.mega-headline {
+  font-size: clamp(2.5rem, 10vw, 8rem) !important;
+  font-weight: 900 !important;
+  line-height: 0.85 !important;
+  letter-spacing: -0.03em !important;
+  background: linear-gradient(45deg, #ff0080 0%, #ff8c00 20%, #fff700 40%, #00ff80 60%, #0080ff 80%, #8000ff 100%) !important;
+  background-size: 400% 400% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: rainbow-shift 2s ease-in-out infinite, mega-pulse 3s ease-in-out infinite !important;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 30px rgba(255, 0, 128, 0.4),
+    0 0 40px rgba(0, 255, 128, 0.3) !important;
+  filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.4)) !important;
+  transform-origin: center !important;
+}
+
+.subtitle-accent {
+  display: inline-block !important;
+  font-size: clamp(1.5rem, 6vw, 4rem) !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #6bcf7f 100%) !important;
+  background-size: 200% 200% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: accent-glow 1.5s ease-in-out infinite alternate !important;
+  margin-top: 0.5rem !important;
+}
+
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes mega-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes accent-glow {
+  0% { 
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.6);
+    background-position: 0% 50%;
+  }
+  100% { 
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.9), 0 0 25px rgba(255, 217, 61, 0.6);
+    background-position: 100% 50%;
+  }
+}
+
