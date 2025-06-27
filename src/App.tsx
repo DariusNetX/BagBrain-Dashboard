@@ -59,17 +59,21 @@ function Dashboard() {
           <Hero />
         </div>
         
-
+        <hr className="section-divider w-full max-w-4xl" />
         
         {/* Main Content */}
-        <div className="w-full space-y-10 flex flex-col items-center">
+        <div className="w-full space-y-12 flex flex-col items-center">
           <div className="w-full max-w-4xl">
             <Vault />
           </div>
           
+          <hr className="section-divider w-full max-w-4xl" />
+          
           <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity." className="w-full max-w-4xl">
             <LPStats />
           </div>
+          
+          <hr className="section-divider w-full max-w-4xl" />
           
           <div className="w-full max-w-4xl">
             <BottomCTA />
