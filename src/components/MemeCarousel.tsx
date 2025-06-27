@@ -132,16 +132,15 @@ export default function MemeCarousel() {
           🎭 BagBrain Meme Gallery
         </h2>
         
-        <div className="relative">
+        <div className="relative meme-carousel">
           {/* Main meme display */}
-          <div className="relative overflow-hidden rounded-lg bg-black/40 max-w-2xl mx-auto group animate-bounce-meme">
+          <div className="relative overflow-hidden rounded-xl bg-black/50 max-w-3xl mx-auto group animate-bounce-meme border border-amber-500/20">
             <img
               src={currentMeme.src}
               alt={currentMeme.alt}
-              className="w-full h-auto object-contain transition-opacity duration-500"
+              className="w-full h-auto object-contain transition-all duration-500"
               loading="eager"
               style={{
-                maxHeight: '400px',
                 objectFit: 'contain',
                 aspectRatio: 'auto'
               }}

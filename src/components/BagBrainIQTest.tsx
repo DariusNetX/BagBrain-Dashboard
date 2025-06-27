@@ -506,7 +506,7 @@ export default function BagBrainIQTest() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-4 sm:pt-6">
               <button 
                 onClick={restartTest}
-                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
+                className="btn-primary btn-lg w-full sm:w-auto bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700"
               >
                 🔄 Test Again
               </button>

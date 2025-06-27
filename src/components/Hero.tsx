@@ -78,13 +78,11 @@ export default function Hero() {
         <img
           src={processedImage || "/bagbrain-character-2.png"}
           alt="BagBrain Character"
-          className="w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
+          className="hero-character w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
           style={{
             filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.2))',
             background: 'transparent',
-            imageRendering: '-webkit-optimize-contrast',
-            maxWidth: '100%',
-            height: 'auto'
+            imageRendering: '-webkit-optimize-contrast'
           }}
           loading="eager"
           onLoad={() => console.log('BagBrain character loaded successfully')}
@@ -95,7 +93,7 @@ export default function Hero() {
               console.log('All character images failed, using fallback');
               const container = e.currentTarget.parentElement;
               if (container) {
-                container.innerHTML = '<div class="w-36 h-36 md:w-44 md:h-44 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
+                container.innerHTML = '<div class="hero-character bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
               }
             };
           }}
