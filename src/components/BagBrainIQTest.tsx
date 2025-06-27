@@ -5,6 +5,7 @@ import { useLeaderboard } from '../hooks/useLeaderboard';
 import { MobilePopover } from './MobilePopover';
 import LeaderboardPreview from './LeaderboardPreview';
 import { useConfetti } from '../hooks/useConfetti';
+import TwitterFeed from './TwitterFeed';
 
 interface Question {
   id: number;
