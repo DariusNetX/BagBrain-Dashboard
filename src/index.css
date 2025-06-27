@@ -153,6 +153,27 @@ body::before {
   outline-offset: 4px;
 }
 
+/* Twitter button specific styling */
+.enhanced-button.bg-gradient-to-r.from-\[#1DA1F2\] {
+  background: linear-gradient(135deg, #1DA1F2 0%, #0d8ddb 100%);
+  border-color: rgba(29, 161, 242, 0.4);
+}
+
+.enhanced-button.bg-gradient-to-r.from-\[#1DA1F2\]:hover {
+  background: linear-gradient(135deg, #0d8ddb 0%, #0a7bc4 100%);
+  border-color: rgba(13, 141, 219, 0.6);
+  box-shadow: 
+    0 8px 25px rgba(29, 161, 242, 0.4),
+    0 4px 12px rgba(29, 161, 242, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  outline: 2px solid rgba(29, 161, 242, 0.5);
+}
+
+.enhanced-button.bg-gradient-to-r.from-\[#1DA1F2\]:focus {
+  outline: 3px solid rgba(29, 161, 242, 0.7);
+  outline-offset: 2px;
+}
+
 @keyframes bounce-slow {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
