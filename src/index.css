@@ -261,6 +261,12 @@ body::before {
     0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Additional glow colors for arcade page */
+.glow-green {
+  color: #10b981;
+  text-shadow: 0 0 1.5px #10b981, 0 0 3px #10b981;
+}
+
 @keyframes shimmer {
   0% {
     left: -100%;

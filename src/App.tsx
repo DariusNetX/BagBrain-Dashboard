@@ -12,6 +12,7 @@ import BottomCTA from './components/BottomCTA';
 import BagBrainIQTest from './components/BagBrainIQTest';
 import LeaderboardPreview from './components/LeaderboardPreview';
 import ViralBackground from './components/ViralBackground';
+import ArcadePage from './components/ArcadePage';
 
 import MemeCarousel from './components/MemeCarousel';
 
@@ -88,9 +89,12 @@ function Dashboard() {
         {/* BagBrain Arcade Teaser */}
         <div className="w-full max-w-6xl mx-auto mt-12 mb-8">
           <div className="section-container bg-black/40 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 text-center enhanced-hover">
-            <button className="coming-soon btn-lg relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 text-white font-bold rounded-lg border-2 border-purple-400/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 glow-text uppercase tracking-wide text-lg cursor-not-allowed opacity-80">
-              🎮 BagBrain Arcade (Coming Soon)
-            </button>
+            <Link 
+              href="/arcade"
+              className="coming-soon btn-lg relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 text-white font-bold rounded-lg border-2 border-purple-400/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 glow-text uppercase tracking-wide text-lg cursor-pointer opacity-90 hover:opacity-100"
+            >
+              🎮 BagBrain Arcade
+            </Link>
             <div className="mt-4 text-sm glow-purple opacity-70">
               Epic games and challenges are brewing in the lab
             </div>
