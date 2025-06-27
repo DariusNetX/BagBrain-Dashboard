@@ -139,7 +139,21 @@ export default function MemeCarousel() {
               src={currentMeme.src}
               alt={currentMeme.alt}
               className="w-full h-auto object-contain transition-opacity duration-500"
-              loading="lazy"
+              loading="eager"
+              style={{
+                maxHeight: '400px',
+                objectFit: 'contain',
+                aspectRatio: 'auto'
+              }}
+              onLoad={(e) => {
+                console.log(`✓ Meme ${currentMeme.id} loaded successfully`);
+                e.currentTarget.style.opacity = '1';
+              }}
+              onError={(e) => {
+                console.log(`⚠ Meme ${currentMeme.id} failed to load`);
+                e.currentTarget.style.opacity = '0.5';
+                e.currentTarget.style.border = '2px dashed #ffd700';
+              }}
             />
             
             {/* Twitter Share Button Overlay - Desktop Hover */}

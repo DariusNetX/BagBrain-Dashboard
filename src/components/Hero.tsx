@@ -81,8 +81,12 @@ export default function Hero() {
           className="w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
           style={{
             filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.2))',
-            background: 'transparent'
+            background: 'transparent',
+            imageRendering: '-webkit-optimize-contrast',
+            maxWidth: '100%',
+            height: 'auto'
           }}
+          loading="eager"
           onLoad={() => console.log('BagBrain character loaded successfully')}
           onError={(e) => {
             console.log('Character image failed, trying backup');

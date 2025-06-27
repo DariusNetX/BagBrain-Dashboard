@@ -445,9 +445,24 @@ body::before {
 @media (max-width: 768px) {
   .btn-primary {
     padding: 18px 36px;
-    font-size: 20px;
+    font-size: 18px !important;
     min-height: 64px;
     border-width: 4px;
+  }
+  
+  /* Standardize all button text on mobile */
+  button, .btn, [role="button"] {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Specific overrides for common button types */
+  .bg-gradient-to-r button,
+  .bg-blue-500 button,
+  .bg-purple-600 button,
+  .bg-amber-500 button {
+    font-size: 18px !important;
   }
 }
 
@@ -697,6 +712,29 @@ body::before {
     text-shadow: 
       0 0 3px #ffd700,
       0 2px 6px rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Image optimization for mobile */
+@media (max-width: 768px) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Meme carousel specific optimizations */
+  .meme-carousel img {
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  /* Background images optimization */
+  .bg-cover {
+    background-attachment: scroll !important;
+    background-size: cover !important;
   }
 }
 
