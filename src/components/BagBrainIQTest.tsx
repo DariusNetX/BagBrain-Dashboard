@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { useMobilePopover } from '../hooks/useMobilePopover';
 import { useLeaderboard } from '../hooks/useLeaderboard';
 import { MobilePopover } from './MobilePopover';
+import LeaderboardPreview from './LeaderboardPreview';
 import { useConfetti } from '../hooks/useConfetti';
 
 interface Question {
@@ -128,6 +129,7 @@ export default function BagBrainIQTest() {
   const [showUsernameInput, setShowUsernameInput] = useState(false);
   const [username, setUsername] = useState('');
   const [isHighScore, setIsHighScore] = useState(false);
+  const [autoRevealLeaderboard, setAutoRevealLeaderboard] = useState(false);
   const { activePopover, togglePopover } = useMobilePopover();
   const { fireConfetti } = useConfetti();
   const { topScores, addScore, isAddingScore, checkHighScore } = useLeaderboard();
@@ -142,6 +144,11 @@ export default function BagBrainIQTest() {
       
       // Small delay to ensure DOM is ready
       setTimeout(celebrateResults, 100);
+      
+      // Auto-reveal leaderboard after 2 seconds
+      setTimeout(() => {
+        setAutoRevealLeaderboard(true);
+      }, 2000);
     }
   }, [showResults, fireConfetti]);
 
@@ -195,6 +202,7 @@ export default function BagBrainIQTest() {
     setShowUsernameInput(false);
     setUsername('');
     setIsHighScore(false);
+    setAutoRevealLeaderboard(false);
   };
 
   const startTest = () => {
