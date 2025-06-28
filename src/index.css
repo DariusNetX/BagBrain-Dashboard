@@ -265,6 +265,34 @@ body::before {
   }
 }
 
+/* Meme carousel responsive improvements */
+.meme-carousel-container {
+  aspect-ratio: 16/9;
+  min-height: 200px;
+  max-height: 400px;
+}
+
+@media (max-width: 640px) {
+  .meme-carousel-container {
+    min-height: 180px;
+    max-height: 240px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .meme-carousel-container {
+    min-height: 220px;
+    max-height: 280px;
+  }
+}
+
+@media (min-width: 769px) {
+  .meme-carousel-container {
+    min-height: 280px;
+    max-height: 400px;
+  }
+}
+
 /* Coming Soon Button Styling */
 .coming-soon {
   background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #9333ea 100%);
