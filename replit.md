@@ -570,3 +570,6 @@ Preferred communication style: Simple, everyday language.
 ✓ Improved tooltip content with clearer, more descriptive text for better user understanding
 ✓ Added golden underlines to tooltip trigger text with hover animations for better visibility
 ✓ Increased tooltip max-width to 300px and enabled text wrapping for longer explanations
+✓ Fixed blank black tooltip boxes by removing unused react-tooltip components and data-tooltip references
+✓ Added CSS rules to hide empty tooltip containers and prevent blank popup displays
+✓ Streamlined tooltip system to use only MobilePopover components for consistent behavior

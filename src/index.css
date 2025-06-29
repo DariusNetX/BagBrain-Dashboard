@@ -870,6 +870,16 @@ body::before {
   visibility: visible;
 }
 
+/* Hide empty tooltips */
+.mobile-popover-content:empty {
+  display: none !important;
+}
+
+.mobile-popover-content:empty::after,
+.mobile-popover-content:empty::before {
+  display: none !important;
+}
+
 .mobile-hint {
   cursor: pointer;
   position: relative;

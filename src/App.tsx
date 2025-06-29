@@ -1,6 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
-import { Tooltip } from 'react-tooltip';
+
 import { Router, Route, Switch, Link } from 'wouter';
 import { useState } from 'react';
 import Hero from './components/Hero';
@@ -70,7 +70,7 @@ function Dashboard() {
           
           <hr className="section-divider w-full max-w-4xl" />
           
-          <div data-tooltip-id="lpTip" data-tooltip-content="📊 These bags are swimming in liquidity." className="w-full max-w-4xl">
+          <div className="w-full max-w-4xl">
             <LPStats />
           </div>
           
@@ -163,17 +163,6 @@ function App() {
             <Route path="/" component={Dashboard} />
           </Switch>
         </Router>
-
-        <Tooltip 
-          id="stakeTip" 
-          className="bag-tooltip" 
-          place="top" 
-        />
-        <Tooltip 
-          id="lpTip" 
-          className="bag-tooltip" 
-          place="bottom" 
-        />
       </QueryClientProvider>
     </div>
   );
