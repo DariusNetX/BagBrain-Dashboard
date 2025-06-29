@@ -1,0 +1,27 @@
+<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="memePattern" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
+      <!-- Dark base -->
+      <rect width="150" height="150" fill="#000000" opacity="0.9"/>
+      
+      <!-- Subtle golden dots -->
+      <circle cx="30" cy="30" r="1.5" fill="#ffd700" opacity="0.1"/>
+      <circle cx="120" cy="45" r="1" fill="#ffd700" opacity="0.08"/>
+      <circle cx="75" cy="90" r="1.2" fill="#ffd700" opacity="0.12"/>
+      <circle cx="45" cy="120" r="0.8" fill="#ffd700" opacity="0.06"/>
+      <circle cx="105" cy="15" r="1.3" fill="#ffd700" opacity="0.1"/>
+      
+      <!-- Extremely subtle emoji patterns -->
+      <text x="15" y="75" font-size="8" fill="#ffd700" opacity="0.03">💰</text>
+      <text x="90" y="30" font-size="6" fill="#00ffff" opacity="0.02">🧠</text>
+      <text x="135" y="105" font-size="7" fill="#ff6b9d" opacity="0.025">💎</text>
+      <text x="60" y="135" font-size="5" fill="#ffd700" opacity="0.02">$</text>
+      
+      <!-- Subtle grid lines for texture -->
+      <line x1="0" y1="75" x2="150" y2="75" stroke="#333" stroke-width="0.5" opacity="0.1"/>
+      <line x1="75" y1="0" x2="75" y2="150" stroke="#333" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#memePattern)"/>
+</svg>

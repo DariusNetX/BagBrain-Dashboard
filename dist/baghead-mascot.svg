@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- This is a placeholder SVG - replace with your actual meme character -->
+  <defs>
+    <radialGradient id="bagGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="64" fill="url(#bagGradient)" stroke="#000" stroke-width="2"/>
+  
+  <!-- Character features - customize these for your meme character -->
+  <circle cx="50" cy="50" r="8" fill="#000"/> <!-- left eye -->
+  <circle cx="78" cy="50" r="8" fill="#000"/> <!-- right eye -->
+  <path d="M 45 75 Q 64 90 83 75" stroke="#000" stroke-width="3" fill="none"/> <!-- smile -->
+  
+  <!-- Add your character-specific features here -->
+  <text x="64" y="100" text-anchor="middle" font-size="24" fill="#000">💰</text>
+</svg>
