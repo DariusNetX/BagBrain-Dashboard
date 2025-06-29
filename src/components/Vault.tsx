@@ -25,7 +25,9 @@ const Vault = () => {
   const [amount, setAmount] = useState('');
   const [status, setStatus] = useState('');
   const [txStatus, setTxStatus] = useState('');
-  const { totalStaked, userStake, isLoading, error } = useVaultData();
+  const [validationError, setValidationError] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const { totalStaked, userStake, isLoading, error, refetch } = useVaultData();
   const { activePopover, togglePopover } = useMobilePopover();
 
   const handleStake = async () => {
@@ -214,15 +216,23 @@ const Vault = () => {
           isActive={activePopover === 'amount-input'} 
           onToggle={togglePopover}
         >
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="Amount of $BAG"
-            className="input-standard w-full mb-4 cursor-help"
-            min="0"
-            step="0.01"
-          />
+          <div className="mb-4">
+            <input
+              type="number"
+              value={amount}
+              onChange={(e) => handleAmountChange(e.target.value)}
+              placeholder="Amount of $BAG"
+              className={`input-standard w-full cursor-help ${
+                validationError ? 'border-red-500 focus:ring-red-500' : ''
+              }`}
+              min="0"
+              step="0.01"
+              disabled={isProcessing}
+            />
+            {validationError && (
+              <p className="text-red-400 text-sm mt-2">⚠️ {validationError}</p>
+            )}
+          </div>
         </MobilePopover>
         <div className="flex flex-col gap-6">
           <MobilePopover 
