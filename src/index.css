@@ -339,6 +339,11 @@ body::before {
   text-shadow: 0 0 1.5px #f97316, 0 0 3px #f97316;
 }
 
+.glow-purple {
+  color: #a855f7;
+  text-shadow: 0 0 1.5px #a855f7, 0 0 3px #a855f7;
+}
+
 @keyframes shimmer {
   0% {
     left: -100%;

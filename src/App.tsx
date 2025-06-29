@@ -9,7 +9,7 @@ import LPStats from './components/LPStats';
 import BagHeadMascot from './components/BagHeadMascot';
 import BagBrainCharacters from './components/BagBrainCharacters';
 import BottomCTA from './components/BottomCTA';
-import BagBrainIQTest from './components/BagBrainIQTest';
+import BagBrainIQTestNew from './components/BagBrainIQTestNew';
 import LeaderboardPreview from './components/LeaderboardPreview';
 import ViralBackground from './components/ViralBackground';
 import ArcadePage from './components/ArcadePage';
@@ -158,7 +158,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Router>
           <Switch>
-            <Route path="/iq" component={BagBrainIQTest} />
+            <Route path="/iq" component={BagBrainIQTestNew} />
             <Route path="/arcade" component={ArcadePage} />
             <Route path="/" component={Dashboard} />
           </Switch>
