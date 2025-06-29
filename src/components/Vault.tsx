@@ -208,15 +208,22 @@ const Vault = () => {
           Lock your $BAG. Feed the brain. Secure your place in meme history.
         </p>
         
-        <input
-          type="number"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          placeholder="Amount of $BAG"
-          className="input-standard w-full mb-4"
-          min="0"
-          step="0.01"
-        />
+        <MobilePopover 
+          id="amount-input" 
+          content="Enter how many $BAG tokens you want to stake. Remember: only stake what you can afford to lock up for the long term!" 
+          isActive={activePopover === 'amount-input'} 
+          onToggle={togglePopover}
+        >
+          <input
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Amount of $BAG"
+            className="input-standard w-full mb-4 cursor-help"
+            min="0"
+            step="0.01"
+          />
+        </MobilePopover>
         <div className="flex flex-col gap-6">
           <MobilePopover 
           id="stake-btn" 

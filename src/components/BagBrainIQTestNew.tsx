@@ -653,13 +653,13 @@ export default function BagBrainIQTest() {
               <MobilePopover 
                 key={index}
                 id={`q${question.id}-option${index}`} 
-                content={option.tooltip}
+                content={`${option.tooltip} [${option.points} points]`}
                 isActive={activePopover === `q${question.id}-option${index}`} 
                 onToggle={togglePopover}
               >
                 <button
                   onClick={() => handleAnswer(option.points)}
-                  className="iq-answer-choice w-full p-3 sm:p-6 md:p-8 bg-black border-2 border-amber-500/40 rounded-xl text-left glow-gold hover:border-amber-500/80 transition-all duration-300 text-base sm:text-3xl md:text-4xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[3rem] sm:min-h-[4rem] md:min-h-[5rem] flex items-center"
+                  className="iq-answer-choice w-full p-3 sm:p-6 md:p-8 bg-black border-2 border-amber-500/40 rounded-xl text-left glow-gold hover:border-amber-500/80 transition-all duration-300 text-base sm:text-3xl md:text-4xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[3rem] sm:min-h-[4rem] md:min-h-[5rem] flex items-center cursor-help"
                 >
                   <span className="font-bold text-amber-400 mr-2 sm:mr-4 md:mr-6 text-lg sm:text-4xl md:text-5xl flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
                   <span className="flex-1 break-words">{option.text}</span>
