@@ -220,7 +220,7 @@ const Vault = () => {
           <p className="viral-subtitle text-center mt-6">
             🪙 <MobilePopover 
               id="wallet-connect" 
-              content="Fumble the bag and you fumble the mission." 
+              content="Connect your wallet to access the vault and start staking $BAG tokens" 
               isActive={activePopover === 'wallet-connect'} 
               onToggle={togglePopover}
             >
@@ -246,7 +246,7 @@ const Vault = () => {
           }}>
             <MobilePopover 
               id="total-staked" 
-              content="Brains in. Liquidity out." 
+              content="Total amount of $BAG tokens staked by all users in the vault" 
               isActive={activePopover === 'total-staked'} 
               onToggle={togglePopover}
             >
