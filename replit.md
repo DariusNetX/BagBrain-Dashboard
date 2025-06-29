@@ -530,3 +530,8 @@ Preferred communication style: Simple, everyday language.
 ✓ Added custom favicon and Twitter card previews with BagHead mascot image
 ✓ Enhanced mobile responsiveness for meme carousel, vault buttons, and arcade game tiles
 ✓ Applied consistent hover effects and animations across mobile and desktop platforms
+✓ Implemented randomized question pool system for IQ Test with 20 total questions
+✓ Users now get 10 random questions from expanded pool each time they take the test
+✓ Added variety with new crypto-themed questions covering DeFi protocols, market crashes, and degen behavior
+✓ Updated intro page to highlight random question feature and replayability
+✓ Enhanced restart functionality to generate new random question sets each time

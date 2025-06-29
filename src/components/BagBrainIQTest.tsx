@@ -207,6 +207,9 @@ export default function BagBrainIQTest() {
   };
 
   const startTest = () => {
+    // Generate random set of 10 questions when starting the test
+    const randomQuestions = getRandomQuestions(questions, 10);
+    setSelectedQuestions(randomQuestions);
     setShowIntro(false);
   };
 
