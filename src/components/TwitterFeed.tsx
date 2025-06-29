@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-interface TwitterFeedProps {
+interface XFeedProps {
   username: string;
   height?: number;
   theme?: 'light' | 'dark';
   className?: string;
 }
 
-const TwitterFeed: React.FC<TwitterFeedProps> = ({ 
+const XFeed: React.FC<XFeedProps> = ({ 
   username, 
   height = 600, 
   theme = 'dark',
@@ -16,7 +16,7 @@ const TwitterFeed: React.FC<TwitterFeedProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Load Twitter widgets script if not already loaded
+    // Load X (Twitter) widgets script if not already loaded
     if (!window.twttr) {
       const script = document.createElement('script');
       script.src = 'https://platform.twitter.com/widgets.js';
@@ -85,7 +85,7 @@ const TwitterFeed: React.FC<TwitterFeedProps> = ({
   }, [username, height, theme]);
 
   return (
-    <div className={`twitter-feed-container ${className}`}>
+    <div className={`x-feed-container ${className}`}>
       <div 
         ref={containerRef}
         className="min-h-[400px] bg-black/40 rounded-lg border border-blue-500/20 overflow-hidden"
@@ -95,7 +95,7 @@ const TwitterFeed: React.FC<TwitterFeedProps> = ({
         <div className="flex items-center justify-center h-full">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
-            <div className="glow-gold text-lg">Loading Twitter feed...</div>
+            <div className="glow-gold text-lg">Loading X feed...</div>
           </div>
         </div>
       </div>
@@ -110,4 +110,4 @@ declare global {
   }
 }
 
-export default TwitterFeed;
+export default XFeed;

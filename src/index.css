@@ -153,46 +153,46 @@ body::before {
   outline-offset: 4px;
 }
 
-/* Twitter button specific styling */
-.enhanced-button.bg-gradient-to-r.from-\[#1DA1F2\] {
-  background: linear-gradient(135deg, #1DA1F2 0%, #0d8ddb 100%);
-  border-color: rgba(29, 161, 242, 0.4);
+/* X button specific styling */
+.enhanced-button.bg-gradient-to-r.from-black {
+  background: linear-gradient(135deg, #000000 0%, #1f2937 100%);
+  border-color: rgba(107, 114, 128, 0.6);
 }
 
-.enhanced-button.bg-gradient-to-r.from-\[#1DA1F2\]:hover {
-  background: linear-gradient(135deg, #0d8ddb 0%, #0a7bc4 100%);
-  border-color: rgba(13, 141, 219, 0.6);
+.enhanced-button.bg-gradient-to-r.from-black:hover {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  border-color: rgba(156, 163, 175, 0.8);
   box-shadow: 
-    0 8px 25px rgba(29, 161, 242, 0.4),
-    0 4px 12px rgba(29, 161, 242, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  outline: 2px solid rgba(29, 161, 242, 0.5);
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(107, 114, 128, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  outline: 2px solid rgba(107, 114, 128, 0.5);
 }
 
-.enhanced-button.bg-gradient-to-r.from-\[#1DA1F2\]:focus {
-  outline: 3px solid rgba(29, 161, 242, 0.7);
+.enhanced-button.bg-gradient-to-r.from-black:focus {
+  outline: 3px solid rgba(107, 114, 128, 0.7);
   outline-offset: 2px;
 }
 
-/* Twitter Feed Styling */
-.twitter-feed-container {
+/* X Feed Styling */
+.x-feed-container {
   position: relative;
 }
 
-.twitter-feed-container iframe {
+.x-feed-container iframe {
   border-radius: 12px !important;
-  border: 1px solid rgba(29, 161, 242, 0.3) !important;
+  border: 1px solid rgba(107, 114, 128, 0.3) !important;
 }
 
-/* Custom Twitter Timeline Dark Theme */
+/* Custom X Timeline Dark Theme */
 .twitter-timeline {
   background: rgba(0, 0, 0, 0.8) !important;
-  border: 1px solid rgba(29, 161, 242, 0.3) !important;
+  border: 1px solid rgba(107, 114, 128, 0.3) !important;
   border-radius: 12px !important;
 }
 
-/* Loading animation for Twitter feed */
-@keyframes twitterPulse {
+/* Loading animation for X feed */
+@keyframes xPulse {
   0%, 100% {
     opacity: 0.4;
   }
@@ -201,8 +201,8 @@ body::before {
   }
 }
 
-.twitter-loading {
-  animation: twitterPulse 2s ease-in-out infinite;
+.x-loading {
+  animation: xPulse 2s ease-in-out infinite;
 }
 
 /* Enhanced Button Styling Consistency */
