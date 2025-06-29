@@ -880,9 +880,19 @@ body::before {
   display: none !important;
 }
 
-/* Global prevention of blank tooltips - more targeted */
+/* COMPREHENSIVE blank tooltip prevention */
 .mobile-hint[data-tooltip=""]::after,
-.mobile-hint[data-tooltip=""]:hover::after {
+.mobile-hint[data-tooltip=""]:hover::after,
+.mobile-hint:not([data-tooltip])::after,
+.mobile-hint:not([data-tooltip]):hover::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Only target tooltip-specific elements to prevent interference */
+.mobile-hint[data-tooltip=""]::after,
+.mobile-hint[data-tooltip=""]::before {
+  content: none !important;
   display: none !important;
 }
 
@@ -934,9 +944,17 @@ body::before {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   }
   
-  /* Hide desktop hover tooltips if data-tooltip is empty */
+  /* Hide ALL desktop hover tooltips with empty or missing content */
   .mobile-hint[data-tooltip=""]:hover::after,
+  .mobile-hint:not([data-tooltip]):hover::after,
+  .mobile-hint[data-tooltip="undefined"]:hover::after,
+  .mobile-hint[data-tooltip="null"]:hover::after {
+    display: none !important;
+  }
+  
+  /* Only show tooltips with actual content */
   .mobile-hint:not([data-tooltip]):hover::after {
+    content: none !important;
     display: none !important;
   }
 }

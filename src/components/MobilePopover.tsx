@@ -15,6 +15,14 @@ export const MobilePopover: React.FC<MobilePopoverProps> = ({
   isActive,
   onToggle
 }) => {
+  // Validate content - only render tooltip functionality if content exists
+  const hasValidContent = content && typeof content === 'string' && content.trim().length > 0;
+  
+  if (!hasValidContent) {
+    // Return children without tooltip functionality if no valid content
+    return <span>{children}</span>;
+  }
+  
   return (
     <span 
       className={`mobile-popover ${isActive ? 'active' : ''}`}
@@ -25,7 +33,7 @@ export const MobilePopover: React.FC<MobilePopoverProps> = ({
     >
       <span 
         className="mobile-hint" 
-        {...(content && content.trim() ? { 'data-tooltip': content } : {})}
+        data-tooltip={content}
       >
         {children}
       </span>

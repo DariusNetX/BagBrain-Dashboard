@@ -153,22 +153,44 @@ function Dashboard() {
 
 function App() {
   useEffect(() => {
-    // Debug blank tooltips
-    const checkForBlankTooltips = () => {
-      const elements = document.querySelectorAll('.mobile-hint');
+    // Comprehensive blank tooltip prevention
+    const removeBlankTooltips = () => {
+      // Remove all problematic tooltip attributes
+      const elements = document.querySelectorAll('.mobile-hint, [data-tooltip], [title]');
       elements.forEach(el => {
         const tooltip = el.getAttribute('data-tooltip');
-        if (!tooltip || tooltip.trim() === '') {
-          console.warn('Found element with blank tooltip:', el);
+        const title = el.getAttribute('title');
+        
+        // Remove empty or problematic data-tooltip attributes
+        if (tooltip !== null && (!tooltip || tooltip.trim() === '' || tooltip === 'undefined' || tooltip === 'null')) {
           el.removeAttribute('data-tooltip');
+          el.classList.remove('mobile-hint');
+          console.warn('Removed blank tooltip from:', el);
+        }
+        
+        // Remove empty title attributes
+        if (title !== null && (!title || title.trim() === '')) {
+          el.removeAttribute('title');
         }
       });
+      
+      // Log cleanup summary
+      console.log('Tooltip cleanup completed - removed blank tooltips from page');
     };
 
-    // Check on mount and mutations
-    checkForBlankTooltips();
-    const observer = new MutationObserver(checkForBlankTooltips);
-    observer.observe(document.body, { subtree: true, attributes: true });
+    // Initial cleanup
+    removeBlankTooltips();
+    
+    // Monitor for changes
+    const observer = new MutationObserver(() => {
+      setTimeout(removeBlankTooltips, 100); // Delay to catch dynamic content
+    });
+    
+    observer.observe(document.body, { 
+      subtree: true, 
+      attributes: true, 
+      attributeFilter: ['data-tooltip', 'title', 'class']
+    });
 
     return () => observer.disconnect();
   }, []);
