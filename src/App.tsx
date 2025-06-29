@@ -2,7 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
 
 import { Router, Route, Switch, Link } from 'wouter';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
@@ -152,6 +152,27 @@ function Dashboard() {
 }
 
 function App() {
+  useEffect(() => {
+    // Debug blank tooltips
+    const checkForBlankTooltips = () => {
+      const elements = document.querySelectorAll('.mobile-hint');
+      elements.forEach(el => {
+        const tooltip = el.getAttribute('data-tooltip');
+        if (!tooltip || tooltip.trim() === '') {
+          console.warn('Found element with blank tooltip:', el);
+          el.removeAttribute('data-tooltip');
+        }
+      });
+    };
+
+    // Check on mount and mutations
+    checkForBlankTooltips();
+    const observer = new MutationObserver(checkForBlankTooltips);
+    observer.observe(document.body, { subtree: true, attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="App relative min-h-screen w-full">
       <ViralBackground />
