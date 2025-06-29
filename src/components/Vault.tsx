@@ -273,7 +273,7 @@ const Vault = () => {
           <p className="emphasis-text">
             💼 <MobilePopover 
               id="first-stake" 
-              content="First time? Make it count." 
+              content="You haven't staked any $BAG tokens yet. Enter an amount to get started!" 
               isActive={activePopover === 'first-stake'} 
               onToggle={togglePopover}
             >

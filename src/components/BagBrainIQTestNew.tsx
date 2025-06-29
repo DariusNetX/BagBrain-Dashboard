@@ -672,7 +672,7 @@ export default function BagBrainIQTest() {
         <div className="text-center text-base sm:text-lg glow-gold opacity-50 pt-4 sm:pt-6">
           <MobilePopover 
             id="disclaimer" 
-            content="No actual brains were harmed in the making of this test" 
+            content="This is a fun meme quiz - results are for entertainment only!" 
             isActive={activePopover === 'disclaimer'} 
             onToggle={togglePopover}
           >
