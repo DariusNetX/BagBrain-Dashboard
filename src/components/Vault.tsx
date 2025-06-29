@@ -350,13 +350,22 @@ const Vault = () => {
               type="number"
               value={amount}
               onChange={(e) => handleAmountChange(e.target.value)}
-              placeholder="Amount of $BAG"
+              placeholder="Enter amount of $BAG tokens"
               className={`input-standard w-full cursor-help ${
-                validationError ? 'border-red-500 focus:ring-red-500' : ''
+                validationError ? 'border-red-500 focus:ring-red-500' : 
+                isValidAmount ? 'border-green-500 focus:ring-green-500' : ''
               }`}
               min="0"
-              step="0.01"
+              max="1000000"
+              step="0.000000000000000001"
               disabled={isProcessing}
+              autoComplete="off"
+              onKeyDown={(e) => {
+                // Prevent entering negative sign, 'e', 'E', '+', '-'
+                if (['-', '+', 'e', 'E'].includes(e.key)) {
+                  e.preventDefault();
+                }
+              }}
             />
             {validationError && (
               <p className="text-red-400 text-sm mt-2">⚠️ {validationError}</p>
