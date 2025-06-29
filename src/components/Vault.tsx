@@ -27,57 +27,152 @@ const Vault = () => {
   const [txStatus, setTxStatus] = useState('');
   const [validationError, setValidationError] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  const { totalStaked, userStake, isLoading, error, refetch } = useVaultData();
+  const { totalStaked, userStake, isLoading, error } = useVaultData();
   const { activePopover, togglePopover } = useMobilePopover();
 
+  const validateInput = (value: string): string => {
+    if (!value || value.trim() === '') {
+      return 'Please enter an amount';
+    }
+    const num = parseFloat(value);
+    if (isNaN(num)) {
+      return 'Please enter a valid number';
+    }
+    if (num <= 0) {
+      return 'Amount must be greater than 0';
+    }
+    if (num > 1000000) {
+      return 'Amount is too large';
+    }
+    return '';
+  };
+
+  const handleAmountChange = (value: string) => {
+    setAmount(value);
+    const error = validateInput(value);
+    setValidationError(error);
+  };
+
+  const isValidAmount = amount && !validationError && parseFloat(amount) > 0;
+
   const handleStake = async () => {
+    if (!isConnected) {
+      setStatus('❌ Please connect your wallet first');
+      return;
+    }
+
+    if (!isValidAmount) {
+      setValidationError(validateInput(amount));
+      return;
+    }
+
     try {
+      setIsProcessing(true);
       setTxStatus('pending');
-      setStatus('Approving...');
+      setStatus('Summoning brains...');
+      setValidationError('');
+
       const bag = new ethers.Contract(BAG_ADDRESS, erc20ABI, signer);
       const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
-
       const amountInWei = ethers.parseUnits(amount, 18);
 
       // Approve if needed
       const allowance = await bag.allowance(address, VAULT_ADDRESS);
       if (allowance < amountInWei) {
+        setStatus('Approving $BAG tokens...');
         const approveTx = await bag.approve(VAULT_ADDRESS, amountInWei);
         await approveTx.wait();
       }
 
-      setStatus('Staking...');
+      setStatus('Deploying brains to vault...');
       const stakeTx = await vault.stake(amountInWei);
       await stakeTx.wait();
+      
       setTxStatus('success');
-      setStatus('✅ Staked successfully!');
+      setStatus('🎉 Brains successfully deployed!');
       setAmount('');
-      setTimeout(() => setTxStatus(''), 5000);
-    } catch (err) {
-      console.error(err);
+      
+      setTimeout(() => {
+        setStatus('');
+        setTxStatus('');
+      }, 5000);
+    } catch (error: any) {
+      console.error('Stake error:', error);
       setTxStatus('error');
-      setStatus('❌ Error during stake.');
-      setTimeout(() => setTxStatus(''), 5000);
+      
+      // Handle specific error types
+      if (error.code === 4001 || error.message?.includes('rejected')) {
+        setStatus('❌ Transaction rejected by user');
+      } else if (error.message?.includes('insufficient funds')) {
+        setStatus('❌ Insufficient funds for transaction');
+      } else if (error.message?.includes('gas')) {
+        setStatus('❌ Transaction failed - try increasing gas limit');
+      } else if (error.message?.includes('allowance')) {
+        setStatus('❌ Token approval failed - please try again');
+      } else {
+        setStatus('❌ Transaction failed - please try again');
+      }
+      
+      setTimeout(() => {
+        setStatus('');
+        setTxStatus('');
+      }, 8000);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
   const handleWithdraw = async () => {
+    if (!isConnected) {
+      setStatus('❌ Please connect your wallet first');
+      return;
+    }
+
+    if (!isValidAmount) {
+      setValidationError(validateInput(amount));
+      return;
+    }
+
     try {
+      setIsProcessing(true);
       setTxStatus('pending');
-      setStatus('Withdrawing...');
+      setStatus('Claiming what\'s yours...');
+      setValidationError('');
+
       const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
       const amountInWei = ethers.parseUnits(amount, 18);
       const withdrawTx = await vault.withdraw(amountInWei);
       await withdrawTx.wait();
+      
       setTxStatus('success');
-      setStatus('✅ Withdrawn successfully!');
+      setStatus('💰 Your bags have escaped the vault!');
       setAmount('');
-      setTimeout(() => setTxStatus(''), 5000);
-    } catch (err) {
-      console.error(err);
+      
+      setTimeout(() => {
+        setStatus('');
+        setTxStatus('');
+      }, 5000);
+    } catch (error: any) {
+      console.error('Withdraw error:', error);
       setTxStatus('error');
-      setStatus('❌ Error during withdrawal.');
-      setTimeout(() => setTxStatus(''), 5000);
+      
+      // Handle specific error types
+      if (error.code === 4001 || error.message?.includes('rejected')) {
+        setStatus('❌ Transaction rejected by user');
+      } else if (error.message?.includes('insufficient')) {
+        setStatus('❌ Insufficient staked amount for withdrawal');
+      } else if (error.message?.includes('gas')) {
+        setStatus('❌ Transaction failed - try increasing gas limit');
+      } else {
+        setStatus('❌ Withdrawal failed - please try again');
+      }
+      
+      setTimeout(() => {
+        setStatus('');
+        setTxStatus('');
+      }, 8000);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -169,7 +264,7 @@ const Vault = () => {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            {userStake || '--'} $BAG
+            {(isConnected && userStake) ? parseFloat(userStake).toLocaleString() : '--'} $BAG
           </p>
         </div>
       </div>
