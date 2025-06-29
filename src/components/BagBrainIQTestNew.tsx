@@ -539,10 +539,10 @@ export default function BagBrainIQTest() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   <button
-                    onClick={() => shareToTwitter(iq, memeGrade, rating)}
-                    className="btn-lg bg-blue-500 hover:bg-blue-600 text-white"
+                    onClick={() => shareToX(iq, memeGrade, rating)}
+                    className="btn-lg bg-black hover:bg-gray-900 text-white border-2 border-gray-600 hover:border-gray-400"
                   >
-                    🐦 Twitter
+                    🅧 X
                   </button>
                   <button
                     onClick={() => shareToFacebook(iq, memeGrade, rating)}
@@ -578,9 +578,9 @@ export default function BagBrainIQTest() {
               {/* Twitter Feed Section */}
               <div className="mt-8 sm:mt-12 px-2 sm:px-0">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold glow-gold mb-4 sm:mb-6">
-                  🐦 Follow @ImBaggedUp
+                  🅧 Follow @ImBaggedUp
                 </h3>
-                <TwitterFeed 
+                <XFeed 
                   username="ImBaggedUp" 
                   height={300}
                   theme="dark"

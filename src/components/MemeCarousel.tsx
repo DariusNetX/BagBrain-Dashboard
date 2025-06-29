@@ -118,11 +118,11 @@ export default function MemeCarousel() {
 
   const currentMeme = memes[currentIndex];
 
-  const shareToTwitter = (meme: Meme) => {
+  const shareToX = (meme: Meme) => {
     const text = `Check out this BagBrain meme: ${meme.title} 🧠💰\n\n#BagBrain #DeFi #CryptoMemes #WAGMI`;
     const url = `${window.location.origin}`;
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank');
+    const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(xUrl, '_blank');
   };
 
   return (
@@ -159,14 +159,14 @@ export default function MemeCarousel() {
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">
               <MobilePopover
                 id={`share-meme-${currentIndex}`}
-                content="Share this BagBrain meme to Twitter and spread the degen wisdom!"
+                content="Share this BagBrain meme to X and spread the degen wisdom!"
                 isActive={activePopover === `share-meme-${currentIndex}`}
                 onToggle={togglePopover}
               >
                 <button
-                  onClick={() => shareToTwitter(currentMeme)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-                  aria-label="Share to Twitter"
+                  onClick={() => shareToX(currentMeme)}
+                  className="bg-black hover:bg-gray-900 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 border border-gray-600"
+                  aria-label="Share to X"
                 >
                   <Share className="w-5 h-5" />
                 </button>
@@ -202,14 +202,14 @@ export default function MemeCarousel() {
             <div className="ml-4 md:hidden">
               <MobilePopover
                 id={`share-meme-mobile-${currentIndex}`}
-                content="Share this BagBrain meme to Twitter and spread the degen wisdom!"
+                content="Share this BagBrain meme to X and spread the degen wisdom!"
                 isActive={activePopover === `share-meme-mobile-${currentIndex}`}
                 onToggle={togglePopover}
               >
                 <button
-                  onClick={() => shareToTwitter(currentMeme)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-                  aria-label="Share to Twitter"
+                  onClick={() => shareToX(currentMeme)}
+                  className="bg-black hover:bg-gray-900 text-white p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 border border-gray-600"
+                  aria-label="Share to X"
                 >
                   <Share className="w-4 h-4" />
                 </button>
