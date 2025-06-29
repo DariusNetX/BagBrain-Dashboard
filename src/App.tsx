@@ -165,7 +165,12 @@ function App() {
         if (tooltip !== null && (!tooltip || tooltip.trim() === '' || tooltip === 'undefined' || tooltip === 'null')) {
           el.removeAttribute('data-tooltip');
           el.classList.remove('mobile-hint');
-          console.warn('Removed blank tooltip from:', el);
+          // Also remove any hover styling that might cause blank tooltips
+          const htmlEl = el as HTMLElement;
+          if (htmlEl.style) {
+            htmlEl.style.textDecoration = 'none';
+          }
+          console.warn('Removed blank tooltip from element:', el.tagName, el.className);
         }
         
         // Remove empty title attributes
@@ -174,8 +179,18 @@ function App() {
         }
       });
       
-      // Log cleanup summary
-      console.log('Tooltip cleanup completed - removed blank tooltips from page');
+      // Additional check for any CSS pseudo-elements that might create blank tooltips
+      const mobileHints = document.querySelectorAll('.mobile-hint');
+      mobileHints.forEach(el => {
+        const tooltip = el.getAttribute('data-tooltip');
+        if (!tooltip || tooltip.trim() === '') {
+          el.classList.remove('mobile-hint');
+          el.removeAttribute('data-tooltip');
+          console.warn('Stripped mobile-hint class from element with no content');
+        }
+      });
+      
+      console.log(`Tooltip cleanup completed - processed ${elements.length} elements`);
     };
 
     // Initial cleanup

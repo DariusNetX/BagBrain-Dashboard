@@ -880,20 +880,41 @@ body::before {
   display: none !important;
 }
 
-/* COMPREHENSIVE blank tooltip prevention */
+/* ULTIMATE blank tooltip prevention - multiple layers */
 .mobile-hint[data-tooltip=""]::after,
 .mobile-hint[data-tooltip=""]:hover::after,
 .mobile-hint:not([data-tooltip])::after,
-.mobile-hint:not([data-tooltip]):hover::after {
+.mobile-hint:not([data-tooltip]):hover::after,
+.mobile-hint[data-tooltip="undefined"]::after,
+.mobile-hint[data-tooltip="null"]::after,
+.mobile-hint[data-tooltip=" "]::after {
   display: none !important;
   content: none !important;
+  visibility: hidden !important;
 }
 
-/* Only target tooltip-specific elements to prevent interference */
+/* Complete pseudo-element protection */
 .mobile-hint[data-tooltip=""]::after,
-.mobile-hint[data-tooltip=""]::before {
+.mobile-hint[data-tooltip=""]::before,
+.mobile-hint[data-tooltip="undefined"]::after,
+.mobile-hint[data-tooltip="undefined"]::before,
+.mobile-hint[data-tooltip="null"]::after,
+.mobile-hint[data-tooltip="null"]::before {
   content: none !important;
   display: none !important;
+  visibility: hidden !important;
+}
+
+/* Global protection against any pseudo-element with empty content */
+[data-tooltip=""]::after,
+[data-tooltip=""]::before,
+[data-tooltip="undefined"]::after,
+[data-tooltip="undefined"]::before,
+[data-tooltip="null"]::after,
+[data-tooltip="null"]::before {
+  content: none !important;
+  display: none !important;
+  visibility: hidden !important;
 }
 
 .mobile-hint {
