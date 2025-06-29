@@ -442,18 +442,18 @@ export default function BagBrainIQTest() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/80" />
         
-        <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-black/50 backdrop-blur-sm border border-amber-500/30 rounded-2xl p-8 md:p-12">
-              <h1 className="text-4xl md:text-6xl font-bold glow-gold mb-6">
+        <div className="relative z-10 min-h-screen flex items-center justify-center p-2 sm:p-4">
+          <div className="w-full max-w-4xl mx-auto text-center px-2 sm:px-4">
+            <div className="bg-black/50 backdrop-blur-sm border border-amber-500/30 rounded-2xl p-4 sm:p-8 md:p-12">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold glow-gold mb-4 sm:mb-6">
                 🧠 The IQ Test for Degens
               </h1>
               
-              <p className="text-xl md:text-2xl glow-text mb-8">
+              <p className="text-lg sm:text-xl md:text-2xl glow-text mb-6 sm:mb-8">
                 Prove you've got Bags for Brains
               </p>
               
-              <div className="text-left space-y-4 mb-8 text-lg md:text-xl max-w-3xl mx-auto">
+              <div className="text-left space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2">
                 <p className="glow-text">
                   🎯 <strong>Random questions every time</strong> - Get 10 unique questions from our pool of crypto wisdom
                 </p>
@@ -473,7 +473,7 @@ export default function BagBrainIQTest() {
               
               <button
                 onClick={startTest}
-                className="btn-lg btn-primary px-12 py-4 text-xl md:text-2xl font-bold uppercase tracking-wider"
+                className="btn-lg btn-primary px-6 sm:px-12 py-3 sm:py-4 text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider w-full sm:w-auto"
               >
                 🚀 Start the Test
               </button>
@@ -502,34 +502,34 @@ export default function BagBrainIQTest() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         
-        <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-black/60 backdrop-blur-lg border border-amber-500/40 rounded-2xl p-8 md:p-12">
-              <h1 className="text-5xl md:text-7xl font-bold glow-gold mb-8">
+        <div className="relative z-10 min-h-screen flex items-center justify-center p-2 sm:p-4">
+          <div className="w-full max-w-4xl mx-auto text-center px-2 sm:px-4">
+            <div className="bg-black/60 backdrop-blur-lg border border-amber-500/40 rounded-2xl p-4 sm:p-8 md:p-12">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold glow-gold mb-6 sm:mb-8">
                 🧠 Your IQ Results
               </h1>
               
-              <div className="mb-8">
-                <div className="text-6xl md:text-8xl font-bold glow-gold mb-4">
+              <div className="mb-6 sm:mb-8">
+                <div className="text-4xl sm:text-6xl md:text-8xl font-bold glow-gold mb-4">
                   {iq.toLocaleString()}
                 </div>
                 
                 {/* Meme Grade - Prominent Display */}
-                <div className="bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-amber-500/50 rounded-xl p-6 mb-6">
-                  <div className="text-3xl md:text-4xl font-bold glow-purple mb-2">
+                <div className="bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-amber-500/50 rounded-xl p-3 sm:p-6 mb-4 sm:mb-6 mx-2 sm:mx-0">
+                  <div className="text-xl sm:text-3xl md:text-4xl font-bold glow-purple mb-2">
                     🏅 Your Meme Grade
                   </div>
-                  <div className="text-2xl md:text-3xl glow-gold font-bold">
+                  <div className="text-lg sm:text-2xl md:text-3xl glow-gold font-bold break-words">
                     {memeGrade}
                   </div>
                 </div>
                 
-                <div className="text-xl md:text-2xl glow-text mb-6">
+                <div className="text-base sm:text-xl md:text-2xl glow-text mb-4 sm:mb-6 px-2">
                   {rating}
                 </div>
               </div>
 
-              <div className="space-y-6 mb-8">
+              <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8 px-2 sm:px-0">
                 <button
                   onClick={restartTest}
                   className="btn-lg btn-primary w-full mb-4"
@@ -537,7 +537,7 @@ export default function BagBrainIQTest() {
                   🎲 Get New Random Questions
                 </button>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   <button
                     onClick={() => shareToTwitter(iq, memeGrade, rating)}
                     className="btn-lg bg-blue-500 hover:bg-blue-600 text-white"
@@ -567,8 +567,8 @@ export default function BagBrainIQTest() {
 
               {/* Leaderboard Section */}
               {autoRevealLeaderboard && (
-                <div className="mt-8 fade-in">
-                  <h3 className="text-2xl md:text-3xl font-bold glow-gold mb-6">
+                <div className="mt-6 sm:mt-8 fade-in px-2 sm:px-0">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold glow-gold mb-4 sm:mb-6">
                     🏆 Current Leaderboard
                   </h3>
                   <LeaderboardPreview />
@@ -576,21 +576,21 @@ export default function BagBrainIQTest() {
               )}
 
               {/* Twitter Feed Section */}
-              <div className="mt-12">
-                <h3 className="text-2xl md:text-3xl font-bold glow-gold mb-6">
+              <div className="mt-8 sm:mt-12 px-2 sm:px-0">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold glow-gold mb-4 sm:mb-6">
                   🐦 Follow @ImBaggedUp
                 </h3>
                 <TwitterFeed 
                   username="ImBaggedUp" 
-                  height={400}
+                  height={300}
                   theme="dark"
-                  className="max-w-2xl mx-auto"
+                  className="max-w-full sm:max-w-2xl mx-auto"
                 />
               </div>
 
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8 px-2 sm:px-0">
                 <Link href="/">
-                  <button className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">
+                  <button className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto">
                     🏠 Back to Dashboard
                   </button>
                 </Link>
@@ -606,7 +606,7 @@ export default function BagBrainIQTest() {
 
   return (
     <div 
-      className="min-h-screen p-4 sm:p-6 flex items-center justify-center relative"
+      className="min-h-screen p-2 sm:p-4 md:p-6 flex items-center justify-center relative"
       style={{
         backgroundImage: `url(/bagbrain-q${currentQuestion + 1}.png)`,
         backgroundSize: 'cover',
@@ -617,36 +617,38 @@ export default function BagBrainIQTest() {
       {/* Simplified overlay for better readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
       
-      <div className="max-w-4xl w-full bg-black/85 rounded-lg border-2 border-amber-500/50 p-6 sm:p-10 relative z-10 overflow-hidden backdrop-blur-sm shadow-2xl">
-        <div className="mb-10 sm:mb-12 relative z-10">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
-            <h1 className="text-4xl sm:text-6xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
-            <div className="flex items-center gap-4 sm:gap-6">
-              <div className="text-xl sm:text-2xl glow-gold opacity-75">
-                Question {currentQuestion + 1} of {selectedQuestions.length}
-              </div>
+      <div className="w-full max-w-4xl bg-black/85 rounded-lg border-2 border-amber-500/50 p-3 sm:p-6 md:p-10 relative z-10 overflow-hidden backdrop-blur-sm shadow-2xl mx-2 sm:mx-4">
+        <div className="mb-6 sm:mb-10 md:mb-12 relative z-10">
+          <div className="flex flex-col gap-3 sm:gap-4 mb-4 sm:mb-6 md:mb-8">
+            <div className="flex justify-between items-center">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold glow-gold">🧠 BagBrain IQ Test</h1>
               <Link href="/">
-                <button className="text-xl sm:text-2xl glow-gold opacity-75 hover:opacity-100 px-4 py-2">
+                <button className="text-lg sm:text-xl md:text-2xl glow-gold opacity-75 hover:opacity-100 px-2 sm:px-4 py-1 sm:py-2">
                   ← Back
                 </button>
               </Link>
             </div>
+            <div className="text-center">
+              <div className="text-base sm:text-xl md:text-2xl glow-gold opacity-75">
+                Question {currentQuestion + 1} of {selectedQuestions.length}
+              </div>
+            </div>
           </div>
           
-          <div className="w-full bg-gray-800 rounded-full h-4 mb-6">
+          <div className="w-full bg-gray-800 rounded-full h-3 sm:h-4 mb-4 sm:mb-6">
             <div 
-              className="bg-gradient-to-r from-yellow-400 to-amber-500 h-4 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-yellow-400 to-amber-500 h-3 sm:h-4 rounded-full transition-all duration-300"
               style={{ width: `${((currentQuestion + 1) / selectedQuestions.length) * 100}%` }}
             ></div>
           </div>
         </div>
 
-        <div className="mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-5xl glow-gold mb-8 sm:mb-12 text-center leading-relaxed px-2">
+        <div className="mb-6 sm:mb-10 md:mb-12">
+          <h2 className="text-lg sm:text-3xl md:text-5xl glow-gold mb-6 sm:mb-8 md:mb-12 text-center leading-relaxed px-1 sm:px-2">
             {question.question}
           </h2>
           
-          <div className="flex flex-col space-y-4 sm:space-y-6">
+          <div className="flex flex-col space-y-3 sm:space-y-4 md:space-y-6">
             {question.options.map((option, index) => (
               <MobilePopover 
                 key={index}
@@ -657,10 +659,10 @@ export default function BagBrainIQTest() {
               >
                 <button
                   onClick={() => handleAnswer(option.points)}
-                  className="iq-answer-choice w-full p-6 sm:p-8 bg-black border-2 border-amber-500/40 rounded-xl text-left glow-gold hover:border-amber-500/80 transition-all duration-300 text-3xl sm:text-4xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[4rem] sm:min-h-[5rem] flex items-center"
+                  className="iq-answer-choice w-full p-3 sm:p-6 md:p-8 bg-black border-2 border-amber-500/40 rounded-xl text-left glow-gold hover:border-amber-500/80 transition-all duration-300 text-base sm:text-3xl md:text-4xl leading-relaxed hover:scale-[1.02] active:scale-[0.98] min-h-[3rem] sm:min-h-[4rem] md:min-h-[5rem] flex items-center"
                 >
-                  <span className="font-bold text-amber-400 mr-4 sm:mr-6 text-4xl sm:text-5xl flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
-                  <span className="flex-1">{option.text}</span>
+                  <span className="font-bold text-amber-400 mr-2 sm:mr-4 md:mr-6 text-lg sm:text-4xl md:text-5xl flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
+                  <span className="flex-1 break-words">{option.text}</span>
                 </button>
               </MobilePopover>
             ))}

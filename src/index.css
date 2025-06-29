@@ -243,6 +243,41 @@ body::before {
   }
 }
 
+/* Extra small devices (iPhone SE and similar) */
+@media (max-width: 375px) {
+  .btn-lg {
+    min-height: 2.75rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Ensure text doesn't overflow */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Prevent horizontal overflow */
+  .container, .max-w-4xl, .max-w-6xl, .max-w-3xl {
+    max-width: calc(100vw - 2rem) !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+}
+
+/* Ultra small devices */
+@media (max-width: 320px) {
+  body {
+    font-size: 100%;
+  }
+  
+  .btn-lg {
+    min-height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
 /* Arcade game tiles responsive layout */
 @media (max-width: 768px) {
   .arcade-game-grid {
