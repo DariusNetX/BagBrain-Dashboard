@@ -42,15 +42,34 @@ const Vault = () => {
       return 'Amount must be greater than 0';
     }
     if (num > 1000000) {
-      return 'Amount is too large';
+      return 'Amount is too large (max: 1,000,000)';
+    }
+    // Check for too many decimal places
+    if (value.includes('.') && value.split('.')[1]?.length > 18) {
+      return 'Too many decimal places (max: 18)';
     }
     return '';
   };
 
   const handleAmountChange = (value: string) => {
-    setAmount(value);
-    const error = validateInput(value);
+    // Only allow valid number characters and decimal point
+    const cleanValue = value.replace(/[^0-9.]/g, '');
+    
+    // Prevent multiple decimal points
+    const decimalCount = (cleanValue.match(/\./g) || []).length;
+    if (decimalCount > 1) {
+      return; // Don't update if multiple decimal points
+    }
+    
+    setAmount(cleanValue);
+    const error = validateInput(cleanValue);
     setValidationError(error);
+    
+    // Clear status when user changes input
+    if (status && !status.includes('...')) {
+      setStatus('');
+      setTxStatus('');
+    }
   };
 
   const isValidAmount = amount && !validationError && parseFloat(amount) > 0;
@@ -69,7 +88,7 @@ const Vault = () => {
     try {
       setIsProcessing(true);
       setTxStatus('pending');
-      setStatus('Summoning brains...');
+      setStatus('🔍 Summoning brains...');
       setValidationError('');
 
       const bag = new ethers.Contract(BAG_ADDRESS, erc20ABI, signer);
@@ -77,20 +96,25 @@ const Vault = () => {
       const amountInWei = ethers.parseUnits(amount, 18);
 
       // Approve if needed
+      setStatus('💰 Checking token approval...');
       const allowance = await bag.allowance(address, VAULT_ADDRESS);
       if (allowance < amountInWei) {
-        setStatus('Approving $BAG tokens...');
+        setStatus('📝 Requesting token approval...');
         const approveTx = await bag.approve(VAULT_ADDRESS, amountInWei);
+        setStatus('⏳ Waiting for approval confirmation...');
         await approveTx.wait();
+        setStatus('✅ Approval confirmed. Proceeding with stake...');
       }
 
-      setStatus('Deploying brains to vault...');
+      setStatus('🧠 Deploying brains to vault...');
       const stakeTx = await vault.stake(amountInWei);
+      setStatus('⏳ Waiting for transaction confirmation...');
       await stakeTx.wait();
       
       setTxStatus('success');
       setStatus('🎉 Brains successfully deployed!');
       setAmount('');
+      setValidationError('');
       
       setTimeout(() => {
         setStatus('');
@@ -133,20 +157,30 @@ const Vault = () => {
       return;
     }
 
+    // Additional validation for withdraw - check if user has enough staked
+    if (userStake && userStake !== '--' && parseFloat(amount) > parseFloat(userStake)) {
+      setValidationError(`Insufficient staked balance. You have ${userStake} $BAG staked.`);
+      return;
+    }
+
     try {
       setIsProcessing(true);
       setTxStatus('pending');
-      setStatus('Claiming what\'s yours...');
+      setStatus('💼 Claiming what\'s yours...');
       setValidationError('');
 
       const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
       const amountInWei = ethers.parseUnits(amount, 18);
+      
+      setStatus('📝 Initiating withdrawal...');
       const withdrawTx = await vault.withdraw(amountInWei);
+      setStatus('⏳ Waiting for transaction confirmation...');
       await withdrawTx.wait();
       
       setTxStatus('success');
       setStatus('💰 Your bags have escaped the vault!');
       setAmount('');
+      setValidationError('');
       
       setTimeout(() => {
         setStatus('');
@@ -338,10 +372,21 @@ const Vault = () => {
         >
           <button 
             onClick={handleStake}
-            disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...')}
-            className="btn-primary w-full viral-button-text"
+            disabled={!isConnected || !isValidAmount || isProcessing || !!validationError}
+            className={`btn-primary w-full viral-button-text ${
+              (!isConnected || !isValidAmount || isProcessing || !!validationError) 
+                ? 'opacity-50 cursor-not-allowed' 
+                : 'hover:scale-105'
+            }`}
           >
-            🧠 Stake $BAG
+            {isProcessing && txStatus === 'pending' ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="animate-spin">⏳</span>
+                Processing...
+              </span>
+            ) : (
+              '🧠 Stake $BAG'
+            )}
           </button>
         </MobilePopover>
           
@@ -353,11 +398,23 @@ const Vault = () => {
         >
           <button 
             onClick={handleWithdraw}
-            disabled={!isConnected || !amount || parseFloat(amount) <= 0 || status.includes('...') || 
-                     Boolean(userStake && userStake !== '--' && userStake !== '0' && parseFloat(amount) > parseFloat(userStake))}
-            className="btn-primary w-full viral-button-text"
+            disabled={!isConnected || !isValidAmount || isProcessing || !!validationError ||
+                     Boolean(userStake && userStake !== '--' && userStake !== '0' && parseFloat(amount || '0') > parseFloat(userStake))}
+            className={`btn-primary w-full viral-button-text ${
+              (!isConnected || !isValidAmount || isProcessing || !!validationError ||
+               Boolean(userStake && userStake !== '--' && userStake !== '0' && parseFloat(amount || '0') > parseFloat(userStake))) 
+                ? 'opacity-50 cursor-not-allowed' 
+                : 'hover:scale-105'
+            }`}
           >
-            💰 Withdraw $BAG
+            {isProcessing && txStatus === 'pending' ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="animate-spin">⏳</span>
+                Processing...
+              </span>
+            ) : (
+              '💰 Withdraw $BAG'
+            )}
           </button>
         </MobilePopover>
         </div>
@@ -366,7 +423,26 @@ const Vault = () => {
 
 
         
-        <p className="text-xl glow-gold mt-4 text-center">{status}</p>
+        {status && (
+          <div className={`mt-6 p-4 rounded-xl border-2 text-center ${
+            txStatus === 'success' ? 'bg-green-900/20 border-green-500/50' :
+            txStatus === 'error' ? 'bg-red-900/20 border-red-500/50' :
+            txStatus === 'pending' ? 'bg-blue-900/20 border-blue-500/50' :
+            'bg-gray-900/20 border-gray-500/50'
+          }`}>
+            <p className={`text-lg font-medium ${
+              txStatus === 'success' ? 'text-green-400' :
+              txStatus === 'error' ? 'text-red-400' :
+              txStatus === 'pending' ? 'text-blue-400' :
+              'text-amber-400'
+            }`}>
+              {isProcessing && txStatus === 'pending' && (
+                <span className="inline-block animate-spin mr-2">⏳</span>
+              )}
+              {status}
+            </p>
+          </div>
+        )}
         
         <p className="text-center text-lg glow-gold mt-8">
           BagBrain is not responsible for emotional damage caused by market fluctuations. DYOR, but make it meme.
