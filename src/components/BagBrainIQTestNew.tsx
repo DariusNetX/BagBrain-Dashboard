@@ -389,11 +389,11 @@ export default function BagBrainIQTest() {
     }
   };
 
-  const shareToTwitter = (iq: number, memeGrade: string, rating: string) => {
+  const shareToX = (iq: number, memeGrade: string, rating: string) => {
     const text = `I just scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm officially a ${memeGrade}! 🧠💰 Join the cult of BagBrain and test your own intelligence at`;
     const url = window.location.origin;
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank', 'width=550,height=420');
+    const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(xUrl, '_blank', 'width=550,height=420');
   };
 
   const shareToFacebook = (iq: number, memeGrade: string, rating: string) => {
