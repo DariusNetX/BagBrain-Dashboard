@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import toast from 'react-hot-toast';
 import { useWallet } from '../hooks/useWallet';
@@ -74,6 +74,17 @@ const Vault = () => {
   };
 
   const isValidAmount = amount && !validationError && parseFloat(amount) > 0;
+
+  // Clear all transaction states when wallet disconnects
+  useEffect(() => {
+    if (!isConnected) {
+      setAmount('');
+      setStatus('');
+      setTxStatus('');
+      setValidationError('');
+      setIsProcessing(false);
+    }
+  }, [isConnected]);
 
   const handleStake = async () => {
     if (!isConnected) {

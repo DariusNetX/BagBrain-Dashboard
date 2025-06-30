@@ -10,16 +10,28 @@ const vaultABI = [
 ];
 
 export const useVaultData = () => {
-  const { provider, address } = useWallet();
+  const { provider, address, isConnected } = useWallet();
   const [totalStaked, setTotalStaked] = useState<string | null>(null);
   const [userStake, setUserStake] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Clear vault data immediately when wallet disconnects
+  useEffect(() => {
+    if (!isConnected) {
+      setTotalStaked('--');
+      setUserStake('--');
+      setIsLoading(false);
+      setError(null);
+    }
+  }, [isConnected]);
+
   useEffect(() => {
     if (!provider || !address) {
-      setTotalStaked(null);
-      setUserStake(null);
+      setTotalStaked('--');
+      setUserStake('--');
+      setIsLoading(false);
+      setError(null);
       return;
     }
 
