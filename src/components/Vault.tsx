@@ -28,7 +28,7 @@ const Vault = () => {
   const [txStatus, setTxStatus] = useState('');
   const [validationError, setValidationError] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  const { totalStaked, userStake, isLoading, error } = useVaultData();
+  const { totalStaked, userStake, isLoading, error, retry } = useVaultData();
   const { activePopover, togglePopover } = useMobilePopover();
 
   const validateInput = (value: string): string => {
@@ -296,13 +296,41 @@ const Vault = () => {
     }
   };
 
+  // Enhanced error state with retry functionality
+  if (error && !totalStaked && !userStake) {
+    return (
+      <div className="bg-red-900/20 backdrop-blur-md border border-red-500/40 rounded-xl p-6 w-full max-w-4xl mx-auto">
+        <div className="text-center">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h3 className="text-2xl font-bold glow-red mb-4">Vault Connection Error</h3>
+          <p className="text-lg mb-4 opacity-80">{error}</p>
+          <div className="space-y-3">
+            <button
+              onClick={retry}
+              className="btn-primary bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300"
+            >
+              🔄 Retry Connection
+            </button>
+            <p className="text-sm opacity-60">
+              If this persists, check your network connection or try refreshing the page
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (isLoading) {
     return (
-      <div className="border border-purple-500 p-6 rounded-lg shadow-md">
+      <div className="bg-black/60 backdrop-blur-md border border-yellow-500/40 rounded-xl p-6 w-full max-w-4xl mx-auto">
         <div className="animate-pulse">
           <div className="h-8 bg-gray-700 rounded mb-4"></div>
           <div className="h-4 bg-gray-700 rounded mb-2"></div>
           <div className="h-4 bg-gray-700 rounded mb-4"></div>
+          <div className="flex justify-center items-center py-8">
+            <div className="text-4xl animate-bounce">🧠</div>
+            <span className="ml-3 text-lg glow-text">Loading vault data...</span>
+          </div>
         </div>
       </div>
     );
