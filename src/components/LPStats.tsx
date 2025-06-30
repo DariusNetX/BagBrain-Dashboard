@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import { useLPStats } from '../hooks/useLPStats';
 import { useMobilePopover } from '../hooks/useMobilePopover';
 import { MobilePopover } from './MobilePopover';
@@ -6,7 +6,6 @@ import { MobilePopover } from './MobilePopover';
 const LPStats = () => {
   const { reserves, isLoading, error, retry } = useLPStats();
   const { bag, blaze, price } = reserves;
-  const [txStatus, setTxStatus] = useState('');
   const { activePopover, togglePopover } = useMobilePopover();
 
   // Enhanced error state with retry functionality
@@ -116,24 +115,7 @@ const LPStats = () => {
           </MobilePopover>
         </p>
       </div>
-      
-      {txStatus === 'pending' && (
-        <p className="mt-4 glow-gold text-xl animate-pulse text-center">
-          ⏳ Summoning brains... Waiting for confirmation.
-        </p>
-      )}
 
-      {txStatus === 'success' && (
-        <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
-          ✅ Brains deployed. Transaction confirmed!
-        </p>
-      )}
-
-      {txStatus === 'error' && (
-        <p className="mt-4 glow-gold text-xl transition-opacity duration-300 text-center">
-          ❌ Oops. Your bags escaped. Try again.
-        </p>
-      )}
       
       {error && (
         <div className="mt-4 pt-4 border-t border-red-500/30">
