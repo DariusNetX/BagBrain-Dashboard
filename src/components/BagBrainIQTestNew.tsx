@@ -280,63 +280,15 @@ export default function BagBrainIQTest() {
     return Math.min(baseScore, 10000);
   };
 
-  const getMemeGrade = (iq: number) => {
-    // Different meme grades for each score range - randomized each time
-    const gradesByRange = {
-      legendary: [
-        "🧠 Supreme Baglord",
-        "💎 Diamond-Handed Deity", 
-        "🚀 Galactic Bagmaster",
-        "⚡ Transcendent Degen",
-        "🏆 Omega Brain Champion"
-      ],
-      elite: [
-        "💎 Elite Bag Strategist",
-        "🔥 Master of the Bags", 
-        "⚡ High IQ Degen",
-        "🎯 Apex Bag Holder",
-        "🧠 Big Brain Energy"
-      ],
-      advanced: [
-        "🚀 Advanced Bag Scientist",
-        "💰 Professional Hodler",
-        "📈 Crypto Sage",
-        "🎯 Strategic Bag Manager",
-        "⚡ Lightning Brain"
-      ],
-      intermediate: [
-        "🔥 Developing Bag Wisdom",
-        "📊 Chart Reading Apprentice",
-        "💡 Growing Brain Power",
-        "🌟 Rising Degen Star",
-        "🎲 Calculated Risk Taker"
-      ],
-      beginner: [
-        "🌱 Baby Bag Holder",
-        "📚 Crypto Student",
-        "🎯 Learning the Ropes",
-        "💭 Thoughtful Newbie",
-        "🔰 Promising Padawan"
-      ],
-      potato: [
-        "🥔 Lovable Potato Brain",
-        "😅 Adorable Smooth Brain", 
-        "🎪 Magnificent Disaster",
-        "🤡 Endearing Chaos Agent",
-        "💫 Beautiful Hot Mess"
-      ]
-    };
-
-    let grades;
-    if (iq >= 8500) grades = gradesByRange.legendary;
-    else if (iq >= 7000) grades = gradesByRange.elite;
-    else if (iq >= 5000) grades = gradesByRange.advanced;
-    else if (iq >= 3000) grades = gradesByRange.intermediate;
-    else if (iq >= 1500) grades = gradesByRange.beginner;
-    else grades = gradesByRange.potato;
-
-    // Return random grade from the appropriate range
-    return grades[Math.floor(Math.random() * grades.length)];
+  const getIQTier = (score: number) => {
+    if (score < 500) return "🧺 Bagless Peasant";
+    if (score < 1500) return "🧠 Brainlet";
+    if (score < 3000) return "📦 Average BagHolder";
+    if (score < 5000) return "💡 Enlightened Bagster";
+    if (score < 7000) return "🔮 Neural Navigator";
+    if (score < 9000) return "🧬 Synaptic Overlord";
+    if (score < 10000) return "🚀 Bagillionaire Prophet";
+    return "👑 Supreme Baglord of the Mindverse";
   };
 
   const getIQRating = (iq: number) => {
@@ -389,31 +341,31 @@ export default function BagBrainIQTest() {
     }
   };
 
-  const shareToX = (iq: number, memeGrade: string, rating: string) => {
-    const text = `I just scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm officially a ${memeGrade}! 🧠💰 Join the cult of BagBrain and test your own intelligence at`;
+  const shareToX = (iq: number, iqTier: string, rating: string) => {
+    const text = `I just scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm officially a ${iqTier}! 🧠💰 Join the cult of BagBrain and test your own intelligence at`;
     const url = window.location.origin;
     const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(xUrl, '_blank', 'width=550,height=420');
   };
 
-  const shareToFacebook = (iq: number, memeGrade: string, rating: string) => {
+  const shareToFacebook = (iq: number, iqTier: string, rating: string) => {
     const url = window.location.origin;
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${memeGrade}! Test your BagBrain intelligence now!`)}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${iqTier}! Test your BagBrain intelligence now!`)}`;
     window.open(facebookUrl, '_blank', 'width=580,height=296');
   };
 
-  const shareToInstagram = (iq: number, memeGrade: string, rating: string) => {
+  const shareToInstagram = (iq: number, iqTier: string, rating: string) => {
     // Instagram doesn't have direct URL sharing, so we copy to clipboard with instructions
-    const shareText = `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${memeGrade}! 🧠💰\n\nTest your BagBrain intelligence: ${window.location.origin}\n\n#BagBrain #IQTest #Meme #Crypto`;
+    const shareText = `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${iqTier}! 🧠💰\n\nTest your BagBrain intelligence: ${window.location.origin}\n\n#BagBrain #IQTest #Meme #Crypto`;
     navigator.clipboard.writeText(shareText).then(() => {
       alert('Share text copied to clipboard! Paste it in your Instagram story or post.');
     });
   };
 
-  const shareGeneric = (iq: number, memeGrade: string, rating: string) => {
+  const shareGeneric = (iq: number, iqTier: string, rating: string) => {
     const shareData = {
       title: 'BagBrain IQ Test Results',
-      text: `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${memeGrade}! Test your own BagBrain intelligence.`,
+      text: `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${iqTier}! Test your own BagBrain intelligence.`,
       url: window.location.origin
     };
 
@@ -486,7 +438,7 @@ export default function BagBrainIQTest() {
 
   if (showResults) {
     const iq = calculateIQ();
-    const memeGrade = getMemeGrade(iq);
+    const iqTier = getIQTier(iq);
     const rating = getIQRating(iq);
 
     return (
@@ -514,13 +466,13 @@ export default function BagBrainIQTest() {
                   {iq.toLocaleString()}
                 </div>
                 
-                {/* Meme Grade - Prominent Display */}
+                {/* BagBrain Tier - Prominent Display */}
                 <div className="bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-amber-500/50 rounded-xl p-3 sm:p-6 mb-4 sm:mb-6 mx-2 sm:mx-0">
                   <div className="text-xl sm:text-3xl md:text-4xl font-bold glow-purple mb-2">
-                    🏅 Your Meme Grade
+                    🏅 Your BagBrain Tier
                   </div>
                   <div className="text-lg sm:text-2xl md:text-3xl glow-gold font-bold break-words">
-                    {memeGrade}
+                    {iqTier}
                   </div>
                 </div>
                 
@@ -539,25 +491,25 @@ export default function BagBrainIQTest() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   <button
-                    onClick={() => shareToX(iq, memeGrade, rating)}
+                    onClick={() => shareToX(iq, iqTier, rating)}
                     className="btn-lg bg-black hover:bg-gray-900 text-white border-2 border-gray-600 hover:border-gray-400"
                   >
                     🅧 X
                   </button>
                   <button
-                    onClick={() => shareToFacebook(iq, memeGrade, rating)}
+                    onClick={() => shareToFacebook(iq, iqTier, rating)}
                     className="btn-lg bg-blue-700 hover:bg-blue-800 text-white"
                   >
                     📘 Facebook
                   </button>
                   <button
-                    onClick={() => shareToInstagram(iq, memeGrade, rating)}
+                    onClick={() => shareToInstagram(iq, iqTier, rating)}
                     className="btn-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
                   >
                     📷 Instagram
                   </button>
                   <button
-                    onClick={() => shareGeneric(iq, memeGrade, rating)}
+                    onClick={() => shareGeneric(iq, iqTier, rating)}
                     className="btn-lg bg-gray-600 hover:bg-gray-700 text-white"
                   >
                     📤 Share
