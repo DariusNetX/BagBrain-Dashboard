@@ -1,5 +1,5 @@
 import express from 'express';
-import { insertVaultSchema, insertLpStatsSchema, insertStakeTransactionSchema } from '../shared/schema.js';
+import { insertVaultSchema, insertLpStatsSchema, insertStakeTransactionSchema, insertIqLeaderboardSchema } from '../shared/schema.js';
 import { storage } from './storage.js';
 
 const router = express.Router();
@@ -79,6 +79,47 @@ router.get('/api/transactions', async (req, res) => {
     res.json(transactions);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch transactions' });
+  }
+});
+
+// IQ Leaderboard routes
+router.get('/api/leaderboard', async (req, res) => {
+  try {
+    const topScores = await storage.getTopScores();
+    res.json(topScores);
+  } catch (error) {
+    console.error('Leaderboard fetch error:', error);
+    res.status(500).json({ error: 'Failed to fetch leaderboard data' });
+  }
+});
+
+router.post('/api/leaderboard', async (req, res) => {
+  try {
+    const validatedData = insertIqLeaderboardSchema.parse(req.body);
+    const newScore = await storage.addScore(validatedData);
+    res.json(newScore);
+  } catch (error) {
+    console.error('Add score error:', error);
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: 'Invalid score data' });
+    } else {
+      res.status(500).json({ error: 'Failed to add score' });
+    }
+  }
+});
+
+router.get('/api/leaderboard/check/:score', async (req, res) => {
+  try {
+    const score = parseInt(req.params.score);
+    if (isNaN(score)) {
+      return res.status(400).json({ error: 'Invalid score parameter' });
+    }
+    
+    const isHighScore = await storage.isHighScore(score);
+    res.json({ isHighScore });
+  } catch (error) {
+    console.error('High score check error:', error);
+    res.status(500).json({ error: 'Failed to check high score' });
   }
 });
 
