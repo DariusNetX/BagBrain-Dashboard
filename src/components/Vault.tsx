@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
+import toast from 'react-hot-toast';
 import { useWallet } from '../hooks/useWallet';
 import { useVaultData } from '../hooks/useVaultData';
 import { useMobilePopover } from '../hooks/useMobilePopover';
@@ -85,31 +86,65 @@ const Vault = () => {
       return;
     }
 
+    let toastId: string | undefined;
+    
     try {
       setIsProcessing(true);
       setTxStatus('pending');
-      setStatus('🔍 Summoning brains...');
       setValidationError('');
+      
+      // Show initial loading toast
+      toastId = toast.loading('🔍 Summoning brains...', {
+        duration: Infinity,
+      });
 
       const bag = new ethers.Contract(BAG_ADDRESS, erc20ABI, signer);
       const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
       const amountInWei = ethers.parseUnits(amount, 18);
 
       // Approve if needed
-      setStatus('💰 Checking token approval...');
+      toast.loading('💰 Checking token approval...', {
+        id: toastId,
+        duration: Infinity,
+      });
+      
       const allowance = await bag.allowance(address, VAULT_ADDRESS);
       if (allowance < amountInWei) {
-        setStatus('📝 Requesting token approval...');
+        toast.loading('📝 Requesting token approval...', {
+          id: toastId,
+          duration: Infinity,
+        });
         const approveTx = await bag.approve(VAULT_ADDRESS, amountInWei);
-        setStatus('⏳ Waiting for approval confirmation...');
+        
+        toast.loading('⏳ Waiting for approval confirmation...', {
+          id: toastId,
+          duration: Infinity,
+        });
         await approveTx.wait();
-        setStatus('✅ Approval confirmed. Proceeding with stake...');
+        
+        toast.loading('✅ Approval confirmed. Deploying brains...', {
+          id: toastId,
+          duration: Infinity,
+        });
       }
 
-      setStatus('🧠 Deploying brains to vault...');
+      toast.loading('🧠 Deploying brains to vault...', {
+        id: toastId,
+        duration: Infinity,
+      });
       const stakeTx = await vault.stake(amountInWei);
-      setStatus('⏳ Waiting for transaction confirmation...');
+      
+      toast.loading('⏳ Waiting for transaction confirmation...', {
+        id: toastId,
+        duration: Infinity,
+      });
       await stakeTx.wait();
+      
+      // Success toast
+      toast.success('🎉 Staking complete! Brains successfully deployed!', {
+        id: toastId,
+        duration: 4000,
+      });
       
       setTxStatus('success');
       setStatus('🎉 Brains successfully deployed!');
@@ -124,18 +159,29 @@ const Vault = () => {
       console.error('Stake error:', error);
       setTxStatus('error');
       
-      // Handle specific error types
+      // Handle specific error types with appropriate error toasts
+      let errorMessage = 'Transaction failed!';
       if (error.code === 4001 || error.message?.includes('rejected')) {
+        errorMessage = 'Transaction rejected by user';
         setStatus('❌ Transaction rejected by user');
       } else if (error.message?.includes('insufficient funds')) {
+        errorMessage = 'Insufficient funds for transaction';
         setStatus('❌ Insufficient funds for transaction');
       } else if (error.message?.includes('gas')) {
+        errorMessage = 'Transaction failed - try increasing gas limit';
         setStatus('❌ Transaction failed - try increasing gas limit');
       } else if (error.message?.includes('allowance')) {
+        errorMessage = 'Token approval failed - please try again';
         setStatus('❌ Token approval failed - please try again');
       } else {
+        errorMessage = 'Transaction failed - please try again';
         setStatus('❌ Transaction failed - please try again');
       }
+      
+      toast.error(`❌ ${errorMessage}`, {
+        id: toastId,
+        duration: 6000,
+      });
       
       setTimeout(() => {
         setStatus('');
@@ -163,19 +209,38 @@ const Vault = () => {
       return;
     }
 
+    let toastId: string | undefined;
+    
     try {
       setIsProcessing(true);
       setTxStatus('pending');
-      setStatus('💼 Claiming what\'s yours...');
       setValidationError('');
+
+      // Show initial loading toast
+      toastId = toast.loading('💼 Claiming what\'s yours...', {
+        duration: Infinity,
+      });
 
       const vault = new ethers.Contract(VAULT_ADDRESS, vaultABI, signer);
       const amountInWei = ethers.parseUnits(amount, 18);
       
-      setStatus('📝 Initiating withdrawal...');
+      toast.loading('📝 Initiating withdrawal...', {
+        id: toastId,
+        duration: Infinity,
+      });
       const withdrawTx = await vault.withdraw(amountInWei);
-      setStatus('⏳ Waiting for transaction confirmation...');
+      
+      toast.loading('⏳ Waiting for transaction confirmation...', {
+        id: toastId,
+        duration: Infinity,
+      });
       await withdrawTx.wait();
+      
+      // Success toast
+      toast.success('💰 Withdrawal complete! Your bags have escaped the vault!', {
+        id: toastId,
+        duration: 4000,
+      });
       
       setTxStatus('success');
       setStatus('💰 Your bags have escaped the vault!');
@@ -190,16 +255,26 @@ const Vault = () => {
       console.error('Withdraw error:', error);
       setTxStatus('error');
       
-      // Handle specific error types
+      // Handle specific error types with appropriate error toasts
+      let errorMessage = 'Withdrawal failed!';
       if (error.code === 4001 || error.message?.includes('rejected')) {
+        errorMessage = 'Transaction rejected by user';
         setStatus('❌ Transaction rejected by user');
       } else if (error.message?.includes('insufficient')) {
+        errorMessage = 'Insufficient staked amount for withdrawal';
         setStatus('❌ Insufficient staked amount for withdrawal');
       } else if (error.message?.includes('gas')) {
+        errorMessage = 'Transaction failed - try increasing gas limit';
         setStatus('❌ Transaction failed - try increasing gas limit');
       } else {
+        errorMessage = 'Withdrawal failed - please try again';
         setStatus('❌ Withdrawal failed - please try again');
       }
+      
+      toast.error(`❌ ${errorMessage}`, {
+        id: toastId,
+        duration: 6000,
+      });
       
       setTimeout(() => {
         setStatus('');
@@ -390,7 +465,7 @@ const Vault = () => {
           >
             {isProcessing && txStatus === 'pending' ? (
               <span className="flex items-center justify-center gap-2">
-                <span className="animate-spin">⏳</span>
+                <div className="w-5 h-5 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
                 Processing...
               </span>
             ) : (
@@ -418,7 +493,7 @@ const Vault = () => {
           >
             {isProcessing && txStatus === 'pending' ? (
               <span className="flex items-center justify-center gap-2">
-                <span className="animate-spin">⏳</span>
+                <div className="w-5 h-5 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
                 Processing...
               </span>
             ) : (
