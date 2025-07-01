@@ -88,7 +88,7 @@ export const useLPStats = () => {
           fetchReserves(retryAttempt + 1);
         }, delay);
       } else {
-        setReserves({ bag: '--', blaze: '--', price: '--' });
+        setReserves({ bag: '---', blaze: '---', price: '---' });
       }
     } finally {
       setIsLoading(false);

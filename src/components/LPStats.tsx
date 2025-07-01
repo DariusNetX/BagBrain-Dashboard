@@ -9,7 +9,7 @@ const LPStats = () => {
   const { activePopover, togglePopover } = useMobilePopover();
 
   // Enhanced error state with retry functionality
-  if (error && bag === '--' && blaze === '--') {
+  if (error && bag === '---' && blaze === '---') {
     return (
       <div className="bg-red-900/20 backdrop-blur-md border border-red-500/40 rounded-xl p-6 w-full max-w-4xl mx-auto">
         <div className="text-center">
@@ -66,7 +66,7 @@ const LPStats = () => {
           }}>
             <MobilePopover 
               id="bag-reserve" 
-              content={bag !== '--' ? "Amount of $BAG tokens currently in the liquidity pool available for trading" : "Loading $BAG reserve data from blockchain... This shows how much liquidity is available for trading"} 
+              content={bag !== '---' ? "Amount of $BAG tokens currently in the liquidity pool available for trading" : "Loading $BAG reserve data from blockchain... This shows how much liquidity is available for trading"} 
               isActive={activePopover === 'bag-reserve'} 
               onToggle={togglePopover}
             >
@@ -86,7 +86,7 @@ const LPStats = () => {
           }}>
             <MobilePopover 
               id="blaze-reserve" 
-              content={blaze !== '--' ? "Amount of $BLAZE tokens in the liquidity pool paired with $BAG for trading" : "Loading $BLAZE reserve data from blockchain... This shows the other side of the trading pair"} 
+              content={blaze !== '---' ? "Amount of $BLAZE tokens in the liquidity pool paired with $BAG for trading" : "Loading $BLAZE reserve data from blockchain... This shows the other side of the trading pair"} 
               isActive={activePopover === 'blaze-reserve'} 
               onToggle={togglePopover}
             >
@@ -106,7 +106,7 @@ const LPStats = () => {
           }}>
             <MobilePopover 
               id="exchange-rate" 
-              content={price !== '--' ? "Current exchange rate between $BAG and $BLAZE based on pool reserves. Rate changes with each trade!" : "Loading exchange rate... This shows how many $BLAZE you get per $BAG token"} 
+              content={price !== '---' ? "Current exchange rate between $BAG and $BLAZE based on pool reserves. Rate changes with each trade!" : "Loading exchange rate... This shows how many $BLAZE you get per $BAG token"} 
               isActive={activePopover === 'exchange-rate'} 
               onToggle={togglePopover}
             >
@@ -138,7 +138,7 @@ const LPStats = () => {
         </div>
       )}
       
-      {!error && bag !== '--' && (
+      {!error && bag !== '---' && (
         <div className="mt-4 pt-4 border-t border-green-500/30">
           <p className="text-lg text-gray-400">
             Live data from blockchain
