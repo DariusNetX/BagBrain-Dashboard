@@ -5,14 +5,6 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import App from './App';
 import './index.css';
 
-// Force HTTPS in production environments
-if (typeof window !== 'undefined' && 
-    window.location.protocol === 'http:' && 
-    window.location.hostname !== 'localhost' && 
-    window.location.hostname !== '127.0.0.1') {
-  window.location.href = window.location.href.replace('http:', 'https:');
-}
-
 const container = document.getElementById('root');
 if (!container) throw new Error('Failed to find the root element');
 const root = createRoot(container);
