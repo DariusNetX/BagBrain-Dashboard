@@ -3,6 +3,7 @@ import { useLPStats } from '../hooks/useLPStats';
 import { useConfetti } from '../hooks/useConfetti';
 import { useMobilePopover } from '../hooks/useMobilePopover';
 import { useEffect, useState } from 'react';
+import { removeBackground } from '../utils/imageUtils';
 import { MobilePopover } from './MobilePopover';
 
 const allMemes = [
@@ -34,9 +35,24 @@ export default function Hero() {
   const { bag, blaze } = reserves;
   const { fireConfetti } = useConfetti();
   const { activePopover, togglePopover } = useMobilePopover();
+  const [processedImage, setProcessedImage] = useState<string>('');
   const [currentMeme, setCurrentMeme] = useState(0);
 
   useEffect(() => {
+    console.log('Hero component mounted');
+    
+    // Process image to remove background
+    const processImage = async () => {
+      try {
+        const processed = await removeBackground('/bagbrain-character-2.png');
+        setProcessedImage(processed);
+      } catch (error) {
+        console.log('Background removal failed, using original image');
+      }
+    };
+    
+    processImage();
+    
     // Set up tagline rotation
     const taglineInterval = setInterval(() => {
       setCurrentMeme((prev) => (prev + 1) % allMemes.length);
@@ -47,16 +63,32 @@ export default function Hero() {
 
   return (
     <div className="text-center py-16 px-8 relative section-container">
-      <div className="mx-auto w-32 md:w-40 mb-6 relative hero-character-container">
-        {/* Use emoji as simple transparent mascot */}
-        <div className="w-full h-auto relative z-10 hero-character-clean animate-bounce-slow hover:scale-110 transition-transform duration-300 text-center">
-          <div className="text-6xl md:text-8xl" style={{
-            filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.3))',
-            textShadow: '0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4)'
-          }}>
-            🧠
-          </div>
-        </div>
+      <div className="mx-auto w-32 md:w-40 mb-6 relative">
+        {/* Removed overlapping background character */}
+        
+        <img
+          src={processedImage || "/bagbrain-character-2.png"}
+          alt="BagBrain Character"
+          className="hero-character w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
+          style={{
+            filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.2))',
+            background: 'transparent',
+            imageRendering: '-webkit-optimize-contrast'
+          }}
+          loading="eager"
+          onLoad={() => console.log('BagBrain character loaded successfully')}
+          onError={(e) => {
+            console.log('Character image failed, trying backup');
+            e.currentTarget.src = '/bagbrain-character-1.png';
+            e.currentTarget.onerror = () => {
+              console.log('All character images failed, using fallback');
+              const container = e.currentTarget.parentElement;
+              if (container) {
+                container.innerHTML = '<div class="hero-character bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-5xl animate-bounce-slow shadow-lg">💰</div>';
+              }
+            };
+          }}
+        />
 
       </div>
       <h1 className="mega-headline text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300" 

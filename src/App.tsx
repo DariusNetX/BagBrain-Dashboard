@@ -2,7 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
 
 import { Router, Route, Switch, Link } from 'wouter';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
@@ -56,7 +56,7 @@ function Dashboard() {
       <div className="fixed z-40" style={{ top: '1rem', right: '1rem' }}>
         <Link href="/arcade">
           <button 
-            className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 font-bold px-3 py-2 md:px-5 md:py-3 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105 text-xs md:text-sm"
+            className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 font-bold px-4 py-2 md:px-8 md:py-4 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105 text-sm md:text-base"
             style={{
               background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
               boxShadow: '0 4px 20px rgba(79, 70, 229, 0.3), 0 0 30px rgba(124, 58, 237, 0.2)',
@@ -156,6 +156,63 @@ function Dashboard() {
 }
 
 function App() {
+  useEffect(() => {
+    // Comprehensive blank tooltip prevention
+    const removeBlankTooltips = () => {
+      // Remove all problematic tooltip attributes
+      const elements = document.querySelectorAll('.mobile-hint, [data-tooltip], [title]');
+      elements.forEach(el => {
+        const tooltip = el.getAttribute('data-tooltip');
+        const title = el.getAttribute('title');
+        
+        // Remove empty or problematic data-tooltip attributes
+        if (tooltip !== null && (!tooltip || tooltip.trim() === '' || tooltip === 'undefined' || tooltip === 'null')) {
+          el.removeAttribute('data-tooltip');
+          el.classList.remove('mobile-hint');
+          // Also remove any hover styling that might cause blank tooltips
+          const htmlEl = el as HTMLElement;
+          if (htmlEl.style) {
+            htmlEl.style.textDecoration = 'none';
+          }
+          console.warn('Removed blank tooltip from element:', el.tagName, el.className);
+        }
+        
+        // Remove empty title attributes
+        if (title !== null && (!title || title.trim() === '')) {
+          el.removeAttribute('title');
+        }
+      });
+      
+      // Additional check for any CSS pseudo-elements that might create blank tooltips
+      const mobileHints = document.querySelectorAll('.mobile-hint');
+      mobileHints.forEach(el => {
+        const tooltip = el.getAttribute('data-tooltip');
+        if (!tooltip || tooltip.trim() === '') {
+          el.classList.remove('mobile-hint');
+          el.removeAttribute('data-tooltip');
+          console.warn('Stripped mobile-hint class from element with no content');
+        }
+      });
+      
+      console.log(`Tooltip cleanup completed - processed ${elements.length} elements`);
+    };
+
+    // Initial cleanup
+    removeBlankTooltips();
+    
+    // Monitor for changes
+    const observer = new MutationObserver(() => {
+      setTimeout(removeBlankTooltips, 100); // Delay to catch dynamic content
+    });
+    
+    observer.observe(document.body, { 
+      subtree: true, 
+      attributes: true, 
+      attributeFilter: ['data-tooltip', 'title', 'class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="App relative min-h-screen w-full">
