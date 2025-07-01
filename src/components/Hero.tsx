@@ -3,7 +3,6 @@ import { useLPStats } from '../hooks/useLPStats';
 import { useConfetti } from '../hooks/useConfetti';
 import { useMobilePopover } from '../hooks/useMobilePopover';
 import { useEffect, useState } from 'react';
-import { removeBackground } from '../utils/imageUtils';
 import { MobilePopover } from './MobilePopover';
 
 const allMemes = [

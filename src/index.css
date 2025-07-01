@@ -920,12 +920,7 @@ body {
   display: inline-block;
 }
 
-/* Ensure popover content shows properly */
-.mobile-popover.active .mobile-popover-content {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-}
+
 
 .mobile-popover-content {
   position: absolute;
@@ -988,47 +983,7 @@ body {
   display: none !important;
 }
 
-.mobile-popover-content:empty::after,
-.mobile-popover-content:empty::before {
-  display: none !important;
-}
 
-/* ULTIMATE blank tooltip prevention - multiple layers */
-.mobile-hint[data-tooltip=""]::after,
-.mobile-hint[data-tooltip=""]:hover::after,
-.mobile-hint:not([data-tooltip])::after,
-.mobile-hint:not([data-tooltip]):hover::after,
-.mobile-hint[data-tooltip="undefined"]::after,
-.mobile-hint[data-tooltip="null"]::after,
-.mobile-hint[data-tooltip=" "]::after {
-  display: none !important;
-  content: none !important;
-  visibility: hidden !important;
-}
-
-/* Complete pseudo-element protection */
-.mobile-hint[data-tooltip=""]::after,
-.mobile-hint[data-tooltip=""]::before,
-.mobile-hint[data-tooltip="undefined"]::after,
-.mobile-hint[data-tooltip="undefined"]::before,
-.mobile-hint[data-tooltip="null"]::after,
-.mobile-hint[data-tooltip="null"]::before {
-  content: none !important;
-  display: none !important;
-  visibility: hidden !important;
-}
-
-/* Global protection against any pseudo-element with empty content */
-[data-tooltip=""]::after,
-[data-tooltip=""]::before,
-[data-tooltip="undefined"]::after,
-[data-tooltip="undefined"]::before,
-[data-tooltip="null"]::after,
-[data-tooltip="null"]::before {
-  content: none !important;
-  display: none !important;
-  visibility: hidden !important;
-}
 
 .popover-trigger {
   cursor: pointer;
@@ -1046,22 +1001,7 @@ body {
   text-decoration-thickness: 3px;
 }
 
-/* Legacy mobile-hint styling for any remaining instances */
-.mobile-hint {
-  cursor: pointer;
-  position: relative;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: #ffd700;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-  transition: all 0.2s ease;
-}
 
-.mobile-hint:hover {
-  text-decoration-color: #ffed4e;
-  text-decoration-thickness: 3px;
-}
 
 @media (hover: hover) and (pointer: fine) {
   .mobile-popover-content {

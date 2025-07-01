@@ -2,7 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
 
 import { Router, Route, Switch, Link } from 'wouter';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
@@ -156,63 +156,6 @@ function Dashboard() {
 }
 
 function App() {
-  useEffect(() => {
-    // Comprehensive blank tooltip prevention
-    const removeBlankTooltips = () => {
-      // Remove all problematic tooltip attributes
-      const elements = document.querySelectorAll('.mobile-hint, [data-tooltip], [title]');
-      elements.forEach(el => {
-        const tooltip = el.getAttribute('data-tooltip');
-        const title = el.getAttribute('title');
-        
-        // Remove empty or problematic data-tooltip attributes
-        if (tooltip !== null && (!tooltip || tooltip.trim() === '' || tooltip === 'undefined' || tooltip === 'null')) {
-          el.removeAttribute('data-tooltip');
-          el.classList.remove('mobile-hint');
-          // Also remove any hover styling that might cause blank tooltips
-          const htmlEl = el as HTMLElement;
-          if (htmlEl.style) {
-            htmlEl.style.textDecoration = 'none';
-          }
-          console.warn('Removed blank tooltip from element:', el.tagName, el.className);
-        }
-        
-        // Remove empty title attributes
-        if (title !== null && (!title || title.trim() === '')) {
-          el.removeAttribute('title');
-        }
-      });
-      
-      // Additional check for any CSS pseudo-elements that might create blank tooltips
-      const mobileHints = document.querySelectorAll('.mobile-hint');
-      mobileHints.forEach(el => {
-        const tooltip = el.getAttribute('data-tooltip');
-        if (!tooltip || tooltip.trim() === '') {
-          el.classList.remove('mobile-hint');
-          el.removeAttribute('data-tooltip');
-          console.warn('Stripped mobile-hint class from element with no content');
-        }
-      });
-      
-      console.log(`Tooltip cleanup completed - processed ${elements.length} elements`);
-    };
-
-    // Initial cleanup
-    removeBlankTooltips();
-    
-    // Monitor for changes
-    const observer = new MutationObserver(() => {
-      setTimeout(removeBlankTooltips, 100); // Delay to catch dynamic content
-    });
-    
-    observer.observe(document.body, { 
-      subtree: true, 
-      attributes: true, 
-      attributeFilter: ['data-tooltip', 'title', 'class']
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="App relative min-h-screen w-full">
