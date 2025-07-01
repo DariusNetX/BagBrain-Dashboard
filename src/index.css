@@ -20,38 +20,40 @@ body {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
   
-  /* BagBrain sticky background with transparent overlay */
+  /* BagBrain sticky background with full coverage and seamless fill */
   background: 
     linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)),
-    url('/bagbrain-sticky-bg.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
+    url('/bagbrain-sticky-bg.png'),
+    radial-gradient(circle at center, #1a2332 0%, #0f1419 40%, #0a0a0a 100%),
+    repeating-linear-gradient(45deg, #0a0a0a 0px, #0a0a0a 2px, #111111 2px, #111111 4px);
+  background-size: 100% 100%, cover, 100% 100%, 20px 20px;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-position: center center, center center, center center, 0 0;
+  background-attachment: fixed, fixed, fixed, fixed;
   color: #e5e5e5;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Sticky background responsive adjustments */
+/* Sticky background responsive adjustments - ensuring full coverage */
 @media (max-width: 768px) {
   body {
-    background-size: contain !important;
-    background-position: center top !important;
+    background-size: 100% 100%, cover, 100% 100%, 15px 15px !important;
+    background-position: center center, center center, center center, 0 0 !important;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   body {
-    background-size: cover !important;
-    background-position: center center !important;
+    background-size: 100% 100%, cover, 100% 100%, 18px 18px !important;
+    background-position: center center, center center, center center, 0 0 !important;
   }
 }
 
 @media (min-width: 1025px) {
   body {
-    background-size: contain !important;
-    background-position: center center !important;
+    background-size: 100% 100%, cover, 100% 100%, 20px 20px !important;
+    background-position: center center, center center, center center, 0 0 !important;
   }
 }
 
