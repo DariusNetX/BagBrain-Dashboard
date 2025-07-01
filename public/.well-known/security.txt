@@ -1,11 +1,6 @@
 Contact: security@bagbrain.xyz
-Expires: 2025-12-31T23:59:59.000Z
+Expires: 2026-01-01T00:00:00.000Z
 Encryption: https://bagbrain.xyz/pgp-key.txt
 Preferred-Languages: en
 Canonical: https://bagbrain.xyz/.well-known/security.txt
 Policy: https://bagbrain.xyz/security-policy
-Acknowledgments: https://bagbrain.xyz/security-acknowledgments
-
-# BagBrain Security Contact Information
-# Report security vulnerabilities responsibly
-# Do not test against production systems without permission

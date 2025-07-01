@@ -21,6 +21,12 @@ export const useWallet = () => {
       return;
     }
 
+    // Ensure HTTPS connection for Web3
+    if (typeof window !== 'undefined' && window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+      setError('Secure connection required for Web3 operations');
+      return;
+    }
+
     try {
       setIsConnecting(true);
       setError(null);
