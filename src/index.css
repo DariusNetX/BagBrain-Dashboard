@@ -20,14 +20,40 @@ body {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
   
-  /* Clean solid background - removed all background images */
-  background: #0a0a0a;
+  /* BagBrain sticky background with transparent overlay */
+  background: 
+    linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)),
+    url('/bagbrain-sticky-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   color: #e5e5e5;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Removed body::before background overlays to eliminate image bleeding */
+/* Sticky background responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    background-size: contain !important;
+    background-position: center top !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    background-size: contain !important;
+    background-position: center center !important;
+  }
+}
 
 :root {
   --background: 0 0% 3.9%;
