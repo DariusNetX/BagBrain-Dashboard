@@ -1,8 +1,21 @@
 User-agent: *
 Allow: /
 
-# Official BagBrain Dashboard
-# Website: https://bagbrain.xyz
-# Contact: security@bagbrain.xyz
+# Canonical domain only
+Host: https://bagbrain.xyz
 
+# Block indexing of deployment domains
+User-agent: *
+Disallow: /
+Host: *.vercel.app
+
+User-agent: *
+Disallow: /
+Host: *.replit.app
+
+User-agent: *
+Disallow: /
+Host: *.replit.dev
+
+# Sitemap
 Sitemap: https://bagbrain.xyz/sitemap.xml

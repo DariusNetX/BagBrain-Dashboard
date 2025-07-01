@@ -18,6 +18,23 @@
     <!-- Canonical URL to prevent impersonation alerts -->
     <link rel="canonical" href="https://bagbrain.xyz/" />
     
+    <!-- Domain redirect script to prevent security alerts -->
+    <script>
+      (function() {
+        const canonicalDomain = 'bagbrain.xyz';
+        const currentHost = window.location.hostname;
+        
+        // Redirect from Vercel domains to canonical domain
+        if (currentHost !== canonicalDomain && 
+            (currentHost.includes('vercel.app') || 
+             currentHost.includes('replit.app') || 
+             currentHost.includes('replit.dev'))) {
+          const newUrl = 'https://' + canonicalDomain + window.location.pathname + window.location.search + window.location.hash;
+          window.location.replace(newUrl);
+        }
+      })();
+    </script>
+    
     <!-- Domain verification and ownership -->
     <meta name="author" content="BagBrain Team" />
     <meta name="publisher" content="BagBrain" />
