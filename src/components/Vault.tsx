@@ -368,12 +368,9 @@ const Vault = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className="text-center">
           <p className="viral-label mb-2">🧠 Total Vault</p>
-          <p className="viral-stat text-green-400" style={{
-            background: 'linear-gradient(135deg, #00ff88 0%, #00cc88 50%, #00ff88 100%)',
-            backgroundSize: '200% 200%',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
+          <p className="text-4xl md:text-5xl font-bold text-green-400 mb-2" style={{
+            textShadow: '0 0 10px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.4), 0 2px 4px rgba(0, 0, 0, 0.8)',
+            filter: 'brightness(1.2) contrast(1.1)'
           }}>
             <MobilePopover 
               id="total-staked" 
@@ -388,12 +385,9 @@ const Vault = () => {
         
         <div className="text-center">
           <p className="viral-label mb-2">💎 Your Stake</p>
-          <p className="viral-stat text-purple-400" style={{
-            background: 'linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #a855f7 100%)',
-            backgroundSize: '200% 200%',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
+          <p className="text-4xl md:text-5xl font-bold text-purple-400 mb-2" style={{
+            textShadow: '0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.4), 0 2px 4px rgba(0, 0, 0, 0.8)',
+            filter: 'brightness(1.2) contrast(1.1)'
           }}>
             {(isConnected && userStake) ? parseFloat(userStake).toLocaleString() : '--'} $BAG
           </p>

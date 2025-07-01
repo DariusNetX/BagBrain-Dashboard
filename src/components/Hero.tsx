@@ -123,7 +123,10 @@ export default function Hero() {
       <div className="mt-16 space-y-8">
         <div className="text-center">
           <p className="viral-label mb-2">🧠 Total Brains Deployed</p>
-          <p className="viral-stat">
+          <p className="text-4xl md:text-5xl font-bold text-cyan-400 mb-2" style={{
+            textShadow: '0 0 15px rgba(34, 211, 238, 0.9), 0 0 30px rgba(34, 211, 238, 0.5), 0 3px 6px rgba(0, 0, 0, 0.8)',
+            filter: 'brightness(1.3) contrast(1.2)'
+          }}>
             <MobilePopover 
               id="staked-info" 
               content="Brains in. Liquidity out." 
@@ -135,7 +138,10 @@ export default function Hero() {
           </p>
         </div>
         
-        <p className="glow-gold font-mono text-3xl text-center">
+        <p className="text-2xl md:text-3xl font-bold text-amber-400 text-center" style={{
+          textShadow: '0 0 12px rgba(251, 191, 36, 0.8), 0 0 24px rgba(251, 191, 36, 0.4), 0 2px 4px rgba(0, 0, 0, 0.8)',
+          filter: 'brightness(1.2) contrast(1.1)'
+        }}>
           💧 <MobilePopover 
             id="pool-info" 
             content="Backed by vibes and bag strength." 
