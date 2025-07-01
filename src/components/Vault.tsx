@@ -338,24 +338,7 @@ const Vault = () => {
 
   return (
     <div className="bg-black/60 backdrop-blur-md border border-yellow-500/40 rounded-xl shadow-2xl p-6 w-full max-w-4xl mx-auto relative overflow-hidden">
-      <div className="absolute top-4 right-4 w-16 h-16 opacity-15 animate-pulse">
-        <img
-          src="/bagbrain-cool.png"
-          alt="Cool BagBrain Vault Guardian"
-          className="w-full h-full object-contain"
-          loading="eager"
-          onLoad={() => console.log('✓ Vault cool BagBrain loaded')}
-        />
-      </div>
-      <div className="absolute bottom-4 left-4 w-12 h-12 opacity-10 animate-float-delayed">
-        <img
-          src="/bagbrain-confused.png"
-          alt="Thinking BagBrain"
-          className="w-full h-full object-contain"
-          loading="eager"
-          onLoad={() => console.log('✓ Vault confused BagBrain loaded')}
-        />
-      </div>
+      {/* Removed overlapping cool and confused BagBrain characters */}
       
       <h2 className="section-title mb-6">🧠 BagBrain Vault</h2>
       <p className="emphasis-text mb-8 text-center">

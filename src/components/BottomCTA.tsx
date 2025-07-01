@@ -24,14 +24,7 @@ export default function BottomCTA() {
 
   return (
     <div className="p-10 bg-black/60 rounded-xl border border-amber-500/30 text-center shadow-2xl relative overflow-hidden">
-      <div className="absolute top-6 right-6 w-12 h-12 opacity-8 animate-pulse">
-        <img
-          src="/bagbrain-cool.png"
-          alt="Celebrating BagBrain"
-          className="w-full h-full object-contain"
-          loading="lazy"
-        />
-      </div>
+      {/* Removed overlapping cool BagBrain character */}
       
       <h2 className="section-title mb-6 text-center relative z-10">
         🎉 Share + Claim BagHead NFT
