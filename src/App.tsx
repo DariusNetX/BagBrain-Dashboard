@@ -22,24 +22,8 @@ function Dashboard() {
 
   return (
     <>
-      {/* Sticky Arcade Button - Top Right */}
-      <div className="fixed z-40" style={{ top: '1rem', right: '1rem' }}>
-        <Link href="/arcade">
-          <button 
-            className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105"
-            style={{
-              background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
-              boxShadow: '0 4px 20px rgba(79, 70, 229, 0.3), 0 0 30px rgba(124, 58, 237, 0.2)',
-              animation: 'arcadeShimmer 2s ease-in-out infinite alternate'
-            }}
-          >
-            🎮 BagBrain Arcade
-          </button>
-        </Link>
-      </div>
-
-      {/* Sticky IQ Test Button with Leaderboard Preview - Below Arcade */}
-      <div className="fixed z-40" style={{ top: '5rem', right: '1rem' }}>
+      {/* Sticky IQ Test Button with Leaderboard Preview - Top Left */}
+      <div className="fixed z-40" style={{ top: '1rem', left: '1rem' }}>
         <div className="relative">
           <Link href="/iq">
             <button 
@@ -58,7 +42,7 @@ function Dashboard() {
           {/* Leaderboard Preview Tooltip */}
           {showLeaderboard && (
             <div 
-              className="absolute top-full right-0 mt-2 z-50 animate-fadeIn"
+              className="absolute top-full left-0 mt-2 z-50 animate-fadeIn"
               onMouseEnter={() => setShowLeaderboard(true)}
               onMouseLeave={() => setShowLeaderboard(false)}
             >
@@ -67,6 +51,26 @@ function Dashboard() {
           )}
         </div>
       </div>
+
+      {/* Sticky Arcade Button - Top Right */}
+      <div className="fixed z-40" style={{ top: '1rem', right: '1rem' }}>
+        <Link href="/arcade">
+          <button 
+            className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 font-bold px-8 py-4 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105"
+            style={{
+              background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+              boxShadow: '0 4px 20px rgba(79, 70, 229, 0.3), 0 0 30px rgba(124, 58, 237, 0.2)',
+              animation: 'arcadeShimmer 2s ease-in-out infinite alternate',
+              color: '#ffffff',
+              textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 255, 255, 0.3)'
+            }}
+          >
+            🎮 BagBrain Arcade
+          </button>
+        </Link>
+      </div>
+
+
 
       <div className="flex flex-col min-h-screen w-full items-center justify-start p-6 gap-8">
 
