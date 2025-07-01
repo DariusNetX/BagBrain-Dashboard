@@ -468,25 +468,25 @@ export default function BagBrainIQTest() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   <button
                     onClick={() => shareToX(iq, iqTier)}
-                    className="btn-lg bg-black hover:bg-gray-900 text-white border-2 border-gray-600 hover:border-gray-400"
+                    className="btn-lg btn-primary"
                   >
                     🅧 X
                   </button>
                   <button
                     onClick={() => shareToFacebook(iq, iqTier)}
-                    className="btn-lg bg-blue-700 hover:bg-blue-800 text-white"
+                    className="btn-lg btn-primary"
                   >
                     📘 Facebook
                   </button>
                   <button
                     onClick={() => shareToInstagram(iq, iqTier)}
-                    className="btn-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
+                    className="btn-lg btn-primary"
                   >
                     📷 Instagram
                   </button>
                   <button
                     onClick={() => shareGeneric(iq, iqTier)}
-                    className="btn-lg bg-gray-600 hover:bg-gray-700 text-white"
+                    className="btn-lg btn-primary"
                   >
                     📤 Share
                   </button>
