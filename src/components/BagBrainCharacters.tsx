@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const interactivePhrases = [
   "👋 Hey there, fellow degen!",
@@ -17,6 +17,7 @@ export default function BagBrainCharacters() {
   const [showSpeech, setShowSpeech] = useState(false);
   const [currentPhrase, setCurrentPhrase] = useState('');
   const [floatingParticles, setFloatingParticles] = useState<{ id: number; x: number; y: number }[]>([]);
+  const [touchStartTime, setTouchStartTime] = useState(0);
 
   // Handle click interactions
   const handleClick = () => {
@@ -67,24 +68,47 @@ export default function BagBrainCharacters() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-40">
+    <div className="fixed bottom-4 right-4 z-50">
       <div 
-        className="relative w-16 md:w-20 touch-manipulation cursor-pointer"
-        onClick={handleClick}
+        className="relative w-20 h-20 md:w-24 md:h-24 flex items-center justify-center touch-manipulation cursor-pointer bg-transparent"
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log('Container clicked');
+          handleClick();
+        }}
         onTouchStart={(e) => {
           e.stopPropagation();
           setIsHovered(true);
-          console.log('Touch started on mascot container');
+          setTouchStartTime(Date.now());
+          console.log('Touch started on mascot container at:', Date.now());
         }}
         onTouchEnd={(e) => {
           e.stopPropagation();
           e.preventDefault();
+          const touchDuration = Date.now() - touchStartTime;
+          console.log('Touch ended after', touchDuration, 'ms - triggering click');
           setIsHovered(false);
-          console.log('Touch ended on mascot container - triggering click');
-          handleClick();
+          
+          // Only trigger if it was a quick tap (not a long press or drag)
+          if (touchDuration < 500) {
+            setTimeout(() => {
+              console.log('Executing handleClick after touch');
+              handleClick();
+            }, 10);
+          }
+        }}
+        onTouchMove={(e) => {
+          // Prevent default to stop scrolling, but don't prevent the click
+          e.preventDefault();
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        style={{
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+          touchAction: 'manipulation'
+        }}
       >
         {/* Floating Particles */}
         {floatingParticles.map(particle => (
@@ -113,11 +137,14 @@ export default function BagBrainCharacters() {
           </div>
         )}
 
+        {/* Debug Touch Area - Remove after testing */}
+        <div className={`absolute inset-0 border-2 border-red-500 opacity-20 ${isHovered ? 'bg-red-500' : ''} pointer-events-none`}></div>
+        
         {/* Mascot Character */}
         <img
           src="/bagbrain-character-clean.png"
           alt="BagBrain Mascot"
-          className={`bottom-character w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-xl pointer-events-none transition-all duration-500 select-none ${
+          className={`w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-xl pointer-events-none transition-all duration-500 select-none ${
             isHovered ? 'animate-pulse scale-125 brightness-110' : 'animate-bounce hover:scale-110'
           }`}
           onError={(e) => {
