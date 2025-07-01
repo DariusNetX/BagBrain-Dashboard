@@ -37,10 +37,7 @@ export const MobilePopover: React.FC<MobilePopoverProps> = ({
         onToggle(id);
       }}
     >
-      <span 
-        className="mobile-hint" 
-        data-tooltip={content.trim()}
-      >
+      <span className="popover-trigger">
         {children}
       </span>
       <div className="mobile-popover-content">

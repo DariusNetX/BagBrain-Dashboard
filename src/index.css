@@ -914,10 +914,17 @@ body {
   color: rgba(255, 247, 0, 0.5);
 }
 
-/* Enhanced Mobile Popover System */
+/* Enhanced Mobile Popover System - Fixed black box issue */
 .mobile-popover {
   position: relative;
   display: inline-block;
+}
+
+/* Ensure popover content shows properly */
+.mobile-popover.active .mobile-popover-content {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
 }
 
 .mobile-popover-content {
@@ -1023,6 +1030,23 @@ body {
   visibility: hidden !important;
 }
 
+.popover-trigger {
+  cursor: pointer;
+  position: relative;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #ffd700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+.popover-trigger:hover {
+  text-decoration-color: #ffed4e;
+  text-decoration-thickness: 3px;
+}
+
+/* Legacy mobile-hint styling for any remaining instances */
 .mobile-hint {
   cursor: pointer;
   position: relative;
@@ -1044,45 +1068,18 @@ body {
     display: none;
   }
   
-  .mobile-hint:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
-    color: #ffffff;
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.4;
-    white-space: pre-wrap;
-    max-width: 300px;
-    word-wrap: break-word;
-    border: 2px solid #ffd700;
-    box-shadow: 
-      0 8px 32px rgba(255, 215, 0, 0.4),
-      0 4px 16px rgba(0, 0, 0, 0.6),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    z-index: 1000;
-    margin-bottom: 12px;
-    backdrop-filter: blur(8px);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Hide ALL desktop hover tooltips with empty or missing content */
-  .mobile-hint[data-tooltip=""]:hover::after,
-  .mobile-hint:not([data-tooltip]):hover::after,
-  .mobile-hint[data-tooltip="undefined"]:hover::after,
-  .mobile-hint[data-tooltip="null"]:hover::after {
+  /* COMPLETELY DISABLE all pseudo-element tooltips to prevent black boxes */
+  .mobile-hint::after,
+  .mobile-hint::before,
+  .mobile-hint:hover::after,
+  .mobile-hint:hover::before,
+  .popover-trigger::after,
+  .popover-trigger::before,
+  .popover-trigger:hover::after,
+  .popover-trigger:hover::before {
     display: none !important;
-  }
-  
-  /* Only show tooltips with actual content */
-  .mobile-hint:not([data-tooltip]):hover::after {
     content: none !important;
-    display: none !important;
+    visibility: hidden !important;
   }
 }
 
