@@ -11,18 +11,25 @@ export const queryClient = new QueryClient({
 
 // Get the correct API base URL for different environments
 const getApiBaseUrl = () => {
-  // In production, use the current domain
+  // Always enforce HTTPS in production
   if (typeof window !== 'undefined') {
     const currentHost = window.location.hostname;
-    if (currentHost === 'bagbrain.xyz') {
-      return 'https://bagbrain.xyz';
+    
+    // Force HTTPS for production domains
+    if (currentHost === 'bagbrain.xyz' || currentHost.includes('.vercel.app') || currentHost.includes('.replit.app')) {
+      return `https://${currentHost}`;
     }
-    // For development, use localhost
+    
+    // For development, use localhost with HTTP
     if (currentHost === 'localhost' || currentHost === '127.0.0.1') {
       return 'http://localhost:3000';
     }
-    // For other deployment domains, use current protocol and host
-    return `${window.location.protocol}//${window.location.host}`;
+    
+    // For any other domain, force HTTPS
+    const protocol = window.location.protocol === 'http:' && 
+                     (currentHost === 'localhost' || currentHost === '127.0.0.1') 
+                     ? 'http:' : 'https:';
+    return `${protocol}//${currentHost}`;
   }
   return '';
 };
