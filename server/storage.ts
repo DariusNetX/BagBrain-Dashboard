@@ -92,13 +92,18 @@ export class MemStorage implements IStorage {
 
   async getTopScores(): Promise<IQLeaderboard[]> {
     try {
-      const scores = await db.select().from(iqLeaderboard).orderBy(desc(iqLeaderboard.score)).limit(3);
+      console.log('Attempting to fetch leaderboard from database...');
+      const scores = await db.select().from(iqLeaderboard).orderBy(desc(iqLeaderboard.score)).limit(10);
+      console.log(`Successfully fetched ${scores.length} scores from database`);
+      
       return scores.map(score => ({
         ...score,
         timestamp: score.timestamp.toISOString()
       }));
     } catch (error) {
-      console.error('Failed to get top scores:', error);
+      console.error('Database connection failed for leaderboard:', error);
+      console.log('Using fallback leaderboard data');
+      
       // Return fallback data with real leaderboard structure
       return [
         { id: 1, username: "DizzyTheFarmer", score: 10000, timestamp: new Date().toISOString() },
