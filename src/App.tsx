@@ -22,8 +22,8 @@ function Dashboard() {
 
   return (
     <>
-      {/* Sticky Arcade Button */}
-      <div className="fixed top-4 right-4 z-40">
+      {/* Sticky Arcade Button - Top Right */}
+      <div className="fixed z-40" style={{ top: '1rem', right: '1rem' }}>
         <Link href="/arcade">
           <button 
             className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105"
@@ -38,8 +38,8 @@ function Dashboard() {
         </Link>
       </div>
 
-      {/* Sticky IQ Test Button with Leaderboard Preview */}
-      <div className="fixed top-20 right-4 z-40">
+      {/* Sticky IQ Test Button with Leaderboard Preview - Below Arcade */}
+      <div className="fixed z-40" style={{ top: '5rem', right: '1rem' }}>
         <div className="relative">
           <Link href="/iq">
             <button 
