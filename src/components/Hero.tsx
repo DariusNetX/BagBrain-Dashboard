@@ -34,24 +34,9 @@ export default function Hero() {
   const { bag, blaze } = reserves;
   const { fireConfetti } = useConfetti();
   const { activePopover, togglePopover } = useMobilePopover();
-  const [processedImage, setProcessedImage] = useState<string>('');
   const [currentMeme, setCurrentMeme] = useState(0);
 
   useEffect(() => {
-    console.log('Hero component mounted');
-    
-    // Process image to remove background
-    const processImage = async () => {
-      try {
-        const processed = await removeBackground('/bagbrain-character-2.png');
-        setProcessedImage(processed);
-      } catch (error) {
-        console.log('Background removal failed, using original image');
-      }
-    };
-    
-    processImage();
-    
     // Set up tagline rotation
     const taglineInterval = setInterval(() => {
       setCurrentMeme((prev) => (prev + 1) % allMemes.length);
@@ -66,7 +51,7 @@ export default function Hero() {
         {/* Removed overlapping background character */}
         
         <img
-          src={processedImage || "/bagbrain-character-2.png"}
+          src="/bagbrain-character-2.png"
           alt="BagBrain Character"
           className="hero-character w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
           style={{
