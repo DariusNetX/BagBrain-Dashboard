@@ -47,18 +47,11 @@ export default function Hero() {
 
   return (
     <div className="text-center py-16 px-8 relative section-container">
-      <div className="mx-auto w-32 md:w-40 mb-6 relative">
-        {/* Removed overlapping background character */}
-        
+      <div className="mx-auto w-32 md:w-40 mb-6 relative hero-character-container">
         <img
-          src="/bagbrain-character-2.png"
+          src="/bagbrain-character-clean.png"
           alt="BagBrain Character"
-          className="hero-character w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
-          style={{
-            filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.2))',
-            background: 'transparent',
-            imageRendering: '-webkit-optimize-contrast'
-          }}
+          className="hero-character hero-character-clean w-full h-auto animate-bounce-slow hover:scale-110 transition-transform duration-300 relative z-10"
           loading="eager"
           onLoad={() => console.log('BagBrain character loaded successfully')}
           onError={(e) => {
