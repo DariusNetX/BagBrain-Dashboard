@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Vault from './components/Vault';
 import LPStats from './components/LPStats';
-import BagHeadMascot from './components/BagHeadMascot';
+// Removed unused BagHeadMascot import
 import BagBrainCharacters from './components/BagBrainCharacters';
 import BottomCTA from './components/BottomCTA';
 import BagBrainIQTestNew from './components/BagBrainIQTestNew';

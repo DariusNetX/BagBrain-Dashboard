@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { useMobilePopover } from '../hooks/useMobilePopover';
-import { useLeaderboard } from '../hooks/useLeaderboard';
+// Removed unused useLeaderboard import
 import { MobilePopover } from './MobilePopover';
 import LeaderboardPreview from './LeaderboardPreview';
 import { useConfetti } from '../hooks/useConfetti';
@@ -233,11 +233,9 @@ export default function BagBrainIQTest() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
-  const [username, setUsername] = useState('');
   const [autoRevealLeaderboard, setAutoRevealLeaderboard] = useState(false);
 
   const { activePopover, togglePopover } = useMobilePopover();
-  const { addScore } = useLeaderboard();
   const { fireConfetti } = useConfetti();
 
   // Check if score qualifies for leaderboard and trigger effects
@@ -306,7 +304,7 @@ export default function BagBrainIQTest() {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowResults(false);
-    setUsername('');
+    // Removed setUsername reference
     setAutoRevealLeaderboard(false);
     setSelectedQuestions([]); // Clear questions to generate new random set
     setShowIntro(true);
@@ -461,19 +459,19 @@ export default function BagBrainIQTest() {
                     🅧 X
                   </button>
                   <button
-                    onClick={() => shareToFacebook(iq, iqTier, rating)}
+                    onClick={() => shareToFacebook(iq, iqTier)}
                     className="btn-lg bg-blue-700 hover:bg-blue-800 text-white"
                   >
                     📘 Facebook
                   </button>
                   <button
-                    onClick={() => shareToInstagram(iq, iqTier, rating)}
+                    onClick={() => shareToInstagram(iq, iqTier)}
                     className="btn-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
                   >
                     📷 Instagram
                   </button>
                   <button
-                    onClick={() => shareGeneric(iq, iqTier, rating)}
+                    onClick={() => shareGeneric(iq, iqTier)}
                     className="btn-lg bg-gray-600 hover:bg-gray-700 text-white"
                   >
                     📤 Share

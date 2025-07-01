@@ -1,4 +1,4 @@
-import React from 'react';
+// Removed unused React import
 import { useLPStats } from '../hooks/useLPStats';
 import { useMobilePopover } from '../hooks/useMobilePopover';
 import { MobilePopover } from './MobilePopover';
