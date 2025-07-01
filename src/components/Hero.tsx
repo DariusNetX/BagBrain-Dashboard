@@ -63,7 +63,7 @@ export default function Hero() {
 
   return (
     <div className="text-center py-16 px-8 relative section-container">
-      <div className="mx-auto w-36 md:w-44 mb-6 relative">
+      <div className="mx-auto w-32 md:w-40 mb-6 relative">
         {/* Background Character Elements */}
         <div className="absolute -top-6 -left-6 w-20 h-20 opacity-25 animate-pulse hidden md:block">
           <img

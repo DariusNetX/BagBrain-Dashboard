@@ -309,11 +309,22 @@ body::before {
   }
 }
 
-/* Meme carousel responsive improvements */
+/* Meme carousel responsive improvements - Desktop optimized */
+.meme-carousel {
+  max-width: 600px; /* Constrain width on desktop */
+  margin: 0 auto;
+}
+
+.meme-carousel img {
+  max-height: 350px; /* Limit height on all screens */
+  width: auto;
+  object-fit: contain;
+}
+
 .meme-carousel-container {
   aspect-ratio: 16/9;
   min-height: 200px;
-  max-height: 400px;
+  max-height: 350px; /* Reduced from 400px */
 }
 
 @media (max-width: 640px) {
@@ -333,7 +344,31 @@ body::before {
 @media (min-width: 769px) {
   .meme-carousel-container {
     min-height: 280px;
-    max-height: 400px;
+    max-height: 350px; /* Reduced from 400px for desktop */
+  }
+}
+
+/* Desktop character image constraints */
+@media (min-width: 768px) {
+  .hero-character {
+    max-width: 200px; /* Limit hero character size */
+    max-height: 200px;
+    width: auto;
+    height: auto;
+  }
+  
+  .bottom-character {
+    max-width: 120px; /* Limit bottom character size */
+    max-height: 120px;
+    width: auto;
+    height: auto;
+  }
+  
+  /* BagBrain background characters */
+  .character-bg {
+    max-width: 150px;
+    max-height: 150px;
+    opacity: 0.15; /* Make background characters more subtle */
   }
 }
 

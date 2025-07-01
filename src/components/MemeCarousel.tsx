@@ -134,7 +134,7 @@ export default function MemeCarousel() {
         
         <div className="relative meme-carousel">
           {/* Main meme display */}
-          <div className="relative overflow-hidden rounded-xl bg-black/50 max-w-3xl mx-auto group animate-bounce-meme border border-amber-500/20">
+          <div className="relative overflow-hidden rounded-xl bg-black/50 meme-carousel mx-auto group animate-bounce-meme border border-amber-500/20">
             <img
               src={currentMeme.src}
               alt={currentMeme.alt}
