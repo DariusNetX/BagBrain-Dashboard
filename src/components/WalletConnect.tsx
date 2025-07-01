@@ -1,8 +1,11 @@
 import { useWallet } from '../hooks/useWallet';
 import { Wallet, X } from 'lucide-react';
+import { useMobilePopover } from '../hooks/useMobilePopover';
+import { MobilePopover } from './MobilePopover';
 
 export function WalletConnect() {
   const { address, isConnecting, error, connectWallet, disconnectWallet, isConnected } = useWallet();
+  const { activePopover, togglePopover } = useMobilePopover();
 
   const formatAddress = (addr: string) => {
     return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
@@ -39,14 +42,20 @@ export function WalletConnect() {
           </div>
         )}
         
-        <button
-          onClick={connectWallet}
-          disabled={isConnecting}
-          className="btn-primary w-full"
-          title="Connect to begin your descent into madness."
+        <MobilePopover 
+          id="connect-metamask" 
+          content="Connect to begin your descent into madness." 
+          isActive={activePopover === 'connect-metamask'} 
+          onToggle={togglePopover}
         >
-          {isConnecting ? 'Connecting...' : '🔗 Connect MetaMask'}
-        </button>
+          <button
+            onClick={connectWallet}
+            disabled={isConnecting}
+            className="btn-primary w-full"
+          >
+            {isConnecting ? 'Connecting...' : '🔗 Connect MetaMask'}
+          </button>
+        </MobilePopover>
       </div>
     </div>
   );
