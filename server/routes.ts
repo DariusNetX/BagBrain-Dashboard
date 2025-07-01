@@ -85,11 +85,18 @@ router.get('/api/transactions', async (req, res) => {
 // IQ Leaderboard routes
 router.get('/api/leaderboard', async (req, res) => {
   try {
+    console.log('API route: Fetching leaderboard...');
     const topScores = await storage.getTopScores();
+    console.log('API route: Successfully fetched scores:', topScores.length);
     res.json(topScores);
   } catch (error) {
-    console.error('Leaderboard fetch error:', error);
-    res.status(500).json({ error: 'Failed to fetch leaderboard data' });
+    console.error('Leaderboard fetch error in API route:', error);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ 
+      error: 'Failed to fetch leaderboard data',
+      details: error.message 
+    });
   }
 });
 

@@ -95,13 +95,44 @@ export class MemStorage implements IStorage {
       console.log('Attempting to fetch leaderboard from database...');
       const scores = await db.select().from(iqLeaderboard).orderBy(desc(iqLeaderboard.score)).limit(10);
       console.log(`Successfully fetched ${scores.length} scores from database`);
+      console.log('Raw database scores:', JSON.stringify(scores, null, 2));
       
-      return scores.map(score => ({
-        ...score,
-        timestamp: score.timestamp.toISOString()
-      }));
+      const mappedScores = scores.map(score => {
+        let timestampString;
+        
+        try {
+          // Handle different timestamp formats
+          if (score.timestamp instanceof Date) {
+            timestampString = score.timestamp.toISOString();
+          } else if (typeof score.timestamp === 'string') {
+            // If it's already a string, try to validate it's a proper ISO string
+            const date = new Date(score.timestamp);
+            if (isNaN(date.getTime())) {
+              console.warn('Invalid timestamp string:', score.timestamp);
+              timestampString = new Date().toISOString();
+            } else {
+              timestampString = date.toISOString();
+            }
+          } else {
+            console.warn('Unexpected timestamp type:', typeof score.timestamp, score.timestamp);
+            timestampString = new Date().toISOString();
+          }
+        } catch (timestampError) {
+          console.error('Error converting timestamp:', timestampError);
+          timestampString = new Date().toISOString();
+        }
+        
+        return {
+          ...score,
+          timestamp: timestampString
+        };
+      });
+      
+      console.log('Mapped scores:', JSON.stringify(mappedScores, null, 2));
+      return mappedScores;
     } catch (error) {
       console.error('Database connection failed for leaderboard:', error);
+      console.log('Error details:', error.message);
       console.log('Using fallback leaderboard data');
       
       // Return fallback data with real leaderboard structure
@@ -111,6 +142,7 @@ export class MemStorage implements IStorage {
         { id: 3, username: "CryptoCowboy", score: 9000, timestamp: new Date().toISOString() }
       ];
     }
+    */
   }
 
   async addScore(data: InsertIQLeaderboard): Promise<IQLeaderboard> {

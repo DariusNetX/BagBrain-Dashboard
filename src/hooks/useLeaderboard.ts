@@ -9,17 +9,32 @@ export const useLeaderboard = () => {
     queryKey: ['/api/leaderboard'],
     queryFn: async () => {
       try {
-        const data = await apiRequest('/api/leaderboard') as IQLeaderboard[];
-        return data;
+        console.log('Frontend: Fetching leaderboard data...');
+        const data = await apiRequest('/api/leaderboard');
+        console.log('Frontend: Raw API response:', data);
+        
+        // Validate the response structure before using
+        if (!Array.isArray(data)) {
+          console.error('Frontend: API response is not an array:', data);
+          throw new Error('Invalid leaderboard response format');
+        }
+        
+        // Type assertion with validation
+        const validatedData = data as IQLeaderboard[];
+        console.log('Frontend: Validated leaderboard data:', validatedData);
+        return validatedData;
       } catch (err: any) {
         console.error('Leaderboard fetch error:', err);
+        console.error('Error details:', err.message);
+        console.error('Error type:', typeof err);
         
         // If API completely fails, return cached fallback data
         if (err.message?.includes('Network connection failed') || 
             err.message?.includes('Request timeout') ||
-            err.message?.includes('Failed to fetch')) {
+            err.message?.includes('Failed to fetch') ||
+            err.message?.includes('string did not match expected pattern')) {
           
-          console.log('Using fallback leaderboard due to connection failure');
+          console.log('Using fallback leaderboard due to error:', err.message);
           return [
             { id: 1, username: "DizzyTheFarmer", score: 10000, timestamp: new Date().toISOString() },
             { id: 2, username: "BagMaster420", score: 9500, timestamp: new Date().toISOString() },
