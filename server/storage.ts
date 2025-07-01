@@ -31,23 +31,22 @@ export interface IStorage {
   isHighScore(score: number): Promise<boolean>;
 }
 
-// In-memory storage implementation
-export class MemStorage implements IStorage {
+class MemStorage implements IStorage {
   private vault: Vault | null = {
     id: crypto.randomUUID(),
     totalStaked: 0,
     userStake: 0,
     timestamp: new Date(),
   };
-  
+
   private lpStats: LPStats | null = {
     id: crypto.randomUUID(),
-    bagReserve: 1000000,
-    blazeReserve: 500000,
-    price: 0.5,
+    bagReserve: 0,
+    blazeReserve: 0,
+    price: 0,
     timestamp: new Date(),
   };
-  
+
   private transactions: StakeTransaction[] = [];
 
   async getVault(): Promise<Vault | null> {
@@ -142,17 +141,29 @@ export class MemStorage implements IStorage {
         { id: 3, username: "CryptoCowboy", score: 9000, timestamp: new Date().toISOString() }
       ];
     }
-    */
   }
 
   async addScore(data: InsertIQLeaderboard): Promise<IQLeaderboard> {
     try {
       const [newScore] = await db.insert(iqLeaderboard).values(data).returning();
+      
+      // Safe timestamp conversion
+      let timestampString = new Date().toISOString();
+      if (newScore?.timestamp) {
+        try {
+          timestampString = newScore.timestamp instanceof Date 
+            ? newScore.timestamp.toISOString()
+            : new Date(newScore.timestamp).toISOString();
+        } catch {
+          console.warn('Invalid timestamp in new score, using current time');
+        }
+      }
+      
       return {
         ...newScore,
-        timestamp: newScore.timestamp.toISOString()
+        timestamp: timestampString
       };
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to add score:', error);
       throw new Error('Database connection failed - score could not be saved');
     }
