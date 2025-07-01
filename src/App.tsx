@@ -56,7 +56,7 @@ function Dashboard() {
       <div className="fixed z-40" style={{ top: '1rem', right: '1rem' }}>
         <Link href="/arcade">
           <button 
-            className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 font-bold px-4 py-2 md:px-8 md:py-4 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105 text-sm md:text-base"
+            className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 font-bold px-3 py-2 md:px-5 md:py-3 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105 text-xs md:text-sm"
             style={{
               background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
               boxShadow: '0 4px 20px rgba(79, 70, 229, 0.3), 0 0 30px rgba(124, 58, 237, 0.2)',
