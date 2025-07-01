@@ -64,7 +64,14 @@ const LPStats = () => {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            {bag}
+            <MobilePopover 
+              id="bag-reserve" 
+              content={bag !== '--' ? "Amount of $BAG tokens currently in the liquidity pool available for trading" : "Loading $BAG reserve data from blockchain... This shows how much liquidity is available for trading"} 
+              isActive={activePopover === 'bag-reserve'} 
+              onToggle={togglePopover}
+            >
+              {bag}
+            </MobilePopover>
           </p>
         </div>
         
@@ -77,7 +84,14 @@ const LPStats = () => {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            {blaze}
+            <MobilePopover 
+              id="blaze-reserve" 
+              content={blaze !== '--' ? "Amount of $BLAZE tokens in the liquidity pool paired with $BAG for trading" : "Loading $BLAZE reserve data from blockchain... This shows the other side of the trading pair"} 
+              isActive={activePopover === 'blaze-reserve'} 
+              onToggle={togglePopover}
+            >
+              {blaze}
+            </MobilePopover>
           </p>
         </div>
         
@@ -90,7 +104,14 @@ const LPStats = () => {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            {price}
+            <MobilePopover 
+              id="exchange-rate" 
+              content={price !== '--' ? "Current exchange rate between $BAG and $BLAZE based on pool reserves. Rate changes with each trade!" : "Loading exchange rate... This shows how many $BLAZE you get per $BAG token"} 
+              isActive={activePopover === 'exchange-rate'} 
+              onToggle={togglePopover}
+            >
+              {price}
+            </MobilePopover>
           </p>
         </div>
       </div>

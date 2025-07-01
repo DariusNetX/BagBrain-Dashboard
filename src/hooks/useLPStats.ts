@@ -10,14 +10,14 @@ const pairABI = [
 
 export const useLPStats = () => {
   const { provider } = useWallet();
-  const [reserves, setReserves] = useState({ bag: '--', blaze: '--', price: '--' });
+  const [reserves, setReserves] = useState({ bag: '---', blaze: '---', price: '---' });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
 
   const fetchReserves = useCallback(async (retryAttempt = 0) => {
     if (!provider) {
-      setReserves({ bag: '--', blaze: '--', price: '--' });
+      setReserves({ bag: '---', blaze: '---', price: '---' });
       setError(null);
       return;
     }

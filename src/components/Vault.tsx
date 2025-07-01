@@ -380,11 +380,11 @@ const Vault = () => {
           }}>
             <MobilePopover 
               id="total-staked" 
-              content="Total amount of $BAG tokens staked by all users in the vault" 
+              content={totalStaked ? "Total amount of $BAG tokens staked by all users in the vault" : "Vault data loading... Connect your wallet to see real-time staking information"} 
               isActive={activePopover === 'total-staked'} 
               onToggle={togglePopover}
             >
-              {totalStaked || '--'} $BAG
+              {totalStaked || '---'} $BAG
             </MobilePopover>
           </p>
         </div>
@@ -395,11 +395,18 @@ const Vault = () => {
             textShadow: '0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.4), 0 2px 4px rgba(0, 0, 0, 0.8)',
             filter: 'brightness(1.2) contrast(1.1)'
           }}>
-            {(isConnected && userStake) ? parseFloat(userStake).toLocaleString() : '--'} $BAG
+            <MobilePopover 
+              id="user-stake" 
+              content={isConnected && userStake ? "Your current $BAG tokens staked in the vault earning rewards" : isConnected ? "You haven't staked any $BAG tokens yet. Enter an amount below to start earning!" : "Connect your wallet to see your staked $BAG balance"} 
+              isActive={activePopover === 'user-stake'} 
+              onToggle={togglePopover}
+            >
+              {(isConnected && userStake) ? parseFloat(userStake).toLocaleString() : '---'} $BAG
+            </MobilePopover>
           </p>
         </div>
       </div>
-      {(!userStake || userStake === '--' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
+      {(!userStake || userStake === '---' || userStake === '0' || parseFloat(userStake) === 0) && isConnected && (
         <div className="text-center mb-8">
           <p className="emphasis-text">
             💼 <MobilePopover 
