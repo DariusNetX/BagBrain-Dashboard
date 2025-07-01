@@ -140,10 +140,7 @@ function Dashboard() {
           </div>
         </footer>
 
-        {/* Bottom Mascot */}
-        <div className="w-32 md:w-40 mt-8 mb-6">
-          <BagHeadMascot />
-        </div>
+        {/* Removed overlapping bottom mascot - keeping only BagBrainCharacters */}
       </div>
       
       <BagBrainCharacters />
