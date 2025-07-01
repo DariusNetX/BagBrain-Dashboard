@@ -8,12 +8,12 @@ const ViralBackground = () => {
     const moneyEmojis = ['💰', '💎', '🪙', '$', '💵', '🤑', '🧠', '⭐'];
     const newParticles: Array<{id: number, emoji: string, x: number, delay: number}> = [];
     
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 4; i++) {
       newParticles.push({
         id: i,
         emoji: moneyEmojis[Math.floor(Math.random() * moneyEmojis.length)],
-        x: (i * 12.5) % 100, // Evenly spaced
-        delay: i * 2
+        x: (i * 25) % 100, // More spaced out
+        delay: i * 3
       });
     }
     
@@ -41,50 +41,31 @@ const ViralBackground = () => {
           </div>
         ))}
         
-        {/* Simplified BagBrain Character Backgrounds */}
-        <div className="absolute top-1/4 left-12 w-24 md:w-32 h-24 md:h-32 opacity-8 animate-float-delayed">
-          <img
-            src="/bagbrain-confused.png"
-            alt="BagBrain Background"
-            className="w-full h-full object-contain"
-            loading="eager"
-            onError={(e) => e.currentTarget.style.display = 'none'}
-          />
-        </div>
-        
-        <div className="absolute bottom-1/3 right-12 w-28 md:w-36 h-28 md:h-36 opacity-10 animate-float-delayed-2">
-          <img
-            src="/bagbrain-cool.png"
-            alt="BagBrain Background"
-            className="w-full h-full object-contain"
-            loading="eager"
-            onError={(e) => e.currentTarget.style.display = 'none'}
-          />
-        </div>
+        {/* Single BagBrain Character Background - Removed overlapping images */}
 
-        {/* Simplified floating particles */}
-        {[...Array(6)].map((_, i) => (
+        {/* Reduced floating particles to prevent clutter */}
+        {[...Array(3)].map((_, i) => (
           <div
             key={`brain-${i}`}
             className="brain-particle"
             style={{
-              left: `${10 + i * 15}%`,
-              animationDelay: `${i * 3}s`,
-              animationDuration: `${18 + (i % 3)}s`
+              left: `${15 + i * 25}%`,
+              animationDelay: `${i * 4}s`,
+              animationDuration: `${20 + (i % 2) * 2}s`
             }}
           >
             🧠
           </div>
         ))}
         
-        {[...Array(4)].map((_, i) => (
+        {[...Array(2)].map((_, i) => (
           <div
             key={`sparkle-${i}`}
             className="brain-particle"
             style={{
-              left: `${20 + i * 20}%`,
-              animationDelay: `${i * 4}s`,
-              animationDuration: `${16 + i}s`,
+              left: `${30 + i * 40}%`,
+              animationDelay: `${i * 6}s`,
+              animationDuration: `${18 + i * 2}s`,
               fontSize: '16px'
             }}
           >
