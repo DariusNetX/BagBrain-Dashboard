@@ -8,8 +8,14 @@ import { WalletConnect } from './WalletConnect';
 import { MobilePopover } from './MobilePopover';
 
 
+// Validated contract addresses - DO NOT MODIFY
 const VAULT_ADDRESS = '0xe54cde34f920f135B5a6B015e3841758E446b0D0';
 const BAG_ADDRESS = '0x5ffdfc954b057581500772ea8b7a26182dc4f8b4';
+
+// Security validation
+if (!ethers.isAddress(VAULT_ADDRESS) || !ethers.isAddress(BAG_ADDRESS)) {
+  throw new Error('Invalid contract addresses detected');
+}
 
 const vaultABI = [
   'function stake(uint256 amount) public',

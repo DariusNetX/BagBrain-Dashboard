@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const interactivePhrases = [
   "👋 Hey there, fellow degen!",
@@ -137,9 +137,7 @@ export default function BagBrainCharacters() {
           </div>
         )}
 
-        {/* Debug Touch Area - Remove after testing */}
-        <div className={`absolute inset-0 border-2 border-red-500 opacity-20 ${isHovered ? 'bg-red-500' : ''} pointer-events-none`}></div>
-        
+
         {/* Mascot Character */}
         <img
           src="/bagbrain-character-clean.png"

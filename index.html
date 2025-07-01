@@ -8,57 +8,24 @@
     <meta name="description" content="Track your $BAG. Stake. Meme. Repeat. Interactive dashboard for the BagBrain DeFi ecosystem." />
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://syndication.twitter.com https://platform.twitter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://bagbrain.xyz blob:; connect-src 'self' https://bagbrain.xyz wss: https:; frame-src https://syndication.twitter.com https://platform.twitter.com; form-action 'self'; base-uri 'self'; object-src 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://syndication.twitter.com https://platform.twitter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: wss:; frame-src https://syndication.twitter.com https://platform.twitter.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests;">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <!-- Canonical URL to prevent impersonation alerts -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://bagbrain.xyz/" />
     <!-- Domain Verification -->
-    <meta name="domain-verification" content="bagbrain.xyz" />
-    <meta name="publisher" content="BagBrain Team" />
-    <meta name="author" content="BagBrain" />
-    <!-- Security Policy -->
-    <meta name="security-policy" content="Report security issues to security@bagbrain.xyz" />
-    <!-- Force HTTPS -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-    
-    <!-- Domain redirect script to prevent security alerts -->
-    <script>
-      (function() {
-        const canonicalDomain = 'bagbrain.xyz';
-        const currentHost = window.location.hostname;
-        
-        // Redirect from Vercel domains to canonical domain
-        if (currentHost !== canonicalDomain && 
-            (currentHost.includes('vercel.app') || 
-             currentHost.includes('replit.app') || 
-             currentHost.includes('replit.dev'))) {
-          const newUrl = 'https://' + canonicalDomain + window.location.pathname + window.location.search + window.location.hash;
-          window.location.replace(newUrl);
-        }
-      })();
-    </script>
-    
-    <!-- Domain verification and ownership -->
     <meta name="author" content="BagBrain Team" />
     <meta name="publisher" content="BagBrain" />
-    <meta name="copyright" content="© 2025 BagBrain. All Rights Reserved." />
+    <!-- Application Info -->
     <meta name="application-name" content="BagBrain Dashboard" />
-    <meta name="generator" content="BagBrain v1.0" />
-    
-    <!-- Domain legitimacy verification -->
-    <meta name="verify-v1" content="bagbrain.xyz+official+dashboard+2025" />
-    <meta name="msvalidate.01" content="bagbrain-official-verification" />
-    <meta name="yandex-verification" content="bagbrain-dashboard-official" />
-    
-    <!-- Security and anti-phishing -->
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="rating" content="general" />
-    <meta name="distribution" content="global" />
+    <meta name="theme-color" content="#ffd700" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -83,15 +50,8 @@
     
     <!-- Additional Social Media Support -->
     <meta property="og:locale" content="en_US" />
-    <meta name="theme-color" content="#ffd700" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    
-    <!-- LinkedIn specific -->
     <meta property="og:image:secure_url" content="https://bagbrain.xyz/bagbrain-social-card.png" />
-    
-    <!-- Discord/Telegram support -->
-    <meta name="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/png" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/bagbrain-character-clean.png" />

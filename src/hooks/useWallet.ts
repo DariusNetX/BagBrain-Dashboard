@@ -15,29 +15,61 @@ export const useWallet = () => {
       return;
     }
 
+    // Additional security checks
+    if (!window.ethereum.isMetaMask) {
+      setError('Please use official MetaMask wallet for security.');
+      return;
+    }
+
     try {
       setIsConnecting(true);
       setError(null);
       setNetworkError(null);
+      
+      // Validate ethereum object security
+      if (typeof window.ethereum.request !== 'function') {
+        throw new Error('Invalid wallet provider detected');
+      }
       
       const newProvider = new ethers.BrowserProvider(window.ethereum);
       
       // Request account access with timeout
       const accountRequest = window.ethereum.request({ method: 'eth_requestAccounts' });
       const timeout = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Connection timeout')), 30000)
+        setTimeout(() => reject(new Error('Connection timeout')), 15000)
       );
       
-      await Promise.race([accountRequest, timeout]);
+      const accounts = await Promise.race([accountRequest, timeout]);
+      
+      // Validate account format
+      if (!Array.isArray(accounts) || accounts.length === 0) {
+        throw new Error('No accounts available');
+      }
+      
+      // Validate address format
+      const account = accounts[0];
+      if (!ethers.isAddress(account)) {
+        throw new Error('Invalid address format received');
+      }
       
       // Get signer and address with additional error handling
       const newSigner = await newProvider.getSigner();
       const userAddress = await newSigner.getAddress();
       
-      // Verify network connectivity
+      // Double-check address matches
+      if (userAddress.toLowerCase() !== account.toLowerCase()) {
+        throw new Error('Address mismatch detected');
+      }
+      
+      // Verify network connectivity and check for mainnet
       try {
         const network = await newProvider.getNetwork();
         console.log('Connected to network:', network.name, 'Chain ID:', network.chainId);
+        
+        // Warn if not on mainnet (chainId 1)
+        if (network.chainId !== 1n) {
+          setNetworkError(`Connected to ${network.name} (Chain ID: ${network.chainId}). Some features may not work.`);
+        }
       } catch (networkErr: any) {
         console.warn('Network detection failed:', networkErr);
         setNetworkError('Network connectivity issues detected');
