@@ -233,15 +233,11 @@ export default function BagBrainIQTest() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
-  const [claimed, setClaimed] = useState(false);
-  const [showLeaderboard, setShowLeaderboard] = useState(false);
-  const [showUsernameInput, setShowUsernameInput] = useState(false);
   const [username, setUsername] = useState('');
-  const [isHighScore, setIsHighScore] = useState(false);
   const [autoRevealLeaderboard, setAutoRevealLeaderboard] = useState(false);
 
   const { activePopover, togglePopover } = useMobilePopover();
-  const { addScore, data: leaderboardData } = useLeaderboard();
+  const { addScore } = useLeaderboard();
   const { fireConfetti } = useConfetti();
 
   // Check if score qualifies for leaderboard and trigger effects
@@ -304,21 +300,13 @@ export default function BagBrainIQTest() {
     return "Potato Brain (But we love you anyway)";
   };
 
-  const handleClaimBadge = () => {
-    fireConfetti();
-    setClaimed(true);
-    console.log("🏆 BagBrain IQ Badge claimed successfully!");
-  };
+  // Removed unused handleClaimBadge function
 
   const restartTest = () => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowResults(false);
-    setClaimed(false);
-    setShowLeaderboard(false);
-    setShowUsernameInput(false);
     setUsername('');
-    setIsHighScore(false);
     setAutoRevealLeaderboard(false);
     setSelectedQuestions([]); // Clear questions to generate new random set
     setShowIntro(true);
@@ -331,30 +319,22 @@ export default function BagBrainIQTest() {
     setShowIntro(false);
   };
 
-  const handleSubmitUsername = () => {
-    if (username.trim()) {
-      const iq = calculateIQ();
-      addScore({ username: username.trim(), score: iq });
-      setShowUsernameInput(false);
-      setShowLeaderboard(true);
-      fireConfetti();
-    }
-  };
+  // Removed unused handleSubmitUsername function
 
-  const shareToX = (iq: number, iqTier: string, rating: string) => {
+  const shareToX = (iq: number, iqTier: string) => {
     const text = `I just scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm officially a ${iqTier}! 🧠💰 Join the cult of BagBrain and test your own intelligence at`;
     const url = window.location.origin;
     const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(xUrl, '_blank', 'width=550,height=420');
   };
 
-  const shareToFacebook = (iq: number, iqTier: string, rating: string) => {
+  const shareToFacebook = (iq: number, iqTier: string) => {
     const url = window.location.origin;
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${iqTier}! Test your BagBrain intelligence now!`)}`;
     window.open(facebookUrl, '_blank', 'width=580,height=296');
   };
 
-  const shareToInstagram = (iq: number, iqTier: string, rating: string) => {
+  const shareToInstagram = (iq: number, iqTier: string) => {
     // Instagram doesn't have direct URL sharing, so we copy to clipboard with instructions
     const shareText = `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${iqTier}! 🧠💰\n\nTest your BagBrain intelligence: ${window.location.origin}\n\n#BagBrain #IQTest #Meme #Crypto`;
     navigator.clipboard.writeText(shareText).then(() => {
@@ -362,7 +342,7 @@ export default function BagBrainIQTest() {
     });
   };
 
-  const shareGeneric = (iq: number, iqTier: string, rating: string) => {
+  const shareGeneric = (iq: number, iqTier: string) => {
     const shareData = {
       title: 'BagBrain IQ Test Results',
       text: `I scored ${iq.toLocaleString()} on the BagBrain IQ Test! I'm a ${iqTier}! Test your own BagBrain intelligence.`,
@@ -475,7 +455,7 @@ export default function BagBrainIQTest() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   <button
-                    onClick={() => shareToX(iq, iqTier, rating)}
+                    onClick={() => shareToX(iq, iqTier)}
                     className="btn-lg bg-black hover:bg-gray-900 text-white border-2 border-gray-600 hover:border-gray-400"
                   >
                     🅧 X
