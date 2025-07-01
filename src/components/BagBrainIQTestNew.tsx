@@ -6,6 +6,8 @@ import { MobilePopover } from './MobilePopover';
 import LeaderboardPreview from './LeaderboardPreview';
 import { useConfetti } from '../hooks/useConfetti';
 import XFeed from './TwitterFeed';
+import FloatingParticles from './FloatingParticles';
+import IQTestBackground from './IQTestBackground';
 
 interface Question {
   id: number;
@@ -361,6 +363,12 @@ export default function BagBrainIQTest() {
   if (showIntro) {
     return (
       <div className="min-h-screen relative overflow-hidden">
+        {/* Floating Particles */}
+        <FloatingParticles density={8} speed={0.8} />
+        
+        {/* Background Character */}
+        <IQTestBackground variant="intro" />
+        
         {/* Clean background - removed image */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900" />
         
@@ -413,6 +421,12 @@ export default function BagBrainIQTest() {
 
     return (
       <div className="min-h-screen relative overflow-hidden">
+        {/* Floating Particles */}
+        <FloatingParticles density={10} speed={1.2} />
+        
+        {/* Background Character */}
+        <IQTestBackground variant="results" />
+        
         {/* Clean background - removed image */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900" />
         
@@ -520,6 +534,12 @@ export default function BagBrainIQTest() {
 
   return (
     <div className="min-h-screen p-2 sm:p-4 md:p-6 flex items-center justify-center relative">
+      {/* Floating Particles */}
+      <FloatingParticles density={6} speed={1.0} />
+      
+      {/* Background Character */}
+      <IQTestBackground variant="question" questionNumber={currentQuestion + 1} />
+      
       {/* Clean background overlay - removed image backgrounds */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900"></div>
       
