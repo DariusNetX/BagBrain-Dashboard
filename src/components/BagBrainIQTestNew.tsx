@@ -383,16 +383,8 @@ export default function BagBrainIQTest() {
   if (showIntro) {
     return (
       <div className="min-h-screen relative overflow-hidden">
-        {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(/bagbrain-intro.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/80" />
+        {/* Clean background - removed image */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900" />
         
         <div className="relative z-10 min-h-screen flex items-center justify-center p-2 sm:p-4">
           <div className="w-full max-w-4xl mx-auto text-center px-2 sm:px-4">
@@ -443,16 +435,8 @@ export default function BagBrainIQTest() {
 
     return (
       <div className="min-h-screen relative overflow-hidden">
-        {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(/bagbrain-results-bg.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
+        {/* Clean background - removed image */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900" />
         
         <div className="relative z-10 min-h-screen flex items-center justify-center p-2 sm:p-4">
           <div className="w-full max-w-4xl mx-auto text-center px-2 sm:px-4">
@@ -557,17 +541,9 @@ export default function BagBrainIQTest() {
   const question = selectedQuestions[currentQuestion];
 
   return (
-    <div 
-      className="min-h-screen p-2 sm:p-4 md:p-6 flex items-center justify-center relative"
-      style={{
-        backgroundImage: `url(/bagbrain-q${currentQuestion + 1}.png)`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Simplified overlay for better readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
+    <div className="min-h-screen p-2 sm:p-4 md:p-6 flex items-center justify-center relative">
+      {/* Clean background overlay - removed image backgrounds */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900"></div>
       
       <div className="w-full max-w-4xl bg-black/85 rounded-lg border-2 border-amber-500/50 p-3 sm:p-6 md:p-10 relative z-10 overflow-hidden backdrop-blur-sm shadow-2xl mx-2 sm:mx-4">
         <div className="mb-6 sm:mb-10 md:mb-12 relative z-10">
