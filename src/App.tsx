@@ -22,6 +22,22 @@ function Dashboard() {
 
   return (
     <>
+      {/* Sticky Arcade Button */}
+      <div className="fixed top-4 left-4 z-40">
+        <Link href="/arcade">
+          <button 
+            className="viral-button-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl border-2 border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-300 hover:scale-105"
+            style={{
+              background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+              boxShadow: '0 4px 20px rgba(79, 70, 229, 0.3), 0 0 30px rgba(124, 58, 237, 0.2)',
+              animation: 'arcadeShimmer 2s ease-in-out infinite alternate'
+            }}
+          >
+            🎮 BagBrain Arcade
+          </button>
+        </Link>
+      </div>
+
       {/* Sticky IQ Test Button with Leaderboard Preview */}
       <div className="fixed top-4 right-4 z-40">
         <div className="relative">
@@ -86,20 +102,7 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* BagBrain Arcade Teaser */}
-        <div className="w-full max-w-6xl mx-auto mt-12 mb-8">
-          <div className="section-container bg-black/40 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 text-center enhanced-hover">
-            <Link 
-              href="/arcade"
-              className="coming-soon btn-lg relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 text-white font-bold rounded-lg border-2 border-purple-400/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 glow-text uppercase tracking-wide text-lg cursor-pointer opacity-90 hover:opacity-100"
-            >
-              🎮 BagBrain Arcade
-            </Link>
-            <div className="mt-4 text-sm glow-purple opacity-70">
-              Epic games and challenges are brewing in the lab
-            </div>
-          </div>
-        </div>
+        {/* Removed arcade teaser section - now using sticky button */}
 
         {/* Enhanced Footer Section */}
         <footer className="w-full max-w-6xl mx-auto mt-16 mb-8">

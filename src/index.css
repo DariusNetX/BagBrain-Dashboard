@@ -1215,3 +1215,15 @@ body {
   }
 }
 
+
+/* Arcade Button Shimmer Animation */
+@keyframes arcadeShimmer {
+  0% { 
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3), 0 0 30px rgba(124, 58, 237, 0.2);
+    transform: scale(1);
+  }
+  100% { 
+    box-shadow: 0 6px 25px rgba(79, 70, 229, 0.5), 0 0 40px rgba(124, 58, 237, 0.4);
+    transform: scale(1.02);
+  }
+}
