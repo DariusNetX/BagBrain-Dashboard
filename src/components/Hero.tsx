@@ -64,16 +64,7 @@ export default function Hero() {
   return (
     <div className="text-center py-16 px-8 relative section-container">
       <div className="mx-auto w-32 md:w-40 mb-6 relative">
-        {/* Background Character Elements */}
-        <div className="absolute -top-6 -left-6 w-20 h-20 opacity-25 animate-pulse hidden md:block">
-          <img
-            src="/bagbrain-confused.png"
-            alt="Confused BagBrain"
-            className="w-full h-full object-contain"
-            loading="eager"
-            onLoad={() => console.log('✓ Hero confused BagBrain loaded')}
-          />
-        </div>
+        {/* Removed overlapping background character */}
         
         <img
           src={processedImage || "/bagbrain-character-2.png"}
@@ -98,16 +89,7 @@ export default function Hero() {
             };
           }}
         />
-        
-        <div className="absolute -top-6 -right-6 w-16 h-16 opacity-20 animate-float-delayed-2 hidden md:block">
-          <img
-            src="/bagbrain-cool.png"
-            alt="Cool BagBrain"
-            className="w-full h-full object-contain"
-            loading="eager"
-            onLoad={() => console.log('✓ Hero cool BagBrain loaded')}
-          />
-        </div>
+
       </div>
       <h1 className="mega-headline text-center mt-10 cursor-pointer hover:scale-105 transition-all duration-300" 
           onClick={() => {
