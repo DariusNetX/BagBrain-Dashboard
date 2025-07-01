@@ -1,0 +1,5 @@
+Contact: security@bagbrain.xyz
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://bagbrain.xyz/.well-known/security.txt
+Policy: https://bagbrain.xyz/security-policy

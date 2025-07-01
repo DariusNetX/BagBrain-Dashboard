@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Official BagBrain Dashboard
+# Website: https://bagbrain.xyz
+# Contact: security@bagbrain.xyz
+
+Sitemap: https://bagbrain.xyz/sitemap.xml
