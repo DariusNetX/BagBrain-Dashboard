@@ -20,6 +20,7 @@ export default function BagBrainCharacters() {
 
   // Handle click interactions
   const handleClick = () => {
+    console.log('Mascot clicked! Event fired successfully');
     const newCount = clickCount + 1;
     setClickCount(newCount);
     
@@ -67,7 +68,24 @@ export default function BagBrainCharacters() {
 
   return (
     <div className="fixed bottom-6 right-6 z-40">
-      <div className="relative w-16 md:w-20">
+      <div 
+        className="relative w-16 md:w-20 touch-manipulation cursor-pointer"
+        onClick={handleClick}
+        onTouchStart={(e) => {
+          e.stopPropagation();
+          setIsHovered(true);
+          console.log('Touch started on mascot container');
+        }}
+        onTouchEnd={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          setIsHovered(false);
+          console.log('Touch ended on mascot container - triggering click');
+          handleClick();
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {/* Floating Particles */}
         {floatingParticles.map(particle => (
           <div
@@ -85,7 +103,7 @@ export default function BagBrainCharacters() {
 
         {/* Speech Bubble */}
         {showSpeech && (
-          <div className="absolute bottom-full right-0 mb-2 bg-white text-black px-3 py-2 rounded-lg shadow-xl border-2 border-amber-400 text-sm font-medium whitespace-nowrap animate-fadeIn">
+          <div className="absolute bottom-full right-0 mb-2 bg-white text-black px-3 py-2 rounded-lg shadow-xl border-2 border-amber-400 text-sm font-medium whitespace-nowrap animate-fadeIn pointer-events-none">
             <div className="relative">
               {currentPhrase}
               {/* Speech bubble tail */}
@@ -99,15 +117,17 @@ export default function BagBrainCharacters() {
         <img
           src="/bagbrain-character-clean.png"
           alt="BagBrain Mascot"
-          className={`bottom-character w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-xl cursor-pointer transition-all duration-500 ${
+          className={`bottom-character w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-xl pointer-events-none transition-all duration-500 select-none ${
             isHovered ? 'animate-pulse scale-125 brightness-110' : 'animate-bounce hover:scale-110'
           }`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={handleClick}
           onError={(e) => {
             console.log('BagBrain character failed to load, hiding completely');
             e.currentTarget.style.display = 'none';
+          }}
+          style={{
+            WebkitTouchCallout: 'none',
+            WebkitUserSelect: 'none',
+            touchAction: 'none'
           }}
         />
 
@@ -117,7 +137,7 @@ export default function BagBrainCharacters() {
         )}
 
         {/* Status Indicator */}
-        <div className={`absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white shadow-lg z-10 transition-all duration-300 ${
+        <div className={`absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white shadow-lg z-10 transition-all duration-300 pointer-events-none ${
           isHovered ? 'bg-amber-400 animate-bounce' : 'bg-green-400 animate-pulse'
         }`}></div>
 
